@@ -1,6 +1,6 @@
 # Bakır tahmin raporu — başlangıç 2026-10
 
-Oluşturulma: 2026-11-09T19:48:00+00:00 UTC · kod `5e32b39` · süre 15.2 sn
+Oluşturulma: 2026-11-09T20:11:33+00:00 UTC · kod `69b4412` · süre 15.5 sn
 
 Başlangıç fiyatı (2026-10 LME nakit ortalaması): **14.532 USD/t**
 
@@ -8,18 +8,37 @@ Başlangıç fiyatı (2026-10 LME nakit ortalaması): **14.532 USD/t**
 
 | Ufuk | Ay | Tahmin | %80 aralık | Yukarı olasılığı | Değerlendirme |
 |---|---|---:|---|---:|---|
-| H1 | 2026-11 | 14.449 | 13.813 – 15.062 | %40 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
-| H2 | 2026-12 | 14.449 | 13.232 – 15.581 | %46 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
-| H3 | 2027-01 | 14.449 | 12.971 – 16.595 | %48 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
-| H4 | 2027-02 | 14.449 | 12.786 – 16.859 | %49 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
-| H5 | 2027-03 | 14.449 | 12.590 – 17.115 | %48 | Rastgele yürüyüşten biraz iyi, fark istatistiksel olarak kanıtlanmadı |
-| H6 | 2027-04 | 14.449 | 12.432 – 17.323 | %47 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
-| H7 | 2027-05 | 14.449 | 12.201 – 17.369 | %48 | Rastgele yürüyüşten biraz iyi, fark istatistiksel olarak kanıtlanmadı |
-| H8 | 2027-06 | 14.449 | 12.033 – 17.540 | %48 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
-| H9 | 2027-07 | 14.449 | 11.877 – 17.733 | %50 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
-| H10 | 2027-08 | 14.449 | 11.818 – 18.178 | %48 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
-| H11 | 2027-09 | 14.449 | 11.683 – 18.624 | %48 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
-| H12 | 2027-10 | 14.449 | 11.361 – 18.803 | %46 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H1 | 2026-11 | 14.406 | 13.763 – 15.036 | %35 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H2 | 2026-12 | 14.363 | 13.122 – 15.489 | %44 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H3 | 2027-01 | 14.320 | 12.848 – 16.414 | %45 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H4 | 2027-02 | 14.320 | 12.727 – 16.692 | %45 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H5 | 2027-03 | 14.320 | 12.455 – 16.965 | %44 | Rastgele yürüyüşten biraz iyi, fark istatistiksel olarak kanıtlanmadı |
+| H6 | 2027-04 | 14.320 | 12.317 – 17.163 | %45 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H7 | 2027-05 | 14.320 | 12.108 – 17.175 | %44 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H8 | 2027-06 | 14.320 | 11.962 – 17.412 | %46 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H9 | 2027-07 | 14.320 | 11.735 – 17.572 | %44 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H10 | 2027-08 | 14.320 | 11.795 – 18.146 | %48 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H11 | 2027-09 | 14.320 | 11.633 – 18.487 | %47 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+| H12 | 2027-10 | 14.320 | 11.348 – 18.732 | %46 | Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor |
+
+## ML senaryosu (yayımlanan tahmine dahil değil)
+
+Üç ML uzmanının eşit ağırlıklı ortalaması. Geçmişte vadeli eğri kuralından daha kötü sonuç verdiği için ana tahmine katılmaz; bilgi amaçlı gösterilir.
+
+| Ufuk | ML senaryosu | Backtest MAPE | Vadeli eğriye göre |
+|---|---:|---:|---:|
+| H1 | 14.379 | %2,87 | %-6,6 |
+| H2 | 14.365 | %5,81 | %-10,5 |
+| H3 | 14.079 | %7,83 | %-14,5 |
+| H4 | 13.516 | %9,90 | %-20,2 |
+| H5 | 13.294 | %11,36 | %-22,3 |
+| H6 | 13.246 | %12,91 | %-23,9 |
+| H7 | 13.145 | %13,45 | %-14,8 |
+| H8 | 12.938 | %14,23 | %-14,6 |
+| H9 | 12.722 | %15,23 | %-17,8 |
+| H10 | 12.732 | %16,07 | %-16,6 |
+| H11 | 12.566 | %17,00 | %-15,6 |
+| H12 | 12.462 | %18,02 | %-15,5 |
 
 ## Model güvenilirliği (walk-forward backtest)
 
@@ -27,18 +46,18 @@ Beceri = rastgele yürüyüşe göre ortalama mutlak hatadaki azalma. p < 0,10 i
 
 | Ufuk | Gözlem | Kombinasyon MAPE | RW MAPE | Beceri | DM p | En iyi uzman |
 |---|---:|---:|---:|---:|---:|---|
-| H1 | 141 | %2,75 | %3,54 | %20,7 | 0,000 | Ay sonu fiyatı sabit kalır |
-| H2 | 140 | %5,32 | %5,81 | %7,0 | 0,029 | Ay sonu fiyatı sabit kalır |
-| H3 | 139 | %7,00 | %7,32 | %3,8 | 0,089 | Ay sonu fiyatı sabit kalır |
-| H4 | 138 | %8,18 | %8,52 | %4,6 | 0,056 | Ay sonu fiyatı sabit kalır |
-| H5 | 137 | %9,27 | %9,51 | %3,1 | 0,139 | Ay sonu fiyatı sabit kalır |
-| H6 | 136 | %10,39 | %10,91 | %5,5 | 0,010 | Ay sonu fiyatı sabit kalır |
-| H7 | 135 | %11,75 | %12,04 | %2,3 | 0,185 | Ay sonu fiyatı sabit kalır |
-| H8 | 134 | %12,46 | %12,76 | %2,8 | 0,089 | Ay sonu fiyatı sabit kalır |
-| H9 | 133 | %13,13 | %13,60 | %3,9 | 0,011 | Ay sonu fiyatı sabit kalır |
-| H10 | 132 | %14,03 | %14,52 | %3,4 | 0,015 | Ay sonu fiyatı sabit kalır |
-| H11 | 131 | %14,99 | %15,51 | %3,2 | 0,007 | Ay sonu fiyatı sabit kalır |
-| H12 | 130 | %15,90 | %16,28 | %2,3 | 0,036 | Ay sonu fiyatı sabit kalır |
+| H1 | 141 | %2,73 | %3,54 | %21,3 | 0,000 | LME vadeli eğrisi (ay sonu + contango) |
+| H2 | 140 | %5,30 | %5,81 | %7,4 | 0,026 | LME vadeli eğrisi (ay sonu + contango) |
+| H3 | 139 | %6,97 | %7,32 | %4,5 | 0,069 | LME vadeli eğrisi (ay sonu + contango) |
+| H4 | 138 | %8,19 | %8,52 | %4,6 | 0,069 | LME vadeli eğrisi (ay sonu + contango) |
+| H5 | 137 | %9,25 | %9,51 | %3,4 | 0,126 | LME vadeli eğrisi (ay sonu + contango) |
+| H6 | 136 | %10,33 | %10,91 | %6,1 | 0,005 | LME vadeli eğrisi (ay sonu + contango) |
+| H7 | 135 | %11,54 | %12,04 | %4,4 | 0,031 | LME vadeli eğrisi (ay sonu + contango) |
+| H8 | 134 | %12,35 | %12,76 | %3,9 | 0,045 | LME vadeli eğrisi (ay sonu + contango) |
+| H9 | 133 | %12,98 | %13,60 | %5,1 | 0,002 | LME vadeli eğrisi (ay sonu + contango) |
+| H10 | 132 | %13,91 | %14,52 | %4,3 | 0,004 | LME vadeli eğrisi (ay sonu + contango) |
+| H11 | 131 | %14,89 | %15,51 | %4,1 | 0,002 | LME vadeli eğrisi (ay sonu + contango) |
+| H12 | 130 | %15,77 | %16,28 | %3,3 | 0,007 | LME vadeli eğrisi (ay sonu + contango) |
 
 ## Aralıkların kalibrasyonu
 
@@ -46,18 +65,18 @@ Beceri = rastgele yürüyüşe göre ortalama mutlak hatadaki azalma. p < 0,10 i
 
 | Ufuk | Gözlem | %50 kapsama | %80 kapsama | %90 kapsama |
 |---|---:|---:|---:|---:|
-| H1 | 117 | %46 | %79 | %86 |
-| H2 | 115 | %43 | %80 | %90 |
-| H3 | 113 | %50 | %81 | %88 |
-| H4 | 111 | %50 | %81 | %90 |
-| H5 | 109 | %50 | %80 | %88 |
-| H6 | 107 | %52 | %81 | %85 |
-| H7 | 105 | %56 | %77 | %85 |
-| H8 | 103 | %54 | %75 | %86 |
-| H9 | 101 | %61 | %74 | %87 |
-| H10 | 99 | %64 | %74 | %86 |
-| H11 | 97 | %66 | %75 | %86 |
-| H12 | 95 | %64 | %78 | %82 |
+| H1 | 117 | %46 | %79 | %85 |
+| H2 | 115 | %43 | %83 | %91 |
+| H3 | 113 | %51 | %82 | %88 |
+| H4 | 111 | %49 | %80 | %90 |
+| H5 | 109 | %51 | %80 | %87 |
+| H6 | 107 | %53 | %81 | %85 |
+| H7 | 105 | %55 | %77 | %85 |
+| H8 | 103 | %53 | %76 | %88 |
+| H9 | 101 | %61 | %76 | %89 |
+| H10 | 99 | %65 | %76 | %90 |
+| H11 | 97 | %65 | %77 | %87 |
+| H12 | 95 | %67 | %79 | %84 |
 
 ## Tahmini etkileyen başlıca girdiler (makro faktör Ridge uzmanı)
 
@@ -77,18 +96,18 @@ Orijinal proje tahmin başlangıcı: 2026-10-31. Orijinal dosya yalnızca okunur
 
 | Ufuk | Bu proje | Orijinal | Fark | Orijinal bu projenin %80 aralığında mı? |
 |---|---:|---:|---:|---|
-| H1 | 14.449 | 14.623 | 174 | Evet |
-| H2 | 14.449 | 14.725 | 276 | Evet |
-| H3 | 14.449 | 16.552 | 2.103 | Evet |
-| H4 | 14.449 | 15.486 | 1.037 | Evet |
-| H5 | 14.449 | 14.225 | -224 | Evet |
-| H6 | 14.449 | 14.641 | 192 | Evet |
-| H7 | 14.449 | 15.812 | 1.363 | Evet |
-| H8 | 14.449 | 15.476 | 1.027 | Evet |
-| H9 | 14.449 | 15.687 | 1.238 | Evet |
-| H10 | 14.449 | 17.749 | 3.300 | Evet |
-| H11 | 14.449 | 19.669 | 5.220 | Hayır |
-| H12 | 14.449 | 17.968 | 3.519 | Evet |
+| H1 | 14.406 | 14.623 | 217 | Evet |
+| H2 | 14.363 | 14.725 | 363 | Evet |
+| H3 | 14.320 | 16.552 | 2.232 | Hayır |
+| H4 | 14.320 | 15.486 | 1.166 | Evet |
+| H5 | 14.320 | 14.225 | -95 | Evet |
+| H6 | 14.320 | 14.641 | 322 | Evet |
+| H7 | 14.320 | 15.812 | 1.492 | Evet |
+| H8 | 14.320 | 15.476 | 1.157 | Evet |
+| H9 | 14.320 | 15.687 | 1.367 | Evet |
+| H10 | 14.320 | 17.749 | 3.429 | Evet |
+| H11 | 14.320 | 19.669 | 5.349 | Hayır |
+| H12 | 14.320 | 17.968 | 3.649 | Evet |
 
 ## Sınırlar
 

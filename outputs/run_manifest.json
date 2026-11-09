@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-09T19:48:00+00:00",
+  "generated_at_utc": "2026-11-09T20:11:33+00:00",
   "run_date": "2026-11-09",
   "forecast_origin": "2026-10",
   "origin_price_usd_t": 14532.477272727272,
@@ -11,8 +11,8 @@
     "2015-01",
     "2026-10"
   ],
-  "n_expert_predictions": 8520,
-  "code_commit": "5e32b39",
+  "n_expert_predictions": 11928,
+  "code_commit": "69b4412",
   "config": {
     "HORIZONS": [
       1,
@@ -48,12 +48,13 @@
     "MODELS": [
       "rw",
       "rw_spot",
+      "forward",
       "own_ridge",
       "factor_ridge",
       "gbm"
     ],
     "BENCHMARK": "rw",
-    "ANCHOR": "rw_spot"
+    "ANCHOR": "forward"
   },
   "series": [
     {
@@ -553,7 +554,7 @@
     }
   ],
   "snapshot": {
-    "taken_at_utc": "2026-11-09T19:47:44+00:00",
+    "taken_at_utc": "2026-11-09T20:11:17+00:00",
     "source_project": "/home/train/Copper_Prediction_with_Machine_Learning",
     "files": [
       {
@@ -634,5 +635,5 @@
     ]
   },
   "panel_sha256": "9072a05b35caa56c91ca8ef1d5cd14a74e37225fd048951c43b7cd064b60d1cb",
-  "runtime_seconds": 15.2
+  "runtime_seconds": 15.5
 }
