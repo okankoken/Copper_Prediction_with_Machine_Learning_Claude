@@ -91,27 +91,26 @@ def _timeline(kind: str) -> pd.DataFrame:
                 rows.append({"series": series.get("series"), "date": d["date"], "value": d["value"],
                              "norm": d.get("norm")})
     t = pd.DataFrame(rows, columns=["series", "date", "value", "norm"])
-    t["month"] = pd.PeriodIndex(pd.to_datetime(t["date"], format="%Y%m%dT%H%M%SZ"), freq="M")
     return t.drop_duplicates(["series", "date"], keep="last")
 
 
-def score_headlines(log=print) -> pd.DataFrame:
-    """FinBERT scores for every cached headline (cached in data/news/finbert_scores.csv)."""
-    out_path = NEWS / "finbert_scores.csv"
-    done = pd.read_csv(out_path) if out_path.exists() else pd.DataFrame(columns=["month", "url"])
-    titles = []
-    for f in sorted((NEWS / "headlines").glob("*.json")):
+def _headlines() -> pd.DataFrame:
+    rows = []
+    for f in sorted((NEWS / "headlines").glob("*.json")) if (NEWS / "headlines").exists() else []:
         for a in json.loads(f.read_text(encoding="utf-8") or "{}").get("articles", []):
             seen = str(a.get("seendate") or "")
-            if len(seen) < 6:
-                continue
-            titles.append({"month": f"{seen[:4]}-{seen[4:6]}", "url": a.get("url"), "title": (a.get("title") or "").strip(),
-                           "domain": a.get("domain")})
-    t = pd.DataFrame(titles).drop_duplicates(["month", "url"])
-    if t.empty:
-        return done
-    key = set(zip(done["month"].astype(str), done["url"]))
-    todo = t[[(m, u) not in key for m, u in zip(t["month"], t["url"])] & (t["title"].str.len() > 15)]
+            if len(seen) >= 8 and a.get("url"):
+                rows.append({"url": a["url"], "date": pd.Timestamp(seen[:8]),
+                             "title": (a.get("title") or "").strip(), "domain": a.get("domain")})
+    return pd.DataFrame(rows, columns=["url", "date", "title", "domain"]).drop_duplicates("url")
+
+
+def score_headlines(log=print) -> pd.DataFrame:
+    """FinBERT probabilities for every cached headline, cached by URL in data/news/finbert_scores.csv."""
+    out_path = NEWS / "finbert_scores.csv"
+    done = pd.read_csv(out_path) if out_path.exists() else pd.DataFrame(columns=["url"])
+    t = _headlines()
+    todo = t[~t["url"].isin(set(done["url"])) & (t["title"].str.len() > 15)]
     if len(todo):
         from transformers import AutoModelForSequenceClassification, AutoTokenizer
         import torch
@@ -121,13 +120,13 @@ def score_headlines(log=print) -> pd.DataFrame:
         probs = []
         with torch.no_grad():
             for i in range(0, len(todo), 64):
-                batch = todo["title"].iloc[i:i + 64].tolist()
-                enc = tok(batch, padding=True, truncation=True, max_length=64, return_tensors="pt")
+                enc = tok(todo["title"].iloc[i:i + 64].tolist(), padding=True, truncation=True,
+                          max_length=64, return_tensors="pt")
                 probs.append(torch.softmax(model(**enc).logits, dim=-1).numpy())
                 if i % 3200 == 0:
                     log(f"finbert {i}/{len(todo)}")
         P = np.vstack(probs)
-        todo = todo.copy()
+        todo = todo[["url", "title"]].copy()
         for j, lab in enumerate(labels):
             todo[f"p_{lab}"] = P[:, j]
         done = pd.concat([done, todo], ignore_index=True)
@@ -135,35 +134,39 @@ def score_headlines(log=print) -> pd.DataFrame:
     return done
 
 
-def monthly_sentiment(last: pd.Period | None = None) -> pd.DataFrame:
-    """One row per month: tone, attention and FinBERT net sentiment."""
+def dekad_sentiment(last: int | None = None) -> pd.DataFrame:
+    """One row per dekad: GDELT tone, attention (copper-price share of all coverage) and
+    FinBERT net headline sentiment (positive - negative probability)."""
+    from . import dekad as K
+    out = pd.DataFrame(index=pd.Index([], name="dekad", dtype="int64"))
     tone, vol = _timeline("tone"), _timeline("volume")
-    s = pd.DataFrame(index=pd.PeriodIndex([], freq="M"))
     if not tone.empty:
-        s = s.join(tone.groupby("month")["value"].mean().rename("news_tone"), how="outer")
+        tone["dekad"] = K.from_dates(pd.to_datetime(tone["date"], format="%Y%m%dT%H%M%SZ"))
+        out = out.join(tone.groupby("dekad")["value"].mean().rename("news_tone"), how="outer")
     if not vol.empty:
-        arts = vol[vol["series"].str.contains("Article Count", na=False)]
-        g = arts.groupby("month")
-        s = s.join(pd.DataFrame({"news_volume": g["value"].sum(),
-                                 "news_attention": g["value"].sum() / g["norm"].sum().clip(lower=1) * 1e4}),
-                   how="outer")
+        arts = vol[vol["series"].str.contains("Article Count", na=False)].copy()
+        arts["dekad"] = K.from_dates(pd.to_datetime(arts["date"], format="%Y%m%dT%H%M%SZ"))
+        g = arts.groupby("dekad")
+        out = out.join(pd.DataFrame({"news_articles": g["value"].sum(),
+                                     "news_attention": g["value"].sum() / g["norm"].sum().clip(lower=1) * 1e4}),
+                       how="outer")
     scores = NEWS / "finbert_scores.csv"
     if scores.exists():
         fb = pd.read_csv(scores)
-        fb["net"] = fb["p_positive"] - fb["p_negative"]
-        g = fb.groupby("month")
-        fbm = pd.DataFrame({"finbert_net": g["net"].mean(),
-                            "finbert_bull_share": g["net"].apply(lambda x: float((x > 0.3).mean() - (x < -0.3).mean())),
-                            "finbert_n": g.size()})
-        fbm.index = pd.PeriodIndex(fbm.index, freq="M")
-        s = s.join(fbm, how="outer")
+        if {"p_positive", "p_negative"} <= set(fb.columns):
+            fb = fb.drop(columns=[c for c in ("date", "month") if c in fb.columns]).merge(
+                _headlines()[["url", "date"]], on="url", how="inner")
+            fb["dekad"] = K.from_dates(fb["date"])
+            fb["net"] = fb["p_positive"] - fb["p_negative"]
+            g = fb.groupby("dekad")
+            out = out.join(pd.DataFrame({"finbert_net": g["net"].mean(), "finbert_n": g.size()}), how="outer")
     if last is not None:
-        s = s[s.index <= last]
-    return s.sort_index()
+        out = out[out.index <= last]
+    return out.sort_index()
 
 
 if __name__ == "__main__":
     last = pd.Period(date.today(), "M") - 1
     fetch(last)
     score_headlines()
-    print(monthly_sentiment(last).tail())
+    print(dekad_sentiment().tail())

@@ -8,122 +8,96 @@ import numpy as np
 import pandas as pd
 
 from copperlab import config as C
-from copperlab.combine import combine, expert_weights
-from copperlab.data import apply_publication_lags, copper_monthly, exogenous_raw
-from copperlab.experts import run_origin, tune_lgbm
+from copperlab import dekad as K
+from copperlab.data import apply_publication_lags, copper_dekads, exogenous_raw
+from copperlab.experts import run_origin, training_rows, tune
 from copperlab.features import broad_features, own_features, sentiment_features, targets
-from copperlab.news import monthly_sentiment
+from copperlab.news import dekad_sentiment
 
-RUN_DATE = date(2026, 11, 9)
+RUN_DATE = date(2026, 11, 10)
+
+
+class TestDekads(unittest.TestCase):
+    def test_roundtrip_and_boundaries(self):
+        d = pd.DatetimeIndex(["2024-02-10", "2024-02-11", "2024-02-20", "2024-02-21", "2024-02-29", "2024-03-01"])
+        n = K.from_dates(d)
+        self.assertEqual([K.parts(int(x))[2] for x in n], [1, 2, 2, 3, 3, 1])
+        self.assertEqual(int(n[-1]) - int(n[-2]), 1)
+        self.assertEqual(K.end(int(n[4])), pd.Timestamp("2024-02-29"))
+        self.assertEqual(K.ref_month(K.make(2024, 2, 3)), pd.Period("2024-02", "M"))
+        self.assertEqual(K.ref_month(K.make(2024, 2, 2)), pd.Period("2024-01", "M"))
 
 
 class Base(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.cu = copper_monthly(RUN_DATE)
-        cls.raw = exogenous_raw(cls.cu.index)
-        cls.exo = apply_publication_lags(cls.raw, cls.cu.index)
-        cls.sent = monthly_sentiment(cls.cu.index[-1])
-        cls.F, cls.B, cls.Y = own_features(cls.cu), broad_features(cls.exo), targets(cls.cu)
-        cls.S = sentiment_features(cls.sent, cls.cu.index)
+        cls.cu = copper_dekads(RUN_DATE)
+        cls.months = pd.period_range(K.ref_month(int(cls.cu.index[0])), K.ref_month(int(cls.cu.index[-1])), freq="M")
+        cls.raw = exogenous_raw(cls.months)
+        cls.exo = apply_publication_lags(cls.raw, cls.months)
+        cls.news = dekad_sentiment(int(cls.cu.index[-1]))
+        cls.F, cls.Y = own_features(cls.cu), targets(cls.cu)
+        cls.B = broad_features(cls.exo, cls.cu.index)
+        cls.S = sentiment_features(cls.news, cls.cu.index)
 
     def _perturb_future(self, t):
         cu2 = self.cu.copy()
-        future = cu2.index > t
-        cu2.loc[future, ["price", "close", "f3m"]] *= 3.0
-        cu2.loc[future, "stock"] *= 0.1
+        fut = cu2.index > t
+        cu2.loc[fut, ["price", "close", "f3m"]] *= 3.0
+        cu2.loc[fut, "stock"] *= 0.1
         exo2 = self.exo.copy()
-        exo2.loc[exo2.index > t] = exo2.loc[exo2.index > t] * 5
+        later = exo2.index > K.ref_month(t)
+        exo2.loc[later] = exo2.loc[later] * 5
         S2 = self.S.copy()
         S2.loc[S2.index > t] = S2.loc[S2.index > t] * -7
-        return own_features(cu2), broad_features(exo2), S2, targets(cu2)
+        return own_features(cu2), broad_features(exo2, cu2.index), S2, targets(cu2)
 
 
 class TestFeatures(Base):
+    def test_origin_is_last_completed_dekad(self):
+        self.assertEqual(K.label(int(self.cu.index[-1])), "2026-10-3")
+
     def test_features_do_not_change_when_future_is_removed(self):
-        for t in [pd.Period(m, "M") for m in ("2013-06", "2018-03", "2022-11", "2026-09")]:
+        for t in (K.make(2013, 6, 2), K.make(2018, 3, 3), K.make(2022, 11, 1), K.make(2026, 9, 2)):
             cu_t = self.cu.loc[:t]
-            exo_t = apply_publication_lags(self.raw.loc[:t], cu_t.index)
+            months_t = self.months[self.months <= K.ref_month(t)]
+            exo_t = apply_publication_lags(self.raw.loc[:K.ref_month(t)], months_t)
             pd.testing.assert_series_equal(own_features(cu_t).loc[t], self.F.loc[t], check_names=False)
-            pd.testing.assert_series_equal(broad_features(exo_t).loc[t], self.B.loc[t], check_names=False)
-            s_t = sentiment_features(self.sent[self.sent.index <= t], cu_t.index)
+            pd.testing.assert_series_equal(broad_features(exo_t, cu_t.index).loc[t], self.B.loc[t], check_names=False)
+            s_t = sentiment_features(self.news[self.news.index <= t], cu_t.index)
             pd.testing.assert_series_equal(s_t.loc[t], self.S.loc[t], check_names=False)
 
-    def test_publication_lag_is_applied(self):
-        t = pd.Period("2020-06", "M")
-        for s in C.SERIES:
-            src = self.raw[s.name].loc[t - s.lag]
-            if pd.notna(src):
-                self.assertAlmostEqual(self.exo.loc[t, s.name], src, msg=s.name)
-
-    def test_running_month_is_excluded(self):
-        self.assertEqual(self.cu.index[-1], pd.Period("2026-10", "M"))
+    def test_macro_uses_only_completed_months(self):
+        t = K.make(2020, 6, 2)          # 11-20 June: June is not finished, so May is the latest month
+        name = C.SERIES[0].name + "__c3"
+        self.assertEqual(self.B.loc[t, name], self.B.loc[K.make(2020, 5, 3), name])
 
 
 class TestExperts(Base):
     def test_training_targets_are_realised_at_origin(self):
-        t = pd.Period("2021-05", "M")
-        for r in run_origin(t, self.F, self.B, self.S, self.Y):
-            self.assertLessEqual(r["train_last"] + r["horizon"], t)
+        t = K.make(2021, 5, 2)
+        for h in C.HORIZONS:
+            rows = training_rows(self.F.index, self.Y[h], t, h)
+            self.assertLessEqual(int(rows.max()) + h, t)
+            self.assertTrue(self.Y[h].loc[rows].notna().all())
 
     def test_future_data_cannot_move_a_past_forecast(self):
-        t = pd.Period("2021-08", "M")
-        base = pd.DataFrame(run_origin(t, self.F, self.B, self.S, self.Y)).set_index(["horizon", "model"])["yhat"]
-        moved = pd.DataFrame(run_origin(t, *self._perturb_future(t))).set_index(["horizon", "model"])["yhat"]
-        pd.testing.assert_series_equal(base, moved)
-
-    def test_future_data_cannot_change_tuning(self):
-        T = pd.Period("2019-12", "M")
-        self.assertEqual(tune_lgbm(T, 3, self.F, self.B, self.S, self.Y),
-                         tune_lgbm(T, 3, *self._perturb_future(T)))
-
-
-class TestCombination(unittest.TestCase):
-    def _synthetic(self, n=200, h=1, seed=0):
-        rng = np.random.default_rng(seed)
-        origins = pd.period_range("2005-01", periods=n, freq="M")
-        y = rng.normal(0, 0.05, n)
-        rows = []
-        for i, t in enumerate(origins):
-            for m in C.MODELS:
-                noise = {C.ANCHOR: 0.04, "enet": 0.01}.get(m, 0.08)
-                rows.append({"origin": t, "horizon": h, "target": t + h, "model": m,
-                             "yhat": 0.0 if m == "rw" else y[i] + rng.normal(0, noise), "y": y[i]})
-        return pd.DataFrame(rows)
-
-    @staticmethod
-    def _wide(preds):
-        wide = preds.pivot_table(index="origin", columns="model", values="yhat")
-        meta = preds.groupby("origin")[["y", "target"]].first()
-        return wide.join(meta).reset_index()
-
-    def test_unmatured_outcomes_do_not_affect_weights(self):
-        preds = self._synthetic()
-        t = preds["origin"].unique()[120]
-        _, w1 = combine(preds)
-        bad = preds.copy()
-        bad.loc[(bad["target"] > t) & (bad["model"] == "enet"), "yhat"] += 10.0
-        _, w2 = combine(bad)
-        a = w1[w1.origin == t].filter(like="w_").iloc[0]
-        b = w2[w2.origin == t].filter(like="w_").iloc[0]
+        t = K.make(2021, 8, 3)
+        base, _ = run_origin(t, self.F, self.B, self.S, self.Y)
+        moved, _ = run_origin(t, *self._perturb_future(t))
+        a = pd.DataFrame(base).set_index(["horizon", "model"])["yhat"]
+        b = pd.DataFrame(moved).set_index(["horizon", "model"])["yhat"]
         pd.testing.assert_series_equal(a, b)
 
-    def test_expert_must_beat_anchor_to_get_weight(self):
-        w, _ = expert_weights(self._wide(self._synthetic()), 1)
-        self.assertGreater(w["enet"], 0.5)
-        self.assertEqual(w["lgbm"], 0.0)
-        self.assertEqual(w["rw"], 0.0)
-        self.assertAlmostEqual(sum(w.values()), 1.0)
+    def test_future_data_cannot_change_tuning(self):
+        T = K.make(2019, 12, 3)
+        self.assertEqual(tune(T, 9, self.F, self.B, self.S, self.Y), tune(T, 9, *self._perturb_future(T)))
 
-    def test_too_little_evidence_means_anchor_only(self):
-        w, _ = expert_weights(self._wide(self._synthetic(n=40)), 6)   # needs 72 matured, has 40
-        self.assertEqual(w[C.ANCHOR], 1.0)
-
-    def test_missing_expert_gets_no_weight(self):
-        preds = self._synthetic()
-        preds = preds[~((preds["model"] == "enet") & (preds["origin"] == preds["origin"].max()))]
-        _, w = combine(preds)
-        self.assertEqual(w.sort_values("origin")["w_enet"].iloc[-1], 0.0)
+    def test_forecast_is_mean_of_ml_experts(self):
+        recs, _ = run_origin(K.make(2023, 4, 1), self.F, self.B, self.S, self.Y)
+        p = pd.DataFrame(recs).pivot(index="horizon", columns="model", values="yhat")
+        ml = p[[m for m in C.ML_EXPERTS if m in p]].mean(axis=1)
+        np.testing.assert_allclose(p[C.FORECAST], ml)
 
 
 if __name__ == "__main__":

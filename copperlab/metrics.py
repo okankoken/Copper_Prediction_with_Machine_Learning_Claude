@@ -5,7 +5,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-from . import config as C
+BENCHMARK = "rw"       # "price stays where it is"
+ANCHOR = "forward"     # LME forward-curve rule
 
 
 def dm_test(err_model: np.ndarray, err_bench: np.ndarray, h: int) -> float:
@@ -40,8 +41,8 @@ def evaluate(allp: pd.DataFrame, origin_price: pd.Series) -> pd.DataFrame:
     allp["e"] = allp["f"] - allp["a"]
     rows = []
     for h, g in allp.groupby("horizon"):
-        bench = g[g["model"] == C.BENCHMARK].set_index("origin")["e"]
-        anchor = g[g["model"] == C.ANCHOR].set_index("origin")["e"]
+        bench = g[g["model"] == BENCHMARK].set_index("origin")["e"]
+        anchor = g[g["model"] == ANCHOR].set_index("origin")["e"]
         for m, gm in g.groupby("model"):
             gm = gm.set_index("origin")
             idx = gm.index.intersection(bench.index).intersection(anchor.index)
@@ -57,8 +58,8 @@ def evaluate(allp: pd.DataFrame, origin_price: pd.Series) -> pd.DataFrame:
                 "directional_acc_pct": float(hit.mean() * 100) if len(hit) else np.nan,
                 "skill_vs_rw_pct": float((1 - np.mean(np.abs(e)) / np.mean(np.abs(eb))) * 100),
                 "skill_vs_anchor_pct": float((1 - np.mean(np.abs(e)) / np.mean(np.abs(ea))) * 100),
-                "dm_p_vs_rw": np.nan if m == C.BENCHMARK else dm_test(e, eb, h),
-                "dm_p_vs_anchor": np.nan if m == C.ANCHOR else dm_test(e, ea, h),
+                "dm_p_vs_rw": np.nan if m == BENCHMARK else dm_test(e, eb, h),
+                "dm_p_vs_anchor": np.nan if m == ANCHOR else dm_test(e, ea, h),
             })
     return pd.DataFrame(rows)
 

@@ -23,26 +23,23 @@ SOURCE_PROJECT = Path(
     os.environ.get("COPPER_SOURCE_PROJECT", Path.home() / "Copper_Prediction_with_Machine_Learning")
 )
 
-HORIZONS = tuple(range(1, 13))
-FIRST_ORIGIN = "2015-01"      # first simulated forecast origin of the walk-forward backtest
-MIN_TRAIN = 48                # minimum matured training rows per horizon
-N_FACTORS = 5                 # PCA factors extracted from the broad macro/market panel
-FACTOR_MIN_COVERAGE = 0.9     # a broad column enters PCA only with >=90% history at the origin
-COMBO_LOOKBACK = 36           # matured forecasts used to weight the experts (at least 12*h)
-COMBO_MIN_EFFECTIVE = 12      # independent (non-overlapping) matured forecasts required: n >= 12*h,
-                              # below this the combination is 100% the anchor rule
-MIN_TRAIN_NEWS = 36           # news sentiment starts in 2017, so its expert needs a shorter minimum
-LGBM_TUNE_ITER = 15           # random-search candidates per yearly LightGBM re-tuning
-FORWARD_TENOR = 3             # months covered by the LME 3-month price
-FFILL_LIMIT = 2               # ragged edge: carry the last published value at most 2 months
+# Time unit: the dekad (a third of a month: days 1-10, 11-20, 21-end). 36 dekads = 12 months.
+HORIZONS = tuple(range(1, 37))
+FIRST_ORIGIN = (2015, 1, 1)   # first simulated forecast origin (year, month, dekad)
+MIN_TRAIN = 108               # minimum matured training dekads per horizon (3 years)
+MIN_TRAIN_NEWS = 90           # news starts in 2017, so its expert needs a shorter minimum
+COVERAGE = 0.9                # a macro column is used only with >=90% history in the training rows
+TUNE_HORIZONS = (1, 3, 9, 18, 36)   # hyperparameters are tuned here; other horizons use the nearest
+LGBM_TUNE_ITER = 10           # random-search candidates per yearly LightGBM re-tuning
+FORWARD_TENOR = 9             # dekads covered by the LME 3-month price
+FFILL_LIMIT = 2               # ragged edge: carry the last published monthly value at most 2 months
 N_JOBS = int(os.environ.get("COPPER_N_JOBS", "6"))
 RANDOM_STATE = 42
 
-MODELS = ("rw", "rw_spot", "forward", "enet", "lgbm", "enet_news")
+BENCHMARKS = ("rw", "forward")
 ML_EXPERTS = ("enet", "lgbm", "enet_news")
-SCENARIO = "ml_model"         # equal-weight ML average, published next to the main forecast
-BENCHMARK = "rw"            # skill and DM tests are reported against the plain random walk
-ANCHOR = "forward"          # the bar an expert must clear to receive combination weight
+FORECAST = "ml"               # the published forecast: equal-weight average of the ML experts
+DRIVER_HORIZONS = (3, 9, 18, 36)    # 1, 3, 6 and 12 months ahead
 
 
 @dataclass(frozen=True)
@@ -139,5 +136,33 @@ COPPER_FILE = "market/lme_copper_daily.csv"
 
 # Files copied into data/raw (snapshot) from the source project.
 RAW_FILES = tuple(sorted({COPPER_FILE, *(s.file for s in SERIES)}))
-# The original project's published forecast, copied for side-by-side comparison only.
-REFERENCE_FILES = ("data/predictions/copper_production_forecast_latest.csv",)
+REFERENCE_FILES: tuple[str, ...] = ()
+
+SERIES_TR = {
+    "aluminum": "Alüminyum fiyatı", "nickel": "Nikel fiyatı", "zinc": "Çinko fiyatı", "lead": "Kurşun fiyatı",
+    "tin": "Kalay fiyatı", "aluminum_stock": "LME alüminyum stoku", "nickel_stock": "LME nikel stoku",
+    "zinc_stock": "LME çinko stoku", "gold": "Altın", "silver": "Gümüş", "platinum": "Platin",
+    "iron_ore": "Demir cevheri", "coal": "Kömür", "brent": "Brent petrol", "natural_gas": "Doğal gaz",
+    "dollar_index": "Dolar endeksi (DXY)", "eur_usd": "EUR/USD", "usd_cny": "USD/CNY (yuan)",
+    "usd_jpy": "USD/JPY", "usd_krw": "USD/KRW", "usd_inr": "USD/INR", "peru_usd_pen": "USD/PEN (Peru)",
+    "vix": "VIX korku endeksi", "fed_rate": "Fed faizi", "us_10y": "ABD 10 yıllık faiz",
+    "us_2y": "ABD 2 yıllık faiz", "us_curve": "ABD faiz eğrisi (10Y-2Y)", "bund_10y": "Almanya 10 yıllık faiz",
+    "japan_10y": "Japonya 10 yıllık faiz", "korea_10y": "Kore 10 yıllık faiz", "ecb_rate": "ECB faizi",
+    "geopolitical_risk": "Jeopolitik risk endeksi", "policy_uncertainty": "Ekonomi politikası belirsizliği",
+    "us_cpi": "ABD enflasyonu (TÜFE)", "us_ppi": "ABD ÜFE", "us_industrial_production": "ABD sanayi üretimi",
+    "us_housing_starts": "ABD konut başlangıçları", "us_m2": "ABD para arzı (M2)",
+    "euro_area_ppi": "Euro bölgesi ÜFE", "euro_area_copper_ppi": "Euro bölgesi bakır ÜFE",
+    "euro_area_industrial_production": "Euro bölgesi sanayi üretimi", "germany_exports": "Almanya ihracatı",
+    "germany_order_books": "Almanya sanayi siparişleri", "japan_industrial_production": "Japonya sanayi üretimi",
+    "japan_ppi": "Japonya ÜFE", "korea_exports": "Kore ihracatı", "korea_industrial_production": "Kore sanayi üretimi",
+    "india_industrial_production": "Hindistan sanayi üretimi", "china_ppi_yoy": "Çin ÜFE",
+    "china_industrial_yoy": "Çin sanayi üretimi", "china_fai_yoy": "Çin sabit sermaye yatırımı",
+    "china_real_estate_yoy": "Çin gayrimenkul yatırımı", "china_electricity": "Çin elektrik üretimi",
+    "china_refined_copper": "Çin rafine bakır üretimi", "peru_diesel": "Peru dizel fiyatı",
+}
+FAMILY_TR = {
+    "metals": "Metaller", "inventories": "Stoklar", "precious": "Değerli metaller", "bulk": "Hammadde",
+    "energy": "Enerji", "fx": "Kurlar", "risk": "Risk", "rates": "Faizler", "us_macro": "ABD ekonomisi",
+    "europe": "Avrupa ekonomisi", "asia": "Asya ekonomisi", "china": "Çin ekonomisi",
+    "mining_costs": "Madencilik maliyeti", "copper": "Bakırın kendisi", "news": "Haberler",
+}

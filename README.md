@@ -1,85 +1,65 @@
 # 🟠 Copper Prediction with Machine Learning — Claude
 
-LME bakır nakit fiyatının aylık ortalaması için 1–12 ay ileri, **olasılıklı** tahmin sistemi.
+LME bakır nakit fiyatı için 12 ay ileri tahmin. Her ay üç döneme bölünüyor (1–10, 11–20, 21–ay sonu),
+yani toplam **36 dönemlik tek bir tahmin** üretiliyor.
 
-Bu proje, `Copper_Prediction_with_Machine_Learning` projesinin amacını (H1–H12 bakır tahmini, izlenebilir
-üretim, gösterge paneli) farklı bir felsefeyle yeniden kurar. Orijinal projeye hiçbir şey yazmaz.
-Ham verilerin yalnızca okunur bir kopyasını alır.
+## Ne yapıyor?
 
-## Bu versiyonu farklı yapan ne?
+1. **Veri:** LME günlük bakır fiyatı ve stokları (2008+), 55 piyasa ve makro seri (metaller, enerji, kurlar,
+   faizler, ABD/Avrupa/Asya/Çin ekonomisi, risk endeksleri) ve bakır haberleri (GDELT, 2017+) kullanılıyor.
+2. **Haber duyarlılığı:** GDELT'in haber tonu ve haber ilgisi ölçülüyor. Bakır haber başlıkları ayrıca
+   **FinBERT** (finans metinleri için eğitilmiş BERT modeli) ile olumlu/olumsuz puanlanıyor.
+3. **Modeller:**
+   - ElasticNet: bakır + makro.
+   - LightGBM: bakır + makro + haber.
+   - ElasticNet: bakır + haber.
+   Yayımlanan tahmin, bu üç modelin ortalaması.
+4. **Optimizasyon:** Hiperparametreler her yıl, arada boşluk bırakan zaman serisi çapraz doğrulamasıyla
+   yeniden seçiliyor. ElasticNet için alpha ve L1 oranı ayarlanıyor; LightGBM için 7 parametrede rastgele
+   arama yapılıyor.
+5. **Dürüst test:** 2015'ten bu yana her 10 günlük dönem için, yalnızca o gün bilinebilecek veriyle
+   yeniden eğitim ve tahmin yapılıyor (426 başlangıç × 36 ufuk). Testler, gelecekteki verinin geçmiş
+   tahmine sızmadığını doğruluyor.
+6. **Etkenler sayfası:** Hangi verinin bugünkü tahmini yukarı/aşağı ittiğini ve geçmişte hangi verilerin
+   hep aynı yönde ilişki gösterdiğini gösteriyor.
 
-| | Orijinal proje | Bu proje |
-|---|---|---|
-| Geçmiş | Ana tablo 2015'ten başlıyor, H1 için 21, H12 için 10 backtest gözlemi | Ham veriden 2008'e kadar yeniden kurulan panel; ufuk başına **130–141** backtest gözlemi |
-| Kıyas | Naive yöntem referans olarak tutuluyor | Her uzman **LME vadeli eğrisi** kuralını yenmek zorunda; yenemeyen ağırlık alamaz |
-| Senaryo | — | ML uzmanlarının ortalaması ayrı bir **ML senaryosu** olarak, geçmiş performansıyla birlikte gösteriliyor |
-| Belirsizlik | Güven etiketi (LOW/NORMAL) | Kalibre edilmiş P5–P95 aralıklar ve yukarı/aşağı olasılığı; kapsama oranı test ediliyor |
-| Kanıt | Hata ölçütleri | Diebold–Mariano anlamlılık testi ve her ufuk için açık "geçiyor / geçmiyor" kararı |
-| Üretim | Ayrı üretim kodu | Üretim tahmini = backtest'in son adımı (aynı fonksiyon) |
-| Sızıntı | Belgelenmiş kurallar | Kurallar **testlerle** doğrulanıyor (gelecek veri bozulsa da geçmiş tahmin değişmiyor) |
-
-## Ana bulgu (başlangıç Ekim 2026)
-
-- Ayın son işlem günü fiyatının korunacağını söyleyen basit kural, rastgele yürüyüşü her ufukta yeniyor
-  (H1'de hata %21 daha düşük). Sebebi aylık ortalama almanın yarattığı gecikme etkisi.
-- Bu fiyatı LME nakit → 3 ay vadeli eğrisi boyunca taşıyan **vadeli eğri** kuralı bundan da biraz daha
-  iyi. Ana tahmin bu yüzden ilk 3 ayda piyasanın yönünde hareket ediyor; 3 aydan sonrası için piyasa
-  verisi olmadığından düz devam ediyor.
-- Bakır sinyalleri, 55 makro/piyasa seri ve LightGBM üzerine kurulu ML uzmanları H1'de rastgele yürüyüşü
-  geçiyor ama vadeli eğriyi geçemiyor. H2'den itibaren rastgele yürüyüşten de kötüler. Bu yüzden ana
-  tahminde ağırlıkları neredeyse sıfır. Ortalamaları ayrı bir **ML senaryosu** olarak gösteriliyor.
-  Her ay yeniden değerlendiriliyorlar.
-- Yayımlanan kombinasyonun rastgele yürüyüşe göre becerisi H1'de **+%21,3**, H12'de **+%3,3**.
-  Fark H5 dışındaki tüm ufuklarda istatistiksel olarak anlamlı (p < 0,10).
-- %80 aralıklar H1–H6'da %80–83, H7–H12'de %76–79 kapsıyor.
-
-Ayrıntılı tablo her çalıştırmada `outputs/REPORT.md` dosyasına yazılır.
-
-## Hızlı başlangıç (VM)
+## Kullanım (VM)
 
 ```bash
 cd ~/Copper_Prediction_with_Machine_Learning_Claude
-./run.sh                 # veri kopyası + backtest + tahmin + rapor (~20 sn)
-./run.sh test            # sızıntı ve tutarlılık testleri
-./run.sh dashboard       # http://localhost:8501
+./run.sh                 # veri kopyası + haberler + model + tahmin
+./run.sh run             # sadece model ve tahmin (~7 dk)
+./run.sh test            # sızıntı testleri
+./restart_dashboard.sh   # panel: http://localhost:8501
 ```
-
-Doğrudan çağrılar da kullanılabilir: `python -m copperlab snapshot|run|all [--allow-stale] [--run-date YYYY-MM-DD]`.
-
-Tahmin koruması: bakır verisi son tamamlanmış aya kadar güncel değilse çalıştırma durur. Yalnızca
-backtest için `--allow-stale` kullanılabilir.
 
 ## Yapı
 
 ```text
 copperlab/
-  config.py     yollar, ufuklar, 55 serilik kaynak listesi ve her birinin yayın gecikmesi
-  snapshot.py   orijinal projeden ham veriyi kopyalar (SHA256 manifest)
-  data.py       aylık panel, süren ayı dışlama, tahmin başlangıcı koruması
-  features.py   bakırın kendi sinyalleri + makro değişimler + hedefler
-  experts.py    walk-forward uzmanlar (rastgele yürüyüş, ay sonu fiyatı, vadeli eğri, Ridge, faktör Ridge, LightGBM)
-  combine.py    ağırlık kazanma kuralı + ampirik tahmin aralıkları
-  metrics.py    MAPE/RMSE/sapma/yön, Diebold–Mariano, kapsama
-  pipeline.py   uçtan uca çalıştırma, arşiv, manifest
-  report.py     Türkçe rapor
-app/dashboard.py   Streamlit paneli (6 sekme)
-tests/             9 sızıntı/tutarlılık testi
-docs/METHOD.md     yöntem notu
+  config.py     ayarlar, 55 serilik kaynak listesi (yayın gecikmeleriyle), Türkçe adlar
+  dekad.py      10 günlük dönem takvimi
+  data.py       bakır dönem fiyatları, makro veriler, tahmin başlangıcı koruması
+  news.py       GDELT haber tonu/ilgisi + başlıklar, FinBERT puanlama
+  features.py   girdiler ve hedefler
+  experts.py    ElasticNet / LightGBM / haberli ElasticNet, yıllık hiperparametre ayarı
+  metrics.py    hata ölçüleri, Diebold–Mariano testi
+  pipeline.py   uçtan uca çalıştırma, etki analizi, arşiv
+  report.py     outputs/REPORT.md
+app/            Streamlit: Tahmin ve Etkenler sayfaları
+tests/          sızıntı ve tutarlılık testleri
 ```
 
 ## Çıktılar (`outputs/`)
 
 | Dosya | İçerik |
 |---|---|
-| `forecast_latest.csv` | H1–H12 tahmin, P5–P95, yukarı olasılığı, uzman tahminleri, ağırlıklar, karar |
-| `metrics_by_horizon.csv` | Uzman × ufuk başına tüm backtest ölçütleri |
-| `interval_calibration.csv` | %50/%80/%90 aralık kapsama oranları |
-| `backtest_*.csv`, `expert_weights_history.csv` | Tüm geriye dönük tahminler ve ağırlık geçmişi |
-| `drivers_latest.csv` | Makro faktör uzmanının katkı ayrıştırması |
-| `run_manifest.json` | Yapılandırma, veri SHA256, kod commit'i |
-| `archive/` | Yayımlanan her tahminin değişmez kopyası |
+| `forecast_latest.csv` | 36 dönemlik tahmin ve her dönemin geçmiş hata oranı |
+| `input_effects.csv` | Her girdinin bugünkü katkısı (USD/t) ve geçmişteki yön tutarlılığı |
+| `metrics_by_horizon.csv` | Model × ufuk başına geriye dönük ölçüler |
+| `news_sentiment.csv` | 10 günlük haber tonu, ilgi ve FinBERT duyarlılığı |
+| `news_value_test.csv` | Haber eklemenin tahmini iyileştirip iyileştirmediği |
+| `tuning.csv` | Her yıl seçilen hiperparametreler |
+| `REPORT.md`, `run_manifest.json`, `archive/` | Özet rapor, çalıştırma kaydı, yayımlanmış tahminler |
 
-Bağımlılıklar VM'deki `miniconda3` ortamında hazır (pandas, scikit-learn, lightgbm, statsmodels,
-streamlit, plotly). Ek kurulum gerekmez.
-
-> Bu çalışma araştırma amaçlıdır, yatırım tavsiyesi değildir.
+> Araştırma amaçlıdır, yatırım tavsiyesi değildir.
