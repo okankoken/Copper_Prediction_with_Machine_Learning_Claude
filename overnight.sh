@@ -12,4 +12,5 @@ git add -A -- outputs data/panel data/snapshot_manifest.json data/news/finbert_s
 git commit -q -m "Forecast run with news sentiment
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>" && echo "[$(date)] committed"
+git push -q origin main && echo "[$(date)] pushed to GitHub" || echo "[$(date)] PUSH FAILED"
 echo "[$(date)] OVERNIGHT DONE"

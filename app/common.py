@@ -30,12 +30,14 @@ def pct(x, nd=1):
 def load(stamp: float) -> dict:
     d = {}
     for k, f in {"fc": "forecast_latest.csv", "metrics": "metrics_by_horizon.csv", "news": "news_sentiment.csv",
-                 "effects": "input_effects.csv", "newstest": "news_value_test.csv"}.items():
+                 "effects": "input_effects.csv", "newstest": "news_value_test.csv",
+                 "headlines": "news_headlines_recent.csv", "headcounts": "news_headlines_monthly_counts.csv"}.items():
         try:
             d[k] = pd.read_csv(OUT / f)
         except (FileNotFoundError, pd.errors.EmptyDataError):
             pass
-    d["panel"] = pd.read_csv(ROOT / "data" / "panel" / "copper_dekad_panel.csv", usecols=["dekad", "label", "price"])
+    d["panel"] = pd.read_csv(ROOT / "data" / "panel" / "copper_dekad_panel.csv",
+                             usecols=["dekad", "label", "price", "news_tone", "finbert_net"])
     d["manifest"] = json.loads((OUT / "run_manifest.json").read_text())
     return d
 

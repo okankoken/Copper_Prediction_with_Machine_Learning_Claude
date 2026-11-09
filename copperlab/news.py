@@ -165,6 +165,21 @@ def dekad_sentiment(last: int | None = None) -> pd.DataFrame:
     return out.sort_index()
 
 
+def scored_headlines() -> pd.DataFrame:
+    """Every scored headline with its date, source and FinBERT label."""
+    scores = NEWS / "finbert_scores.csv"
+    if not scores.exists():
+        return pd.DataFrame(columns=["date", "title", "domain", "url", "label", "net"])
+    fb = pd.read_csv(scores)
+    if not {"p_positive", "p_negative", "p_neutral"} <= set(fb.columns):
+        return pd.DataFrame(columns=["date", "title", "domain", "url", "label", "net"])
+    h = _headlines()
+    fb = fb[["url", "p_positive", "p_negative", "p_neutral"]].merge(h, on="url", how="inner")
+    fb["net"] = fb["p_positive"] - fb["p_negative"]
+    fb["label"] = fb[["p_positive", "p_negative", "p_neutral"]].idxmax(axis=1).str.replace("p_", "", regex=False)
+    return fb.sort_values("date", ascending=False)[["date", "title", "domain", "url", "label", "net"]]
+
+
 if __name__ == "__main__":
     last = pd.Period(date.today(), "M") - 1
     fetch(last)
