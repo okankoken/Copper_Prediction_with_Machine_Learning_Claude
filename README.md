@@ -3,6 +3,9 @@
 LME bakır nakit fiyatı için 12 ay ileri tahmin. Her ay üç döneme bölünüyor (1–10, 11–20, 21–ay sonu),
 yani toplam **36 dönemlik tek bir tahmin** üretiliyor.
 
+🌐 **Canlı panel:** https://copper-prediction-with-machine-learning-claude.streamlit.app/
+(sayfalar: Tahmin · Etkenler · Haberler)
+
 ## Ne yapıyor?
 
 1. **Veri:** LME günlük bakır fiyatı ve stokları (2008+), 55 piyasa ve makro seri (metaller, enerji, kurlar,
