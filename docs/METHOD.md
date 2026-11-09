@@ -19,7 +19,7 @@ log getiriyi tahmin eder: `y_h(t) = log(P[t+h] / P[t])`.
 | Rastgele yürüyüş | Gelecek ayların ortalaması bu ayın ortalamasına eşit |
 | Ay sonu fiyatı | Gelecek ayların ortalaması bu ayın **son işlem günü** fiyatına eşit |
 | Bakırın kendi sinyalleri | Getiriler, oynaklık, contango, LME stokları → Ridge |
-| Makro faktörler | Yukarıdakiler + 54 makro/piyasa serisinden 5 PCA faktörü → Ridge |
+| Makro faktörler | Yukarıdakiler + 55 makro/piyasa serisinden 5 PCA faktörü → Ridge |
 | LightGBM | Aynı girdiler, sığ ağaçlar ve güçlü düzenlileştirme |
 
 **Kombinasyon: ağırlık kazanılır.** Bir uzman, yalnızca son değerlendirme penceresinde ay sonu fiyatı

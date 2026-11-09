@@ -1,6 +1,6 @@
 # Bakır tahmin raporu — başlangıç 2026-10
 
-Oluşturulma: 2026-11-09T19:42:42+00:00 UTC · kod `uncommitted` · süre 15.6 sn
+Oluşturulma: 2026-11-09T19:47:26+00:00 UTC · kod `e27f589` · süre 15.3 sn
 
 Başlangıç fiyatı (2026-10 LME nakit ortalaması): **14.532 USD/t**
 

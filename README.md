@@ -21,7 +21,7 @@ Ham verilerin yalnızca okunur bir kopyasını alır.
 
 - Ayın son işlem günü fiyatının korunacağını söyleyen basit kural, rastgele yürüyüşü her ufukta yeniyor
   (H1'de hata %21 daha düşük). Sebebi aylık ortalama almanın yarattığı gecikme etkisi.
-- Bakır sinyalleri, 54 makro seri ve LightGBM üzerine kurulu ML uzmanları H1'de rastgele yürüyüşü
+- Bakır sinyalleri, 55 makro/piyasa seri ve LightGBM üzerine kurulu ML uzmanları H1'de rastgele yürüyüşü
   geçiyor ama ay sonu kuralını geçemiyor. H3 ve sonrasında rastgele yürüyüşten de kötüler.
   Sistem bu yüzden şu an onlara ağırlık vermiyor. Her ay yeniden değerlendiriliyorlar.
 - Yayımlanan kombinasyonun rastgele yürüyüşe göre becerisi H1'de **+%20,7**, H12'de **+%2,3**.
@@ -48,7 +48,7 @@ backtest için `--allow-stale` kullanılabilir.
 
 ```text
 copperlab/
-  config.py     yollar, ufuklar, 54 serilik kaynak listesi ve her birinin yayın gecikmesi
+  config.py     yollar, ufuklar, 55 serilik kaynak listesi ve her birinin yayın gecikmesi
   snapshot.py   orijinal projeden ham veriyi kopyalar (SHA256 manifest)
   data.py       aylık panel, süren ayı dışlama, tahmin başlangıcı koruması
   features.py   bakırın kendi sinyalleri + makro değişimler + hedefler
