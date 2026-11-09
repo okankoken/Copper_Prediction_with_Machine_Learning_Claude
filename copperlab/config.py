@@ -33,13 +33,16 @@ COMBO_MIN_EFFECTIVE = 12      # independent (non-overlapping) matured forecasts 
                               # below this the combination is 100% the anchor rule
 CONFORMAL_MIN = 24            # matured combination errors needed for empirical intervals
 QUANTILES = (0.05, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95)
+FORWARD_TENOR = 3             # months covered by the LME 3-month price
 FFILL_LIMIT = 2               # ragged edge: carry the last published value at most 2 months
 N_JOBS = int(os.environ.get("COPPER_N_JOBS", "6"))
 RANDOM_STATE = 42
 
-MODELS = ("rw", "rw_spot", "own_ridge", "factor_ridge", "gbm")
+MODELS = ("rw", "rw_spot", "forward", "own_ridge", "factor_ridge", "gbm")
+ML_EXPERTS = ("own_ridge", "factor_ridge", "gbm")
+SCENARIO = "ml_scenario"     # equal-weight ML average, published separately, never in the combination
 BENCHMARK = "rw"            # skill and DM tests are reported against the plain random walk
-ANCHOR = "rw_spot"          # the bar an expert must clear to receive combination weight
+ANCHOR = "forward"          # the bar an expert must clear to receive combination weight
 
 
 @dataclass(frozen=True)

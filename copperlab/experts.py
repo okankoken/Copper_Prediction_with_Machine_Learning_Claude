@@ -74,7 +74,9 @@ def run_origin(t: pd.Period, F: pd.DataFrame, B: pd.DataFrame, Y: pd.DataFrame, 
         if len(cand) < C.MIN_TRAIN:
             continue
         ytr = y.loc[cand].values
-        preds = {"rw": 0.0, "rw_spot": float(F.loc[t, "eom_gap"])}
+        eom, spread = float(F.loc[t, "eom_gap"]), float(F.loc[t, "spread_3m"])
+        # forward: month-end price moved along the LME cash -> 3-month curve, flat beyond the tenor
+        preds = {"rw": 0.0, "rw_spot": eom, "forward": eom + spread * min(h, C.FORWARD_TENOR) / C.FORWARD_TENOR}
 
         Xtr, Xt = _scale(X.loc[cand, own_cols], X.loc[[t], own_cols])
         own_m = RidgeCV(alphas=ALPHAS).fit(Xtr.values, ytr)

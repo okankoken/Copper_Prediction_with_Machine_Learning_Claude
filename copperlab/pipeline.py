@@ -38,6 +38,16 @@ def _git_commit() -> str:
         return "uncommitted"
 
 
+def add_scenario(preds: pd.DataFrame) -> pd.DataFrame:
+    """Equal-weight average of the ML experts, evaluated like any expert but never combined."""
+    ml = preds[preds["model"].isin(C.ML_EXPERTS)]
+    keys = ["target", "y", "n_train", "train_first", "train_last"]
+    sc = ml.groupby(["origin", "horizon"], as_index=False).agg(
+        **{k: (k, "first") for k in keys}, yhat=("yhat", "mean"))
+    sc["model"] = C.SCENARIO
+    return pd.concat([preds, sc[preds.columns]], ignore_index=True)
+
+
 def drivers_table(info: dict, price0: float) -> pd.DataFrame:
     rows = []
     for h, d in info.items():
@@ -73,6 +83,7 @@ def run(run_date: date | None = None, allow_stale: bool = False, n_jobs: int = C
     chunks = Parallel(n_jobs=n_jobs)(delayed(run_origin)(t, F, B, Y) for t in hist_origins)
     last_records, info = run_origin(origin, F, B, Y, details=True)
     preds = pd.DataFrame([r for ch in chunks for r in ch] + last_records)
+    preds = add_scenario(preds)
 
     combo, weights = combine(preds, Y)
     metrics = evaluate(preds, combo, cu["price"])
@@ -100,6 +111,12 @@ def run(run_date: date | None = None, allow_stale: bool = False, n_jobs: int = C
     for m in C.MODELS:
         out[f"expert_{m}_usd_t"] = p0 * np.exp(ex.loc[out["horizon"], m].values)
         out[f"weight_{m}"] = wl.loc[out["horizon"], f"w_{m}"].values
+    sc = metrics[metrics["model"] == C.SCENARIO].set_index("horizon")
+    an = metrics[metrics["model"] == C.ANCHOR].set_index("horizon")
+    out["ml_scenario_usd_t"] = p0 * np.exp(ex.loc[out["horizon"], C.SCENARIO].values)
+    out["ml_scenario_mape_pct"] = sc.loc[out["horizon"], "mape_pct"].values
+    out["ml_scenario_vs_anchor_pct"] = ((1 - sc.loc[out["horizon"], "mae"].values
+                                         / an.loc[out["horizon"], "mae"].values) * 100)
     out["weight_obs"] = wl.loc[out["horizon"], "n_weight_obs"].values
     out["backtest_n"] = cm.loc[out["horizon"], "n"].values
     out["backtest_mape_pct"] = cm.loc[out["horizon"], "mape_pct"].values

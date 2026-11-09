@@ -8,6 +8,8 @@ from . import config as C
 MODEL_TR = {
     "rw": "Rastgele yürüyüş (fiyat aynı kalır)",
     "rw_spot": "Ay sonu fiyatı sabit kalır",
+    "forward": "LME vadeli eğrisi (ay sonu + contango)",
+    "ml_scenario": "ML senaryosu (3 ML uzmanının ortalaması)",
     "own_ridge": "Bakırın kendi sinyalleri (Ridge)",
     "factor_ridge": "Bakır + makro faktörler (Ridge)",
     "gbm": "Bakır + makro faktörler (LightGBM)",
@@ -52,6 +54,15 @@ def write_report(out, metrics, intervals, drivers, manifest):
                  f"{_fmt(r.p10_usd_t)} – {_fmt(r.p90_usd_t)} | %{_fmt(r.prob_above_origin * 100)} | {r.verdict_tr} |")
     L.append("")
 
+    L += ["## ML senaryosu (yayımlanan tahmine dahil değil)", "",
+          "Üç ML uzmanının eşit ağırlıklı ortalaması. Geçmişte vadeli eğri kuralından daha kötü sonuç verdiği "
+          "için ana tahmine katılmaz; bilgi amaçlı gösterilir.", "",
+          "| Ufuk | ML senaryosu | Backtest MAPE | Vadeli eğriye göre |", "|---|---:|---:|---:|"]
+    for _, r in out.iterrows():
+        L.append(f"| H{r.horizon} | {_fmt(r.ml_scenario_usd_t)} | %{_fmt(r.ml_scenario_mape_pct, 2)} | "
+                 f"%{_fmt(r.ml_scenario_vs_anchor_pct, 1)} |")
+    L.append("")
+
     L += ["## Model güvenilirliği (walk-forward backtest)", "",
           "Beceri = rastgele yürüyüşe göre ortalama mutlak hatadaki azalma. "
           "p < 0,10 ise fark istatistiksel olarak anlamlı kabul edilir (Diebold-Mariano).", "",
@@ -59,7 +70,7 @@ def write_report(out, metrics, intervals, drivers, manifest):
           "|---|---:|---:|---:|---:|---:|---|"]
     for h, g in metrics.groupby("horizon"):
         g = g.set_index("model")
-        best = g.drop(index=["combo"], errors="ignore")["mae"].idxmin()
+        best = g.drop(index=["combo", "ml_scenario"], errors="ignore")["mae"].idxmin()
         c = g.loc["combo"]
         L.append(f"| H{h} | {int(c.n)} | %{_fmt(c.mape_pct, 2)} | %{_fmt(g.loc['rw'].mape_pct, 2)} | "
                  f"%{_fmt(c.skill_vs_rw_pct, 1)} | {_fmt(c.dm_p_value, 3)} | {MODEL_TR[best]} |")

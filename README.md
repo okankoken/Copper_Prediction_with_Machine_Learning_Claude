@@ -11,7 +11,8 @@ Ham verilerin yalnızca okunur bir kopyasını alır.
 | | Orijinal proje | Bu proje |
 |---|---|---|
 | Geçmiş | Ana tablo 2015'ten başlıyor, H1 için 21, H12 için 10 backtest gözlemi | Ham veriden 2008'e kadar yeniden kurulan panel; ufuk başına **130–141** backtest gözlemi |
-| Kıyas | Naive yöntem referans olarak tutuluyor | Her uzman **ay sonu fiyatı** kuralını yenmek zorunda; yenemeyen ağırlık alamaz |
+| Kıyas | Naive yöntem referans olarak tutuluyor | Her uzman **LME vadeli eğrisi** kuralını yenmek zorunda; yenemeyen ağırlık alamaz |
+| Senaryo | — | ML uzmanlarının ortalaması ayrı bir **ML senaryosu** olarak, geçmiş performansıyla birlikte gösteriliyor |
 | Belirsizlik | Güven etiketi (LOW/NORMAL) | Kalibre edilmiş P5–P95 aralıklar ve yukarı/aşağı olasılığı; kapsama oranı test ediliyor |
 | Kanıt | Hata ölçütleri | Diebold–Mariano anlamlılık testi ve her ufuk için açık "geçiyor / geçmiyor" kararı |
 | Üretim | Ayrı üretim kodu | Üretim tahmini = backtest'in son adımı (aynı fonksiyon) |
@@ -21,12 +22,16 @@ Ham verilerin yalnızca okunur bir kopyasını alır.
 
 - Ayın son işlem günü fiyatının korunacağını söyleyen basit kural, rastgele yürüyüşü her ufukta yeniyor
   (H1'de hata %21 daha düşük). Sebebi aylık ortalama almanın yarattığı gecikme etkisi.
+- Bu fiyatı LME nakit → 3 ay vadeli eğrisi boyunca taşıyan **vadeli eğri** kuralı bundan da biraz daha
+  iyi. Ana tahmin bu yüzden ilk 3 ayda piyasanın yönünde hareket ediyor; 3 aydan sonrası için piyasa
+  verisi olmadığından düz devam ediyor.
 - Bakır sinyalleri, 55 makro/piyasa seri ve LightGBM üzerine kurulu ML uzmanları H1'de rastgele yürüyüşü
-  geçiyor ama ay sonu kuralını geçemiyor. H3 ve sonrasında rastgele yürüyüşten de kötüler.
-  Sistem bu yüzden şu an onlara ağırlık vermiyor. Her ay yeniden değerlendiriliyorlar.
-- Yayımlanan kombinasyonun rastgele yürüyüşe göre becerisi H1'de **+%20,7**, H12'de **+%2,3**.
-  Fark H1–H4, H6 ve H8–H12'de istatistiksel olarak anlamlı (p < 0,10).
-- %80 aralıklar H1–H6'da %79–81, H7–H12'de %74–78 kapsıyor.
+  geçiyor ama vadeli eğriyi geçemiyor. H2'den itibaren rastgele yürüyüşten de kötüler. Bu yüzden ana
+  tahminde ağırlıkları neredeyse sıfır. Ortalamaları ayrı bir **ML senaryosu** olarak gösteriliyor.
+  Her ay yeniden değerlendiriliyorlar.
+- Yayımlanan kombinasyonun rastgele yürüyüşe göre becerisi H1'de **+%21,3**, H12'de **+%3,3**.
+  Fark H5 dışındaki tüm ufuklarda istatistiksel olarak anlamlı (p < 0,10).
+- %80 aralıklar H1–H6'da %80–83, H7–H12'de %76–79 kapsıyor.
 
 Ayrıntılı tablo her çalıştırmada `outputs/REPORT.md` dosyasına yazılır.
 
@@ -52,7 +57,7 @@ copperlab/
   snapshot.py   orijinal projeden ham veriyi kopyalar (SHA256 manifest)
   data.py       aylık panel, süren ayı dışlama, tahmin başlangıcı koruması
   features.py   bakırın kendi sinyalleri + makro değişimler + hedefler
-  experts.py    walk-forward uzmanlar (rastgele yürüyüş, ay sonu fiyatı, Ridge, faktör Ridge, LightGBM)
+  experts.py    walk-forward uzmanlar (rastgele yürüyüş, ay sonu fiyatı, vadeli eğri, Ridge, faktör Ridge, LightGBM)
   combine.py    ağırlık kazanma kuralı + ampirik tahmin aralıkları
   metrics.py    MAPE/RMSE/sapma/yön, Diebold–Mariano, kapsama
   pipeline.py   uçtan uca çalıştırma, arşiv, manifest

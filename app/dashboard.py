@@ -19,6 +19,9 @@ COPPER = "#c4622d"
 BAND = "196,98,45"
 INK = "#8f9bb3"   # readable on both light and dark Streamlit themes
 GREY = "#8a8a8a"
+SCEN = "#5fb3a3"
+COLORS = {"combo": COPPER, "forward": "#d9a441", "rw_spot": INK, "ml_scenario": SCEN,
+          "own_ridge": "#5b8db8", "factor_ridge": "#7aa974", "gbm": "#a77dc2", "rw": GREY}
 
 st.set_page_config(page_title="Bakır Tahmin Laboratuvarı", page_icon="🟠", layout="wide")
 
@@ -101,22 +104,29 @@ with t1:
                              line=dict(color=INK, width=2)))
     fig.add_trace(go.Scatter(x=x0, y=[p0] + list(fc["forecast_usd_t"]), name="Tahmin (medyan)",
                              line=dict(color=COPPER, width=3), mode="lines+markers"))
+    show_scen = st.toggle("ML senaryosunu göster", value=True,
+                          help="Üç ML uzmanının ortalaması. Ana tahmine dahil değil.")
+    if show_scen:
+        fig.add_trace(go.Scatter(x=x0, y=[p0] + list(fc["ml_scenario_usd_t"]), name="ML senaryosu",
+                                 line=dict(color=SCEN, width=2, dash="dash"), mode="lines+markers"))
     st.plotly_chart(layout(fig, 470), use_container_width=True)
 
     ml_w = fc[["weight_own_ridge", "weight_factor_ridge", "weight_gbm"]].sum(axis=1)
-    if (ml_w < 0.05).all():
-        st.info("Tahmin çizgisi düz görünüyorsa bu bir hata değil: son değerlendirme penceresinde hiçbir ML "
-                "uzmanı **ay sonu fiyatının korunacağı** kuralını yenemedi. Sistem bu yüzden ağırlığı o kurala "
-                "veriyor. Asıl bilgi, aralıkların genişliğinde ve yukarı/aşağı olasılığında.")
-    else:
-        st.info("ML uzmanlarının bu aydaki toplam ağırlığı ufka göre: " +
-                ", ".join(f"H{h} %{tr(w * 100)}" for h, w in zip(fc.horizon, ml_w)))
+    sc_skill = fc["ml_scenario_vs_anchor_pct"]
+    st.info("**Ana tahmin** ay sonu fiyatını LME nakit → 3 ay vadeli eğrisi boyunca taşır. Piyasa şu an "
+            f"{'backwardation (vadeli < nakit)' if fc.forecast_usd_t.iloc[2] < fc.forecast_usd_t.iloc[0] else 'contango (vadeli > nakit)'} "
+            "durumda; eğri ilk 3 ayda bu yönde hareket ediyor, 3 aydan sonrası için piyasa verisi "
+            "olmadığından düz devam ediyor. "
+            f"ML uzmanlarının ana tahmindeki ağırlığı: %{tr(ml_w.max() * 100)} (en yüksek ufuk).\n\n"
+            f"**ML senaryosu** (kesikli çizgi) daha hareketli bir yol çiziyor, ama geriye dönük testte vadeli "
+            f"eğriden ufka göre %{tr(-sc_skill.max(), 1)} ile %{tr(-sc_skill.min(), 1)} arasında **daha fazla** "
+            "hata yaptı. Bu yüzden yalnızca senaryo olarak gösteriliyor.")
 
-    show = fc[["horizon", "forecast_month", "forecast_usd_t", "p10_usd_t", "p50_usd_t", "p90_usd_t",
+    show = fc[["horizon", "forecast_month", "forecast_usd_t", "p10_usd_t", "p90_usd_t", "ml_scenario_usd_t",
                "prob_above_origin", "backtest_mape_pct", "skill_vs_rw_pct", "dm_p_value", "verdict_tr"]].copy()
-    show.columns = ["Ufuk", "Ay", "Tahmin", "P10", "P50", "P90", "Yukarı olasılığı", "Backtest MAPE %",
+    show.columns = ["Ufuk", "Ay", "Tahmin", "P10", "P90", "ML senaryosu", "Yukarı olasılığı", "Backtest MAPE %",
                     "RW'ye göre beceri %", "DM p", "Değerlendirme"]
-    st.dataframe(show.style.format({"Tahmin": "{:,.0f}", "P10": "{:,.0f}", "P50": "{:,.0f}", "P90": "{:,.0f}",
+    st.dataframe(show.style.format({"Tahmin": "{:,.0f}", "P10": "{:,.0f}", "ML senaryosu": "{:,.0f}", "P90": "{:,.0f}",
                                     "Yukarı olasılığı": "{:.0%}", "Backtest MAPE %": "{:.2f}",
                                     "RW'ye göre beceri %": "{:+.1f}", "DM p": "{:.3f}"}),
                  hide_index=True, use_container_width=True)
@@ -126,8 +136,8 @@ with t2:
     st.subheader("Her uzman rastgele yürüyüşe göre ne kadar iyi?")
     st.caption("Beceri = 1 − MAE(model) / MAE(fiyat aynı kalır). Pozitif = daha iyi. "
                f"Aynı {int(M[M.horizon == 1].n.iloc[0])}–{int(M[M.horizon == 12].n.iloc[0])} gözlemlik ortak örneklem.")
-    order = ["combo", "rw_spot", "own_ridge", "factor_ridge", "gbm"]
-    colors = {"combo": COPPER, "rw_spot": INK, "own_ridge": "#5b8db8", "factor_ridge": "#7aa974", "gbm": "#a77dc2"}
+    order = ["combo", "forward", "rw_spot", "ml_scenario", "own_ridge", "factor_ridge", "gbm"]
+    colors = COLORS
     fig = go.Figure()
     for m in order:
         g = M[M.model == m]
@@ -175,7 +185,7 @@ with t3:
     w = D["weights"][D["weights"].horizon == h].copy()
     w["date"] = month_end(w["origin"])
     fig = go.Figure()
-    for m in ["rw", "rw_spot", "own_ridge", "factor_ridge", "gbm"]:
+    for m in ["rw", "rw_spot", "forward", "own_ridge", "factor_ridge", "gbm"]:
         fig.add_trace(go.Scatter(x=w.date, y=w[f"w_{m}"], stackgroup="one", name=MODEL_TR[m],
                                  line=dict(width=0.5, color=colors.get(m, GREY))))
     fig.update_yaxes(range=[0, 1], tickformat=".0%")
@@ -187,7 +197,7 @@ with t4:
     w_fac = fc.loc[fc.horizon == h, "weight_factor_ridge"].iloc[0]
     st.warning(f"Bu bölüm **makro faktör Ridge** uzmanının ne söylediğini gösterir. Bu uzmanın H{h} "
                f"kombinasyonundaki ağırlığı şu an %{tr(w_fac * 100)}. Ağırlık, uzman son değerlendirme "
-               "penceresinde ay sonu fiyatı kuralını yenerse artar. Katkılar nedensellik değil, "
+               "penceresinde vadeli eğri kuralını yenerse artar. Katkılar nedensellik değil, "
                "modelin koşullu ilişkisidir.")
     d = D["drivers"][D["drivers"].horizon == h].copy()
     d = d.reindex(d.contribution_usd_approx.abs().sort_values().index).tail(12)
@@ -213,6 +223,8 @@ with t5:
                                  fill="toself", fillcolor=f"rgba({BAND},0.2)", line=dict(width=0),
                                  name="Bu proje: %80 aralık"))
         fig.add_trace(go.Scatter(x=x, y=fc.forecast_usd_t, name="Bu proje: medyan", line=dict(color=COPPER, width=3)))
+        fig.add_trace(go.Scatter(x=x, y=fc.ml_scenario_usd_t, name="Bu proje: ML senaryosu",
+                                 line=dict(color=SCEN, dash="dash")))
         fig.add_trace(go.Scatter(x=x, y=comp.original_usd_t, name="Orijinal proje", mode="lines+markers",
                                  line=dict(color=INK, dash="dash")))
         st.plotly_chart(layout(fig, 430), use_container_width=True)

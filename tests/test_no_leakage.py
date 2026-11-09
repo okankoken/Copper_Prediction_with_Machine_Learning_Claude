@@ -72,7 +72,7 @@ class TestCombination(unittest.TestCase):
         rows = []
         for i, t in enumerate(origins):
             for m in C.MODELS:
-                noise = {"rw_spot": 0.04, "own_ridge": 0.01}.get(m, 0.08)
+                noise = {C.ANCHOR: 0.04, "own_ridge": 0.01}.get(m, 0.08)
                 rows.append({"origin": t, "horizon": h, "target": t + h, "model": m,
                              "yhat": 0.0 if m == "rw" else y[i] + rng.normal(0, noise), "y": y[i]})
         return pd.DataFrame(rows), pd.DataFrame({h: y}, index=origins)

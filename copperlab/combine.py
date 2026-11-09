@@ -15,8 +15,8 @@ from . import config as C
 
 def expert_weights(hist: pd.DataFrame, h: int, models=C.MODELS) -> tuple[dict, int]:
     """Earn-your-weight: inverse-MSE weights over the last max(COMBO_LOOKBACK, 12*h)
-    matured forecasts, restricted to the anchor (the month-end-price rule, the
-    strongest simple benchmark) plus experts whose trailing MSE beat it. Anything
+    matured forecasts, restricted to the anchor (month-end price moved along the
+    LME forward curve, the strongest simple benchmark) plus experts whose trailing MSE beat it. Anything
     that has not beaten the anchor recently gets exactly 0.
 
     h-month forecasts made in consecutive months overlap, so n of them hold only

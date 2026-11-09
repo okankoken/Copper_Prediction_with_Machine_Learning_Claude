@@ -18,14 +18,19 @@ log getiriyi tahmin eder: `y_h(t) = log(P[t+h] / P[t])`.
 |---|---|
 | Rastgele yürüyüş | Gelecek ayların ortalaması bu ayın ortalamasına eşit |
 | Ay sonu fiyatı | Gelecek ayların ortalaması bu ayın **son işlem günü** fiyatına eşit |
+| LME vadeli eğrisi | Ay sonu fiyatı, nakit → 3 ay vadeli farkı (contango/backwardation) boyunca taşınır; 3 aydan sonra düz |
 | Bakırın kendi sinyalleri | Getiriler, oynaklık, contango, LME stokları → Ridge |
 | Makro faktörler | Yukarıdakiler + 55 makro/piyasa serisinden 5 PCA faktörü → Ridge |
 | LightGBM | Aynı girdiler, sığ ağaçlar ve güçlü düzenlileştirme |
 
-**Kombinasyon: ağırlık kazanılır.** Bir uzman, yalnızca son değerlendirme penceresinde ay sonu fiyatı
+**Kombinasyon: ağırlık kazanılır.** Bir uzman, yalnızca son değerlendirme penceresinde vadeli eğri
 kuralından daha düşük hata yaptıysa ağırlık alır. Ağırlık, ters MSE ile hesaplanır. h aylık tahminler
 birbiriyle örtüştüğü için n tahmin yaklaşık n/h bağımsız sonuç taşır. Bu yüzden en az 12 bağımsız
-sonuç (12·h gerçekleşmiş tahmin) birikene kadar ağırlığın tamamı ay sonu fiyatı kuralında kalır.
+sonuç (12·h gerçekleşmiş tahmin) birikene kadar ağırlığın tamamı vadeli eğri kuralında kalır.
+
+**ML senaryosu.** Üç ML uzmanının eşit ağırlıklı ortalamasıdır. Diğer uzmanlar gibi geriye dönük test
+edilir, ama ana tahmine hiçbir zaman karışmaz. Daha hareketli bir yol gösterir; geçmiş başarısı her
+ufuk için yanında yazılır.
 
 **Belirsizlik.** Aralıklar, kombinasyonun geçmişte gerçekleşmiş hatalarının dağılımından gelir
 (boş bir normal dağılım varsayımı yok). Dağılım medyanı nokta tahmine eşitlenir. Böylece 2015–2026
