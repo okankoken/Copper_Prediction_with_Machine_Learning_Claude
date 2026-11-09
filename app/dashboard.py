@@ -15,8 +15,8 @@ nav = st.navigation([st.Page("forecast_page.py", title="Tahmin", icon="📈", de
 D = data()
 man = D["manifest"]
 with st.sidebar:
-    st.markdown('<div class="side-brand">🟠 Copper Prediction · Claude</div>'
-                '<div class="side-sub">LME bakır · 10 günlük dönemler · 12 ay</div>', unsafe_allow_html=True)
+    st.markdown('<div class="side-brand">🟠 CopperCast</div>'
+                '<div class="side-sub">LME bakır tahmini · 10 günlük dönemler · 12 ay</div>', unsafe_allow_html=True)
     news = man.get("news_dekads") or ["–", "–"]
     for title, value in (("Son veri", man["forecast_origin_tr"]),
                          ("Son dönem ortalaması", f"{tr(man['origin_price_usd_t'])} USD/t"),
