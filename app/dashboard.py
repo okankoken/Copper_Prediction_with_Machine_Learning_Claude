@@ -17,7 +17,7 @@ from copperlab.report import MODEL_TR, reference_comparison  # noqa: E402
 OUT = ROOT / "outputs"
 COPPER = "#c4622d"
 BAND = "196,98,45"
-INK = "#2b2b2b"
+INK = "#8f9bb3"   # readable on both light and dark Streamlit themes
 GREY = "#8a8a8a"
 
 st.set_page_config(page_title="Bakır Tahmin Laboratuvarı", page_icon="🟠", layout="wide")
