@@ -14,7 +14,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 OUT = ROOT / "outputs"
 
-APP_NAME = "CopperCast"
+APP_NAME = "Copper Prediction with Machine Learning Claude"
 
 # palette: deep blue / teal with a copper accent, on a cool light background
 NAVY, TEAL, COPPER = "#1f5f8b", "#2a9d8f", "#c8693a"
@@ -26,7 +26,7 @@ CSS = f"""
 .block-container {{padding-top: 2.2rem; max-width: 1180px}}
 [data-testid=stSidebar] {{background: linear-gradient(180deg, #e6eef7 0%, #f4f7fb 100%);
                          border-right: 1px solid #dbe4ef}}
-.hero h1 {{font-size: 2.6rem; line-height: 1.15; font-weight: 800; margin: 0 0 .35rem 0; padding: 0;
+.hero h1 {{font-size: 2.3rem; line-height: 1.15; font-weight: 800; margin: 0 0 .35rem 0; padding: 0;
            background: linear-gradient(90deg, {NAVY} 0%, {TEAL} 65%, {COPPER} 100%);
            -webkit-background-clip: text; background-clip: text; color: transparent}}
 .hero p {{color: {MUTED}; margin: 0 0 1.1rem 0; font-size: .95rem}}
