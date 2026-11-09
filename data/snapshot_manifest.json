@@ -1,0 +1,81 @@
+{
+  "taken_at_utc": "2026-11-09T19:38:58+00:00",
+  "source_project": "/home/train/Copper_Prediction_with_Machine_Learning",
+  "files": [
+    {
+      "file": "raw/macro/china_electricity_generation_monthly.csv",
+      "bytes": 20556,
+      "sha256": "7d63c68553aab53ef1c936c2b982db28441c0b4f664954a0846a52c5459e09aa"
+    },
+    {
+      "file": "raw/macro/china_fixed_asset_investment_monthly.csv",
+      "bytes": 22101,
+      "sha256": "3b54c7095f251f1459bc99ec8b9ad2bece512df03731051ca9537a069ce55c18"
+    },
+    {
+      "file": "raw/macro/china_industrial_output_monthly.csv",
+      "bytes": 20821,
+      "sha256": "989d8c8f4f900c876bfb2c3ac16d13081f2e6e65e88dcd79c3502a4d9d5ddecf"
+    },
+    {
+      "file": "raw/macro/china_ppi_monthly.csv",
+      "bytes": 20785,
+      "sha256": "4803e309783d562a9b118316fd979d6a6d8941ed3a87c64d81407b17b6400018"
+    },
+    {
+      "file": "raw/macro/china_real_estate_investment_monthly.csv",
+      "bytes": 19771,
+      "sha256": "8e4140e082adbc7bdc8bce36b0c6c1ec9d1d18dcedfc3d193b4b121737f0f764"
+    },
+    {
+      "file": "raw/macro/fred_macro_monthly.csv",
+      "bytes": 110321,
+      "sha256": "4b08ed423282011741677c09521824100dfc8daf4238b06a7abb73334afe24c0"
+    },
+    {
+      "file": "raw/macro/global_macro_monthly.csv",
+      "bytes": 25923,
+      "sha256": "7c456025e05e3e9c1f53597258ebf97f77be47f32144e7014dde3c0741db9472"
+    },
+    {
+      "file": "raw/market/china_refined_copper_monthly.csv",
+      "bytes": 19568,
+      "sha256": "7b4b1576d166c2e048ac3b45c3018b0c2f52e2782278e2d9cf5548efbdadd6a6"
+    },
+    {
+      "file": "raw/market/lme_copper_daily.csv",
+      "bytes": 162508,
+      "sha256": "085c665240d206e5a1c5a77ad8ab62f9394bbe5b8c16a75efe8e4ae2bbf8bbc2"
+    },
+    {
+      "file": "raw/market/lme_other_metals_daily.csv",
+      "bytes": 608663,
+      "sha256": "b1828602739df556f0294780831d89cb42ee0fb0212c94beb781c45a03ef97cb"
+    },
+    {
+      "file": "raw/market/worldbank_commodities_monthly.csv",
+      "bytes": 10191,
+      "sha256": "2ca624ddc04a2f817ccdcd00f7d7ea553b31cb0bc0816ada9781eb982f8085aa"
+    },
+    {
+      "file": "raw/mining/peru_copper_cost_drivers_monthly.csv",
+      "bytes": 7282,
+      "sha256": "10c84e922f832d0cc202504255685d31ede9a42d1ecd4619141c10d21c8dc06a"
+    },
+    {
+      "file": "raw/risk/economic_policy_uncertainty_monthly.csv",
+      "bytes": 16700,
+      "sha256": "5fc04d6017bd16c0792ed32c06ab36a6450b923609ae54e68ddc5916c5431109"
+    },
+    {
+      "file": "raw/risk/geopolitical_risk_monthly.csv",
+      "bytes": 32947,
+      "sha256": "fb19502a86c328769e552c77a90cbdbd171d4e07276d9b6522cbce64a04976b7"
+    },
+    {
+      "file": "reference/copper_production_forecast_latest.csv",
+      "bytes": 8847,
+      "sha256": "c03c10281a498aff717bf2f07ade087a11161a9f847acafad1b21e9f5c992a8b"
+    }
+  ]
+}

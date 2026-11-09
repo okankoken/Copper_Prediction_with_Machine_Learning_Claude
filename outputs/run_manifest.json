@@ -1,0 +1,638 @@
+{
+  "generated_at_utc": "2026-11-09T19:42:42+00:00",
+  "run_date": "2026-11-09",
+  "forecast_origin": "2026-10",
+  "origin_price_usd_t": 14532.477272727272,
+  "panel_months": [
+    "2008-01",
+    "2026-10"
+  ],
+  "backtest_origins": [
+    "2015-01",
+    "2026-10"
+  ],
+  "n_expert_predictions": 8520,
+  "code_commit": "uncommitted",
+  "config": {
+    "HORIZONS": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "FIRST_ORIGIN": "2015-01",
+    "MIN_TRAIN": 48,
+    "N_FACTORS": 5,
+    "FACTOR_MIN_COVERAGE": 0.9,
+    "COMBO_LOOKBACK": 36,
+    "COMBO_MIN_EFFECTIVE": 12,
+    "CONFORMAL_MIN": 24,
+    "QUANTILES": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      0.9,
+      0.95
+    ],
+    "FFILL_LIMIT": 2,
+    "MODELS": [
+      "rw",
+      "rw_spot",
+      "own_ridge",
+      "factor_ridge",
+      "gbm"
+    ],
+    "BENCHMARK": "rw",
+    "ANCHOR": "rw_spot"
+  },
+  "series": [
+    {
+      "name": "aluminum",
+      "file": "market/lme_other_metals_daily.csv",
+      "column": "aluminum_cash_usd_per_ton",
+      "kind": "log",
+      "lag": 0,
+      "family": "metals",
+      "daily": true
+    },
+    {
+      "name": "nickel",
+      "file": "market/lme_other_metals_daily.csv",
+      "column": "nickel_cash_usd_per_ton",
+      "kind": "log",
+      "lag": 0,
+      "family": "metals",
+      "daily": true
+    },
+    {
+      "name": "zinc",
+      "file": "market/lme_other_metals_daily.csv",
+      "column": "zinc_cash_usd_per_ton",
+      "kind": "log",
+      "lag": 0,
+      "family": "metals",
+      "daily": true
+    },
+    {
+      "name": "lead",
+      "file": "market/lme_other_metals_daily.csv",
+      "column": "lead_cash_usd_per_ton",
+      "kind": "log",
+      "lag": 0,
+      "family": "metals",
+      "daily": true
+    },
+    {
+      "name": "tin",
+      "file": "market/lme_other_metals_daily.csv",
+      "column": "tin_cash_usd_per_ton",
+      "kind": "log",
+      "lag": 0,
+      "family": "metals",
+      "daily": true
+    },
+    {
+      "name": "aluminum_stock",
+      "file": "market/lme_other_metals_daily.csv",
+      "column": "aluminum_stock_ton",
+      "kind": "log",
+      "lag": 0,
+      "family": "inventories",
+      "daily": true
+    },
+    {
+      "name": "nickel_stock",
+      "file": "market/lme_other_metals_daily.csv",
+      "column": "nickel_stock_ton",
+      "kind": "log",
+      "lag": 0,
+      "family": "inventories",
+      "daily": true
+    },
+    {
+      "name": "zinc_stock",
+      "file": "market/lme_other_metals_daily.csv",
+      "column": "zinc_stock_ton",
+      "kind": "log",
+      "lag": 0,
+      "family": "inventories",
+      "daily": true
+    },
+    {
+      "name": "gold",
+      "file": "market/worldbank_commodities_monthly.csv",
+      "column": "gold_usd_per_troy_ounce",
+      "kind": "log",
+      "lag": 0,
+      "family": "precious",
+      "daily": false
+    },
+    {
+      "name": "silver",
+      "file": "market/worldbank_commodities_monthly.csv",
+      "column": "silver_usd_per_troy_ounce",
+      "kind": "log",
+      "lag": 0,
+      "family": "precious",
+      "daily": false
+    },
+    {
+      "name": "platinum",
+      "file": "market/worldbank_commodities_monthly.csv",
+      "column": "platinum_usd_per_troy_ounce",
+      "kind": "log",
+      "lag": 0,
+      "family": "precious",
+      "daily": false
+    },
+    {
+      "name": "iron_ore",
+      "file": "market/worldbank_commodities_monthly.csv",
+      "column": "iron_ore_usd_per_dmtu",
+      "kind": "log",
+      "lag": 0,
+      "family": "bulk",
+      "daily": false
+    },
+    {
+      "name": "coal",
+      "file": "market/worldbank_commodities_monthly.csv",
+      "column": "coal_australia_usd_per_ton",
+      "kind": "log",
+      "lag": 0,
+      "family": "energy",
+      "daily": false
+    },
+    {
+      "name": "brent",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "brent_oil_usd",
+      "kind": "log",
+      "lag": 0,
+      "family": "energy",
+      "daily": false
+    },
+    {
+      "name": "natural_gas",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "natural_gas_usd",
+      "kind": "log",
+      "lag": 0,
+      "family": "energy",
+      "daily": false
+    },
+    {
+      "name": "dollar_index",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "dollar_index",
+      "kind": "log",
+      "lag": 0,
+      "family": "fx",
+      "daily": false
+    },
+    {
+      "name": "eur_usd",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "eur_usd",
+      "kind": "log",
+      "lag": 0,
+      "family": "fx",
+      "daily": false
+    },
+    {
+      "name": "usd_cny",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "usd_cny",
+      "kind": "log",
+      "lag": 0,
+      "family": "fx",
+      "daily": false
+    },
+    {
+      "name": "usd_jpy",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "usd_jpy",
+      "kind": "log",
+      "lag": 0,
+      "family": "fx",
+      "daily": false
+    },
+    {
+      "name": "usd_krw",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "usd_krw",
+      "kind": "log",
+      "lag": 0,
+      "family": "fx",
+      "daily": false
+    },
+    {
+      "name": "usd_inr",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "usd_inr",
+      "kind": "log",
+      "lag": 0,
+      "family": "fx",
+      "daily": false
+    },
+    {
+      "name": "peru_usd_pen",
+      "file": "mining/peru_copper_cost_drivers_monthly.csv",
+      "column": "peru_usd_pen",
+      "kind": "log",
+      "lag": 0,
+      "family": "fx",
+      "daily": false
+    },
+    {
+      "name": "vix",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "vix_index",
+      "kind": "log",
+      "lag": 0,
+      "family": "risk",
+      "daily": false
+    },
+    {
+      "name": "fed_rate",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "fed_interest_rate",
+      "kind": "level",
+      "lag": 0,
+      "family": "rates",
+      "daily": false
+    },
+    {
+      "name": "us_10y",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "us_10y_treasury_yield",
+      "kind": "level",
+      "lag": 0,
+      "family": "rates",
+      "daily": false
+    },
+    {
+      "name": "us_2y",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "us_2y_yield",
+      "kind": "level",
+      "lag": 0,
+      "family": "rates",
+      "daily": false
+    },
+    {
+      "name": "us_curve",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "us_10y_2y_spread",
+      "kind": "level",
+      "lag": 0,
+      "family": "rates",
+      "daily": false
+    },
+    {
+      "name": "bund_10y",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "germany_10y_bund_yield",
+      "kind": "level",
+      "lag": 0,
+      "family": "rates",
+      "daily": false
+    },
+    {
+      "name": "japan_10y",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "japan_10y_yield",
+      "kind": "level",
+      "lag": 0,
+      "family": "rates",
+      "daily": false
+    },
+    {
+      "name": "korea_10y",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "korea_10y_yield",
+      "kind": "level",
+      "lag": 0,
+      "family": "rates",
+      "daily": false
+    },
+    {
+      "name": "ecb_rate",
+      "file": "macro/global_macro_monthly.csv",
+      "column": "ecb_policy_rate",
+      "kind": "level",
+      "lag": 0,
+      "family": "rates",
+      "daily": false
+    },
+    {
+      "name": "geopolitical_risk",
+      "file": "risk/geopolitical_risk_monthly.csv",
+      "column": "geopolitical_risk_index",
+      "kind": "log",
+      "lag": 1,
+      "family": "risk",
+      "daily": false
+    },
+    {
+      "name": "policy_uncertainty",
+      "file": "risk/economic_policy_uncertainty_monthly.csv",
+      "column": "global_economic_policy_uncertainty_index",
+      "kind": "log",
+      "lag": 2,
+      "family": "risk",
+      "daily": false
+    },
+    {
+      "name": "us_cpi",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "us_cpi_index",
+      "kind": "log",
+      "lag": 2,
+      "family": "us_macro",
+      "daily": false
+    },
+    {
+      "name": "us_ppi",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "us_ppi",
+      "kind": "log",
+      "lag": 2,
+      "family": "us_macro",
+      "daily": false
+    },
+    {
+      "name": "us_industrial_production",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "us_industrial_production",
+      "kind": "log",
+      "lag": 2,
+      "family": "us_macro",
+      "daily": false
+    },
+    {
+      "name": "us_housing_starts",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "us_housing_starts",
+      "kind": "log",
+      "lag": 2,
+      "family": "us_macro",
+      "daily": false
+    },
+    {
+      "name": "us_m2",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "m2_money_supply",
+      "kind": "log",
+      "lag": 2,
+      "family": "us_macro",
+      "daily": false
+    },
+    {
+      "name": "euro_area_ppi",
+      "file": "macro/global_macro_monthly.csv",
+      "column": "euro_area_ppi",
+      "kind": "log",
+      "lag": 2,
+      "family": "europe",
+      "daily": false
+    },
+    {
+      "name": "euro_area_copper_ppi",
+      "file": "macro/global_macro_monthly.csv",
+      "column": "euro_area_copper_production_ppi",
+      "kind": "log",
+      "lag": 2,
+      "family": "europe",
+      "daily": false
+    },
+    {
+      "name": "euro_area_industrial_production",
+      "file": "macro/global_macro_monthly.csv",
+      "column": "euro_area_industrial_production",
+      "kind": "log",
+      "lag": 2,
+      "family": "europe",
+      "daily": false
+    },
+    {
+      "name": "germany_exports",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "germany_exports",
+      "kind": "log",
+      "lag": 2,
+      "family": "europe",
+      "daily": false
+    },
+    {
+      "name": "germany_order_books",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "germany_manufacturing_order_books",
+      "kind": "level",
+      "lag": 2,
+      "family": "europe",
+      "daily": false
+    },
+    {
+      "name": "japan_industrial_production",
+      "file": "macro/global_macro_monthly.csv",
+      "column": "japan_industrial_production",
+      "kind": "log",
+      "lag": 2,
+      "family": "asia",
+      "daily": false
+    },
+    {
+      "name": "japan_ppi",
+      "file": "macro/global_macro_monthly.csv",
+      "column": "japan_ppi",
+      "kind": "log",
+      "lag": 2,
+      "family": "asia",
+      "daily": false
+    },
+    {
+      "name": "korea_exports",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "korea_exports",
+      "kind": "log",
+      "lag": 2,
+      "family": "asia",
+      "daily": false
+    },
+    {
+      "name": "korea_industrial_production",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "korea_industrial_production",
+      "kind": "level",
+      "lag": 2,
+      "family": "asia",
+      "daily": false
+    },
+    {
+      "name": "india_industrial_production",
+      "file": "macro/fred_macro_monthly.csv",
+      "column": "india_industrial_production",
+      "kind": "level",
+      "lag": 2,
+      "family": "asia",
+      "daily": false
+    },
+    {
+      "name": "china_ppi_yoy",
+      "file": "macro/china_ppi_monthly.csv",
+      "column": "china_ppi_yoy_pct",
+      "kind": "level",
+      "lag": 2,
+      "family": "china",
+      "daily": false
+    },
+    {
+      "name": "china_industrial_yoy",
+      "file": "macro/china_industrial_output_monthly.csv",
+      "column": "china_industrial_value_added_yoy_pct",
+      "kind": "level",
+      "lag": 2,
+      "family": "china",
+      "daily": false
+    },
+    {
+      "name": "china_fai_yoy",
+      "file": "macro/china_fixed_asset_investment_monthly.csv",
+      "column": "china_fixed_asset_investment_yoy_pct",
+      "kind": "level",
+      "lag": 2,
+      "family": "china",
+      "daily": false
+    },
+    {
+      "name": "china_real_estate_yoy",
+      "file": "macro/china_real_estate_investment_monthly.csv",
+      "column": "china_real_estate_investment_yoy_pct",
+      "kind": "level",
+      "lag": 2,
+      "family": "china",
+      "daily": false
+    },
+    {
+      "name": "china_electricity",
+      "file": "macro/china_electricity_generation_monthly.csv",
+      "column": "china_electricity_generation_100m_kwh",
+      "kind": "log",
+      "lag": 2,
+      "family": "china",
+      "daily": false
+    },
+    {
+      "name": "china_refined_copper",
+      "file": "market/china_refined_copper_monthly.csv",
+      "column": "china_refined_copper_production_ton",
+      "kind": "log",
+      "lag": 2,
+      "family": "china",
+      "daily": false
+    },
+    {
+      "name": "peru_diesel",
+      "file": "mining/peru_copper_cost_drivers_monthly.csv",
+      "column": "peru_diesel_price_index",
+      "kind": "log",
+      "lag": 2,
+      "family": "mining_costs",
+      "daily": false
+    }
+  ],
+  "snapshot": {
+    "taken_at_utc": "2026-11-09T19:38:58+00:00",
+    "source_project": "/home/train/Copper_Prediction_with_Machine_Learning",
+    "files": [
+      {
+        "file": "raw/macro/china_electricity_generation_monthly.csv",
+        "bytes": 20556,
+        "sha256": "7d63c68553aab53ef1c936c2b982db28441c0b4f664954a0846a52c5459e09aa"
+      },
+      {
+        "file": "raw/macro/china_fixed_asset_investment_monthly.csv",
+        "bytes": 22101,
+        "sha256": "3b54c7095f251f1459bc99ec8b9ad2bece512df03731051ca9537a069ce55c18"
+      },
+      {
+        "file": "raw/macro/china_industrial_output_monthly.csv",
+        "bytes": 20821,
+        "sha256": "989d8c8f4f900c876bfb2c3ac16d13081f2e6e65e88dcd79c3502a4d9d5ddecf"
+      },
+      {
+        "file": "raw/macro/china_ppi_monthly.csv",
+        "bytes": 20785,
+        "sha256": "4803e309783d562a9b118316fd979d6a6d8941ed3a87c64d81407b17b6400018"
+      },
+      {
+        "file": "raw/macro/china_real_estate_investment_monthly.csv",
+        "bytes": 19771,
+        "sha256": "8e4140e082adbc7bdc8bce36b0c6c1ec9d1d18dcedfc3d193b4b121737f0f764"
+      },
+      {
+        "file": "raw/macro/fred_macro_monthly.csv",
+        "bytes": 110321,
+        "sha256": "4b08ed423282011741677c09521824100dfc8daf4238b06a7abb73334afe24c0"
+      },
+      {
+        "file": "raw/macro/global_macro_monthly.csv",
+        "bytes": 25923,
+        "sha256": "7c456025e05e3e9c1f53597258ebf97f77be47f32144e7014dde3c0741db9472"
+      },
+      {
+        "file": "raw/market/china_refined_copper_monthly.csv",
+        "bytes": 19568,
+        "sha256": "7b4b1576d166c2e048ac3b45c3018b0c2f52e2782278e2d9cf5548efbdadd6a6"
+      },
+      {
+        "file": "raw/market/lme_copper_daily.csv",
+        "bytes": 162508,
+        "sha256": "085c665240d206e5a1c5a77ad8ab62f9394bbe5b8c16a75efe8e4ae2bbf8bbc2"
+      },
+      {
+        "file": "raw/market/lme_other_metals_daily.csv",
+        "bytes": 608663,
+        "sha256": "b1828602739df556f0294780831d89cb42ee0fb0212c94beb781c45a03ef97cb"
+      },
+      {
+        "file": "raw/market/worldbank_commodities_monthly.csv",
+        "bytes": 10191,
+        "sha256": "2ca624ddc04a2f817ccdcd00f7d7ea553b31cb0bc0816ada9781eb982f8085aa"
+      },
+      {
+        "file": "raw/mining/peru_copper_cost_drivers_monthly.csv",
+        "bytes": 7282,
+        "sha256": "10c84e922f832d0cc202504255685d31ede9a42d1ecd4619141c10d21c8dc06a"
+      },
+      {
+        "file": "raw/risk/economic_policy_uncertainty_monthly.csv",
+        "bytes": 16700,
+        "sha256": "5fc04d6017bd16c0792ed32c06ab36a6450b923609ae54e68ddc5916c5431109"
+      },
+      {
+        "file": "raw/risk/geopolitical_risk_monthly.csv",
+        "bytes": 32947,
+        "sha256": "fb19502a86c328769e552c77a90cbdbd171d4e07276d9b6522cbce64a04976b7"
+      },
+      {
+        "file": "reference/copper_production_forecast_latest.csv",
+        "bytes": 8847,
+        "sha256": "c03c10281a498aff717bf2f07ade087a11161a9f847acafad1b21e9f5c992a8b"
+      }
+    ]
+  },
+  "panel_sha256": "9072a05b35caa56c91ca8ef1d5cd14a74e37225fd048951c43b7cd064b60d1cb",
+  "runtime_seconds": 15.6
+}
