@@ -31,16 +31,16 @@ FACTOR_MIN_COVERAGE = 0.9     # a broad column enters PCA only with >=90% histor
 COMBO_LOOKBACK = 36           # matured forecasts used to weight the experts (at least 12*h)
 COMBO_MIN_EFFECTIVE = 12      # independent (non-overlapping) matured forecasts required: n >= 12*h,
                               # below this the combination is 100% the anchor rule
-CONFORMAL_MIN = 24            # matured combination errors needed for empirical intervals
-QUANTILES = (0.05, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95)
+MIN_TRAIN_NEWS = 36           # news sentiment starts in 2017, so its expert needs a shorter minimum
+LGBM_TUNE_ITER = 15           # random-search candidates per yearly LightGBM re-tuning
 FORWARD_TENOR = 3             # months covered by the LME 3-month price
 FFILL_LIMIT = 2               # ragged edge: carry the last published value at most 2 months
 N_JOBS = int(os.environ.get("COPPER_N_JOBS", "6"))
 RANDOM_STATE = 42
 
-MODELS = ("rw", "rw_spot", "forward", "own_ridge", "factor_ridge", "gbm")
-ML_EXPERTS = ("own_ridge", "factor_ridge", "gbm")
-SCENARIO = "ml_scenario"     # equal-weight ML average, published separately, never in the combination
+MODELS = ("rw", "rw_spot", "forward", "enet", "lgbm", "enet_news")
+ML_EXPERTS = ("enet", "lgbm", "enet_news")
+SCENARIO = "ml_model"         # equal-weight ML average, published next to the main forecast
 BENCHMARK = "rw"            # skill and DM tests are reported against the plain random walk
 ANCHOR = "forward"          # the bar an expert must clear to receive combination weight
 

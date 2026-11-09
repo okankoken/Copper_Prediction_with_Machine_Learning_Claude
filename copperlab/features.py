@@ -65,5 +65,31 @@ def targets(cu: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame({h: lp.shift(-h) - lp for h in C.HORIZONS}, index=cu.index)
 
 
+SENT_FEATURES = ("news_tone", "news_tone_c3", "news_attention_c3", "finbert_net", "finbert_net_c3")
+
+SENT_LABELS_TR = {
+    "news_tone": "Haber tonu (GDELT)",
+    "news_tone_c3": "Haber tonu 3 aylık değişim",
+    "news_attention_c3": "Haber ilgisi 3 aylık değişim",
+    "finbert_net": "Başlık duyarlılığı (FinBERT)",
+    "finbert_net_c3": "Başlık duyarlılığı 3 aylık değişim",
+}
+
+
+def sentiment_features(sent: pd.DataFrame, index: pd.PeriodIndex) -> pd.DataFrame:
+    """Monthly news features; NaN where no news history exists (before 2017)."""
+    s = sent.reindex(index) if sent is not None and len(sent) else pd.DataFrame(index=index)
+    out = pd.DataFrame(index=index)
+    tone = s.get("news_tone", pd.Series(np.nan, index=index))
+    att = s.get("news_attention", pd.Series(np.nan, index=index))
+    fb = s.get("finbert_net", pd.Series(np.nan, index=index))
+    out["news_tone"] = tone
+    out["news_tone_c3"] = tone - tone.shift(3)
+    out["news_attention_c3"] = np.log(att.where(att > 0)) - np.log(att.where(att > 0)).shift(3)
+    out["finbert_net"] = fb
+    out["finbert_net_c3"] = fb - fb.shift(3)
+    return out[list(SENT_FEATURES)]
+
+
 def series_of(broad_col: str) -> str:
     return broad_col.split("__")[0]

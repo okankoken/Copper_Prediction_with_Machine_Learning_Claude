@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 logs/
+data/news/headlines/
+data/news/tone/
+data/news/volume/

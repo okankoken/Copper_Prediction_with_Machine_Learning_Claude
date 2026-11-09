@@ -1,4 +1,4 @@
-"""End-to-end run: panel -> walk-forward experts -> combination -> metrics -> forecast."""
+"""End-to-end run: panel + news -> tuning -> walk-forward experts -> combination -> forecast."""
 from __future__ import annotations
 
 import json
@@ -14,9 +14,11 @@ from joblib import Parallel, delayed
 from . import config as C
 from .combine import combine
 from .data import build_panel
-from .experts import pc_labels, run_origin
-from .features import OWN_LABELS_TR, broad_features, own_features, targets
-from .metrics import evaluate, interval_quality, verdict
+from .experts import pc_labels, run_origin, tune_lgbm, tune_point
+from .features import (OWN_LABELS_TR, SENT_LABELS_TR, broad_features, own_features, sentiment_features,
+                       targets)
+from .metrics import evaluate, pairwise, verdict
+from .news import monthly_sentiment
 from .snapshot import sha256
 
 PERIOD_COLS = ("origin", "target", "train_first", "train_last")
@@ -38,8 +40,8 @@ def _git_commit() -> str:
         return "uncommitted"
 
 
-def add_scenario(preds: pd.DataFrame) -> pd.DataFrame:
-    """Equal-weight average of the ML experts, evaluated like any expert but never combined."""
+def add_ml_model(preds: pd.DataFrame) -> pd.DataFrame:
+    """The ML model = equal-weight average of the ML experts available at each origin."""
     ml = preds[preds["model"].isin(C.ML_EXPERTS)]
     keys = ["target", "y", "n_train", "train_first", "train_last"]
     sc = ml.groupby(["origin", "horizon"], as_index=False).agg(
@@ -48,115 +50,133 @@ def add_scenario(preds: pd.DataFrame) -> pd.DataFrame:
     return pd.concat([preds, sc[preds.columns]], ignore_index=True)
 
 
-def drivers_table(info: dict, price0: float) -> pd.DataFrame:
+def label(feat: str, pcl: dict) -> str:
+    if feat in OWN_LABELS_TR:
+        return OWN_LABELS_TR[feat]
+    if feat in SENT_LABELS_TR:
+        return SENT_LABELS_TR[feat]
+    return f"Makro faktör {feat.upper()} ({pcl.get(feat, '')})"
+
+
+def importance_table(info: dict) -> pd.DataFrame:
     rows = []
     for h, d in info.items():
-        labels = pc_labels(d["loadings"])
-        contrib = d["factor_coef"] * d["x_scaled"]
-        for feat, v in contrib.items():
-            rows.append({
-                "horizon": h, "feature": feat,
-                "label": OWN_LABELS_TR.get(feat, f"Makro faktör {feat.upper()}: {labels.get(feat, '')}"),
-                "group": "copper_own" if feat in OWN_LABELS_TR else "macro_factor",
-                "value": float(d["x_raw"][feat]), "z": float(d["x_scaled"][feat]),
-                "coef_log": float(d["factor_coef"][feat]), "contribution_log": float(v),
-                "contribution_usd_approx": float(price0 * v),
-                "gbm_gain_share": float(d["gbm_importance"][feat] / max(d["gbm_importance"].sum(), 1e-12)),
-            })
+        pcl = pc_labels(d["loadings"])
+        gain = d["lgbm_gain"] / max(d["lgbm_gain"].sum(), 1e-12)
+        for feat, g in gain.items():
+            rows.append({"horizon": h, "model": "lgbm", "feature": feat, "label": label(feat, pcl),
+                         "group": "news" if feat in SENT_LABELS_TR else "copper" if feat in OWN_LABELS_TR else "macro",
+                         "importance": float(g)})
+        coef = d["enet_coef"]
+        tot = max(coef.abs().sum(), 1e-12)
+        for feat, c in coef.items():
+            rows.append({"horizon": h, "model": "enet", "feature": feat, "label": label(feat, pcl),
+                         "group": "copper" if feat in OWN_LABELS_TR else "macro", "importance": float(abs(c) / tot),
+                         "sign": float(np.sign(c))})
     return pd.DataFrame(rows)
 
 
-def run(run_date: date | None = None, allow_stale: bool = False, n_jobs: int = C.N_JOBS) -> dict:
+def run(run_date: date | None = None, allow_stale: bool = False, n_jobs: int = C.N_JOBS, log=print) -> dict:
     t0 = time.time()
     run_date = run_date or date.today()
     cu, exo = build_panel(run_date, allow_stale=allow_stale)
+    origin = cu.index[-1]
+    sent = monthly_sentiment(origin)
     F, B, Y = own_features(cu), broad_features(exo), targets(cu)
+    S = sentiment_features(sent, cu.index)
 
     C.PANEL_DIR.mkdir(parents=True, exist_ok=True)
-    panel = pd.concat([cu.drop(columns=["last_day"]), F, B], axis=1)
+    panel = pd.concat([cu.drop(columns=["last_day"]), F, S, B], axis=1)
     panel.index = panel.index.astype(str)
     panel.to_csv(C.PANEL_DIR / "copper_monthly_panel.csv", index_label="month")
 
-    origin = cu.index[-1]
-    origins = F.index[F.index >= pd.Period(C.FIRST_ORIGIN, "M")]
-    hist_origins = [t for t in origins if t != origin]
-    chunks = Parallel(n_jobs=n_jobs)(delayed(run_origin)(t, F, B, Y) for t in hist_origins)
-    last_records, info = run_origin(origin, F, B, Y, details=True)
-    preds = pd.DataFrame([r for ch in chunks for r in ch] + last_records)
-    preds = add_scenario(preds)
+    origins = list(F.index[F.index >= pd.Period(C.FIRST_ORIGIN, "M")])
 
-    combo, weights = combine(preds, Y)
-    metrics = evaluate(preds, combo, cu["price"])
-    intervals = interval_quality(combo)
+    # 1) yearly LightGBM tuning (purged time-series CV on data available at each December)
+    points = sorted({tune_point(t) for t in origins})
+    log(f"tuning LightGBM: {len(points)} yearly points x {len(C.HORIZONS)} horizons")
+    tuned = Parallel(n_jobs=n_jobs)(delayed(tune_lgbm)(T, h, F, B, S, Y) for T in points for h in C.HORIZONS)
+    params = {}
+    for (T, h), p in zip([(T, h) for T in points for h in C.HORIZONS], tuned):
+        params.setdefault(T, {})[h] = p
 
-    # ---- production forecast = the walk-forward step at the latest origin
+    # 2) walk-forward experts
+    log(f"walk-forward: {len(origins)} origins")
+    hist = [t for t in origins if t != origin]
+    chunks = Parallel(n_jobs=n_jobs)(delayed(run_origin)(t, F, B, S, Y, params[tune_point(t)]) for t in hist)
+    last_records, info = run_origin(origin, F, B, S, Y, params[tune_point(origin)], details=True)
+    preds = add_ml_model(pd.DataFrame([r for ch in chunks for r in ch] + last_records))
+
+    # 3) combination + evaluation
+    combo, weights = combine(preds)
+    allp = pd.concat([preds[["horizon", "origin", "target", "y", "yhat", "model"]],
+                      combo[["horizon", "origin", "target", "y", "yhat"]].assign(model="main")], ignore_index=True)
+    metrics = evaluate(allp, cu["price"])
+    news_test = pairwise(allp, "enet_news", "enet")
+
+    # 4) forecast table
     p0 = float(cu.loc[origin, "price"])
-    fc = combo[combo["origin"] == origin].sort_values("horizon").copy()
+    cur = allp[allp["origin"] == origin].pivot(index="horizon", columns="model", values="yhat")
     wl = weights[weights["origin"] == origin].set_index("horizon")
-    ex = preds[preds["origin"] == origin].pivot(index="horizon", columns="model", values="yhat")
-    cm = metrics[metrics["model"] == "combo"].set_index("horizon")
+    M = metrics.set_index(["model", "horizon"])
+    hz = list(cur.index)
     out = pd.DataFrame({
-        "forecast_origin": str(origin),
-        "horizon": fc["horizon"].values,
-        "forecast_month": fc["target"].astype(str).values,
-        "forecast_date": [t.end_time.date().isoformat() for t in fc["target"]],
+        "forecast_origin": str(origin), "horizon": hz,
+        "forecast_month": [str(origin + h) for h in hz],
+        "forecast_date": [(origin + h).end_time.date().isoformat() for h in hz],
         "origin_price_usd_t": p0,
-        "forecast_usd_t": p0 * np.exp(fc["yhat"].values),
+        "main_usd_t": p0 * np.exp(cur.loc[hz, "main"].values),
+        "ml_usd_t": p0 * np.exp(cur.loc[hz, C.SCENARIO].values),
     })
-    for q in C.QUANTILES:
-        out[f"p{int(q * 100):02d}_usd_t"] = p0 * np.exp(fc[f"q{int(q * 100):02d}"].values)
-    out["change_from_origin_pct"] = (out["forecast_usd_t"] / p0 - 1) * 100
-    out["prob_above_origin"] = fc["p_up"].values
-    out["interval_method"] = fc["interval_method"].values
     for m in C.MODELS:
-        out[f"expert_{m}_usd_t"] = p0 * np.exp(ex.loc[out["horizon"], m].values)
-        out[f"weight_{m}"] = wl.loc[out["horizon"], f"w_{m}"].values
-    sc = metrics[metrics["model"] == C.SCENARIO].set_index("horizon")
-    an = metrics[metrics["model"] == C.ANCHOR].set_index("horizon")
-    out["ml_scenario_usd_t"] = p0 * np.exp(ex.loc[out["horizon"], C.SCENARIO].values)
-    out["ml_scenario_mape_pct"] = sc.loc[out["horizon"], "mape_pct"].values
-    out["ml_scenario_vs_anchor_pct"] = ((1 - sc.loc[out["horizon"], "mae"].values
-                                         / an.loc[out["horizon"], "mae"].values) * 100)
-    out["weight_obs"] = wl.loc[out["horizon"], "n_weight_obs"].values
-    out["backtest_n"] = cm.loc[out["horizon"], "n"].values
-    out["backtest_mape_pct"] = cm.loc[out["horizon"], "mape_pct"].values
-    out["skill_vs_rw_pct"] = cm.loc[out["horizon"], "skill_vs_rw_pct"].values
-    out["dm_p_value"] = cm.loc[out["horizon"], "dm_p_value"].values
-    v = [verdict(s, p) for s, p in zip(out["skill_vs_rw_pct"], out["dm_p_value"])]
-    out["verdict"] = [a for a, _ in v]
-    out["verdict_tr"] = [b for _, b in v]
+        if m in cur.columns:
+            out[f"expert_{m}_usd_t"] = p0 * np.exp(cur.loc[hz, m].values)
+        out[f"weight_{m}"] = wl.loc[hz, f"w_{m}"].values if f"w_{m}" in wl.columns else 0.0
+    for tag, m in (("main", "main"), ("ml", C.SCENARIO)):
+        out[f"{tag}_backtest_n"] = [M.loc[(m, h), "n"] for h in hz]
+        out[f"{tag}_mape_pct"] = [M.loc[(m, h), "mape_pct"] for h in hz]
+        out[f"{tag}_direction_pct"] = [M.loc[(m, h), "directional_acc_pct"] for h in hz]
+        out[f"{tag}_skill_vs_rw_pct"] = [M.loc[(m, h), "skill_vs_rw_pct"] for h in hz]
+        out[f"{tag}_dm_p_vs_rw"] = [M.loc[(m, h), "dm_p_vs_rw"] for h in hz]
+    out["main_verdict"] = [verdict(s, p) for s, p in zip(out["main_skill_vs_rw_pct"], out["main_dm_p_vs_rw"])]
+    out["ml_verdict"] = [verdict(s, p) for s, p in zip(out["ml_skill_vs_rw_pct"], out["ml_dm_p_vs_rw"])]
     generated = datetime.now(timezone.utc).isoformat(timespec="seconds")
     out["generated_at_utc"] = generated
 
-    drivers = drivers_table(info, p0)
+    tuning = pd.DataFrame([{"tune_point": str(T), "horizon": h, **p} for T, d in params.items() for h, p in d.items()])
+    importance = importance_table(info)
 
-    # ---- write
+    # 5) write
     C.OUT.mkdir(parents=True, exist_ok=True)
     C.ARCHIVE.mkdir(parents=True, exist_ok=True)
+    for stale in ("backtest_combination.csv", "interval_calibration.csv", "drivers_latest.csv"):
+        (C.OUT / stale).unlink(missing_ok=True)
     out.to_csv(C.OUT / "forecast_latest.csv", index=False)
-    stamp = datetime.now().strftime("%Y%m%dT%H%M%S")
-    out.to_csv(C.ARCHIVE / f"forecast_{origin}_{stamp}.csv", index=False)
+    out.to_csv(C.ARCHIVE / f"forecast_{origin}_{datetime.now():%Y%m%dT%H%M%S}.csv", index=False)
     _to_str(preds).to_csv(C.OUT / "backtest_expert_predictions.csv", index=False)
-    _to_str(combo).to_csv(C.OUT / "backtest_combination.csv", index=False)
+    _to_str(combo).to_csv(C.OUT / "backtest_main.csv", index=False)
     _to_str(weights).to_csv(C.OUT / "expert_weights_history.csv", index=False)
     metrics.to_csv(C.OUT / "metrics_by_horizon.csv", index=False)
-    intervals.to_csv(C.OUT / "interval_calibration.csv", index=False)
-    drivers.to_csv(C.OUT / "drivers_latest.csv", index=False)
+    news_test.to_csv(C.OUT / "news_value_test.csv", index=False)
+    tuning.to_csv(C.OUT / "lgbm_tuning.csv", index=False)
+    importance.to_csv(C.OUT / "feature_importance_latest.csv", index=False)
+    s_out = sent.copy()
+    s_out.index = s_out.index.astype(str)
+    s_out.to_csv(C.OUT / "news_sentiment_monthly.csv", index_label="month")
 
     snap = C.ROOT / "data" / "snapshot_manifest.json"
     manifest = {
-        "generated_at_utc": generated,
-        "run_date": run_date.isoformat(),
-        "forecast_origin": str(origin),
-        "origin_price_usd_t": p0,
+        "generated_at_utc": generated, "run_date": run_date.isoformat(),
+        "forecast_origin": str(origin), "origin_price_usd_t": p0,
         "panel_months": [str(cu.index[0]), str(origin)],
         "backtest_origins": [str(origins[0]), str(origin)],
+        "news_months": [str(sent.index.min()), str(sent.index.max())] if len(sent) else None,
         "n_expert_predictions": int(len(preds)),
         "code_commit": _git_commit(),
-        "config": {k: getattr(C, k) for k in ("HORIZONS", "FIRST_ORIGIN", "MIN_TRAIN", "N_FACTORS",
-                                               "FACTOR_MIN_COVERAGE", "COMBO_LOOKBACK", "COMBO_MIN_EFFECTIVE",
-                                               "CONFORMAL_MIN", "QUANTILES", "FFILL_LIMIT", "MODELS",
-                                               "BENCHMARK", "ANCHOR")},
+        "config": {k: getattr(C, k) for k in ("HORIZONS", "FIRST_ORIGIN", "MIN_TRAIN", "MIN_TRAIN_NEWS",
+                                               "N_FACTORS", "FACTOR_MIN_COVERAGE", "COMBO_LOOKBACK",
+                                               "COMBO_MIN_EFFECTIVE", "LGBM_TUNE_ITER", "FFILL_LIMIT",
+                                               "MODELS", "ML_EXPERTS", "BENCHMARK", "ANCHOR")},
         "series": [asdict(s) for s in C.SERIES],
         "snapshot": json.loads(snap.read_text()) if snap.exists() else None,
         "panel_sha256": sha256(C.PANEL_DIR / "copper_monthly_panel.csv"),
@@ -165,5 +185,5 @@ def run(run_date: date | None = None, allow_stale: bool = False, n_jobs: int = C
     (C.OUT / "run_manifest.json").write_text(json.dumps(manifest, indent=2, default=str), encoding="utf-8")
 
     from .report import write_report
-    write_report(out, metrics, intervals, drivers, manifest)
+    write_report(out, metrics, news_test, manifest)
     return manifest

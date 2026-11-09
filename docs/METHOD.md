@@ -1,46 +1,44 @@
 ## Yöntem
 
-**Hedef.** LME bakır nakit fiyatının aylık ortalaması (USD/t), 1–12 ay sonrası. Model fiyatı değil,
+**Hedef.** LME bakır nakit fiyatının aylık ortalaması (USD/t), 1–12 ay sonrası. Modeller fiyatı değil,
 log getiriyi tahmin eder: `y_h(t) = log(P[t+h] / P[t])`.
 
 **Tek kural: her tahmin, o gün bilinebilecek bilgiyle yapılır.**
 
-- Her seri için açık bir yayın gecikmesi var. Piyasa verileri 0, risk endeksleri 1–2, resmi makro
-  istatistikler 2 ay geriden gelir. Ayın son değeri henüz yayımlanmadıysa en fazla 2 ay eski değer taşınır.
-- Süren ay hiçbir zaman kullanılmaz. Tahmin başlangıcı her zaman son tamamlanmış aydır.
-- Bir ufuk için model, yalnızca başlangıç anında **gerçekleşmiş** hedeflerle eğitilir (`s + h ≤ t`).
-- Makro faktörler (PCA) yalnızca başlangıca kadarki verilerle hesaplanır.
-- Üretim tahmini ayrı bir kod değildir. Geriye dönük testin son adımıdır ve aynı fonksiyonla üretilir.
+- Her serinin açık bir yayın gecikmesi var: piyasa verileri 0, risk endeksleri 1–2, resmi makro 2 ay.
+- Süren ay hiç kullanılmaz; tahmin başlangıcı son tamamlanmış aydır.
+- h ay ufkunda model yalnızca o gün gerçekleşmiş hedeflerle eğitilir (`s + h ≤ t`).
+- Hiperparametreler yalnızca o günkü eğitim verisinde, arada h−1 aylık boşluk bırakan zaman serisi
+  çapraz doğrulamasıyla seçilir.
+- Üretim tahmini, geriye dönük testin son adımıdır (aynı kod).
 
-**Uzmanlar.**
+**Girdiler.**
 
-| Uzman | Ne yapar |
+| Grup | İçerik |
 |---|---|
-| Rastgele yürüyüş | Gelecek ayların ortalaması bu ayın ortalamasına eşit |
-| Ay sonu fiyatı | Gelecek ayların ortalaması bu ayın **son işlem günü** fiyatına eşit |
-| LME vadeli eğrisi | Ay sonu fiyatı, nakit → 3 ay vadeli farkı (contango/backwardation) boyunca taşınır; 3 aydan sonra düz |
-| Bakırın kendi sinyalleri | Getiriler, oynaklık, contango, LME stokları → Ridge |
-| Makro faktörler | Yukarıdakiler + 55 makro/piyasa serisinden 5 PCA faktörü → Ridge |
-| LightGBM | Aynı girdiler, sığ ağaçlar ve güçlü düzenlileştirme |
+| Bakırın kendisi | 1/3/6/12 aylık getiri, 12 aylık ortalamadan sapma, oynaklık, ay sonu / ay ortalaması, 3 ay vadeli – nakit farkı, LME stokları |
+| Makro & piyasa | 55 seri (metaller, enerji, kur, faiz, ABD/Avrupa/Asya/Çin makro, risk endeksleri) → 5 PCA faktörü |
+| Haber | GDELT bakır piyasası haber tonu ve haber ilgisi; haber başlıklarının FinBERT duyarlılığı (2017+) |
 
-**Kombinasyon: ağırlık kazanılır.** Bir uzman, yalnızca son değerlendirme penceresinde vadeli eğri
-kuralından daha düşük hata yaptıysa ağırlık alır. Ağırlık, ters MSE ile hesaplanır. h aylık tahminler
-birbiriyle örtüştüğü için n tahmin yaklaşık n/h bağımsız sonuç taşır. Bu yüzden en az 12 bağımsız
-sonuç (12·h gerçekleşmiş tahmin) birikene kadar ağırlığın tamamı vadeli eğri kuralında kalır.
+**Modeller.**
 
-**ML senaryosu.** Üç ML uzmanının eşit ağırlıklı ortalamasıdır. Diğer uzmanlar gibi geriye dönük test
-edilir, ama ana tahmine hiçbir zaman karışmaz. Daha hareketli bir yol gösterir; geçmiş başarısı her
-ufuk için yanında yazılır.
+| Model | Ne yapar | Ayar |
+|---|---|---|
+| Fiyat aynı kalır | Kıyas çizgisi | – |
+| LME vadeli eğrisi | Ay sonu fiyatı + nakit → 3 ay vadeli fark, 3 aydan sonra düz | – |
+| ElasticNet | Bakır + makro faktörler, doğrusal | alpha ve L1 oranı her ay, 4 katlı zaman serisi CV |
+| LightGBM | Bakır + makro faktörler + haber | 7 hiperparametre, 15 adaylı rastgele arama, yılda bir, 3 katlı CV |
+| Haberli ElasticNet | Bakır + haber duyarlılığı (2017+ verisiyle) | ElasticNet ile aynı |
 
-**Belirsizlik.** Aralıklar, kombinasyonun geçmişte gerçekleşmiş hatalarının dağılımından gelir
-(boş bir normal dağılım varsayımı yok). Dağılım medyanı nokta tahmine eşitlenir. Böylece 2015–2026
-yükselişinden gizli bir yön (drift) aralıklara karışmaz. Kalibrasyon ayrıca test edilir: %80 aralığın
-gerçekleşmelerin ~%80'ini kapsaması beklenir.
+**ML modeli** = son üç modelin eşit ağırlıklı ortalaması. Panelde ayrıca gösterilir.
 
-**Değerlendirme.** Ufuk başına ~130–141 geriye dönük tahmin var (Ocak 2015 – Ekim 2026). Ölçütler:
-MAPE, RMSE, sapma, yön isabeti ve rastgele yürüyüşe göre beceri. Anlamlılık, Diebold–Mariano testiyle
-ölçülür (Newey–West, h−1 gecikme, HLN düzeltmesi, tek yönlü).
+**Ana tahmin** = kazanılan ağırlıkla birleşim. Bir model, son değerlendirme penceresinde vadeli eğriden
+daha az hata yaptıysa ağırlık alır. h aylık tahminler birbiriyle örtüştüğü için en az 12 bağımsız sonuç
+(12·h tahmin) birikmeden ağırlık verilmez.
 
-**Sınırlar.** Veriler güncel sürümdür; geçmişte ilk yayımlanan değerler değildir. Yayın gecikmeleri
-gerçek yayın takviminden değil, ihtiyatlı varsayımdan gelir. Uzun ufuklarda bağımsız gözlem sayısı
-azdır. Bu çalışma yatırım tavsiyesi değildir.
+**Değerlendirme.** Ocak 2015 – Ekim 2026 arasında her ay için yeniden yapılan tahminler (ufuk başına
+130–141; haberli model için 2020 sonrası). Ölçüler: MAPE, yön isabeti, "fiyat aynı kalır" tahminine göre
+hatadaki azalma ve Diebold–Mariano testi.
+
+**Sınırlar.** Veriler güncel sürümdür. Yayın gecikmeleri varsayımdır. Haber verisi 2017'de başlar.
+Yatırım tavsiyesi değildir.

@@ -1,4 +1,4 @@
-"""Out-of-sample evaluation in USD/t, with a Diebold-Mariano test against the random walk."""
+"""Out-of-sample evaluation in USD/t, with Diebold-Mariano tests."""
 from __future__ import annotations
 
 import numpy as np
@@ -30,68 +30,61 @@ def dm_test(err_model: np.ndarray, err_bench: np.ndarray, h: int) -> float:
     return float(stats.t.cdf(stat * corr, df=n - 1))
 
 
-def _price_errors(yhat, y, p0):
-    f = p0 * np.exp(yhat)
-    a = p0 * np.exp(y)
-    return f, a
-
-
-def evaluate(preds: pd.DataFrame, combo: pd.DataFrame, origin_price: pd.Series) -> pd.DataFrame:
-    """Metrics per (model, horizon) on the common matured sample."""
-    c = combo[["horizon", "origin", "target", "y", "yhat"]].assign(model="combo")
-    allp = pd.concat([preds[["horizon", "origin", "target", "y", "yhat", "model"]], c], ignore_index=True)
-    allp = allp.dropna(subset=["y"])
+def evaluate(allp: pd.DataFrame, origin_price: pd.Series) -> pd.DataFrame:
+    """Metrics per (model, horizon). Each model is scored on the origins where it has a
+    forecast, against the random walk and the anchor rule on exactly those origins."""
+    allp = allp.dropna(subset=["y"]).copy()
     allp["p0"] = allp["origin"].map(origin_price)
+    allp["f"] = allp["p0"] * np.exp(allp["yhat"])
+    allp["a"] = allp["p0"] * np.exp(allp["y"])
+    allp["e"] = allp["f"] - allp["a"]
     rows = []
     for h, g in allp.groupby("horizon"):
-        bench = g[g["model"] == C.BENCHMARK].set_index("origin")
-        fb, ab = _price_errors(bench["yhat"], bench["y"], bench["p0"])
-        eb = (fb - ab)
+        bench = g[g["model"] == C.BENCHMARK].set_index("origin")["e"]
+        anchor = g[g["model"] == C.ANCHOR].set_index("origin")["e"]
         for m, gm in g.groupby("model"):
-            gm = gm.set_index("origin").loc[bench.index]
-            f, a = _price_errors(gm["yhat"], gm["y"], gm["p0"])
-            e = f - a
-            sign_ok = np.sign(gm["yhat"]) == np.sign(gm["y"])
+            gm = gm.set_index("origin")
+            idx = gm.index.intersection(bench.index).intersection(anchor.index)
+            gm = gm.loc[idx]
+            e, eb, ea = gm["e"].values, bench.loc[idx].values, anchor.loc[idx].values
             has_dir = gm["yhat"].abs() > 1e-12
+            hit = (np.sign(gm["yhat"]) == np.sign(gm["y"]))[has_dir]
             rows.append({
                 "horizon": h, "model": m, "n": len(gm),
-                "first_origin": str(gm.index.min()), "last_origin": str(gm.index.max()),
+                "first_origin": str(idx.min()), "last_origin": str(idx.max()),
                 "mae": float(np.mean(np.abs(e))), "rmse": float(np.sqrt(np.mean(e * e))),
-                "mape_pct": float(np.mean(np.abs(e) / a) * 100), "bias": float(np.mean(e)),
-                "directional_acc_pct": float(sign_ok[has_dir].mean() * 100) if has_dir.any() else np.nan,
+                "mape_pct": float(np.mean(np.abs(e) / gm["a"]) * 100), "bias": float(np.mean(e)),
+                "directional_acc_pct": float(hit.mean() * 100) if len(hit) else np.nan,
                 "skill_vs_rw_pct": float((1 - np.mean(np.abs(e)) / np.mean(np.abs(eb))) * 100),
-                "dm_p_value": np.nan if m == C.BENCHMARK else dm_test(e.values, eb.values, h),
+                "skill_vs_anchor_pct": float((1 - np.mean(np.abs(e)) / np.mean(np.abs(ea))) * 100),
+                "dm_p_vs_rw": np.nan if m == C.BENCHMARK else dm_test(e, eb, h),
+                "dm_p_vs_anchor": np.nan if m == C.ANCHOR else dm_test(e, ea, h),
             })
     return pd.DataFrame(rows)
 
 
-def interval_quality(combo: pd.DataFrame) -> pd.DataFrame:
-    g = combo.dropna(subset=["y"])
+def pairwise(allp: pd.DataFrame, a: str, b: str) -> pd.DataFrame:
+    """Skill of model a over model b on their common matured origins (used for the news test)."""
+    d = allp.dropna(subset=["y"])
     rows = []
-    for h, gh in g.groupby("horizon"):
-        emp = gh[gh["interval_method"] == "empirical_errors"]
-        use = emp if len(emp) >= 12 else gh
-        pin = []
-        for q in C.QUANTILES:
-            col = f"q{int(q * 100):02d}"
-            u = use["y"] - use[col]
-            pin.append(np.mean(np.maximum(q * u, (q - 1) * u)))
-        rows.append({
-            "horizon": h, "n": len(use), "method": "empirical_errors" if use is emp else "mixed",
-            "coverage_80_pct": float(((use["y"] >= use["q10"]) & (use["y"] <= use["q90"])).mean() * 100),
-            "coverage_90_pct": float(((use["y"] >= use["q05"]) & (use["y"] <= use["q95"])).mean() * 100),
-            "coverage_50_pct": float(((use["y"] >= use["q25"]) & (use["y"] <= use["q75"])).mean() * 100),
-            "mean_pinball_log": float(np.mean(pin)),
-            "brier_up": float(np.mean((use["p_up"] - (use["y"] > 0)) ** 2)),
-        })
+    for h, g in d.groupby("horizon"):
+        x = g[g["model"] == a].set_index("origin")
+        z = g[g["model"] == b].set_index("origin")
+        idx = x.index.intersection(z.index)
+        if len(idx) < 10:
+            continue
+        ea = np.abs(np.exp(x.loc[idx, "yhat"]) - np.exp(x.loc[idx, "y"]))
+        eb = np.abs(np.exp(z.loc[idx, "yhat"]) - np.exp(z.loc[idx, "y"]))
+        rows.append({"horizon": h, "n": len(idx), "skill_pct": float((1 - ea.mean() / eb.mean()) * 100),
+                     "dm_p": dm_test(ea.values, eb.values, int(h))})
     return pd.DataFrame(rows)
 
 
-def verdict(skill: float, p: float) -> tuple[str, str]:
+def verdict(skill: float, p: float) -> str:
     if np.isnan(skill):
-        return "unknown", "Yetersiz veri"
+        return "Yetersiz veri"
     if skill > 0 and not np.isnan(p) and p < 0.10:
-        return "beats_rw", "Rastgele yürüyüşü istatistiksel olarak anlamlı şekilde geçiyor"
+        return "Anlamlı şekilde daha iyi"
     if skill > 0:
-        return "weak_edge", "Rastgele yürüyüşten biraz iyi, fark istatistiksel olarak kanıtlanmadı"
-    return "no_edge", "Rastgele yürüyüşü geçemiyor; tahmin 'fiyat aynı kalır' varsayımına yakın okunmalı"
+        return "Biraz daha iyi (kanıtlanmadı)"
+    return "Daha iyi değil"
