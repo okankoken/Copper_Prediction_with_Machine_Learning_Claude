@@ -7,12 +7,11 @@ import plotly.graph_objects as go
 import streamlit as st
 from plotly.subplots import make_subplots
 
-from common import COPPER, CSS, DOWN, INK, UP, data, style, tr
+from common import COPPER, DOWN, UP, data, hero, kpi_cards, note, section, style, tr
 from copperlab import dekad as K
 
-st.markdown(CSS, unsafe_allow_html=True)
 D = data()
-st.markdown("## 📰 Bakır haberleri")
+hero("Haberler · küresel bakır haberlerinin havası ve FinBERT duyarlılık analizi")
 
 if "news" not in D or D["news"].empty:
     st.info("Haber verisi henüz yok.")
@@ -23,18 +22,25 @@ nw["date"] = pd.to_datetime(nw["date"])
 has_fb = "finbert_net" in nw and nw["finbert_net"].notna().sum() > 20
 first, last = nw["date"].min(), nw["date"].max()
 n_heads = int(nw["finbert_n"].sum()) if "finbert_n" in nw else 0
-st.caption(f"Kaynak: GDELT küresel haber veritabanı, İngilizce \"copper price\" haberleri · "
-           f"{first:%b %Y} – {last:%b %Y}" + (f" · FinBERT ile puanlanan {tr(n_heads)} başlık" if n_heads else ""))
+n_arts = int(nw["news_articles"].sum()) if "news_articles" in nw else 0
+recent = nw.dropna(subset=["news_tone"]).tail(3)["news_tone"].mean()
+kpi_cards([
+    {"label": "Kapsanan dönem", "value": f"{first:%Y} – {last:%Y}", "sub": f"{first:%b %Y} → {last:%b %Y}"},
+    {"label": "Haber sayısı (GDELT)", "value": tr(n_arts), "sub": "\"copper price\" geçen haberler"},
+    {"label": "FinBERT başlığı", "value": tr(n_heads), "sub": "puanlanan başlık"},
+    {"label": "Son ay haber tonu", "value": tr(recent, 2).replace("-", "−"),
+     "sub": "ortalama " + tr(nw["news_tone"].mean(), 2).replace("-", "−")},
+])
 
 # ---------------------------------------------------------------- 1) sentiment vs price
-st.markdown("#### Haberlerin havası ve bakır fiyatı")
+section("Haberlerin havası ve bakır fiyatı", "Çubuklar 1 aylık ortalama · yeşil ortalamadan olumlu, kırmızı olumsuz")
 panel = D["panel"].copy()
 panel["date"] = [K.end(int(n)) for n in panel["dekad"]]
 panel = panel[panel["date"] >= first]
 series = {"news_tone": "GDELT haber tonu"}
 if has_fb:
     series = {"finbert_net": "FinBERT başlık duyarlılığı", **series}
-pick = st.radio("Ölçü", list(series), format_func=series.get, horizontal=True)
+pick = st.radio("Ölçü", list(series), format_func=series.get, horizontal=True, label_visibility="collapsed")
 x = nw.set_index("date")[pick].rolling(3, min_periods=1).mean().dropna()
 fig = make_subplots(specs=[[{"secondary_y": True}]])
 fig.add_trace(go.Bar(x=x.index, y=x - x.mean(), name=series[pick],
@@ -43,13 +49,14 @@ fig.add_trace(go.Scatter(x=panel["date"], y=panel["price"], name="LME bakır (US
                          line=dict(color=COPPER, width=2)), secondary_y=True)
 fig.update_yaxes(title_text="ortalamaya göre", showticklabels=False, secondary_y=False)
 fig.update_yaxes(tickformat=",.0f", secondary_y=True, showgrid=False)
-st.plotly_chart(style(fig, 360), use_container_width=True)
-st.caption("Çubuklar 1 aylık (3 dönemlik) ortalama; yeşil = ortalamadan olumlu, kırmızı = olumsuz.")
+with st.container(border=True):
+    st.plotly_chart(style(fig, 380), use_container_width=True)
 
 # ---------------------------------------------------------------- 2) does it lead prices?
 left, right = st.columns(2)
 with left:
-    st.markdown("#### Haber, sonraki fiyatı ne kadar söylüyor?")
+    section("Haber, sonraki fiyatı ne kadar söylüyor?",
+            "Bugünkü haber havası ile sonraki 1–12 ayın bakır getirisi arasındaki korelasyon")
     p = panel.set_index("dekad")
     lp = np.log(p["price"])
     s = p[pick] if pick in p else pd.Series(dtype=float)
@@ -64,32 +71,32 @@ with left:
         fig = go.Figure(go.Bar(x=c["months"], y=c["corr"], marker_color=[UP if v > 0 else DOWN for v in c["corr"]]))
         fig.update_xaxes(tickvals=list(range(1, 13)), ticktext=[f"{m} ay" for m in range(1, 13)])
         fig.update_yaxes(range=[-0.5, 0.5])
-        st.plotly_chart(style(fig, 260), use_container_width=True)
-        st.caption("Bugünkü haber havası ile sonraki 1–12 ayın bakır getirisi arasındaki korelasyon. "
-                   "±0,2'nin altı zayıf ilişki demektir.")
+        with st.container(border=True):
+            st.plotly_chart(style(fig, 280), use_container_width=True)
+        st.caption("±0,2'nin altı zayıf ilişki demektir.")
 with right:
-    st.markdown("#### Modele eklemek işe yaradı mı?")
+    section("Modele eklemek işe yaradı mı?", "Haberli ElasticNet ile habersiz ElasticNet, aynı dönemde")
     nt = D.get("newstest")
     if nt is not None and len(nt):
         nt = nt[nt["horizon"].isin([3, 9, 18, 36])]
-        for r in nt.itertuples():
-            verdict = "daha iyi" if r.skill_pct > 0 else "daha kötü"
-            sig = " (anlamlı)" if r.dm_p < 0.10 and r.skill_pct > 0 else ""
-            st.markdown(f"- **{r.horizon // 3} ay:** haberli model %{tr(abs(r.skill_pct), 1)} {verdict}{sig} "
-                        f"· {r.n} tahmin")
-        st.caption("Haberli ElasticNet ile habersiz ElasticNet aynı dönemde karşılaştırıldı.")
+        kpi_cards([{"label": f"{r.horizon // 3} ay", "value": f"{tr(r.skill_pct, 1)}%".replace("-", "−"),
+                    "sub": ("daha iyi" if r.skill_pct > 0 else "daha kötü") +
+                           (" · anlamlı" if r.dm_p < 0.10 and r.skill_pct > 0 else "") + f" · {r.n} tahmin"}
+                   for r in nt.itertuples()])
     else:
-        st.caption("Henüz yeterli haber geçmişi yok (en az ~3 yıl gerekiyor).")
+        note("Henüz yeterli haber geçmişi yok (en az ~3 yıl gerekiyor). Gece çalışması tamamlanınca burada "
+             "haberli modelin habersiz modele göre başarısı görünecek.")
 
 # ---------------------------------------------------------------- 3) headlines
-st.markdown("#### Son başlıklar ve FinBERT yorumu")
+section("Son başlıklar ve FinBERT yorumu")
 hd = D.get("headlines")
 if hd is not None and len(hd):
     hd = hd.copy()
     hd["date"] = pd.to_datetime(hd["date"]).dt.date
     tag = {"positive": "🟢 olumlu", "negative": "🔴 olumsuz", "neutral": "⚪ nötr"}
     hd["Duyarlılık"] = hd["label"].map(tag)
-    f = st.radio("Göster", ["Hepsi", "🟢 olumlu", "🔴 olumsuz", "⚪ nötr"], horizontal=True, key="hf")
+    f = st.radio("Göster", ["Hepsi", "🟢 olumlu", "🔴 olumsuz", "⚪ nötr"], horizontal=True, key="hf",
+                 label_visibility="collapsed")
     if f != "Hepsi":
         hd = hd[hd["Duyarlılık"] == f]
     st.dataframe(hd[["date", "Duyarlılık", "title", "domain", "url"]].head(80).rename(
@@ -97,4 +104,4 @@ if hd is not None and len(hd):
         hide_index=True, use_container_width=True, height=380,
         column_config={"Bağlantı": st.column_config.LinkColumn(display_text="aç")})
 else:
-    st.caption("Başlıklar henüz puanlanmadı; gece çalışması tamamlanınca burada görünecek.")
+    note("Başlıklar henüz puanlanmadı; gece çalışması tamamlanınca burada görünecek.")
