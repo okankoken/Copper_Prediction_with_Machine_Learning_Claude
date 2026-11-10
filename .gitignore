@@ -5,3 +5,6 @@ logs/
 data/news/headlines/
 data/news/tone/
 data/news/volume/
+data/news/gnews/
+data/news/gnews_supply/
+data/news/finbert_scores.csv

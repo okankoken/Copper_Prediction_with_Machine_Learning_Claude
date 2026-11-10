@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-09T21:36:35+00:00",
+  "generated_at_utc": "2026-11-10T19:26:48+00:00",
   "run_date": "2026-11-10",
   "forecast_origin": "2026-10-3",
   "forecast_origin_tr": "21-31 Eki 2026",
@@ -15,11 +15,11 @@
   "n_backtest_origins": 426,
   "news_dekads": [
     "2017-01-1",
-    "2021-01-1"
+    "2026-10-3"
   ],
-  "news_headlines_scored": 0,
-  "n_predictions": 76680,
-  "code_commit": "257f717",
+  "news_headlines_scored": 10441,
+  "n_predictions": 81846,
+  "code_commit": "115b5f5",
   "config": {
     "HORIZONS": [
       1,
@@ -668,6 +668,6 @@
       }
     ]
   },
-  "panel_sha256": "9a4a9b4f637ab832ec665436f89697b022fe213fb63c64e89baeecde70447d98",
-  "runtime_seconds": 560.8
+  "panel_sha256": "c866cc6872c2a41a2b91b13fd5709d3541d616b5dab45335d81d66f0944d16c4",
+  "runtime_seconds": 536.5
 }

@@ -1,509 +1,517 @@
 horizon_dekads,months,feature,series,label,family,family_tr,contribution_log,contribution_usd,coef_latest,origins_seen,selected_pct,positive_pct,mean_coef,consistency,direction
 3,1,aluminum__c12,aluminum,Alüminyum fiyatı (12 aylık değişim),metals,Metaller,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-3,1,aluminum__c3,aluminum,Alüminyum fiyatı (3 aylık değişim),metals,Metaller,-5.4207175461939065e-06,-0.07851921963617495,-0.0,426,0.0,,0.0,0.0,-
-3,1,aluminum_stock__c12,aluminum_stock,LME alüminyum stoku (12 aylık değişim),inventories,Stoklar,0.00011417285392173718,1.6538953380399621,0.0,426,0.0,,0.0,0.0,-
-3,1,aluminum_stock__c3,aluminum_stock,LME alüminyum stoku (3 aylık değişim),inventories,Stoklar,-6.971151685612338e-05,-1.0097404829519854,0.0,426,0.0,,0.0,0.0,-
-3,1,brent__c12,brent,Brent petrol (12 aylık değişim),energy,Enerji,-0.0005382457328481495,-7.794425234426966,-0.0,426,0.0,,0.0,0.0,-
-3,1,brent__c3,brent,Brent petrol (3 aylık değişim),energy,Enerji,-0.0002611527619906652,-3.782320176304865,-0.0,426,13.380281690140844,0.0,-0.00019746868035662758,0.13380281690140844,-
-3,1,bund_10y__c12,bund_10y,Almanya 10 yıllık faiz (12 aylık değişim),rates,Faizler,3.9658872502432776e-05,0.5744726382693016,-0.0,426,0.0,,0.0,0.0,-
+3,1,aluminum__c3,aluminum,Alüminyum fiyatı (3 aylık değişim),metals,Metaller,-1.709926531370802e-05,-0.24768180917807062,-0.0,426,0.0,,0.0,0.0,-
+3,1,aluminum_stock__c12,aluminum_stock,LME alüminyum stoku (12 aylık değişim),inventories,Stoklar,0.00010944232124440537,1.5853656148340467,0.0,426,0.0,,0.0,0.0,-
+3,1,aluminum_stock__c3,aluminum_stock,LME alüminyum stoku (3 aylık değişim),inventories,Stoklar,-1.2212628240460899e-05,-0.17689960314484862,0.0,426,0.0,,0.0,0.0,-
+3,1,brent__c12,brent,Brent petrol (12 aylık değişim),energy,Enerji,-0.0003175789368162066,-4.599420370293337,-0.0,426,0.0,,0.0,0.0,-
+3,1,brent__c3,brent,Brent petrol (3 aylık değişim),energy,Enerji,-8.336559501920444e-05,-1.2075055212953363,-0.0,426,13.380281690140844,0.0,-0.00019746868035662758,0.13380281690140844,-
+3,1,bund_10y__c12,bund_10y,Almanya 10 yıllık faiz (12 aylık değişim),rates,Faizler,-4.541660069624325e-07,-0.006578621501532253,-0.0,426,0.0,,0.0,0.0,-
 3,1,bund_10y__c3,bund_10y,Almanya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
 3,1,china_electricity__c12,china_electricity,Çin elektrik üretimi (12 aylık değişim),china,Çin ekonomisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-3,1,china_electricity__c3,china_electricity,Çin elektrik üretimi (3 aylık değişim),china,Çin ekonomisi,0.0005526119726426948,8.00683109357945,0.0,426,0.0,,0.0,0.0,-
-3,1,china_fai_yoy__c12,china_fai_yoy,Çin sabit sermaye yatırımı (12 aylık değişim),china,Çin ekonomisi,0.00016541537439480975,2.3962502194196937,-0.0,426,17.370892018779344,0.0,-0.0004997203172567544,0.17370892018779344,-
-3,1,china_fai_yoy__c3,china_fai_yoy,Çin sabit sermaye yatırımı (3 aylık değişim),china,Çin ekonomisi,0.0001200175705097678,1.7385663370991464,-0.0,426,0.2347417840375587,0.0,-4.4652648889144093e-08,0.002347417840375587,-
-3,1,china_industrial_yoy__c12,china_industrial_yoy,Çin sanayi üretimi (12 aylık değişim),china,Çin ekonomisi,-0.00019062583094374213,-2.7609639114542976,0.0,426,0.0,,0.0,0.0,-
-3,1,china_industrial_yoy__c3,china_industrial_yoy,Çin sanayi üretimi (3 aylık değişim),china,Çin ekonomisi,0.0005689856080207601,8.244137269093349,-0.0,426,2.3474178403755865,0.0,-1.4322965204094422e-05,0.023474178403755864,-
-3,1,china_ppi_yoy__c12,china_ppi_yoy,Çin ÜFE (12 aylık değişim),china,Çin ekonomisi,3.2986941670354614e-05,0.4778257927403866,0.0,426,42.25352112676056,100.0,0.001584239529151737,0.4225352112676056,+
-3,1,china_ppi_yoy__c3,china_ppi_yoy,Çin ÜFE (3 aylık değişim),china,Çin ekonomisi,-1.2805616101933546e-05,-0.18548896193541953,0.0,426,0.0,,0.0,0.0,-
-3,1,china_real_estate_yoy__c12,china_real_estate_yoy,Çin gayrimenkul yatırımı (12 aylık değişim),china,Çin ekonomisi,-0.001257972173939608,-18.21034910506897,0.0,426,0.0,,0.0,0.0,-
-3,1,china_real_estate_yoy__c3,china_real_estate_yoy,Çin gayrimenkul yatırımı (3 aylık değişim),china,Çin ekonomisi,8.720698365437669e-05,1.2632536901416194,-0.0,426,0.0,,0.0,0.0,-
-3,1,china_refined_copper__c12,china_refined_copper,Çin rafine bakır üretimi (12 aylık değişim),china,Çin ekonomisi,0.00012427682309751987,1.8002694134340445,0.0,426,0.0,,0.0,0.0,-
-3,1,china_refined_copper__c3,china_refined_copper,Çin rafine bakır üretimi (3 aylık değişim),china,Çin ekonomisi,-0.0005002753402413536,-7.244707245315415,0.0,426,14.553990610328638,100.0,0.00022337322967360359,0.14553990610328638,+
-3,1,coal__c12,coal,Kömür (12 aylık değişim),energy,Enerji,-1.8194844684107035e-07,-0.002635534384994906,-0.0,426,0.0,,0.0,0.0,-
-3,1,coal__c3,coal,Kömür (3 aylık değişim),energy,Enerji,-6.387984896890967e-06,-0.09253006493907914,-0.0,426,0.0,,0.0,0.0,-
-3,1,dollar_index__c12,dollar_index,Dolar endeksi (DXY) (12 aylık değişim),fx,Kurlar,6.232356544791352e-06,0.09027635539065268,-0.0,426,0.0,,0.0,0.0,-
-3,1,dollar_index__c3,dollar_index,Dolar endeksi (DXY) (3 aylık değişim),fx,Kurlar,-2.0888774148240716e-06,-0.030257488306436618,-0.0,426,0.0,,0.0,0.0,-
+3,1,china_electricity__c3,china_electricity,Çin elektrik üretimi (3 aylık değişim),china,Çin ekonomisi,0.0004518198468720038,6.546117442209209,0.0,426,0.0,,0.0,0.0,-
+3,1,china_fai_yoy__c12,china_fai_yoy,Çin sabit sermaye yatırımı (12 aylık değişim),china,Çin ekonomisi,0.0001090145477349822,1.579168611962127,-0.0,426,17.370892018779344,0.0,-0.0004997203172567544,0.17370892018779344,-
+3,1,china_fai_yoy__c3,china_fai_yoy,Çin sabit sermaye yatırımı (3 aylık değişim),china,Çin ekonomisi,0.0,0.0,-0.0,426,0.2347417840375587,0.0,-4.4652648889144093e-08,0.002347417840375587,-
+3,1,china_industrial_yoy__c12,china_industrial_yoy,Çin sanayi üretimi (12 aylık değişim),china,Çin ekonomisi,-0.00016381222388888947,-2.37263596260201,0.0,426,0.0,,0.0,0.0,-
+3,1,china_industrial_yoy__c3,china_industrial_yoy,Çin sanayi üretimi (3 aylık değişim),china,Çin ekonomisi,0.00033251490468830204,4.817300044238178,-0.0,426,2.3474178403755865,0.0,-1.4322965204094422e-05,0.023474178403755864,-
+3,1,china_ppi_yoy__c12,china_ppi_yoy,Çin ÜFE (12 aylık değişim),china,Çin ekonomisi,0.0,0.0,0.0,426,42.25352112676056,100.0,0.001584239529151737,0.4225352112676056,+
+3,1,china_ppi_yoy__c3,china_ppi_yoy,Çin ÜFE (3 aylık değişim),china,Çin ekonomisi,-9.656534337719513e-06,-0.13987482806140966,0.0,426,0.0,,0.0,0.0,-
+3,1,china_real_estate_yoy__c12,china_real_estate_yoy,Çin gayrimenkul yatırımı (12 aylık değişim),china,Çin ekonomisi,-0.0008987907159211007,-13.01319075098911,0.0,426,0.0,,0.0,0.0,-
+3,1,china_real_estate_yoy__c3,china_real_estate_yoy,Çin gayrimenkul yatırımı (3 aylık değişim),china,Çin ekonomisi,2.043330449368192e-05,0.2959807165929701,-0.0,426,0.0,,0.0,0.0,-
+3,1,china_refined_copper__c12,china_refined_copper,Çin rafine bakır üretimi (12 aylık değişim),china,Çin ekonomisi,0.0001053928231656983,1.5267020809142258,0.0,426,0.0,,0.0,0.0,-
+3,1,china_refined_copper__c3,china_refined_copper,Çin rafine bakır üretimi (3 aylık değişim),china,Çin ekonomisi,-0.00030141523373899466,-4.365360573023286,0.0,426,14.553990610328638,100.0,0.00022337322967360359,0.14553990610328638,+
+3,1,coal__c12,coal,Kömür (12 aylık değişim),energy,Enerji,-7.231425404718084e-06,-0.10474727021556113,-0.0,426,0.0,,0.0,0.0,-
+3,1,coal__c3,coal,Kömür (3 aylık değişim),energy,Enerji,-4.214661958262855e-06,-0.06104951322949449,-0.0,426,0.0,,0.0,0.0,-
+3,1,dollar_index__c12,dollar_index,Dolar endeksi (DXY) (12 aylık değişim),fx,Kurlar,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
+3,1,dollar_index__c3,dollar_index,Dolar endeksi (DXY) (3 aylık değişim),fx,Kurlar,9.741933012311276e-06,0.14111319590922478,-0.0,426,0.0,,0.0,0.0,-
 3,1,ecb_rate__c12,ecb_rate,ECB faizi (12 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
 3,1,ecb_rate__c3,ecb_rate,ECB faizi (3 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-3,1,eod_gap,eod_gap,Dönem sonu fiyatı / dönem ortalaması,copper,Bakırın kendisi,-0.003923828897271923,-56.72554337224001,0.007956970316196516,426,76.76056338028168,100.0,0.0053912100209303334,0.7676056338028168,+
-3,1,eur_usd__c12,eur_usd,EUR/USD (12 aylık değişim),fx,Kurlar,-6.747867723043787e-06,-0.09774295593152224,0.0,426,0.0,,0.0,0.0,-
-3,1,eur_usd__c3,eur_usd,EUR/USD (3 aylık değişim),fx,Kurlar,3.434247552566165e-05,0.49746144637342554,0.0,426,0.0,,0.0,0.0,-
-3,1,euro_area_copper_ppi__c12,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-4.622602305296683e-05,-0.6695713571184136,0.0,426,0.0,,0.0,0.0,-
-3,1,euro_area_copper_ppi__c3,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,-6.600297026013569e-05,-0.9560255987925964,-0.0,426,0.0,,0.0,0.0,-
-3,1,euro_area_industrial_production__c12,euro_area_industrial_production,Euro bölgesi sanayi üretimi (12 aylık değişim),europe,Avrupa ekonomisi,1.96216089657917e-05,0.2842230206663814,-0.0,426,0.0,,0.0,0.0,-
-3,1,euro_area_industrial_production__c3,euro_area_industrial_production,Euro bölgesi sanayi üretimi (3 aylık değişim),europe,Avrupa ekonomisi,-0.00026010522807871304,-3.7671505362835696,0.0,426,0.0,,0.0,0.0,-
-3,1,euro_area_ppi__c12,euro_area_ppi,Euro bölgesi ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,8.59206186068607e-05,1.2446189990109946,-0.0,426,0.0,,0.0,0.0,-
-3,1,euro_area_ppi__c3,euro_area_ppi,Euro bölgesi ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,2.6333565783518675e-05,0.38144836864685877,-0.0,426,0.0,,0.0,0.0,-
-3,1,fed_rate__c12,fed_rate,Fed faizi (12 aylık değişim),rates,Faizler,-0.0001072032096434114,-1.5527619598654765,-0.0,426,8.215962441314554,0.0,-8.320364063155061e-05,0.08215962441314555,-
+3,1,eod_gap,eod_gap,Dönem sonu fiyatı / dönem ortalaması,copper,Bakırın kendisi,-0.003361081319119518,-48.60374664674911,0.007956970316196516,426,76.76056338028168,100.0,0.0053912100209303334,0.7676056338028168,+
+3,1,eur_usd__c12,eur_usd,EUR/USD (12 aylık değişim),fx,Kurlar,-2.194015727457121e-05,-0.3178010630661702,0.0,426,0.0,,0.0,0.0,-
+3,1,eur_usd__c3,eur_usd,EUR/USD (3 aylık değişim),fx,Kurlar,1.1585038558904743e-05,0.16781097963646519,0.0,426,0.0,,0.0,0.0,-
+3,1,euro_area_copper_ppi__c12,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-1.3084864109888004e-05,-0.18953383442157068,0.0,426,0.0,,0.0,0.0,-
+3,1,euro_area_copper_ppi__c3,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
+3,1,euro_area_industrial_production__c12,euro_area_industrial_production,Euro bölgesi sanayi üretimi (12 aylık değişim),europe,Avrupa ekonomisi,3.418982612318293e-06,0.04952426148665119,-0.0,426,0.0,,0.0,0.0,-
+3,1,euro_area_industrial_production__c3,euro_area_industrial_production,Euro bölgesi sanayi üretimi (3 aylık değişim),europe,Avrupa ekonomisi,-0.00025932539463871486,-3.7558575335125397,0.0,426,0.0,,0.0,0.0,-
+3,1,euro_area_ppi__c12,euro_area_ppi,Euro bölgesi ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,3.974234271692742e-05,0.5756817575472088,-0.0,426,0.0,,0.0,0.0,-
+3,1,euro_area_ppi__c3,euro_area_ppi,Euro bölgesi ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,4.312506614862002e-06,0.062467062542289925,-0.0,426,0.0,,0.0,0.0,-
+3,1,fed_rate__c12,fed_rate,Fed faizi (12 aylık değişim),rates,Faizler,-5.179480426631845e-05,-0.7502315477570336,-0.0,426,8.215962441314554,0.0,-8.320364063155061e-05,0.08215962441314555,-
 3,1,fed_rate__c3,fed_rate,Fed faizi (3 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,16.901408450704224,0.0,-0.00020388507962585504,0.16901408450704225,-
-3,1,finbert_net,finbert_net,Başlık duyarlılığı (FinBERT),news,Haberler,0.0,0.0,,0,,,,0.0,-
+3,1,finbert_net,finbert_net,Başlık duyarlılığı (FinBERT),news,Haberler,-2.074361946700637e-05,-0.3004695080317061,,0,,,,0.0,-
 3,1,finbert_net_c9,finbert_net_c9,Başlık duyarlılığı 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
-3,1,geopolitical_risk__c12,geopolitical_risk,Jeopolitik risk endeksi (12 aylık değişim),risk,Risk,5.89556864090685e-06,0.08539793197124448,-0.0,426,0.0,,0.0,0.0,-
-3,1,geopolitical_risk__c3,geopolitical_risk,Jeopolitik risk endeksi (3 aylık değişim),risk,Risk,2.963383986306446e-05,0.4292543827279954,-0.0,426,0.0,,0.0,0.0,-
+3,1,finbert_supply,finbert_supply,Madencilik / Şili / Peru haber duyarlılığı,news,Haberler,0.0,0.0,,0,,,,0.0,-
+3,1,finbert_supply_c9,finbert_supply_c9,Madencilik / Şili / Peru duyarlılığı 3 aylık değişim,news,Haberler,-9.874362002951181e-05,-1.4302368930577143,,0,,,,0.0,-
+3,1,geopolitical_risk__c12,geopolitical_risk,Jeopolitik risk endeksi (12 aylık değişim),risk,Risk,3.662351922386542e-06,0.05304949363570838,-0.0,426,0.0,,0.0,0.0,-
+3,1,geopolitical_risk__c3,geopolitical_risk,Jeopolitik risk endeksi (3 aylık değişim),risk,Risk,-6.063701010935727e-06,-0.08783282182920318,-0.0,426,0.0,,0.0,0.0,-
 3,1,germany_exports__c12,germany_exports,Almanya ihracatı (12 aylık değişim),europe,Avrupa ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-3,1,germany_exports__c3,germany_exports,Almanya ihracatı (3 aylık değişim),europe,Avrupa ekonomisi,-0.000432830371542539,-6.268218348194931,0.0,426,0.0,,0.0,0.0,-
-3,1,germany_order_books__c12,germany_order_books,Almanya sanayi siparişleri (12 aylık değişim),europe,Avrupa ekonomisi,-1.005714707281321e-05,-0.1456776713699727,0.0,426,0.0,,0.0,0.0,-
-3,1,germany_order_books__c3,germany_order_books,Almanya sanayi siparişleri (3 aylık değişim),europe,Avrupa ekonomisi,-0.0004882621921540662,-7.070782031498592,0.0,426,0.0,,0.0,0.0,-
-3,1,gold__c12,gold,Altın (12 aylık değişim),precious,Değerli metaller,-3.64861282411269e-06,-0.052850288380958656,0.0,426,0.0,,0.0,0.0,-
+3,1,germany_exports__c3,germany_exports,Almanya ihracatı (3 aylık değişim),europe,Avrupa ekonomisi,-0.00035465146974443534,-5.136237863975765,0.0,426,0.0,,0.0,0.0,-
+3,1,germany_order_books__c12,germany_order_books,Almanya sanayi siparişleri (12 aylık değişim),europe,Avrupa ekonomisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
+3,1,germany_order_books__c3,germany_order_books,Almanya sanayi siparişleri (3 aylık değişim),europe,Avrupa ekonomisi,-0.00030695319846295793,-4.445553940905115,0.0,426,0.0,,0.0,0.0,-
+3,1,gold__c12,gold,Altın (12 aylık değişim),precious,Değerli metaller,-2.5257924919300077e-05,-0.3658580006504223,0.0,426,0.0,,0.0,0.0,-
 3,1,gold__c3,gold,Altın (3 aylık değişim),precious,Değerli metaller,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-3,1,india_industrial_production__c12,india_industrial_production,Hindistan sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-3,1,india_industrial_production__c3,india_industrial_production,Hindistan sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-7.683465833415381e-05,-1.1129120724798816,-0.0,426,0.0,,0.0,0.0,-
-3,1,iron_ore__c12,iron_ore,Demir cevheri (12 aylık değişim),bulk,Hammadde,7.89933329323598e-05,1.1442685588083734,0.0,426,0.0,,0.0,0.0,-
-3,1,iron_ore__c3,iron_ore,Demir cevheri (3 aylık değişim),bulk,Hammadde,5.399727041459245e-05,0.7821749542515852,-0.0,426,8.450704225352112,0.0,-0.00013376616369096145,0.08450704225352113,-
-3,1,japan_10y__c12,japan_10y,Japonya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.001620585921381152,23.493319687686412,0.0,426,0.0,,0.0,0.0,-
-3,1,japan_10y__c3,japan_10y,Japonya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0002453681551436772,3.5546091388742025,0.0,426,0.0,,0.0,0.0,-
-3,1,japan_industrial_production__c12,japan_industrial_production,Japonya sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,0.0002990825738009522,4.332877685975512,0.0,426,0.4694835680751174,100.0,1.4373657132402169e-06,0.004694835680751174,+
-3,1,japan_industrial_production__c3,japan_industrial_production,Japonya sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-3.7601834902598264e-05,-0.544654688606907,0.0,426,0.0,,0.0,0.0,-
-3,1,japan_ppi__c12,japan_ppi,Japonya ÜFE (12 aylık değişim),asia,Asya ekonomisi,-4.712951147213612e-05,-0.6826578324769431,-0.0,426,0.0,,0.0,0.0,-
-3,1,japan_ppi__c3,japan_ppi,Japonya ÜFE (3 aylık değişim),asia,Asya ekonomisi,3.9788354154407927e-07,0.005763369113818778,-0.0,426,7.981220657276995,0.0,-0.00013381914905860625,0.07981220657276995,-
-3,1,korea_10y__c12,korea_10y,Kore 10 yıllık faiz (12 aylık değişim),rates,Faizler,8.366792458093584e-05,1.21198581826186,0.0,426,0.0,,0.0,0.0,-
-3,1,korea_10y__c3,korea_10y,Kore 10 yıllık faiz (3 aylık değişim),rates,Faizler,7.072218673705122e-06,0.10244189174601362,0.0,426,0.0,,0.0,0.0,-
-3,1,korea_exports__c12,korea_exports,Kore ihracatı (12 aylık değişim),asia,Asya ekonomisi,1.913057532472388e-05,0.27711022986919326,0.0,426,0.0,,0.0,0.0,-
-3,1,korea_exports__c3,korea_exports,Kore ihracatı (3 aylık değişim),asia,Asya ekonomisi,0.0006667872934570128,9.661676403490926,0.000808337885658326,426,57.74647887323944,100.0,0.0007062733361779782,0.5774647887323944,+
-3,1,korea_industrial_production__c12,korea_industrial_production,Kore sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-2.0818149101737107e-05,-0.30154905201594173,0.0,426,0.0,,0.0,0.0,-
-3,1,korea_industrial_production__c3,korea_industrial_production,Kore sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,3.3474116520720324e-05,0.4848827854003598,-0.0,426,0.0,,0.0,0.0,-
-3,1,lead__c12,lead,Kurşun fiyatı (12 aylık değişim),metals,Metaller,-5.1479691704460887e-05,-0.7456673582923475,-0.0,426,0.0,,0.0,0.0,-
-3,1,lead__c3,lead,Kurşun fiyatı (3 aylık değişim),metals,Metaller,-1.769224018955467e-05,-0.25627093789973354,-0.0,426,0.0,,0.0,0.0,-
-3,1,ma36_gap,ma36_gap,Bakır 12 aylık ortalamadan sapma,copper,Bakırın kendisi,-0.00018281833487366388,-2.647892957725927,-0.0,426,0.0,,0.0,0.0,-
-3,1,natural_gas__c12,natural_gas,Doğal gaz (12 aylık değişim),energy,Enerji,2.7416348561874398e-05,0.3971329663842016,0.0,426,0.0,,0.0,0.0,-
-3,1,natural_gas__c3,natural_gas,Doğal gaz (3 aylık değişim),energy,Enerji,0.00023919619232668952,3.4651862087646284,-0.0,426,7.042253521126761,100.0,2.342572144025878e-05,0.07042253521126761,+
-3,1,news_attention_c9,news_attention_c9,Bakır haberlerine ilgi 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
+3,1,india_industrial_production__c12,india_industrial_production,Hindistan sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-4.8392140772780414e-06,-0.07009614875450296,-0.0,426,0.0,,0.0,0.0,-
+3,1,india_industrial_production__c3,india_industrial_production,Hindistan sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-0.0001000651240615469,-1.4493770588449097,-0.0,426,0.0,,0.0,0.0,-
+3,1,iron_ore__c12,iron_ore,Demir cevheri (12 aylık değişim),bulk,Hammadde,5.709821746422157e-05,0.8270948612030855,0.0,426,0.0,,0.0,0.0,-
+3,1,iron_ore__c3,iron_ore,Demir cevheri (3 aylık değişim),bulk,Hammadde,3.278168591820699e-05,0.4748525525716838,-0.0,426,8.450704225352112,0.0,-0.00013376616369096145,0.08450704225352113,-
+3,1,japan_10y__c12,japan_10y,Japonya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.0012538845139406765,18.17398721163835,0.0,426,0.0,,0.0,0.0,-
+3,1,japan_10y__c3,japan_10y,Japonya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.00021207535869983507,3.0722505882844158,0.0,426,0.0,,0.0,0.0,-
+3,1,japan_industrial_production__c12,japan_industrial_production,Japonya sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,0.00018520485988879855,2.6829524110355987,0.0,426,0.4694835680751174,100.0,1.4373657132402169e-06,0.004694835680751174,+
+3,1,japan_industrial_production__c3,japan_industrial_production,Japonya sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-3.3303744336469145e-05,-0.4823987853098773,0.0,426,0.0,,0.0,0.0,-
+3,1,japan_ppi__c12,japan_ppi,Japonya ÜFE (12 aylık değişim),asia,Asya ekonomisi,-2.8027477715569933e-05,-0.4059740771868011,-0.0,426,0.0,,0.0,0.0,-
+3,1,japan_ppi__c3,japan_ppi,Japonya ÜFE (3 aylık değişim),asia,Asya ekonomisi,4.794783569208402e-06,0.06945290617818434,-0.0,426,7.981220657276995,0.0,-0.00013381914905860625,0.07981220657276995,-
+3,1,korea_10y__c12,korea_10y,Kore 10 yıllık faiz (12 aylık değişim),rates,Faizler,5.417369706488398e-06,0.07847115133696454,0.0,426,0.0,,0.0,0.0,-
+3,1,korea_10y__c3,korea_10y,Kore 10 yıllık faiz (3 aylık değişim),rates,Faizler,4.544794460573254e-06,0.06583178140541698,0.0,426,0.0,,0.0,0.0,-
+3,1,korea_exports__c12,korea_exports,Kore ihracatı (12 aylık değişim),asia,Asya ekonomisi,5.340411097249615e-06,0.07735639507663718,0.0,426,0.0,,0.0,0.0,-
+3,1,korea_exports__c3,korea_exports,Kore ihracatı (3 aylık değişim),asia,Asya ekonomisi,0.0005433426240696993,7.8724904046826545,0.000808337885658326,426,57.74647887323944,100.0,0.0007062733361779782,0.5774647887323944,+
+3,1,korea_industrial_production__c12,korea_industrial_production,Kore sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-1.5840993591655018e-05,-0.22945596482727287,0.0,426,0.0,,0.0,0.0,-
+3,1,korea_industrial_production__c3,korea_industrial_production,Kore sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
+3,1,lead__c12,lead,Kurşun fiyatı (12 aylık değişim),metals,Metaller,-3.2840088713482616e-05,-0.4756829267422521,-0.0,426,0.0,,0.0,0.0,-
+3,1,lead__c3,lead,Kurşun fiyatı (3 aylık değişim),metals,Metaller,-5.152465422437799e-05,-0.7463186096621862,-0.0,426,0.0,,0.0,0.0,-
+3,1,ma36_gap,ma36_gap,Bakır 12 aylık ortalamadan sapma,copper,Bakırın kendisi,-4.379754027234703e-05,-0.6343962155922663,-0.0,426,0.0,,0.0,0.0,-
+3,1,natural_gas__c12,natural_gas,Doğal gaz (12 aylık değişim),energy,Enerji,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
+3,1,natural_gas__c3,natural_gas,Doğal gaz (3 aylık değişim),energy,Enerji,0.00014635256016032368,2.120081116823337,-0.0,426,7.042253521126761,100.0,2.342572144025878e-05,0.07042253521126761,+
+3,1,news_attention_c9,news_attention_c9,Bakır haberlerine ilgi 3 aylık değişim,news,Haberler,1.4085651823430006e-05,0.20403298398093234,,0,,,,0.0,-
 3,1,news_tone,news_tone,Haber tonu (GDELT),news,Haberler,0.0,0.0,,0,,,,0.0,-
 3,1,news_tone_c9,news_tone_c9,Haber tonu 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
-3,1,nickel__c12,nickel,Nikel fiyatı (12 aylık değişim),metals,Metaller,0.0007396887637940709,10.718401626023207,-0.0,426,0.0,,0.0,0.0,-
-3,1,nickel__c3,nickel,Nikel fiyatı (3 aylık değişim),metals,Metaller,-0.00010602685882599782,-1.535724261325104,0.0,426,0.0,,0.0,0.0,-
-3,1,nickel_stock__c12,nickel_stock,LME nikel stoku (12 aylık değişim),inventories,Stoklar,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-3,1,nickel_stock__c3,nickel_stock,LME nikel stoku (3 aylık değişim),inventories,Stoklar,0.00013000874523357492,1.8833072208053854,0.0,426,0.2347417840375587,0.0,-1.28496924118448e-06,0.002347417840375587,-
-3,1,peru_diesel__c12,peru_diesel,Peru dizel fiyatı (12 aylık değişim),mining_costs,Madencilik maliyeti,-4.283817621388843e-06,-0.062051233076304564,-0.0,158,0.0,,0.0,0.0,-
-3,1,peru_diesel__c3,peru_diesel,Peru dizel fiyatı (3 aylık değişim),mining_costs,Madencilik maliyeti,3.783342700680311e-05,0.548029921641482,0.0,426,0.0,,0.0,0.0,-
-3,1,peru_usd_pen__c12,peru_usd_pen,USD/PEN (Peru) (12 aylık değişim),fx,Kurlar,-1.1897612401355644e-05,-0.17233663403455707,-0.0,426,0.0,,0.0,0.0,-
-3,1,peru_usd_pen__c3,peru_usd_pen,USD/PEN (Peru) (3 aylık değişim),fx,Kurlar,-1.6492359187309352e-05,-0.23889088365824995,0.0,426,1.8779342723004695,100.0,1.4805817176293733e-06,0.018779342723004695,+
-3,1,platinum__c12,platinum,Platin (12 aylık değişim),precious,Değerli metaller,-2.3199638664461265e-05,-0.33604431796435913,0.0,426,0.0,,0.0,0.0,-
-3,1,platinum__c3,platinum,Platin (3 aylık değişim),precious,Değerli metaller,-0.00017548211763958565,-2.5416464283700835,-0.0,426,0.0,,0.0,0.0,-
-3,1,policy_uncertainty__c12,policy_uncertainty,Ekonomi politikası belirsizliği (12 aylık değişim),risk,Risk,-0.0014409148918901652,-20.856712283926775,0.0002862139355251447,426,48.59154929577465,100.0,0.0007388769271978453,0.4859154929577465,+
-3,1,policy_uncertainty__c3,policy_uncertainty,Ekonomi politikası belirsizliği (3 aylık değişim),risk,Risk,6.914485407797245e-05,1.0016021602926037,0.0,426,0.0,,0.0,0.0,-
+3,1,nickel__c12,nickel,Nikel fiyatı (12 aylık değişim),metals,Metaller,0.0004841712744987798,7.014949253240626,-0.0,426,0.0,,0.0,0.0,-
+3,1,nickel__c3,nickel,Nikel fiyatı (3 aylık değişim),metals,Metaller,-0.00018299146055355585,-2.650400235383889,0.0,426,0.0,,0.0,0.0,-
+3,1,nickel_stock__c12,nickel_stock,LME nikel stoku (12 aylık değişim),inventories,Stoklar,1.8183602229697658e-05,0.2633930094814059,0.0,426,0.0,,0.0,0.0,-
+3,1,nickel_stock__c3,nickel_stock,LME nikel stoku (3 aylık değişim),inventories,Stoklar,6.186098118031494e-05,0.896087894861085,0.0,426,0.2347417840375587,0.0,-1.28496924118448e-06,0.002347417840375587,-
+3,1,peru_diesel__c12,peru_diesel,Peru dizel fiyatı (12 aylık değişim),mining_costs,Madencilik maliyeti,2.2637479255226483e-06,0.03279056729917258,-0.0,158,0.0,,0.0,0.0,-
+3,1,peru_diesel__c3,peru_diesel,Peru dizel fiyatı (3 aylık değişim),mining_costs,Madencilik maliyeti,2.5805627910734134e-05,0.37380095620293374,0.0,426,0.0,,0.0,0.0,-
+3,1,peru_usd_pen__c12,peru_usd_pen,USD/PEN (Peru) (12 aylık değişim),fx,Kurlar,-7.550413636761294e-06,-0.10936780054259117,-0.0,426,0.0,,0.0,0.0,-
+3,1,peru_usd_pen__c3,peru_usd_pen,USD/PEN (Peru) (3 aylık değişim),fx,Kurlar,-5.5790832489673335e-06,-0.08081314412265439,0.0,426,1.8779342723004695,100.0,1.4805817176293733e-06,0.018779342723004695,+
+3,1,platinum__c12,platinum,Platin (12 aylık değişim),precious,Değerli metaller,-1.8437212657907156e-05,-0.26706171573128606,0.0,426,0.0,,0.0,0.0,-
+3,1,platinum__c3,platinum,Platin (3 aylık değişim),precious,Değerli metaller,-0.00010312035775414761,-1.493627814049814,-0.0,426,0.0,,0.0,0.0,-
+3,1,policy_uncertainty__c12,policy_uncertainty,Ekonomi politikası belirsizliği (12 aylık değişim),risk,Risk,-0.0007182329571910497,-10.399914046888144,0.0002862139355251447,426,48.59154929577465,100.0,0.0007388769271978453,0.4859154929577465,+
+3,1,policy_uncertainty__c3,policy_uncertainty,Ekonomi politikası belirsizliği (3 aylık değişim),risk,Risk,4.8567072407749465e-05,0.7035141629432154,0.0,426,0.0,,0.0,0.0,-
 3,1,r1,r1,Bakır son 10 günlük getiri,copper,Bakırın kendisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-3,1,r18,r18,Bakır 6 aylık getiri,copper,Bakırın kendisi,-0.00032901312095527446,-4.764991704977472,-0.0,426,7.276995305164319,0.0,-6.400825512858352e-05,0.07276995305164319,-
-3,1,r3,r3,Bakır 1 aylık getiri,copper,Bakırın kendisi,1.4224060189594456e-05,0.2060378661953322,0.0,426,0.0,,0.0,0.0,-
-3,1,r36,r36,Bakır 12 aylık getiri,copper,Bakırın kendisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-3,1,r9,r9,Bakır 3 aylık getiri,copper,Bakırın kendisi,-0.00013504503292130366,-1.956003664916967,-0.0,426,5.164319248826291,0.0,-4.8753152756420766e-05,0.05164319248826291,-
-3,1,silver__c12,silver,Gümüş (12 aylık değişim),precious,Değerli metaller,6.983250013807076e-06,0.10115316609147955,0.0,426,0.0,,0.0,0.0,-
+3,1,r18,r18,Bakır 6 aylık getiri,copper,Bakırın kendisi,-0.00016243133458836606,-2.3526369573182313,-0.0,426,7.276995305164319,0.0,-6.400825512858352e-05,0.07276995305164319,-
+3,1,r3,r3,Bakır 1 aylık getiri,copper,Bakırın kendisi,4.8014437702270693e-05,0.695508828119696,0.0,426,0.0,,0.0,0.0,-
+3,1,r36,r36,Bakır 12 aylık getiri,copper,Bakırın kendisi,-1.6164814825944503e-05,-0.23414646058181432,0.0,426,0.0,,0.0,0.0,-
+3,1,r9,r9,Bakır 3 aylık getiri,copper,Bakırın kendisi,-8.852941988734945e-05,-1.2822974187965206,-0.0,426,5.164319248826291,0.0,-4.8753152756420766e-05,0.05164319248826291,-
+3,1,silver__c12,silver,Gümüş (12 aylık değişim),precious,Değerli metaller,1.7441381002548414e-05,0.2526416971106536,0.0,426,0.0,,0.0,0.0,-
 3,1,silver__c3,silver,Gümüş (3 aylık değişim),precious,Değerli metaller,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-3,1,spread_3m,spread_3m,3 ay vadeli - nakit farkı,copper,Bakırın kendisi,-4.842421186457911e-05,-0.7014107526025073,0.0,426,28.169014084507044,100.0,0.0004430976203992805,0.28169014084507044,+
-3,1,stock_c36,stock_c36,LME bakır stoku 12 aylık değişim,copper,Bakırın kendisi,4.011371678386578e-05,0.5810613489090993,0.0,426,0.0,,0.0,0.0,-
-3,1,stock_c9,stock_c9,LME bakır stoku 3 aylık değişim,copper,Bakırın kendisi,1.4198627096069739e-05,0.20566946100833186,0.0,426,0.0,,0.0,0.0,-
-3,1,stock_z72,stock_z72,LME bakır stoku seviyesi,copper,Bakırın kendisi,2.3310469074879354e-05,0.33765753691523887,0.0,426,0.0,,0.0,0.0,-
-3,1,tin__c12,tin,Kalay fiyatı (12 aylık değişim),metals,Metaller,0.00010839443007175659,1.570185192368828,0.0,426,0.0,,0.0,0.0,-
-3,1,tin__c3,tin,Kalay fiyatı (3 aylık değişim),metals,Metaller,6.28931053503786e-05,0.9110392105609296,0.0,426,4.694835680751173,100.0,4.680522904863397e-05,0.04694835680751173,+
-3,1,us_10y__c12,us_10y,ABD 10 yıllık faiz (12 aylık değişim),rates,Faizler,3.0605916713340426e-05,0.44333540077178435,-0.0,426,0.0,,0.0,0.0,-
-3,1,us_10y__c3,us_10y,ABD 10 yıllık faiz (3 aylık değişim),rates,Faizler,-8.276306222773248e-05,-1.1987785210848838,-0.0,426,0.0,,0.0,0.0,-
-3,1,us_2y__c12,us_2y,ABD 2 yıllık faiz (12 aylık değişim),rates,Faizler,-2.3429216306789692e-05,-0.3393696869310303,-0.0,426,4.929577464788732,0.0,-7.587684174781612e-05,0.04929577464788732,-
-3,1,us_2y__c3,us_2y,ABD 2 yıllık faiz (3 aylık değişim),rates,Faizler,0.0001885432554431785,2.7313183167798316,-0.0,426,0.0,,0.0,0.0,-
+3,1,spread_3m,spread_3m,3 ay vadeli - nakit farkı,copper,Bakırın kendisi,-3.600031454452667e-05,-0.5214574198255125,0.0,426,28.169014084507044,100.0,0.0004430976203992805,0.28169014084507044,+
+3,1,stock_c36,stock_c36,LME bakır stoku 12 aylık değişim,copper,Bakırın kendisi,3.473822543812658e-05,0.5031941065957785,0.0,426,0.0,,0.0,0.0,-
+3,1,stock_c9,stock_c9,LME bakır stoku 3 aylık değişim,copper,Bakırın kendisi,2.102387912522649e-06,0.030453252322899693,0.0,426,0.0,,0.0,0.0,-
+3,1,stock_z72,stock_z72,LME bakır stoku seviyesi,copper,Bakırın kendisi,6.629365118695103e-06,0.09602708637966809,0.0,426,0.0,,0.0,0.0,-
+3,1,tin__c12,tin,Kalay fiyatı (12 aylık değişim),metals,Metaller,6.747790261397371e-05,0.9774546146544209,0.0,426,0.0,,0.0,0.0,-
+3,1,tin__c3,tin,Kalay fiyatı (3 aylık değişim),metals,Metaller,3.7478187276642696e-05,0.5428840581810401,0.0,426,4.694835680751173,100.0,4.680522904863397e-05,0.04694835680751173,+
+3,1,us_10y__c12,us_10y,ABD 10 yıllık faiz (12 aylık değişim),rates,Faizler,-2.0779336662770648e-05,-0.30098686310363076,-0.0,426,0.0,,0.0,0.0,-
+3,1,us_10y__c3,us_10y,ABD 10 yıllık faiz (3 aylık değişim),rates,Faizler,-1.1349522166828826e-05,-0.164397605013065,-0.0,426,0.0,,0.0,0.0,-
+3,1,us_2y__c12,us_2y,ABD 2 yıllık faiz (12 aylık değişim),rates,Faizler,-9.890014412934403e-06,-0.14325676849002728,-0.0,426,4.929577464788732,0.0,-7.587684174781612e-05,0.04929577464788732,-
+3,1,us_2y__c3,us_2y,ABD 2 yıllık faiz (3 aylık değişim),rates,Faizler,0.00014660431385572547,2.1237283190335092,-0.0,426,0.0,,0.0,0.0,-
 3,1,us_cpi__c12,us_cpi,ABD enflasyonu (TÜFE) (12 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-3,1,us_cpi__c3,us_cpi,ABD enflasyonu (TÜFE) (3 aylık değişim),us_macro,ABD ekonomisi,1.4131326479872387e-05,0.2046945935688108,-0.0,426,0.0,,0.0,0.0,-
-3,1,us_curve__c12,us_curve,ABD faiz eğrisi (10Y-2Y) (12 aylık değişim),rates,Faizler,-1.210294172825825e-05,-0.17531080647741076,0.0,426,0.0,,0.0,0.0,-
-3,1,us_curve__c3,us_curve,ABD faiz eğrisi (10Y-2Y) (3 aylık değişim),rates,Faizler,-0.0002701536345604187,-3.9126637472472563,0.0,426,0.0,,0.0,0.0,-
-3,1,us_housing_starts__c12,us_housing_starts,ABD konut başlangıçları (12 aylık değişim),us_macro,ABD ekonomisi,0.0003820376259853085,5.534896091710912,-0.0,426,0.0,,0.0,0.0,-
-3,1,us_housing_starts__c3,us_housing_starts,ABD konut başlangıçları (3 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
+3,1,us_cpi__c3,us_cpi,ABD enflasyonu (TÜFE) (3 aylık değişim),us_macro,ABD ekonomisi,4.4839414219175184e-05,0.6495162792849708,-0.0,426,0.0,,0.0,0.0,-
+3,1,us_curve__c12,us_curve,ABD faiz eğrisi (10Y-2Y) (12 aylık değişim),rates,Faizler,-1.3338602596434332e-05,-0.19320920369943773,0.0,426,0.0,,0.0,0.0,-
+3,1,us_curve__c3,us_curve,ABD faiz eğrisi (10Y-2Y) (3 aylık değişim),rates,Faizler,-0.00024623250560496516,-3.5662541513537587,0.0,426,0.0,,0.0,0.0,-
+3,1,us_housing_starts__c12,us_housing_starts,ABD konut başlangıçları (12 aylık değişim),us_macro,ABD ekonomisi,0.000277654043161157,4.0223945597816675,-0.0,426,0.0,,0.0,0.0,-
+3,1,us_housing_starts__c3,us_housing_starts,ABD konut başlangıçları (3 aylık değişim),us_macro,ABD ekonomisi,-3.115672945035445e-06,-0.04513064703177215,-0.0,426,0.0,,0.0,0.0,-
 3,1,us_industrial_production__c12,us_industrial_production,ABD sanayi üretimi (12 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-3,1,us_industrial_production__c3,us_industrial_production,ABD sanayi üretimi (3 aylık değişim),us_macro,ABD ekonomisi,-1.0788408184985462e-05,-0.1562699238821496,0.0,426,0.0,,0.0,0.0,-
-3,1,us_m2__c12,us_m2,ABD para arzı (M2) (12 aylık değişim),us_macro,ABD ekonomisi,-1.5109106206654711e-05,-0.21885469436909766,0.0,426,12.44131455399061,100.0,0.00017166521541708347,0.1244131455399061,+
-3,1,us_m2__c3,us_m2,ABD para arzı (M2) (3 aylık değişim),us_macro,ABD ekonomisi,7.059948263680841e-05,1.0226740181646008,0.0,426,0.0,,0.0,0.0,-
+3,1,us_industrial_production__c3,us_industrial_production,ABD sanayi üretimi (3 aylık değişim),us_macro,ABD ekonomisi,-1.38754289034106e-05,-0.20098506049982962,0.0,426,0.0,,0.0,0.0,-
+3,1,us_m2__c12,us_m2,ABD para arzı (M2) (12 aylık değişim),us_macro,ABD ekonomisi,-6.0380605243933654e-05,-0.874590436330313,0.0,426,12.44131455399061,100.0,0.00017166521541708347,0.1244131455399061,+
+3,1,us_m2__c3,us_m2,ABD para arzı (M2) (3 aylık değişim),us_macro,ABD ekonomisi,1.9153795173436422e-05,0.27744657726809735,0.0,426,0.0,,0.0,0.0,-
 3,1,us_ppi__c12,us_ppi,ABD ÜFE (12 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-3,1,us_ppi__c3,us_ppi,ABD ÜFE (3 aylık değişim),us_macro,ABD ekonomisi,-7.244841237501152e-05,-1.0493817677980315,-0.0,426,0.0,,0.0,0.0,-
-3,1,usd_cny__c12,usd_cny,USD/CNY (yuan) (12 aylık değişim),fx,Kurlar,1.2310242455917182e-05,0.1783157289164275,0.0,426,0.7042253521126761,100.0,5.875257573597899e-07,0.007042253521126762,+
-3,1,usd_cny__c3,usd_cny,USD/CNY (yuan) (3 aylık değişim),fx,Kurlar,-0.00023444904096602353,-3.3956109470385316,-0.0,426,0.0,,0.0,0.0,-
-3,1,usd_inr__c12,usd_inr,USD/INR (12 aylık değişim),fx,Kurlar,1.0068509377888364e-05,0.14584372183331085,0.0,426,0.0,,0.0,0.0,-
-3,1,usd_inr__c3,usd_inr,USD/INR (3 aylık değişim),fx,Kurlar,-5.0898864989019166e-06,-0.07372713642245235,0.0,426,0.0,,0.0,0.0,-
-3,1,usd_jpy__c12,usd_jpy,USD/JPY (12 aylık değişim),fx,Kurlar,4.649771894423179e-06,0.06735239308822438,-0.0,426,0.0,,0.0,0.0,-
-3,1,usd_jpy__c3,usd_jpy,USD/JPY (3 aylık değişim),fx,Kurlar,9.844015096436426e-05,1.4259819250148722,-0.0,426,67.13615023474179,0.0,-0.0011471903468024223,0.6713615023474179,-
-3,1,usd_krw__c12,usd_krw,USD/KRW (12 aylık değişim),fx,Kurlar,-6.975840173496302e-06,-0.10104512846585406,0.0,426,0.0,,0.0,0.0,-
+3,1,us_ppi__c3,us_ppi,ABD ÜFE (3 aylık değişim),us_macro,ABD ekonomisi,-6.961682981915212e-05,-1.0083690308475597,-0.0,426,0.0,,0.0,0.0,-
+3,1,usd_cny__c12,usd_cny,USD/CNY (yuan) (12 aylık değişim),fx,Kurlar,0.0,0.0,0.0,426,0.7042253521126761,100.0,5.875257573597899e-07,0.007042253521126762,+
+3,1,usd_cny__c3,usd_cny,USD/CNY (yuan) (3 aylık değişim),fx,Kurlar,-0.00018123484114969553,-2.6249601269307057,-0.0,426,0.0,,0.0,0.0,-
+3,1,usd_inr__c12,usd_inr,USD/INR (12 aylık değişim),fx,Kurlar,2.0104274281819255e-06,0.029121196222628404,0.0,426,0.0,,0.0,0.0,-
+3,1,usd_inr__c3,usd_inr,USD/INR (3 aylık değişim),fx,Kurlar,-2.688672699910756e-05,-0.38945068545126377,0.0,426,0.0,,0.0,0.0,-
+3,1,usd_jpy__c12,usd_jpy,USD/JPY (12 aylık değişim),fx,Kurlar,7.441470169048078e-06,0.10779056154948362,-0.0,426,0.0,,0.0,0.0,-
+3,1,usd_jpy__c3,usd_jpy,USD/JPY (3 aylık değişim),fx,Kurlar,7.367008742674063e-05,1.067155128981133,-0.0,426,67.13615023474179,0.0,-0.0011471903468024223,0.6713615023474179,-
+3,1,usd_krw__c12,usd_krw,USD/KRW (12 aylık değişim),fx,Kurlar,-3.492272557054021e-05,-0.505849029694931,0.0,426,0.0,,0.0,0.0,-
 3,1,usd_krw__c3,usd_krw,USD/KRW (3 aylık değişim),fx,Kurlar,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-3,1,vix__c12,vix,VIX korku endeksi (12 aylık değişim),risk,Risk,-0.0002697264566102845,-3.9064777180236447,0.0,426,0.0,,0.0,0.0,-
-3,1,vix__c3,vix,VIX korku endeksi (3 aylık değişim),risk,Risk,-3.0244525616684038e-05,-0.43808721893634894,0.0,426,0.0,,0.0,0.0,-
-3,1,vol18,vol18,Bakır oynaklığı,copper,Bakırın kendisi,-0.00011154814680739038,-1.6156917628779333,0.0,426,0.0,,0.0,0.0,-
-3,1,zinc__c12,zinc,Çinko fiyatı (12 aylık değişim),metals,Metaller,-0.00024114594595009344,-3.492592969466679,-0.0,426,0.0,,0.0,0.0,-
-3,1,zinc__c3,zinc,Çinko fiyatı (3 aylık değişim),metals,Metaller,1.0745494307980373e-05,0.15564999291173065,-0.0,426,0.0,,0.0,0.0,-
-3,1,zinc_stock__c12,zinc_stock,LME çinko stoku (12 aylık değişim),inventories,Stoklar,2.840269173519791e-05,0.4114206076509165,0.0,426,36.85446009389671,100.0,0.00037592929670795497,0.3685446009389671,+
+3,1,vix__c12,vix,VIX korku endeksi (12 aylık değişim),risk,Risk,-0.00013755037956492515,-1.9922888217140469,0.0,426,0.0,,0.0,0.0,-
+3,1,vix__c3,vix,VIX korku endeksi (3 aylık değişim),risk,Risk,-2.598298975633419e-05,-0.37636034105200517,0.0,426,0.0,,0.0,0.0,-
+3,1,vol18,vol18,Bakır oynaklığı,copper,Bakırın kendisi,-9.106327706439632e-05,-1.3189972027166392,0.0,426,0.0,,0.0,0.0,-
+3,1,zinc__c12,zinc,Çinko fiyatı (12 aylık değişim),metals,Metaller,-0.0001736909043959611,-2.515705121983749,-0.0,426,0.0,,0.0,0.0,-
+3,1,zinc__c3,zinc,Çinko fiyatı (3 aylık değişim),metals,Metaller,1.8000503951464916e-05,0.26074077149513314,-0.0,426,0.0,,0.0,0.0,-
+3,1,zinc_stock__c12,zinc_stock,LME çinko stoku (12 aylık değişim),inventories,Stoklar,0.0,0.0,0.0,426,36.85446009389671,100.0,0.00037592929670795497,0.3685446009389671,+
 3,1,zinc_stock__c3,zinc_stock,LME çinko stoku (3 aylık değişim),inventories,Stoklar,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-9,3,aluminum__c12,aluminum,Alüminyum fiyatı (12 aylık değişim),metals,Metaller,-5.2138951342498744e-05,-0.7552162806165077,-0.0,426,0.0,,0.0,0.0,-
-9,3,aluminum__c3,aluminum,Alüminyum fiyatı (3 aylık değişim),metals,Metaller,7.482366559972933e-05,1.083866021598671,-0.0,426,0.0,,0.0,0.0,-
-9,3,aluminum_stock__c12,aluminum_stock,LME alüminyum stoku (12 aylık değişim),inventories,Stoklar,0.00038506578785332465,5.578776032626901,0.0,426,0.0,,0.0,0.0,-
-9,3,aluminum_stock__c3,aluminum_stock,LME alüminyum stoku (3 aylık değişim),inventories,Stoklar,0.00035444442346202785,5.135059619487624,-0.0,426,8.450704225352112,0.0,-0.0010538905867226976,0.08450704225352113,-
-9,3,brent__c12,brent,Brent petrol (12 aylık değişim),energy,Enerji,5.435164145846653e-05,0.7873083190601569,-0.0,426,0.0,,0.0,0.0,-
-9,3,brent__c3,brent,Brent petrol (3 aylık değişim),energy,Enerji,-0.00013211806040143296,-1.9136119481607554,-0.0,426,8.450704225352112,0.0,-0.0003756266775480515,0.08450704225352113,-
-9,3,bund_10y__c12,bund_10y,Almanya 10 yıllık faiz (12 aylık değişim),rates,Faizler,7.431470251923626e-05,1.0764931097959236,-0.0,426,0.0,,0.0,0.0,-
+9,3,aluminum__c12,aluminum,Alüminyum fiyatı (12 aylık değişim),metals,Metaller,-6.235773774957425e-06,-0.09032529124180577,-0.0,426,0.0,,0.0,0.0,-
+9,3,aluminum__c3,aluminum,Alüminyum fiyatı (3 aylık değişim),metals,Metaller,3.505753698569076e-05,0.5078195157319431,-0.0,426,0.0,,0.0,0.0,-
+9,3,aluminum_stock__c12,aluminum_stock,LME alüminyum stoku (12 aylık değişim),inventories,Stoklar,0.00016902856649367957,2.448596285475229,0.0,426,0.0,,0.0,0.0,-
+9,3,aluminum_stock__c3,aluminum_stock,LME alüminyum stoku (3 aylık değişim),inventories,Stoklar,0.0001636804539304134,2.3711156525611017,-0.0,426,8.450704225352112,0.0,-0.0010538905867226976,0.08450704225352113,-
+9,3,brent__c12,brent,Brent petrol (12 aylık değişim),energy,Enerji,2.220488174822515e-05,0.32164267093212406,-0.0,426,0.0,,0.0,0.0,-
+9,3,brent__c3,brent,Brent petrol (3 aylık değişim),energy,Enerji,-0.00016747430543967757,-2.42567265684613,-0.0,426,8.450704225352112,0.0,-0.0003756266775480515,0.08450704225352113,-
+9,3,bund_10y__c12,bund_10y,Almanya 10 yıllık faiz (12 aylık değişim),rates,Faizler,4.3993564979173834e-05,0.6372635559655548,-0.0,426,0.0,,0.0,0.0,-
 9,3,bund_10y__c3,bund_10y,Almanya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
 9,3,china_electricity__c12,china_electricity,Çin elektrik üretimi (12 aylık değişim),china,Çin ekonomisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-9,3,china_electricity__c3,china_electricity,Çin elektrik üretimi (3 aylık değişim),china,Çin ekonomisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-9,3,china_fai_yoy__c12,china_fai_yoy,Çin sabit sermaye yatırımı (12 aylık değişim),china,Çin ekonomisi,0.003282556618666241,47.62616280411319,-0.0,426,3.286384976525822,0.0,-0.00017655457342648408,0.03286384976525822,-
-9,3,china_fai_yoy__c3,china_fai_yoy,Çin sabit sermaye yatırımı (3 aylık değişim),china,Çin ekonomisi,4.743509921183341e-05,0.6871166733721041,-0.0,426,2.5821596244131455,0.0,-0.00020088170614749253,0.025821596244131453,-
-9,3,china_industrial_yoy__c12,china_industrial_yoy,Çin sanayi üretimi (12 aylık değişim),china,Çin ekonomisi,0.004756056465718517,69.05586177774316,0.0,426,0.0,,0.0,0.0,-
-9,3,china_industrial_yoy__c3,china_industrial_yoy,Çin sanayi üretimi (3 aylık değişim),china,Çin ekonomisi,-6.866923668155064e-05,-0.9946440340460935,-0.0,426,0.0,,0.0,0.0,-
-9,3,china_ppi_yoy__c12,china_ppi_yoy,Çin ÜFE (12 aylık değişim),china,Çin ekonomisi,-0.0014440771354560637,-20.902451553295066,0.0,426,19.718309859154928,100.0,0.0011028363778280107,0.19718309859154928,+
-9,3,china_ppi_yoy__c3,china_ppi_yoy,Çin ÜFE (3 aylık değişim),china,Çin ekonomisi,-7.537491081476069e-05,-1.091769147566449,0.0,426,0.0,,0.0,0.0,-
-9,3,china_real_estate_yoy__c12,china_real_estate_yoy,Çin gayrimenkul yatırımı (12 aylık değişim),china,Çin ekonomisi,-0.001982708330320813,-28.691201542740064,0.0,426,42.25352112676056,100.0,0.0021106671575339005,0.4225352112676056,+
-9,3,china_real_estate_yoy__c3,china_real_estate_yoy,Çin gayrimenkul yatırımı (3 aylık değişim),china,Çin ekonomisi,4.73817934127926e-05,0.6863444989353591,0.0,426,0.0,,0.0,0.0,-
-9,3,china_refined_copper__c12,china_refined_copper,Çin rafine bakır üretimi (12 aylık değişim),china,Çin ekonomisi,0.00013768532444637628,1.9945178347048842,0.0,426,0.0,,0.0,0.0,-
-9,3,china_refined_copper__c3,china_refined_copper,Çin rafine bakır üretimi (3 aylık değişim),china,Çin ekonomisi,3.9159232751325146e-05,0.5672350400258004,0.0,426,0.0,,0.0,0.0,-
-9,3,coal__c12,coal,Kömür (12 aylık değişim),energy,Enerji,-8.063306002596541e-05,-1.1679278266122497,-0.0,426,0.0,,0.0,0.0,-
-9,3,coal__c3,coal,Kömür (3 aylık değişim),energy,Enerji,8.654431999102092e-05,1.2536541316293397,0.0,426,0.0,,0.0,0.0,-
+9,3,china_electricity__c3,china_electricity,Çin elektrik üretimi (3 aylık değişim),china,Çin ekonomisi,-1.5482960512219903e-05,-0.224269914518596,0.0,426,0.0,,0.0,0.0,-
+9,3,china_fai_yoy__c12,china_fai_yoy,Çin sabit sermaye yatırımı (12 aylık değişim),china,Çin ekonomisi,0.002517710470242254,36.51514150669658,-0.0,426,3.286384976525822,0.0,-0.00017655457342648408,0.03286384976525822,-
+9,3,china_fai_yoy__c3,china_fai_yoy,Çin sabit sermaye yatırımı (3 aylık değişim),china,Çin ekonomisi,5.4824228982638524e-05,0.7941541525745761,-0.0,426,2.5821596244131455,0.0,-0.00020088170614749253,0.025821596244131453,-
+9,3,china_industrial_yoy__c12,china_industrial_yoy,Çin sanayi üretimi (12 aylık değişim),china,Çin ekonomisi,0.0033414118270678893,48.481512394641214,0.0,426,0.0,,0.0,0.0,-
+9,3,china_industrial_yoy__c3,china_industrial_yoy,Çin sanayi üretimi (3 aylık değişim),china,Çin ekonomisi,-5.1873449317693074e-05,-0.7513706671943068,-0.0,426,0.0,,0.0,0.0,-
+9,3,china_ppi_yoy__c12,china_ppi_yoy,Çin ÜFE (12 aylık değişim),china,Çin ekonomisi,-0.0009770609168739835,-14.145876630270568,0.0,426,19.718309859154928,100.0,0.0011028363778280107,0.19718309859154928,+
+9,3,china_ppi_yoy__c3,china_ppi_yoy,Çin ÜFE (3 aylık değişim),china,Çin ekonomisi,-8.324936334258137e-05,-1.2058220384479557,0.0,426,0.0,,0.0,0.0,-
+9,3,china_real_estate_yoy__c12,china_real_estate_yoy,Çin gayrimenkul yatırımı (12 aylık değişim),china,Çin ekonomisi,-0.0011033816433626375,-15.973737880280389,0.0,426,42.25352112676056,100.0,0.0021106671575339005,0.4225352112676056,+
+9,3,china_real_estate_yoy__c3,china_real_estate_yoy,Çin gayrimenkul yatırımı (3 aylık değişim),china,Çin ekonomisi,3.174009035276481e-05,0.4597644889612913,0.0,426,0.0,,0.0,0.0,-
+9,3,china_refined_copper__c12,china_refined_copper,Çin rafine bakır üretimi (12 aylık değişim),china,Çin ekonomisi,8.557291397565364e-05,1.2395820438125815,0.0,426,0.0,,0.0,0.0,-
+9,3,china_refined_copper__c3,china_refined_copper,Çin rafine bakır üretimi (3 aylık değişim),china,Çin ekonomisi,3.295721112110366e-05,0.47739512967792896,0.0,426,0.0,,0.0,0.0,-
+9,3,coal__c12,coal,Kömür (12 aylık değişim),energy,Enerji,2.9390344386246854e-05,0.4257272314366513,-0.0,426,0.0,,0.0,0.0,-
+9,3,coal__c3,coal,Kömür (3 aylık değişim),energy,Enerji,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
 9,3,dollar_index__c12,dollar_index,Dolar endeksi (DXY) (12 aylık değişim),fx,Kurlar,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-9,3,dollar_index__c3,dollar_index,Dolar endeksi (DXY) (3 aylık değişim),fx,Kurlar,-0.00020134113905671084,-2.9161454031883443,-0.0,426,0.0,,0.0,0.0,-
+9,3,dollar_index__c3,dollar_index,Dolar endeksi (DXY) (3 aylık değişim),fx,Kurlar,-0.0001346010074410442,-1.9495727951724129,-0.0,426,0.0,,0.0,0.0,-
 9,3,ecb_rate__c12,ecb_rate,ECB faizi (12 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,3.051643192488263,0.0,-1.9615838248548557e-05,0.03051643192488263,-
 9,3,ecb_rate__c3,ecb_rate,ECB faizi (3 aylık değişim),rates,Faizler,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-9,3,eod_gap,eod_gap,Dönem sonu fiyatı / dönem ortalaması,copper,Bakırın kendisi,-7.877591325286179e-06,-0.11410695325227231,0.0,426,0.0,,0.0,0.0,-
-9,3,eur_usd__c12,eur_usd,EUR/USD (12 aylık değişim),fx,Kurlar,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-9,3,eur_usd__c3,eur_usd,EUR/USD (3 aylık değişim),fx,Kurlar,-6.465703480726204e-05,-0.9365309132649172,0.0,426,0.0,,0.0,0.0,-
-9,3,euro_area_copper_ppi__c12,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-0.00029980266643942546,-4.342009455513312,0.0,426,0.0,,0.0,0.0,-
-9,3,euro_area_copper_ppi__c3,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,-0.001667770867286494,-24.137631634081416,-0.0,426,0.0,,0.0,0.0,-
-9,3,euro_area_industrial_production__c12,euro_area_industrial_production,Euro bölgesi sanayi üretimi (12 aylık değişim),europe,Avrupa ekonomisi,0.00021705240365024557,3.1443588656302905,-0.0,426,2.112676056338028,0.0,-9.461423245115246e-05,0.02112676056338028,-
-9,3,euro_area_industrial_production__c3,euro_area_industrial_production,Euro bölgesi sanayi üretimi (3 aylık değişim),europe,Avrupa ekonomisi,0.00040007003904280966,5.796198885359687,0.0,426,0.4694835680751174,100.0,5.171444726000695e-07,0.004694835680751174,+
-9,3,euro_area_ppi__c12,euro_area_ppi,Euro bölgesi ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-0.0002644352565910806,-3.8298548222861917,-0.0,426,0.0,,0.0,0.0,-
-9,3,euro_area_ppi__c3,euro_area_ppi,Euro bölgesi ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,0.00039121669228225,5.66790685634884,-0.0,426,0.0,,0.0,0.0,-
-9,3,fed_rate__c12,fed_rate,Fed faizi (12 aylık değişim),rates,Faizler,-0.0033424318734059637,-48.334512182403394,-0.0,426,0.0,,-7.669306809638868e-21,0.0,-
-9,3,fed_rate__c3,fed_rate,Fed faizi (3 aylık değişim),rates,Faizler,-3.260996931978089e-05,-0.4723497420229699,-0.0,426,1.643192488262911,0.0,-7.332182189271898e-06,0.01643192488262911,-
+9,3,eod_gap,eod_gap,Dönem sonu fiyatı / dönem ortalaması,copper,Bakırın kendisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
+9,3,eur_usd__c12,eur_usd,EUR/USD (12 aylık değişim),fx,Kurlar,3.107405398826322e-05,0.4501166075869322,0.0,426,0.0,,0.0,0.0,-
+9,3,eur_usd__c3,eur_usd,EUR/USD (3 aylık değişim),fx,Kurlar,-2.268217184652408e-05,-0.32854895071609846,0.0,426,0.0,,0.0,0.0,-
+9,3,euro_area_copper_ppi__c12,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-0.00018395211066030221,-2.664312759430005,0.0,426,0.0,,0.0,0.0,-
+9,3,euro_area_copper_ppi__c3,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,-0.0005547122143076613,-8.032812938054944,-0.0,426,0.0,,0.0,0.0,-
+9,3,euro_area_industrial_production__c12,euro_area_industrial_production,Euro bölgesi sanayi üretimi (12 aylık değişim),europe,Avrupa ekonomisi,0.00011641345378044306,1.6863543091093098,-0.0,426,2.112676056338028,0.0,-9.461423245115246e-05,0.02112676056338028,-
+9,3,euro_area_industrial_production__c3,euro_area_industrial_production,Euro bölgesi sanayi üretimi (3 aylık değişim),europe,Avrupa ekonomisi,0.00013816968075691454,2.001534733891506,0.0,426,0.4694835680751174,100.0,5.171444726000695e-07,0.004694835680751174,+
+9,3,euro_area_ppi__c12,euro_area_ppi,Euro bölgesi ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-2.4690156640658868e-05,-0.3576340470359689,-0.0,426,0.0,,0.0,0.0,-
+9,3,euro_area_ppi__c3,euro_area_ppi,Euro bölgesi ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,0.00019711713101120133,2.855535390743472,-0.0,426,0.0,,0.0,0.0,-
+9,3,fed_rate__c12,fed_rate,Fed faizi (12 aylık değişim),rates,Faizler,-0.002468600406247697,-35.71373156930788,-0.0,426,0.0,,-7.669306809638868e-21,0.0,-
+9,3,fed_rate__c3,fed_rate,Fed faizi (3 aylık değişim),rates,Faizler,-7.60807465511473e-05,-1.1019924481042718,-0.0,426,1.643192488262911,0.0,-7.332182189271898e-06,0.01643192488262911,-
 9,3,finbert_net,finbert_net,Başlık duyarlılığı (FinBERT),news,Haberler,0.0,0.0,,0,,,,0.0,-
 9,3,finbert_net_c9,finbert_net_c9,Başlık duyarlılığı 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
-9,3,geopolitical_risk__c12,geopolitical_risk,Jeopolitik risk endeksi (12 aylık değişim),risk,Risk,0.00027483956274102807,3.981615371427073,-0.0,426,0.2347417840375587,100.0,1.2480061178468015e-06,0.002347417840375587,+
-9,3,geopolitical_risk__c3,geopolitical_risk,Jeopolitik risk endeksi (3 aylık değişim),risk,Risk,5.028466497029017e-05,0.7283948282778572,-0.0,426,0.0,,0.0,0.0,-
-9,3,germany_exports__c12,germany_exports,Almanya ihracatı (12 aylık değişim),europe,Avrupa ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-9,3,germany_exports__c3,germany_exports,Almanya ihracatı (3 aylık değişim),europe,Avrupa ekonomisi,-4.764299669934033e-05,-0.6900953456423227,0.0,426,0.0,,0.0,0.0,-
-9,3,germany_order_books__c12,germany_order_books,Almanya sanayi siparişleri (12 aylık değişim),europe,Avrupa ekonomisi,-0.0001533310992001493,-2.220840288815556,-0.0,426,0.0,,0.0,0.0,-
-9,3,germany_order_books__c3,germany_order_books,Almanya sanayi siparişleri (3 aylık değişim),europe,Avrupa ekonomisi,-0.00013441485406042776,-1.9468767144883923,0.0,426,0.0,,0.0,0.0,-
-9,3,gold__c12,gold,Altın (12 aylık değişim),precious,Değerli metaller,-0.0008027399759099646,-11.623072945505845,0.0017155777024015844,426,6.572769953051644,100.0,7.972330577050017e-05,0.06572769953051644,+
-9,3,gold__c3,gold,Altın (3 aylık değişim),precious,Değerli metaller,-1.8364060677141822e-06,-0.026600432242186008,0.0,426,8.450704225352112,100.0,0.00025833757558305624,0.08450704225352113,+
-9,3,india_industrial_production__c12,india_industrial_production,Hindistan sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,3.129494928044784e-05,0.45331638948176844,0.0,426,0.0,,0.0,0.0,-
-9,3,india_industrial_production__c3,india_industrial_production,Hindistan sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,0.00017541905515025734,2.541178856623315,0.0,426,0.0,,0.0,0.0,-
-9,3,iron_ore__c12,iron_ore,Demir cevheri (12 aylık değişim),bulk,Hammadde,7.861505762287997e-05,1.1387887854961642,0.0,426,0.0,,0.0,0.0,-
-9,3,iron_ore__c3,iron_ore,Demir cevheri (3 aylık değişim),bulk,Hammadde,0.00018289506707919444,2.649488759408894,-0.0,426,8.450704225352112,0.0,-0.0004085436412773172,0.08450704225352113,-
-9,3,japan_10y__c12,japan_10y,Japonya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.00567844459901807,82.48660107031685,0.0,426,2.5821596244131455,0.0,-2.951157299141321e-05,0.025821596244131453,-
+9,3,finbert_supply,finbert_supply,Madencilik / Şili / Peru haber duyarlılığı,news,Haberler,-0.0018079659081822418,-26.164839481828878,,0,,,,0.0,-
+9,3,finbert_supply_c9,finbert_supply_c9,Madencilik / Şili / Peru duyarlılığı 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
+9,3,geopolitical_risk__c12,geopolitical_risk,Jeopolitik risk endeksi (12 aylık değişim),risk,Risk,4.947177388858408e-06,0.07166035093458363,-0.0,426,0.2347417840375587,100.0,1.2480061178468015e-06,0.002347417840375587,+
+9,3,geopolitical_risk__c3,geopolitical_risk,Jeopolitik risk endeksi (3 aylık değişim),risk,Risk,8.204518259176333e-05,1.1884783514618351,-0.0,426,0.0,,0.0,0.0,-
+9,3,germany_exports__c12,germany_exports,Almanya ihracatı (12 aylık değişim),europe,Avrupa ekonomisi,2.075272334721857e-05,0.3006076139314492,-0.0,426,0.0,,0.0,0.0,-
+9,3,germany_exports__c3,germany_exports,Almanya ihracatı (3 aylık değişim),europe,Avrupa ekonomisi,-3.693332033048921e-05,-0.5349715741210707,0.0,426,0.0,,0.0,0.0,-
+9,3,germany_order_books__c12,germany_order_books,Almanya sanayi siparişleri (12 aylık değişim),europe,Avrupa ekonomisi,-2.4287923886970433e-05,-0.35180782313926895,-0.0,426,0.0,,0.0,0.0,-
+9,3,germany_order_books__c3,germany_order_books,Almanya sanayi siparişleri (3 aylık değişim),europe,Avrupa ekonomisi,-5.060924402505989e-05,-0.7330595128299242,0.0,426,0.0,,0.0,0.0,-
+9,3,gold__c12,gold,Altın (12 aylık değişim),precious,Değerli metaller,-0.000469196686631935,-6.7947491691054465,0.0017155777024015844,426,6.572769953051644,100.0,7.972330577050017e-05,0.06572769953051644,+
+9,3,gold__c3,gold,Altın (3 aylık değişim),precious,Değerli metaller,0.00015171858561257274,2.1978199158576617,0.0,426,8.450704225352112,100.0,0.00025833757558305624,0.08450704225352113,+
+9,3,india_industrial_production__c12,india_industrial_production,Hindistan sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,2.1835589930544587e-05,0.31629333808222865,0.0,426,0.0,,0.0,0.0,-
+9,3,india_industrial_production__c3,india_industrial_production,Hindistan sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,0.0001388291167964841,2.011088029173287,0.0,426,0.0,,0.0,0.0,-
+9,3,iron_ore__c12,iron_ore,Demir cevheri (12 aylık değişim),bulk,Hammadde,-3.685471198719834e-05,-0.5338329693641372,0.0,426,0.0,,0.0,0.0,-
+9,3,iron_ore__c3,iron_ore,Demir cevheri (3 aylık değişim),bulk,Hammadde,7.63725800989668e-05,1.106303841121311,-0.0,426,8.450704225352112,0.0,-0.0004085436412773172,0.08450704225352113,-
+9,3,japan_10y__c12,japan_10y,Japonya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.003603621691403011,52.29285066184622,0.0,426,2.5821596244131455,0.0,-2.951157299141321e-05,0.025821596244131453,-
 9,3,japan_10y__c3,japan_10y,Japonya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-9,3,japan_industrial_production__c12,japan_industrial_production,Japonya sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,0.000294816887570676,4.2710706034514345,0.0,426,38.26291079812207,100.0,0.0011709039919997266,0.38262910798122074,+
-9,3,japan_industrial_production__c3,japan_industrial_production,Japonya sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-0.0001429438025825796,-2.0704019353080936,0.0,426,7.981220657276995,100.0,0.0004328964377184563,0.07981220657276995,+
-9,3,japan_ppi__c12,japan_ppi,Japonya ÜFE (12 aylık değişim),asia,Asya ekonomisi,-0.00010437799782718005,-1.5118429192098939,-0.0,426,5.633802816901409,0.0,-0.0002888657319867137,0.05633802816901409,-
-9,3,japan_ppi__c3,japan_ppi,Japonya ÜFE (3 aylık değişim),asia,Asya ekonomisi,0.0,0.0,-0.0,426,6.338028169014084,0.0,-0.0001266949725814222,0.06338028169014084,-
-9,3,korea_10y__c12,korea_10y,Kore 10 yıllık faiz (12 aylık değişim),rates,Faizler,6.852317480522355e-05,0.9925964772953455,0.0,426,0.9389671361502347,100.0,9.884061453718894e-06,0.009389671361502348,+
-9,3,korea_10y__c3,korea_10y,Kore 10 yıllık faiz (3 aylık değişim),rates,Faizler,-1.1119450001988397e-05,-0.16106503276502743,-0.0,426,0.0,,0.0,0.0,-
-9,3,korea_exports__c12,korea_exports,Kore ihracatı (12 aylık değişim),asia,Asya ekonomisi,8.08351016673373e-05,1.170948826090558,0.0,426,0.0,,0.0,0.0,-
-9,3,korea_exports__c3,korea_exports,Kore ihracatı (3 aylık değişim),asia,Asya ekonomisi,8.52362861084124e-05,1.2347055516578078,0.0,426,0.0,,0.0,0.0,-
-9,3,korea_industrial_production__c12,korea_industrial_production,Kore sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,3.869536997480568e-05,0.5605156971564464,0.0,426,0.7042253521126761,100.0,1.0781152638566419e-05,0.007042253521126762,+
-9,3,korea_industrial_production__c3,korea_industrial_production,Kore sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,0.00015217642761988299,2.2044527937229024,-0.0,426,8.450704225352112,0.0,-0.0007695016842966631,0.08450704225352113,-
-9,3,lead__c12,lead,Kurşun fiyatı (12 aylık değişim),metals,Metaller,-8.993392678690547e-05,-1.3026399737361687,-0.0,426,0.0,,0.0,0.0,-
-9,3,lead__c3,lead,Kurşun fiyatı (3 aylık değişim),metals,Metaller,-1.636755479157367e-05,-0.23708311388735934,0.0,426,0.0,,0.0,0.0,-
-9,3,ma36_gap,ma36_gap,Bakır 12 aylık ortalamadan sapma,copper,Bakırın kendisi,-0.0002415289429139326,-3.4981393657094437,0.0,426,0.4694835680751174,0.0,-5.162244898690028e-07,0.004694835680751174,-
+9,3,japan_industrial_production__c12,japan_industrial_production,Japonya sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,8.783192040565228e-05,1.272306730323611,0.0,426,38.26291079812207,100.0,0.0011709039919997266,0.38262910798122074,+
+9,3,japan_industrial_production__c3,japan_industrial_production,Japonya sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-0.00025987024496455097,-3.763747676005299,0.0,426,7.981220657276995,100.0,0.0004328964377184563,0.07981220657276995,+
+9,3,japan_ppi__c12,japan_ppi,Japonya ÜFE (12 aylık değişim),asia,Asya ekonomisi,-5.599663297956373e-05,-0.811092019075601,-0.0,426,5.633802816901409,0.0,-0.0002888657319867137,0.05633802816901409,-
+9,3,japan_ppi__c3,japan_ppi,Japonya ÜFE (3 aylık değişim),asia,Asya ekonomisi,-6.01488216597123e-06,-0.08712568207836299,-0.0,426,6.338028169014084,0.0,-0.0001266949725814222,0.06338028169014084,-
+9,3,korea_10y__c12,korea_10y,Kore 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.0001965711825211887,2.8476257359281694,0.0,426,0.9389671361502347,100.0,9.884061453718894e-06,0.009389671361502348,+
+9,3,korea_10y__c3,korea_10y,Kore 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
+9,3,korea_exports__c12,korea_exports,Kore ihracatı (12 aylık değişim),asia,Asya ekonomisi,6.236168514736654e-05,0.9033410736084637,0.0,426,0.0,,0.0,0.0,-
+9,3,korea_exports__c3,korea_exports,Kore ihracatı (3 aylık değişim),asia,Asya ekonomisi,0.00015042216593195187,2.179038358634764,0.0,426,0.0,,0.0,0.0,-
+9,3,korea_industrial_production__c12,korea_industrial_production,Kore sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-0.00011207296930336779,-1.623292999586792,0.0,426,0.7042253521126761,100.0,1.0781152638566419e-05,0.007042253521126762,+
+9,3,korea_industrial_production__c3,korea_industrial_production,Kore sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,6.755048377880107e-05,0.9785060283480868,-0.0,426,8.450704225352112,0.0,-0.0007695016842966631,0.08450704225352113,-
+9,3,lead__c12,lead,Kurşun fiyatı (12 aylık değişim),metals,Metaller,-8.714478494758578e-05,-1.2622426567841676,-0.0,426,0.0,,0.0,0.0,-
+9,3,lead__c3,lead,Kurşun fiyatı (3 aylık değişim),metals,Metaller,3.3690870455962285e-05,0.4880225851404488,0.0,426,0.0,,0.0,0.0,-
+9,3,ma36_gap,ma36_gap,Bakır 12 aylık ortalamadan sapma,copper,Bakırın kendisi,-0.00019477846496025676,-2.8211034845819465,0.0,426,0.4694835680751174,0.0,-5.162244898690028e-07,0.004694835680751174,-
 9,3,natural_gas__c12,natural_gas,Doğal gaz (12 aylık değişim),energy,Enerji,0.0,0.0,0.0,426,5.164319248826291,100.0,9.670975869729425e-05,0.05164319248826291,+
-9,3,natural_gas__c3,natural_gas,Doğal gaz (3 aylık değişim),energy,Enerji,0.0007511394696247095,10.884389499251867,0.0,426,2.3474178403755865,100.0,1.6696039260602467e-05,0.023474178403755864,+
+9,3,natural_gas__c3,natural_gas,Doğal gaz (3 aylık değişim),energy,Enerji,0.00018966125793970205,2.7475157154942065,0.0,426,2.3474178403755865,100.0,1.6696039260602467e-05,0.023474178403755864,+
 9,3,news_attention_c9,news_attention_c9,Bakır haberlerine ilgi 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
 9,3,news_tone,news_tone,Haber tonu (GDELT),news,Haberler,0.0,0.0,,0,,,,0.0,-
 9,3,news_tone_c9,news_tone_c9,Haber tonu 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
-9,3,nickel__c12,nickel,Nikel fiyatı (12 aylık değişim),metals,Metaller,0.0003127003827443817,4.5301928474301905,-0.0,426,0.0,,0.0,0.0,-
-9,3,nickel__c3,nickel,Nikel fiyatı (3 aylık değişim),metals,Metaller,-8.608235097030907e-05,-1.2468545670962174,-0.0,426,0.0,,0.0,0.0,-
-9,3,nickel_stock__c12,nickel_stock,LME nikel stoku (12 aylık değişim),inventories,Stoklar,7.766537142810073e-05,1.125031446647358,0.0,426,0.0,,0.0,0.0,-
-9,3,nickel_stock__c3,nickel_stock,LME nikel stoku (3 aylık değişim),inventories,Stoklar,7.235919973254523e-05,1.048165452324333,0.0,426,0.0,,0.0,0.0,-
-9,3,peru_diesel__c12,peru_diesel,Peru dizel fiyatı (12 aylık değişim),mining_costs,Madencilik maliyeti,-0.001066761978247158,-15.443874993643954,-0.0,158,0.0,,0.0,0.0,-
-9,3,peru_diesel__c3,peru_diesel,Peru dizel fiyatı (3 aylık değişim),mining_costs,Madencilik maliyeti,0.00021691353576531105,3.142346919126616,0.0,426,8.450704225352112,100.0,0.0003401156694183919,0.08450704225352113,+
-9,3,peru_usd_pen__c12,peru_usd_pen,USD/PEN (Peru) (12 aylık değişim),fx,Kurlar,-5.85551523204067e-05,-0.8481502090341508,-0.0,426,0.0,,0.0,0.0,-
-9,3,peru_usd_pen__c3,peru_usd_pen,USD/PEN (Peru) (3 aylık değişim),fx,Kurlar,0.0001652309956503281,2.393579040212078,0.0,426,0.0,,0.0,0.0,-
-9,3,platinum__c12,platinum,Platin (12 aylık değişim),precious,Değerli metaller,-0.00021512572257995912,-3.1157743833043896,0.0,426,0.0,,0.0,0.0,-
-9,3,platinum__c3,platinum,Platin (3 aylık değişim),precious,Değerli metaller,8.134413453861192e-06,0.11782796651097825,0.0,426,0.0,,0.0,0.0,-
-9,3,policy_uncertainty__c12,policy_uncertainty,Ekonomi politikası belirsizliği (12 aylık değişim),risk,Risk,-0.00010518232726988107,-1.5234924607532545,0.0,426,3.755868544600939,100.0,1.885752716166119e-05,0.03755868544600939,+
+9,3,nickel__c12,nickel,Nikel fiyatı (12 aylık değişim),metals,Metaller,0.0001143784279467798,1.6568734309430122,-0.0,426,0.0,,0.0,0.0,-
+9,3,nickel__c3,nickel,Nikel fiyatı (3 aylık değişim),metals,Metaller,-2.9735627418301083e-05,-0.43071601779337887,-0.0,426,0.0,,0.0,0.0,-
+9,3,nickel_stock__c12,nickel_stock,LME nikel stoku (12 aylık değişim),inventories,Stoklar,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
+9,3,nickel_stock__c3,nickel_stock,LME nikel stoku (3 aylık değişim),inventories,Stoklar,5.1189969846001625e-05,0.7415088913401295,0.0,426,0.0,,0.0,0.0,-
+9,3,peru_diesel__c12,peru_diesel,Peru dizel fiyatı (12 aylık değişim),mining_costs,Madencilik maliyeti,-0.0009118635821309067,-13.202380678761482,-0.0,158,0.0,,0.0,0.0,-
+9,3,peru_diesel__c3,peru_diesel,Peru dizel fiyatı (3 aylık değişim),mining_costs,Madencilik maliyeti,0.00029266400215856764,4.239876762155395,0.0,426,8.450704225352112,100.0,0.0003401156694183919,0.08450704225352113,+
+9,3,peru_usd_pen__c12,peru_usd_pen,USD/PEN (Peru) (12 aylık değişim),fx,Kurlar,-5.053664544356227e-05,-0.7320079710201862,-0.0,426,0.0,,0.0,0.0,-
+9,3,peru_usd_pen__c3,peru_usd_pen,USD/PEN (Peru) (3 aylık değişim),fx,Kurlar,8.276483337968034e-05,1.198903397141948,0.0,426,0.0,,0.0,0.0,-
+9,3,platinum__c12,platinum,Platin (12 aylık değişim),precious,Değerli metaller,7.646333097237402e-05,1.107618473651271,0.0,426,0.0,,0.0,0.0,-
+9,3,platinum__c3,platinum,Platin (3 aylık değişim),precious,Değerli metaller,-5.757418849852811e-05,-0.8339417117982364,0.0,426,0.0,,0.0,0.0,-
+9,3,policy_uncertainty__c12,policy_uncertainty,Ekonomi politikası belirsizliği (12 aylık değişim),risk,Risk,-0.00018610552795974268,-2.695499372645165,0.0,426,3.755868544600939,100.0,1.885752716166119e-05,0.03755868544600939,+
 9,3,policy_uncertainty__c3,policy_uncertainty,Ekonomi politikası belirsizliği (3 aylık değişim),risk,Risk,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-9,3,r1,r1,Bakır son 10 günlük getiri,copper,Bakırın kendisi,2.8980343989577454e-05,0.4197881767335444,0.0,426,0.0,,0.0,0.0,-
-9,3,r18,r18,Bakır 6 aylık getiri,copper,Bakırın kendisi,-0.0007241827247277818,-10.486034668248594,-0.0,426,7.746478873239436,0.0,-0.00021087513333961286,0.07746478873239436,-
-9,3,r3,r3,Bakır 1 aylık getiri,copper,Bakırın kendisi,0.0002270870602169336,3.2897437751679983,-0.0,426,8.215962441314554,0.0,-5.896418216022798e-05,0.08215962441314555,-
-9,3,r36,r36,Bakır 12 aylık getiri,copper,Bakırın kendisi,3.896229385877451e-05,0.5643822564291117,0.0,426,0.0,,0.0,0.0,-
-9,3,r9,r9,Bakır 3 aylık getiri,copper,Bakırın kendisi,-0.0005769759100982681,-8.355121535055419,-0.0,426,8.450704225352112,0.0,-0.0006167484621607223,0.08450704225352113,-
-9,3,silver__c12,silver,Gümüş (12 aylık değişim),precious,Değerli metaller,5.996115511790725e-05,0.8685671193395449,0.0,426,0.0,,0.0,0.0,-
-9,3,silver__c3,silver,Gümüş (3 aylık değişim),precious,Değerli metaller,-6.918695937881569e-05,-1.0021427627821307,0.0,426,0.0,,0.0,0.0,-
-9,3,spread_3m,spread_3m,3 ay vadeli - nakit farkı,copper,Bakırın kendisi,-0.0005832516644565768,-8.445973509398305,0.0,426,8.450704225352112,100.0,0.0011333087315354342,0.08450704225352113,+
-9,3,stock_c36,stock_c36,LME bakır stoku 12 aylık değişim,copper,Bakırın kendisi,3.249578738101859e-05,0.47071115922412826,0.0,426,0.0,,0.0,0.0,-
-9,3,stock_c9,stock_c9,LME bakır stoku 3 aylık değişim,copper,Bakırın kendisi,-1.2835983188053851e-05,-0.1859288254352222,-0.0,426,0.0,,0.0,0.0,-
-9,3,stock_z72,stock_z72,LME bakır stoku seviyesi,copper,Bakırın kendisi,0.00015515680591173095,2.2476303939981377,0.0,426,0.0,,0.0,0.0,-
+9,3,r1,r1,Bakır son 10 günlük getiri,copper,Bakırın kendisi,1.878335470278825e-05,0.27208062211609696,0.0,426,0.0,,0.0,0.0,-
+9,3,r18,r18,Bakır 6 aylık getiri,copper,Bakırın kendisi,-0.0004550928117918706,-6.590548052836919,-0.0,426,7.746478873239436,0.0,-0.00021087513333961286,0.07746478873239436,-
+9,3,r3,r3,Bakır 1 aylık getiri,copper,Bakırın kendisi,0.00010995720750081618,1.5928245926423084,-0.0,426,8.215962441314554,0.0,-5.896418216022798e-05,0.08215962441314555,-
+9,3,r36,r36,Bakır 12 aylık getiri,copper,Bakırın kendisi,6.160252854554134e-05,0.892343961179397,0.0,426,0.0,,0.0,0.0,-
+9,3,r9,r9,Bakır 3 aylık getiri,copper,Bakırın kendisi,-0.00037366539846853705,-5.411555532411579,-0.0,426,8.450704225352112,0.0,-0.0006167484621607223,0.08450704225352113,-
+9,3,silver__c12,silver,Gümüş (12 aylık değişim),precious,Değerli metaller,4.089273766898581e-05,0.5923459721724155,0.0,426,0.0,,0.0,0.0,-
+9,3,silver__c3,silver,Gümüş (3 aylık değişim),precious,Değerli metaller,-3.158099602963632e-05,-0.4574454779709841,0.0,426,0.0,,0.0,0.0,-
+9,3,spread_3m,spread_3m,3 ay vadeli - nakit farkı,copper,Bakırın kendisi,-0.00018414630190343427,-2.6671251140643943,0.0,426,8.450704225352112,100.0,0.0011333087315354342,0.08450704225352113,+
+9,3,stock_c36,stock_c36,LME bakır stoku 12 aylık değişim,copper,Bakırın kendisi,0.00012170959437003704,1.7630783709007818,0.0,426,0.0,,0.0,0.0,-
+9,3,stock_c9,stock_c9,LME bakır stoku 3 aylık değişim,copper,Bakırın kendisi,9.154722339822643e-07,0.013260678596007366,-0.0,426,0.0,,0.0,0.0,-
+9,3,stock_z72,stock_z72,LME bakır stoku seviyesi,copper,Bakırın kendisi,0.0001579646530320948,2.2883086031385385,0.0,426,0.0,,0.0,0.0,-
 9,3,tin__c12,tin,Kalay fiyatı (12 aylık değişim),metals,Metaller,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-9,3,tin__c3,tin,Kalay fiyatı (3 aylık değişim),metals,Metaller,-0.00014664617471019028,-2.124023262312636,0.0,426,8.450704225352112,100.0,0.000405171936618207,0.08450704225352113,+
-9,3,us_10y__c12,us_10y,ABD 10 yıllık faiz (12 aylık değişim),rates,Faizler,-0.00017357759642911018,-2.5140641339586707,-0.0,426,0.0,,0.0,0.0,-
-9,3,us_10y__c3,us_10y,ABD 10 yıllık faiz (3 aylık değişim),rates,Faizler,-0.0005409902332260924,-7.834158047605503,-0.0,426,0.0,,0.0,0.0,-
-9,3,us_2y__c12,us_2y,ABD 2 yıllık faiz (12 aylık değişim),rates,Faizler,-0.0013556882430230998,-19.62392396365377,-0.0,426,3.755868544600939,0.0,-0.00012981690922793032,0.03755868544600939,-
-9,3,us_2y__c3,us_2y,ABD 2 yıllık faiz (3 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,9.389671361502346,0.0,-8.838968377705651e-05,0.09389671361502346,-
+9,3,tin__c3,tin,Kalay fiyatı (3 aylık değişim),metals,Metaller,-5.259016344700143e-05,-0.7617517739135237,0.0,426,8.450704225352112,100.0,0.000405171936618207,0.08450704225352113,+
+9,3,us_10y__c12,us_10y,ABD 10 yıllık faiz (12 aylık değişim),rates,Faizler,-8.168817989712272e-05,-1.1832100635243135,-0.0,426,0.0,,0.0,0.0,-
+9,3,us_10y__c3,us_10y,ABD 10 yıllık faiz (3 aylık değişim),rates,Faizler,-0.0003190426926695956,-4.620616217374083,-0.0,426,0.0,,0.0,0.0,-
+9,3,us_2y__c12,us_2y,ABD 2 yıllık faiz (12 aylık değişim),rates,Faizler,-0.00033309386573988025,-4.824081982946902,-0.0,426,3.755868544600939,0.0,-0.00012981690922793032,0.03755868544600939,-
+9,3,us_2y__c3,us_2y,ABD 2 yıllık faiz (3 aylık değişim),rates,Faizler,1.217918635133361e-05,0.17641734980536242,-0.0,426,9.389671361502346,0.0,-8.838968377705651e-05,0.09389671361502346,-
 9,3,us_cpi__c12,us_cpi,ABD enflasyonu (TÜFE) (12 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-9,3,us_cpi__c3,us_cpi,ABD enflasyonu (TÜFE) (3 aylık değişim),us_macro,ABD ekonomisi,9.084257556663849e-06,0.13158663615812605,-0.0,426,0.0,,0.0,0.0,-
-9,3,us_curve__c12,us_curve,ABD faiz eğrisi (10Y-2Y) (12 aylık değişim),rates,Faizler,0.0004267520554885525,6.182849373760759,0.0,426,0.0,,0.0,0.0,-
+9,3,us_cpi__c3,us_cpi,ABD enflasyonu (TÜFE) (3 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
+9,3,us_curve__c12,us_curve,ABD faiz eğrisi (10Y-2Y) (12 aylık değişim),rates,Faizler,0.00018601062298906866,2.6946261064323256,0.0,426,0.0,,0.0,0.0,-
 9,3,us_curve__c3,us_curve,ABD faiz eğrisi (10Y-2Y) (3 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-9,3,us_housing_starts__c12,us_housing_starts,ABD konut başlangıçları (12 aylık değişim),us_macro,ABD ekonomisi,9.348198401892228e-05,1.35415567473139,-0.0,426,0.0,,0.0,0.0,-
+9,3,us_housing_starts__c12,us_housing_starts,ABD konut başlangıçları (12 aylık değişim),us_macro,ABD ekonomisi,0.00013079975227210067,1.8947665014391073,-0.0,426,0.0,,0.0,0.0,-
 9,3,us_housing_starts__c3,us_housing_starts,ABD konut başlangıçları (3 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
 9,3,us_industrial_production__c12,us_industrial_production,ABD sanayi üretimi (12 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-9,3,us_industrial_production__c3,us_industrial_production,ABD sanayi üretimi (3 aylık değişim),us_macro,ABD ekonomisi,-0.00014140984259492154,-2.0481855878888515,0.0,426,8.450704225352112,100.0,0.0006261437802642584,0.08450704225352113,+
-9,3,us_m2__c12,us_m2,ABD para arzı (M2) (12 aylık değişim),us_macro,ABD ekonomisi,-7.422552444686141e-05,-1.075121459486771,0.0,426,1.643192488262911,100.0,6.154753743266948e-05,0.01643192488262911,+
-9,3,us_m2__c3,us_m2,ABD para arzı (M2) (3 aylık değişim),us_macro,ABD ekonomisi,0.0005513048881143014,7.987887439269331,0.0,426,0.0,,0.0,0.0,-
-9,3,us_ppi__c12,us_ppi,ABD ÜFE (12 aylık değişim),us_macro,ABD ekonomisi,0.0005100493753164943,7.389981547071076,-0.0,426,0.0,,0.0,0.0,-
-9,3,us_ppi__c3,us_ppi,ABD ÜFE (3 aylık değişim),us_macro,ABD ekonomisi,-0.00027252186648579806,-3.94695842799706,-0.0,426,0.0,,0.0,0.0,-
-9,3,usd_cny__c12,usd_cny,USD/CNY (yuan) (12 aylık değişim),fx,Kurlar,-8.490009904895266e-05,-1.2297310380982571,0.0,426,8.450704225352112,100.0,0.0008667176250043959,0.08450704225352113,+
-9,3,usd_cny__c3,usd_cny,USD/CNY (yuan) (3 aylık değişim),fx,Kurlar,-3.337325800931623e-05,-0.4834056616380218,-0.0,426,0.0,,0.0,0.0,-
-9,3,usd_inr__c12,usd_inr,USD/INR (12 aylık değişim),fx,Kurlar,-5.342591954061685e-05,-0.7738571114685826,0.0,426,8.450704225352112,100.0,0.00020383985166275208,0.08450704225352113,+
-9,3,usd_inr__c3,usd_inr,USD/INR (3 aylık değişim),fx,Kurlar,-0.00018940290113451293,-2.7432530623702,0.0,426,0.0,,0.0,0.0,-
-9,3,usd_jpy__c12,usd_jpy,USD/JPY (12 aylık değişim),fx,Kurlar,0.00013051087180237754,1.8905815030226956,-0.0,426,6.807511737089202,0.0,-9.244932468512073e-05,0.06807511737089202,-
-9,3,usd_jpy__c3,usd_jpy,USD/JPY (3 aylık değişim),fx,Kurlar,0.0013340256675423653,19.336339890201703,-0.0,426,11.737089201877934,0.0,-0.0006302381153169812,0.11737089201877934,-
-9,3,usd_krw__c12,usd_krw,USD/KRW (12 aylık değişim),fx,Kurlar,-4.594571588292234e-05,-0.6655112773577486,0.0,426,0.0,,0.0,0.0,-
-9,3,usd_krw__c3,usd_krw,USD/KRW (3 aylık değişim),fx,Kurlar,-0.00023791335226790877,-3.4457798624126235,0.0,426,0.0,,0.0,0.0,-
+9,3,us_industrial_production__c3,us_industrial_production,ABD sanayi üretimi (3 aylık değişim),us_macro,ABD ekonomisi,-0.00011883695977205554,-1.721258513018901,0.0,426,8.450704225352112,100.0,0.0006261437802642584,0.08450704225352113,+
+9,3,us_m2__c12,us_m2,ABD para arzı (M2) (12 aylık değişim),us_macro,ABD ekonomisi,-6.308298344187983e-05,-0.9137321370641144,0.0,426,1.643192488262911,100.0,6.154753743266948e-05,0.01643192488262911,+
+9,3,us_m2__c3,us_m2,ABD para arzı (M2) (3 aylık değişim),us_macro,ABD ekonomisi,0.0003171999721862741,4.595390212410706,0.0,426,0.0,,0.0,0.0,-
+9,3,us_ppi__c12,us_ppi,ABD ÜFE (12 aylık değişim),us_macro,ABD ekonomisi,-0.0003287985384754423,-4.761884486496049,-0.0,426,0.0,,0.0,0.0,-
+9,3,us_ppi__c3,us_ppi,ABD ÜFE (3 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
+9,3,usd_cny__c12,usd_cny,USD/CNY (yuan) (12 aylık değişim),fx,Kurlar,-5.520159726917288e-06,-0.0799596379589178,0.0,426,8.450704225352112,100.0,0.0008667176250043959,0.08450704225352113,+
+9,3,usd_cny__c3,usd_cny,USD/CNY (yuan) (3 aylık değişim),fx,Kurlar,-3.989228741797809e-06,-0.057784112394371756,-0.0,426,0.0,,0.0,0.0,-
+9,3,usd_inr__c12,usd_inr,USD/INR (12 aylık değişim),fx,Kurlar,-4.448625346755275e-05,-0.6443718289174976,0.0,426,8.450704225352112,100.0,0.00020383985166275208,0.08450704225352113,+
+9,3,usd_inr__c3,usd_inr,USD/INR (3 aylık değişim),fx,Kurlar,-0.00012539271938475524,-1.8162075053535782,0.0,426,0.0,,0.0,0.0,-
+9,3,usd_jpy__c12,usd_jpy,USD/JPY (12 aylık değişim),fx,Kurlar,0.00012125375445997136,1.7564746991354196,-0.0,426,6.807511737089202,0.0,-9.244932468512073e-05,0.06807511737089202,-
+9,3,usd_jpy__c3,usd_jpy,USD/JPY (3 aylık değişim),fx,Kurlar,0.0006577989689233199,9.531393704079631,-0.0,426,11.737089201877934,0.0,-0.0006302381153169812,0.11737089201877934,-
+9,3,usd_krw__c12,usd_krw,USD/KRW (12 aylık değişim),fx,Kurlar,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
+9,3,usd_krw__c3,usd_krw,USD/KRW (3 aylık değişim),fx,Kurlar,-8.218985567601527e-05,-1.1904762731264678,0.0,426,0.0,,0.0,0.0,-
 9,3,vix__c12,vix,VIX korku endeksi (12 aylık değişim),risk,Risk,0.0,0.0,0.0,426,1.4084507042253522,100.0,3.4986622025949554e-05,0.014084507042253523,+
-9,3,vix__c3,vix,VIX korku endeksi (3 aylık değişim),risk,Risk,2.355550572945027e-05,0.3412069913450826,0.0,426,0.0,,0.0,0.0,-
-9,3,vol18,vol18,Bakır oynaklığı,copper,Bakırın kendisi,-0.0007870390239349663,-11.395824384143728,0.0,426,4.225352112676056,100.0,0.0001088941654970949,0.04225352112676056,+
-9,3,zinc__c12,zinc,Çinko fiyatı (12 aylık değişim),metals,Metaller,-7.681666628429021e-05,-1.1126514765333475,-0.0,426,0.0,,0.0,0.0,-
-9,3,zinc__c3,zinc,Çinko fiyatı (3 aylık değişim),metals,Metaller,-0.0001316834711798565,-1.9073177263921604,-0.0,426,0.0,,0.0,0.0,-
-9,3,zinc_stock__c12,zinc_stock,LME çinko stoku (12 aylık değişim),inventories,Stoklar,6.137445979744048e-05,0.8890401679717678,0.0,426,18.07511737089202,100.0,0.0003937438734608244,0.1807511737089202,+
-9,3,zinc_stock__c3,zinc_stock,LME çinko stoku (3 aylık değişim),inventories,Stoklar,-0.0003779967684327193,-5.474272121778555,0.0,426,0.0,,0.0,0.0,-
-18,6,aluminum__c12,aluminum,Alüminyum fiyatı (12 aylık değişim),metals,Metaller,-0.00013417460034720766,-1.9433970917623165,-0.0,426,0.0,,0.0,0.0,-
-18,6,aluminum__c3,aluminum,Alüminyum fiyatı (3 aylık değişim),metals,Metaller,-0.000535245817161545,-7.750994585685333,-0.0,426,13.849765258215962,0.0,-0.0003000607341383921,0.13849765258215962,-
-18,6,aluminum_stock__c12,aluminum_stock,LME alüminyum stoku (12 aylık değişim),inventories,Stoklar,0.0018505215205697834,26.829736729274714,0.0,426,0.0,,0.0,0.0,-
-18,6,aluminum_stock__c3,aluminum_stock,LME alüminyum stoku (3 aylık değişim),inventories,Stoklar,0.002470702489346834,35.83252750663317,-0.0,426,0.4694835680751174,0.0,-7.547755104173098e-06,0.004694835680751174,-
-18,6,brent__c12,brent,Brent petrol (12 aylık değişim),energy,Enerji,-0.004557229766551552,-65.86157085350854,-0.0,426,0.0,,0.0,0.0,-
-18,6,brent__c3,brent,Brent petrol (3 aylık değişim),energy,Enerji,-0.0007556553680492154,-10.941580681913955,-0.0,426,0.0,,0.0,0.0,-
-18,6,bund_10y__c12,bund_10y,Almanya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.00020465004965618166,2.964672109697297,0.0,426,0.0,,0.0,0.0,-
-18,6,bund_10y__c3,bund_10y,Almanya 10 yıllık faiz (3 aylık değişim),rates,Faizler,-0.0013820731485846033,-20.005588159278542,-0.0,426,3.9906103286384975,0.0,-7.501122968521272e-05,0.03990610328638498,-
-18,6,china_electricity__c12,china_electricity,Çin elektrik üretimi (12 aylık değişim),china,Çin ekonomisi,-0.000619172938270572,-8.9659826757942,0.0,426,0.0,,0.0,0.0,-
-18,6,china_electricity__c3,china_electricity,Çin elektrik üretimi (3 aylık değişim),china,Çin ekonomisi,3.2565780661336875e-05,0.47172504924706843,0.0,426,0.0,,0.0,0.0,-
-18,6,china_fai_yoy__c12,china_fai_yoy,Çin sabit sermaye yatırımı (12 aylık değişim),china,Çin ekonomisi,0.005442011144596416,79.04275225047371,-0.0,426,0.0,,0.0,0.0,-
-18,6,china_fai_yoy__c3,china_fai_yoy,Çin sabit sermaye yatırımı (3 aylık değişim),china,Çin ekonomisi,0.00040024413809163086,5.798721730294369,-0.0,426,6.338028169014084,0.0,-0.00012539450959852446,0.06338028169014084,-
-18,6,china_industrial_yoy__c12,china_industrial_yoy,Çin sanayi üretimi (12 aylık değişim),china,Çin ekonomisi,0.005535350533318178,80.40222037697161,0.0,426,0.0,,0.0,0.0,-
-18,6,china_industrial_yoy__c3,china_industrial_yoy,Çin sanayi üretimi (3 aylık değişim),china,Çin ekonomisi,-0.0002035749154558217,-2.9484952437922907,0.0,426,0.0,,0.0,0.0,-
-18,6,china_ppi_yoy__c12,china_ppi_yoy,Çin ÜFE (12 aylık değişim),china,Çin ekonomisi,0.0017131838253216446,24.83684374858798,0.0,426,27.699530516431924,100.0,0.0030658434235790026,0.27699530516431925,+
-18,6,china_ppi_yoy__c3,china_ppi_yoy,Çin ÜFE (3 aylık değişim),china,Çin ekonomisi,-0.0024519381032673143,-35.47297013644482,0.0,426,0.0,,0.0,0.0,-
-18,6,china_real_estate_yoy__c12,china_real_estate_yoy,Çin gayrimenkul yatırımı (12 aylık değişim),china,Çin ekonomisi,-0.0029758561946942085,-43.041388716002324,0.0,426,8.215962441314554,100.0,0.00031723000161887734,0.08215962441314555,+
-18,6,china_real_estate_yoy__c3,china_real_estate_yoy,Çin gayrimenkul yatırımı (3 aylık değişim),china,Çin ekonomisi,-0.002428076679179617,-35.128178239182475,0.0,426,49.29577464788733,100.0,0.007608694870330213,0.49295774647887325,+
-18,6,china_refined_copper__c12,china_refined_copper,Çin rafine bakır üretimi (12 aylık değişim),china,Çin ekonomisi,0.0006769360812868956,9.808781030274435,0.0,426,0.0,,0.0,0.0,-
-18,6,china_refined_copper__c3,china_refined_copper,Çin rafine bakır üretimi (3 aylık değişim),china,Çin ekonomisi,4.5386904990373204e-05,0.6574470750983429,-0.0,426,0.0,,0.0,0.0,-
-18,6,coal__c12,coal,Kömür (12 aylık değişim),energy,Enerji,0.0006604454328247328,9.569753174344108,-0.0,426,0.0,,0.0,0.0,-
-18,6,coal__c3,coal,Kömür (3 aylık değişim),energy,Enerji,0.0017761165590095785,25.750020113869695,0.0,426,0.0,,0.0,0.0,-
-18,6,dollar_index__c12,dollar_index,Dolar endeksi (DXY) (12 aylık değişim),fx,Kurlar,0.000173170891882421,2.5086083948041074,-0.0,426,0.0,,0.0,0.0,-
-18,6,dollar_index__c3,dollar_index,Dolar endeksi (DXY) (3 aylık değişim),fx,Kurlar,-0.00030993592607852556,-4.488745612546822,-0.0,426,0.0,,0.0,0.0,-
-18,6,ecb_rate__c12,ecb_rate,ECB faizi (12 aylık değişim),rates,Faizler,-2.9007355331382037e-05,-0.4201672609353368,-0.0,426,0.0,,0.0,0.0,-
+9,3,vix__c3,vix,VIX korku endeksi (3 aylık değişim),risk,Risk,3.0676115492907375e-05,0.44435226563943336,0.0,426,0.0,,0.0,0.0,-
+9,3,vol18,vol18,Bakır oynaklığı,copper,Bakırın kendisi,-0.00038146823076141636,-5.524537379601011,0.0,426,4.225352112676056,100.0,0.0001088941654970949,0.04225352112676056,+
+9,3,zinc__c12,zinc,Çinko fiyatı (12 aylık değişim),metals,Metaller,-7.281995085979256e-05,-1.0547631350854676,-0.0,426,0.0,,0.0,0.0,-
+9,3,zinc__c3,zinc,Çinko fiyatı (3 aylık değişim),metals,Metaller,-8.209915936185202e-05,-1.1891626392589258,-0.0,426,0.0,,0.0,0.0,-
+9,3,zinc_stock__c12,zinc_stock,LME çinko stoku (12 aylık değişim),inventories,Stoklar,3.571528618873576e-05,0.517347391200012,0.0,426,18.07511737089202,100.0,0.0003937438734608244,0.1807511737089202,+
+9,3,zinc_stock__c3,zinc_stock,LME çinko stoku (3 aylık değişim),inventories,Stoklar,-0.0004850363546290675,-7.024078307198861,0.0,426,0.0,,0.0,0.0,-
+18,6,aluminum__c12,aluminum,Alüminyum fiyatı (12 aylık değişim),metals,Metaller,-0.0009061002172502295,-13.118973828039852,-0.0,426,0.0,,0.0,0.0,-
+18,6,aluminum__c3,aluminum,Alüminyum fiyatı (3 aylık değişim),metals,Metaller,2.5906030362107886e-06,0.03752509549884904,-0.0,426,13.849765258215962,0.0,-0.0003000607341383921,0.13849765258215962,-
+18,6,aluminum_stock__c12,aluminum_stock,LME alüminyum stoku (12 aylık değişim),inventories,Stoklar,0.00098984109145909,14.345008543055794,0.0,426,0.0,,0.0,0.0,-
+18,6,aluminum_stock__c3,aluminum_stock,LME alüminyum stoku (3 aylık değişim),inventories,Stoklar,0.0008478138284741562,12.285843611957521,-0.0,426,0.4694835680751174,0.0,-7.547755104173098e-06,0.004694835680751174,-
+18,6,brent__c12,brent,Brent petrol (12 aylık değişim),energy,Enerji,-0.0006674985742784771,-9.665532343678676,-0.0,426,0.0,,0.0,0.0,-
+18,6,brent__c3,brent,Brent petrol (3 aylık değişim),energy,Enerji,-0.00044923697910222746,-6.505764295245479,-0.0,426,0.0,,0.0,0.0,-
+18,6,bund_10y__c12,bund_10y,Almanya 10 yıllık faiz (12 aylık değişim),rates,Faizler,-0.00010248685999880994,-1.4844525027743027,0.0,426,0.0,,0.0,0.0,-
+18,6,bund_10y__c3,bund_10y,Almanya 10 yıllık faiz (3 aylık değişim),rates,Faizler,-0.0008806313711024103,-12.750385431171063,-0.0,426,3.9906103286384975,0.0,-7.501122968521272e-05,0.03990610328638498,-
+18,6,china_electricity__c12,china_electricity,Çin elektrik üretimi (12 aylık değişim),china,Çin ekonomisi,-0.00013931320000500858,-2.0178198514142207,0.0,426,0.0,,0.0,0.0,-
+18,6,china_electricity__c3,china_electricity,Çin elektrik üretimi (3 aylık değişim),china,Çin ekonomisi,0.0002689306109032648,3.896000560520907,0.0,426,0.0,,0.0,0.0,-
+18,6,china_fai_yoy__c12,china_fai_yoy,Çin sabit sermaye yatırımı (12 aylık değişim),china,Çin ekonomisi,0.0014738746678001366,21.36490741056506,-0.0,426,0.0,,0.0,0.0,-
+18,6,china_fai_yoy__c3,china_fai_yoy,Çin sabit sermaye yatırımı (3 aylık değişim),china,Çin ekonomisi,1.52518143517119e-05,0.22092516887488206,-0.0,426,6.338028169014084,0.0,-0.00012539450959852446,0.06338028169014084,-
+18,6,china_industrial_yoy__c12,china_industrial_yoy,Çin sanayi üretimi (12 aylık değişim),china,Çin ekonomisi,0.004275050089881469,62.05692145344283,0.0,426,0.0,,0.0,0.0,-
+18,6,china_industrial_yoy__c3,china_industrial_yoy,Çin sanayi üretimi (3 aylık değişim),china,Çin ekonomisi,4.249148016112931e-05,0.6155048226158716,0.0,426,0.0,,0.0,0.0,-
+18,6,china_ppi_yoy__c12,china_ppi_yoy,Çin ÜFE (12 aylık değişim),china,Çin ekonomisi,0.0004903535888869036,7.104544109120501,0.0,426,27.699530516431924,100.0,0.0030658434235790026,0.27699530516431925,+
+18,6,china_ppi_yoy__c3,china_ppi_yoy,Çin ÜFE (3 aylık değişim),china,Çin ekonomisi,-0.0016722806220456088,-24.202846711775482,0.0,426,0.0,,0.0,0.0,-
+18,6,china_real_estate_yoy__c12,china_real_estate_yoy,Çin gayrimenkul yatırımı (12 aylık değişim),china,Çin ekonomisi,-0.0009179330862675938,-13.290217427057378,0.0,426,8.215962441314554,100.0,0.00031723000161887734,0.08215962441314555,+
+18,6,china_real_estate_yoy__c3,china_real_estate_yoy,Çin gayrimenkul yatırımı (3 aylık değişim),china,Çin ekonomisi,-0.0012735707337238396,-18.436009403241833,0.0,426,49.29577464788733,100.0,0.007608694870330213,0.49295774647887325,+
+18,6,china_refined_copper__c12,china_refined_copper,Çin rafine bakır üretimi (12 aylık değişim),china,Çin ekonomisi,0.0003426106314070231,4.963586649319184,0.0,426,0.0,,0.0,0.0,-
+18,6,china_refined_copper__c3,china_refined_copper,Çin rafine bakır üretimi (3 aylık değişim),china,Çin ekonomisi,0.00012542814456133962,1.8169484590842677,-0.0,426,0.0,,0.0,0.0,-
+18,6,coal__c12,coal,Kömür (12 aylık değişim),energy,Enerji,0.00021180251179698422,3.0682975461280586,-0.0,426,0.0,,0.0,0.0,-
+18,6,coal__c3,coal,Kömür (3 aylık değişim),energy,Enerji,0.0001110603540803139,1.6088055057274575,0.0,426,0.0,,0.0,0.0,-
+18,6,dollar_index__c12,dollar_index,Dolar endeksi (DXY) (12 aylık değişim),fx,Kurlar,0.00014017142318294176,2.030534133622267,-0.0,426,0.0,,0.0,0.0,-
+18,6,dollar_index__c3,dollar_index,Dolar endeksi (DXY) (3 aylık değişim),fx,Kurlar,-0.00028192085211151173,-4.0830655851812745,-0.0,426,0.0,,0.0,0.0,-
+18,6,ecb_rate__c12,ecb_rate,ECB faizi (12 aylık değişim),rates,Faizler,3.4412313131805845e-07,0.004984645923682876,-0.0,426,0.0,,0.0,0.0,-
 18,6,ecb_rate__c3,ecb_rate,ECB faizi (3 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-18,6,eod_gap,eod_gap,Dönem sonu fiyatı / dönem ortalaması,copper,Bakırın kendisi,-0.00019542275640828028,-2.8304342658559625,0.0,426,0.0,,0.0,0.0,-
-18,6,eur_usd__c12,eur_usd,EUR/USD (12 aylık değişim),fx,Kurlar,-0.00011343798325025235,-1.6430630826099657,0.0,426,5.39906103286385,0.0,-0.00026678496415109517,0.0539906103286385,-
-18,6,eur_usd__c3,eur_usd,EUR/USD (3 aylık değişim),fx,Kurlar,-0.0009947818110883294,-14.402311940799725,0.0,426,0.0,,0.0,0.0,-
-18,6,euro_area_copper_ppi__c12,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,0.00011662322132496597,1.6893931591643303,0.0,426,0.0,,0.0,0.0,-
-18,6,euro_area_copper_ppi__c3,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,-0.0010292733556694883,-14.901418754263661,0.0,426,0.0,,0.0,0.0,-
-18,6,euro_area_industrial_production__c12,euro_area_industrial_production,Euro bölgesi sanayi üretimi (12 aylık değişim),europe,Avrupa ekonomisi,6.328224452104298e-05,0.9166762713891603,-0.0,426,0.0,,0.0,0.0,-
-18,6,euro_area_industrial_production__c3,euro_area_industrial_production,Euro bölgesi sanayi üretimi (3 aylık değişim),europe,Avrupa ekonomisi,0.0002608332697516919,3.7786789956095834,0.0,426,0.0,,0.0,0.0,-
-18,6,euro_area_ppi__c12,euro_area_ppi,Euro bölgesi ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-0.0029201740160725172,-42.23720312763055,-0.0,426,0.0,,0.0,0.0,-
-18,6,euro_area_ppi__c3,euro_area_ppi,Euro bölgesi ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,-0.0002614346553918329,-3.7864023530533597,-0.0,426,0.0,,0.0,0.0,-
-18,6,fed_rate__c12,fed_rate,Fed faizi (12 aylık değişim),rates,Faizler,-0.011837344439112612,-170.45382335902875,-0.0,426,8.92018779342723,52.63157894736842,0.000186095993699127,0.004694835680751168,+
-18,6,fed_rate__c3,fed_rate,Fed faizi (3 aylık değişim),rates,Faizler,0.0005098072131408736,7.3864720236738375,-0.0,426,0.0,,0.0,0.0,-
-18,6,finbert_net,finbert_net,Başlık duyarlılığı (FinBERT),news,Haberler,0.0,0.0,,0,,,,0.0,-
-18,6,finbert_net_c9,finbert_net_c9,Başlık duyarlılığı 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
-18,6,geopolitical_risk__c12,geopolitical_risk,Jeopolitik risk endeksi (12 aylık değişim),risk,Risk,-0.00042571848047441156,-6.1652463743045836,-0.0,426,0.0,,0.0,0.0,-
-18,6,geopolitical_risk__c3,geopolitical_risk,Jeopolitik risk endeksi (3 aylık değişim),risk,Risk,0.0001740066656817284,2.520716732214057,-0.0,426,0.0,,0.0,0.0,-
-18,6,germany_exports__c12,germany_exports,Almanya ihracatı (12 aylık değişim),europe,Avrupa ekonomisi,-1.1807044860782743e-05,-0.17102477309815736,-0.0,426,0.0,,0.0,0.0,-
-18,6,germany_exports__c3,germany_exports,Almanya ihracatı (3 aylık değişim),europe,Avrupa ekonomisi,-0.00016805639682627944,-2.434102872545938,0.0,426,0.0,,0.0,0.0,-
-18,6,germany_order_books__c12,germany_order_books,Almanya sanayi siparişleri (12 aylık değişim),europe,Avrupa ekonomisi,0.0002430922563783772,3.5216345506092916,-0.0,426,0.0,,0.0,0.0,-
-18,6,germany_order_books__c3,germany_order_books,Almanya sanayi siparişleri (3 aylık değişim),europe,Avrupa ekonomisi,0.00040916925476536703,5.928054934558579,0.0,426,0.0,,0.0,0.0,-
-18,6,gold__c12,gold,Altın (12 aylık değişim),precious,Değerli metaller,-0.004867366459751601,-70.33280076619107,0.006960180251215082,426,6.807511737089202,100.0,0.0003497284944197659,0.06807511737089202,+
-18,6,gold__c3,gold,Altın (3 aylık değişim),precious,Değerli metaller,-0.0005700221425143327,-8.254453526554517,0.0,426,0.0,,0.0,0.0,-
-18,6,india_industrial_production__c12,india_industrial_production,Hindistan sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-0.0005719259841584858,-8.28201505035238,-0.0,426,0.0,,0.0,0.0,-
-18,6,india_industrial_production__c3,india_industrial_production,Hindistan sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,0.0012367441944933456,17.925399235673144,0.0,426,0.0,,0.0,0.0,-
-18,6,iron_ore__c12,iron_ore,Demir cevheri (12 aylık değişim),bulk,Hammadde,-0.0006243324510715615,-9.040672088402946,0.0,426,8.685446009389672,100.0,5.947977546832555e-05,0.08685446009389672,+
-18,6,iron_ore__c3,iron_ore,Demir cevheri (3 aylık değişim),bulk,Hammadde,-9.320082730785462e-05,-1.3499568990786677,0.0,426,0.0,,0.0,0.0,-
-18,6,japan_10y__c12,japan_10y,Japonya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.010678643425065264,155.50965573658036,0.0,426,0.0,,0.0,0.0,-
-18,6,japan_10y__c3,japan_10y,Japonya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0002929593948321437,4.244156796554974,0.0,426,0.0,,0.0,0.0,-
-18,6,japan_industrial_production__c12,japan_industrial_production,Japonya sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-0.0009916556733089422,-14.35707459258372,0.0,426,49.06103286384976,100.0,0.010165444063765463,0.49061032863849763,+
-18,6,japan_industrial_production__c3,japan_industrial_production,Japonya sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,0.0002607667957206658,3.777715863963139,0.0,426,0.0,,0.0,0.0,-
-18,6,japan_ppi__c12,japan_ppi,Japonya ÜFE (12 aylık değişim),asia,Asya ekonomisi,-0.0009583662886200465,-13.875345694773612,-0.0,426,3.286384976525822,0.0,-1.5117119827464435e-05,0.03286384976525822,-
-18,6,japan_ppi__c3,japan_ppi,Japonya ÜFE (3 aylık değişim),asia,Asya ekonomisi,3.6186619518064624e-05,0.5241749293836095,-0.0,426,0.0,,0.0,0.0,-
-18,6,korea_10y__c12,korea_10y,Kore 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.00179489203273164,26.02247005070588,0.0,426,0.0,,0.0,0.0,-
-18,6,korea_10y__c3,korea_10y,Kore 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.00010667112928020223,1.5452203883050577,-0.0,426,0.0,,0.0,0.0,-
-18,6,korea_exports__c12,korea_exports,Kore ihracatı (12 aylık değişim),asia,Asya ekonomisi,-6.739332250881971e-05,-0.9761635947997528,-0.0,426,0.0,,0.0,0.0,-
-18,6,korea_exports__c3,korea_exports,Kore ihracatı (3 aylık değişim),asia,Asya ekonomisi,0.004947263883066078,71.8389832297234,0.0,426,0.0,,0.0,0.0,-
-18,6,korea_industrial_production__c12,korea_industrial_production,Kore sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-0.0044654999014546535,-64.53883883138529,0.0,426,50.46948356807511,100.0,0.003168831724976929,0.5046948356807511,+
-18,6,korea_industrial_production__c3,korea_industrial_production,Kore sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-0.00011600424994692001,-1.6802313518737755,0.0,426,0.0,,0.0,0.0,-
-18,6,lead__c12,lead,Kurşun fiyatı (12 aylık değişim),metals,Metaller,0.00029512625259960453,4.27555309724531,-0.0,426,0.0,,0.0,0.0,-
-18,6,lead__c3,lead,Kurşun fiyatı (3 aylık değişim),metals,Metaller,0.002046443880598654,29.67321944660519,-0.0,426,0.0,,0.0,0.0,-
-18,6,ma36_gap,ma36_gap,Bakır 12 aylık ortalamadan sapma,copper,Bakırın kendisi,-0.0018455739298601974,-26.70859979354522,0.0,426,0.0,,0.0,0.0,-
-18,6,natural_gas__c12,natural_gas,Doğal gaz (12 aylık değişim),energy,Enerji,-0.0006390488302467327,-9.253705147029562,0.0,426,0.0,,0.0,0.0,-
-18,6,natural_gas__c3,natural_gas,Doğal gaz (3 aylık değişim),energy,Enerji,0.0002887359854522802,4.1829626521354735,0.0,426,0.0,,0.0,0.0,-
-18,6,news_attention_c9,news_attention_c9,Bakır haberlerine ilgi 3 aylık değişim,news,Haberler,-1.553757567702749e-05,-0.22506100632438092,,0,,,,0.0,-
-18,6,news_tone,news_tone,Haber tonu (GDELT),news,Haberler,-6.311025957858321e-05,-0.9141272086805553,,0,,,,0.0,-
-18,6,news_tone_c9,news_tone_c9,Haber tonu 3 aylık değişim,news,Haberler,-5.3189364909678126e-05,-0.7704307855077329,,0,,,,0.0,-
-18,6,nickel__c12,nickel,Nikel fiyatı (12 aylık değişim),metals,Metaller,0.0013946666474627398,20.2159275182654,-0.0,426,0.0,,0.0,0.0,-
-18,6,nickel__c3,nickel,Nikel fiyatı (3 aylık değişim),metals,Metaller,0.0009308460624294639,13.48964080764722,-0.0,426,0.0,,0.0,0.0,-
-18,6,nickel_stock__c12,nickel_stock,LME nikel stoku (12 aylık değişim),inventories,Stoklar,-0.0003009337580244435,-4.358388467342664,0.0,426,0.0,,0.0,0.0,-
-18,6,nickel_stock__c3,nickel_stock,LME nikel stoku (3 aylık değişim),inventories,Stoklar,0.0002040750294306799,2.9563412034411085,0.0,426,0.0,,0.0,0.0,-
-18,6,peru_diesel__c12,peru_diesel,Peru dizel fiyatı (12 aylık değişim),mining_costs,Madencilik maliyeti,-0.004054052373062497,-58.60432922694308,-0.0,158,0.0,,0.0,0.0,-
-18,6,peru_diesel__c3,peru_diesel,Peru dizel fiyatı (3 aylık değişim),mining_costs,Madencilik maliyeti,0.00010048193785566112,1.4555602774930416,0.0,426,1.8779342723004695,100.0,2.3734480851554616e-05,0.018779342723004695,+
-18,6,peru_usd_pen__c12,peru_usd_pen,USD/PEN (Peru) (12 aylık değişim),fx,Kurlar,-0.0020057343085309945,-29.024069800933372,-0.0,426,0.0,,0.0,0.0,-
-18,6,peru_usd_pen__c3,peru_usd_pen,USD/PEN (Peru) (3 aylık değişim),fx,Kurlar,0.0009685370728040326,14.036116185343902,0.0,426,0.0,,0.0,0.0,-
-18,6,platinum__c12,platinum,Platin (12 aylık değişim),precious,Değerli metaller,-0.0004092161693774863,-5.926309135982006,0.0,426,0.0,,0.0,0.0,-
-18,6,platinum__c3,platinum,Platin (3 aylık değişim),precious,Değerli metaller,-4.511212278477716e-06,-0.06534504441188124,0.0,426,0.0,,0.0,0.0,-
-18,6,policy_uncertainty__c12,policy_uncertainty,Ekonomi politikası belirsizliği (12 aylık değişim),risk,Risk,-0.005734591226832482,-82.82819243245365,0.002799930089285877,426,23.943661971830984,100.0,0.0010262245772265511,0.23943661971830985,+
-18,6,policy_uncertainty__c3,policy_uncertainty,Ekonomi politikası belirsizliği (3 aylık değişim),risk,Risk,6.187736338668374e-05,0.8963252068251695,0.0,426,0.0,,0.0,0.0,-
-18,6,r1,r1,Bakır son 10 günlük getiri,copper,Bakırın kendisi,0.0003224179870488845,4.670997659893751,0.0,426,0.0,,0.0,0.0,-
-18,6,r18,r18,Bakır 6 aylık getiri,copper,Bakırın kendisi,-0.0006100113688864134,-8.833358305616173,0.0,426,0.0,,0.0,0.0,-
-18,6,r3,r3,Bakır 1 aylık getiri,copper,Bakırın kendisi,0.0020429846453775256,29.62300964842213,-0.0,426,0.0,,0.0,0.0,-
-18,6,r36,r36,Bakır 12 aylık getiri,copper,Bakırın kendisi,-0.00013971024738374947,-2.0235703051990126,0.0,426,0.0,,0.0,0.0,-
-18,6,r9,r9,Bakır 3 aylık getiri,copper,Bakırın kendisi,-0.002891640598193532,-41.82509407867029,-0.0,426,0.0,,0.0,0.0,-
-18,6,silver__c12,silver,Gümüş (12 aylık değişim),precious,Değerli metaller,0.00013190005771684715,1.9107065881650909,0.0,426,0.0,,0.0,0.0,-
-18,6,silver__c3,silver,Gümüş (3 aylık değişim),precious,Değerli metaller,-0.001978938839617585,-28.63670828282172,0.0,426,0.0,,0.0,0.0,-
-18,6,spread_3m,spread_3m,3 ay vadeli - nakit farkı,copper,Bakırın kendisi,-0.0006106644948236552,-8.842813103254413,0.0,426,0.0,,0.0,0.0,-
-18,6,stock_c36,stock_c36,LME bakır stoku 12 aylık değişim,copper,Bakırın kendisi,-0.000829471333074009,-12.009962453158456,0.0,426,0.0,,0.0,0.0,-
-18,6,stock_c9,stock_c9,LME bakır stoku 3 aylık değişim,copper,Bakırın kendisi,0.0003397244489229152,4.921765850184767,0.0,426,0.0,,0.0,0.0,-
-18,6,stock_z72,stock_z72,LME bakır stoku seviyesi,copper,Bakırın kendisi,4.688815372280369e-05,0.6791937601305982,0.0,426,0.0,,0.0,0.0,-
-18,6,tin__c12,tin,Kalay fiyatı (12 aylık değişim),metals,Metaller,-0.00159548009198216,-23.092202376738584,0.0,426,0.0,,0.0,0.0,-
-18,6,tin__c3,tin,Kalay fiyatı (3 aylık değişim),metals,Metaller,0.000678708609806747,9.834473625782012,-0.0,426,0.0,,0.0,0.0,-
-18,6,us_10y__c12,us_10y,ABD 10 yıllık faiz (12 aylık değişim),rates,Faizler,-0.0015036228228553987,-21.763704263836654,-0.0,426,0.0,,0.0,0.0,-
-18,6,us_10y__c3,us_10y,ABD 10 yıllık faiz (3 aylık değişim),rates,Faizler,-0.0008575878291670342,-12.416888257593186,-0.0,426,1.1737089201877933,0.0,-2.500873632808841e-05,0.011737089201877932,-
-18,6,us_2y__c12,us_2y,ABD 2 yıllık faiz (12 aylık değişim),rates,Faizler,-0.002192711286560456,-31.726763502264642,-0.0,426,1.8779342723004695,0.0,-4.073451230939063e-05,0.018779342723004695,-
-18,6,us_2y__c3,us_2y,ABD 2 yıllık faiz (3 aylık değişim),rates,Faizler,-0.0010656109119691923,-15.427219494004152,-0.0,426,12.910798122065728,0.0,-0.000561032505279278,0.12910798122065728,-
-18,6,us_cpi__c12,us_cpi,ABD enflasyonu (TÜFE) (12 aylık değişim),us_macro,ABD ekonomisi,-0.00015887932906501136,-2.3011942005288017,-0.0,426,0.0,,0.0,0.0,-
-18,6,us_cpi__c3,us_cpi,ABD enflasyonu (TÜFE) (3 aylık değişim),us_macro,ABD ekonomisi,0.0009478813207566469,13.736629492489644,0.0,426,0.0,,0.0,0.0,-
-18,6,us_curve__c12,us_curve,ABD faiz eğrisi (10Y-2Y) (12 aylık değişim),rates,Faizler,-0.002808706832459717,-40.62721233947385,0.0,426,0.0,,0.0,0.0,-
-18,6,us_curve__c3,us_curve,ABD faiz eğrisi (10Y-2Y) (3 aylık değişim),rates,Faizler,-7.840070741377526e-05,-1.1355946306397793,0.0,426,0.0,,0.0,0.0,-
-18,6,us_housing_starts__c12,us_housing_starts,ABD konut başlangıçları (12 aylık değişim),us_macro,ABD ekonomisi,0.00023399306385928512,3.3898007340308647,0.0,426,0.0,,0.0,0.0,-
-18,6,us_housing_starts__c3,us_housing_starts,ABD konut başlangıçları (3 aylık değişim),us_macro,ABD ekonomisi,1.0776747927589135e-05,0.15610270841584772,-0.0,426,0.0,,0.0,0.0,-
-18,6,us_industrial_production__c12,us_industrial_production,ABD sanayi üretimi (12 aylık değişim),us_macro,ABD ekonomisi,0.0020460562136426393,29.667592564280955,-0.0,426,0.0,,0.0,0.0,-
-18,6,us_industrial_production__c3,us_industrial_production,ABD sanayi üretimi (3 aylık değişim),us_macro,ABD ekonomisi,2.0143983914507015e-05,0.29178980489599593,-0.0,426,7.276995305164319,100.0,0.0007106947760698952,0.07276995305164319,+
-18,6,us_m2__c12,us_m2,ABD para arzı (M2) (12 aylık değişim),us_macro,ABD ekonomisi,-0.00033512715130939145,-4.853524412832837,0.0,426,0.0,,0.0,0.0,-
-18,6,us_m2__c3,us_m2,ABD para arzı (M2) (3 aylık değişim),us_macro,ABD ekonomisi,-0.00013474228689903334,-1.9516189613718409,0.0,426,0.0,,0.0,0.0,-
-18,6,us_ppi__c12,us_ppi,ABD ÜFE (12 aylık değişim),us_macro,ABD ekonomisi,-0.00020983218320220576,-3.0391134251416414,-0.0,426,0.0,,0.0,0.0,-
-18,6,us_ppi__c3,us_ppi,ABD ÜFE (3 aylık değişim),us_macro,ABD ekonomisi,-0.0002349634173111211,-3.4030599720085517,0.0,426,0.0,,0.0,0.0,-
-18,6,usd_cny__c12,usd_cny,USD/CNY (yuan) (12 aylık değişim),fx,Kurlar,-0.0023503615968924435,-34.005156767034514,0.0,426,11.737089201877934,100.0,0.0005021846524340039,0.11737089201877934,+
-18,6,usd_cny__c3,usd_cny,USD/CNY (yuan) (3 aylık değişim),fx,Kurlar,-0.00010575084907598592,-1.5317266661686457,0.0,426,0.0,,0.0,0.0,-
-18,6,usd_inr__c12,usd_inr,USD/INR (12 aylık değişim),fx,Kurlar,0.00014647479900956826,2.121852013460012,-0.0,426,0.0,,0.0,0.0,-
-18,6,usd_inr__c3,usd_inr,USD/INR (3 aylık değişim),fx,Kurlar,3.4023590960140614e-05,0.49284222561695923,0.0,426,0.0,,0.0,0.0,-
-18,6,usd_jpy__c12,usd_jpy,USD/JPY (12 aylık değişim),fx,Kurlar,0.001915779281264544,27.776781220751527,-0.0,426,5.868544600938967,0.0,-0.00021658936135082017,0.05868544600938967,-
-18,6,usd_jpy__c3,usd_jpy,USD/JPY (3 aylık değişim),fx,Kurlar,0.000603640125636801,8.746404522134945,-0.0,426,1.8779342723004695,0.0,-1.9534751466107822e-05,0.018779342723004695,-
-18,6,usd_krw__c12,usd_krw,USD/KRW (12 aylık değişim),fx,Kurlar,0.0003538360911529638,5.126244766828712,-0.0,426,0.0,,0.0,0.0,-
-18,6,usd_krw__c3,usd_krw,USD/KRW (3 aylık değişim),fx,Kurlar,-0.0003006321893975195,-4.354021540627019,0.0,426,15.96244131455399,100.0,0.0012499881820492614,0.1596244131455399,+
-18,6,vix__c12,vix,VIX korku endeksi (12 aylık değişim),risk,Risk,-0.0008290900890867649,-12.004444687848931,0.0,426,0.0,,0.0,0.0,-
-18,6,vix__c3,vix,VIX korku endeksi (3 aylık değişim),risk,Risk,-0.0005754937637839214,-8.333664920670119,0.0,426,0.0,,0.0,0.0,-
-18,6,vol18,vol18,Bakır oynaklığı,copper,Bakırın kendisi,-0.004271953342321492,-61.747525980081946,0.0,426,0.0,,0.0,0.0,-
-18,6,zinc__c12,zinc,Çinko fiyatı (12 aylık değişim),metals,Metaller,-0.001974858034820721,-28.577714310734198,-0.0,426,0.0,,0.0,0.0,-
-18,6,zinc__c3,zinc,Çinko fiyatı (3 aylık değişim),metals,Metaller,-0.00015861769057197702,-2.2974049521895177,-0.0,426,1.643192488262911,0.0,-3.4137940699634124e-05,0.01643192488262911,-
-18,6,zinc_stock__c12,zinc_stock,LME çinko stoku (12 aylık değişim),inventories,Stoklar,0.001023178641722339,14.828391327015858,0.0,426,9.859154929577464,100.0,0.0006671888158060269,0.09859154929577464,+
-18,6,zinc_stock__c3,zinc_stock,LME çinko stoku (3 aylık değişim),inventories,Stoklar,0.001531961364292299,22.207562329847594,0.0,426,0.0,,0.0,0.0,-
-36,12,aluminum__c12,aluminum,Alüminyum fiyatı (12 aylık değişim),metals,Metaller,-0.000997594034576777,-14.443006614053473,-0.0,426,2.8169014084507045,0.0,-0.00017086606565365524,0.028169014084507046,-
-36,12,aluminum__c3,aluminum,Alüminyum fiyatı (3 aylık değişim),metals,Metaller,-0.00026429790468055885,-3.8278657971800474,-0.0,426,1.1737089201877933,0.0,-7.385829620079474e-06,0.011737089201877932,-
-36,12,aluminum_stock__c12,aluminum_stock,LME alüminyum stoku (12 aylık değişim),inventories,Stoklar,-0.0005749603474412924,-8.325942794862014,0.0,426,19.483568075117372,84.33734939759037,0.003926030769344659,0.1338028169014085,+
-36,12,aluminum_stock__c3,aluminum_stock,LME alüminyum stoku (3 aylık değişim),inventories,Stoklar,-0.0016751383022717812,-24.244171165413587,-0.0,426,0.0,,0.0,0.0,-
-36,12,brent__c12,brent,Brent petrol (12 aylık değişim),energy,Enerji,-4.110991133903178e-05,-0.595467395226224,-0.0,426,0.0,,0.0,0.0,-
-36,12,brent__c3,brent,Brent petrol (3 aylık değişim),energy,Enerji,-0.0006791348461368624,-9.833971018051022,-0.0,426,48.59154929577465,0.0,-0.0036652692968188946,0.4859154929577465,-
-36,12,bund_10y__c12,bund_10y,Almanya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.00208497034099913,30.232431609686458,0.0,426,4.225352112676056,100.0,0.0003812397886110056,0.04225352112676056,+
-36,12,bund_10y__c3,bund_10y,Almanya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0003974864905607986,5.758761097726737,0.0,426,0.0,,0.0,0.0,-
-36,12,china_electricity__c12,china_electricity,Çin elektrik üretimi (12 aylık değişim),china,Çin ekonomisi,8.421030792923458e-05,1.219842934452374,0.0,426,13.380281690140844,100.0,0.00020672855006051793,0.13380281690140844,+
-36,12,china_electricity__c3,china_electricity,Çin elektrik üretimi (3 aylık değişim),china,Çin ekonomisi,-0.0003290645321255094,-4.765736153998482,-0.0,426,7.511737089201878,0.0,-0.0001167085532156297,0.07511737089201878,-
-36,12,china_fai_yoy__c12,china_fai_yoy,Çin sabit sermaye yatırımı (12 aylık değişim),china,Çin ekonomisi,0.00044787120172921273,6.488895335208184,-0.0,426,42.25352112676056,51.66666666666667,-0.0005674435520435776,0.014084507042253561,+
-36,12,china_fai_yoy__c3,china_fai_yoy,Çin sabit sermaye yatırımı (3 aylık değişim),china,Çin ekonomisi,0.002337666701048562,33.900857283335974,-0.0,426,7.981220657276995,0.0,-0.000371149877066229,0.07981220657276995,-
-36,12,china_industrial_yoy__c12,china_industrial_yoy,Çin sanayi üretimi (12 aylık değişim),china,Çin ekonomisi,0.00042214616844784745,6.116104488312708,0.0,426,53.990610328638496,100.0,0.008887647636249425,0.539906103286385,+
-36,12,china_industrial_yoy__c3,china_industrial_yoy,Çin sanayi üretimi (3 aylık değişim),china,Çin ekonomisi,-9.00134157829441e-05,-1.3037912732204886,0.0,426,0.0,,0.0,0.0,-
-36,12,china_ppi_yoy__c12,china_ppi_yoy,Çin ÜFE (12 aylık değişim),china,Çin ekonomisi,-1.1355845719089688e-05,-0.16448920102196296,0.0,426,46.478873239436616,100.0,0.007488113673134404,0.4647887323943662,+
-36,12,china_ppi_yoy__c3,china_ppi_yoy,Çin ÜFE (3 aylık değişim),china,Çin ekonomisi,-0.0007198720421510508,-10.423639229190517,0.0,426,17.370892018779344,100.0,0.00042329589201343373,0.17370892018779344,+
-36,12,china_real_estate_yoy__c12,china_real_estate_yoy,Çin gayrimenkul yatırımı (12 aylık değişim),china,Çin ekonomisi,-0.0008292340305106748,-12.006527960284481,0.0,426,34.037558685446015,100.0,0.004516391194149976,0.3403755868544602,+
-36,12,china_real_estate_yoy__c3,china_real_estate_yoy,Çin gayrimenkul yatırımı (3 aylık değişim),china,Çin ekonomisi,-0.0010121054580635278,-14.652994378022877,0.0,426,57.51173708920187,100.0,0.012067236085069323,0.5751173708920188,+
-36,12,china_refined_copper__c12,china_refined_copper,Çin rafine bakır üretimi (12 aylık değişim),china,Çin ekonomisi,0.00017144385319418841,2.483587820607707,0.0,426,10.56338028169014,0.0,-0.00010884701779586015,0.1056338028169014,-
-36,12,china_refined_copper__c3,china_refined_copper,Çin rafine bakır üretimi (3 aylık değişim),china,Çin ekonomisi,0.00037791998715350753,5.47522916802093,-0.0,426,2.3474178403755865,100.0,3.1206505237186946e-05,0.023474178403755864,+
-36,12,coal__c12,coal,Kömür (12 aylık değişim),energy,Enerji,-0.0001497646234661273,-2.1691874933679207,-0.0,426,0.0,,0.0,0.0,-
-36,12,coal__c3,coal,Kömür (3 aylık değişim),energy,Enerji,9.771320885667745e-05,1.415451090372468,-0.0,426,0.0,,0.0,0.0,-
-36,12,dollar_index__c12,dollar_index,Dolar endeksi (DXY) (12 aylık değişim),fx,Kurlar,0.00024546897238190133,3.5560698413100305,0.0,426,0.0,,0.0,0.0,-
-36,12,dollar_index__c3,dollar_index,Dolar endeksi (DXY) (3 aylık değişim),fx,Kurlar,-4.4640935008355117e-05,-0.6466123008590247,0.0,426,2.5821596244131455,0.0,-1.459703421594049e-05,0.025821596244131453,-
-36,12,ecb_rate__c12,ecb_rate,ECB faizi (12 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,5.868544600938967,0.0,-0.00022984742426975665,0.05868544600938967,-
+18,6,eod_gap,eod_gap,Dönem sonu fiyatı / dönem ortalaması,copper,Bakırın kendisi,-0.0004849182367541182,-7.022368191965285,0.0,426,0.0,,0.0,0.0,-
+18,6,eur_usd__c12,eur_usd,EUR/USD (12 aylık değişim),fx,Kurlar,0.00014522455164670147,2.1037394607497726,0.0,426,5.39906103286385,0.0,-0.00026678496415109517,0.0539906103286385,-
+18,6,eur_usd__c3,eur_usd,EUR/USD (3 aylık değişim),fx,Kurlar,-3.635435948015458e-05,-0.5265855973177943,0.0,426,0.0,,0.0,0.0,-
+18,6,euro_area_copper_ppi__c12,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-0.001042185454689542,-15.08825770073698,0.0,426,0.0,,0.0,0.0,-
+18,6,euro_area_copper_ppi__c3,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,-0.0007241266168078374,-10.485222529847242,0.0,426,0.0,,0.0,0.0,-
+18,6,euro_area_industrial_production__c12,euro_area_industrial_production,Euro bölgesi sanayi üretimi (12 aylık değişim),europe,Avrupa ekonomisi,7.3374192429642805e-06,0.10628336624684488,-0.0,426,0.0,,0.0,0.0,-
+18,6,euro_area_industrial_production__c3,euro_area_industrial_production,Euro bölgesi sanayi üretimi (3 aylık değişim),europe,Avrupa ekonomisi,-0.00020274199847446084,-2.936432840088576,0.0,426,0.0,,0.0,0.0,-
+18,6,euro_area_ppi__c12,euro_area_ppi,Euro bölgesi ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-0.001847204777702546,-26.732179149580325,-0.0,426,0.0,,0.0,0.0,-
+18,6,euro_area_ppi__c3,euro_area_ppi,Euro bölgesi ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,-0.00015159274100534265,-2.1956639004492207,-0.0,426,0.0,,0.0,0.0,-
+18,6,fed_rate__c12,fed_rate,Fed faizi (12 aylık değişim),rates,Faizler,-0.0068786655091523504,-99.29599631999601,-0.0,426,8.92018779342723,52.63157894736842,0.000186095993699127,0.004694835680751168,+
+18,6,fed_rate__c3,fed_rate,Fed faizi (3 aylık değişim),rates,Faizler,0.00011244829510127692,1.6289121650428746,-0.0,426,0.0,,0.0,0.0,-
+18,6,finbert_net,finbert_net,Başlık duyarlılığı (FinBERT),news,Haberler,0.0006840921320342533,9.912507435874792,,0,,,,0.0,-
+18,6,finbert_net_c9,finbert_net_c9,Başlık duyarlılığı 3 aylık değişim,news,Haberler,-0.00014818954542286335,-2.146375788142958,,0,,,,0.0,-
+18,6,finbert_supply,finbert_supply,Madencilik / Şili / Peru haber duyarlılığı,news,Haberler,0.0003525820229804144,5.108073093702153,,0,,,,0.0,-
+18,6,finbert_supply_c9,finbert_supply_c9,Madencilik / Şili / Peru duyarlılığı 3 aylık değişim,news,Haberler,-0.0011260252012664487,-16.301365820135683,,0,,,,0.0,-
+18,6,geopolitical_risk__c12,geopolitical_risk,Jeopolitik risk endeksi (12 aylık değişim),risk,Risk,-0.0004912795520494786,-7.114467277166881,-0.0,426,0.0,,0.0,0.0,-
+18,6,geopolitical_risk__c3,geopolitical_risk,Jeopolitik risk endeksi (3 aylık değişim),risk,Risk,-5.324987478493552e-05,-0.7713072281873588,-0.0,426,0.0,,0.0,0.0,-
+18,6,germany_exports__c12,germany_exports,Almanya ihracatı (12 aylık değişim),europe,Avrupa ekonomisi,-0.0001275617211053338,-1.8476216574134514,-0.0,426,0.0,,0.0,0.0,-
+18,6,germany_exports__c3,germany_exports,Almanya ihracatı (3 aylık değişim),europe,Avrupa ekonomisi,-5.1534763242191296e-05,-0.746465031871975,0.0,426,0.0,,0.0,0.0,-
+18,6,germany_order_books__c12,germany_order_books,Almanya sanayi siparişleri (12 aylık değişim),europe,Avrupa ekonomisi,-0.000367166602754363,-5.317454933139554,-0.0,426,0.0,,0.0,0.0,-
+18,6,germany_order_books__c3,germany_order_books,Almanya sanayi siparişleri (3 aylık değişim),europe,Avrupa ekonomisi,-0.0006646081411552548,-9.623692116343218,0.0,426,0.0,,0.0,0.0,-
+18,6,gold__c12,gold,Altın (12 aylık değişim),precious,Değerli metaller,-0.003503223588988578,-50.65563182955928,0.006960180251215082,426,6.807511737089202,100.0,0.0003497284944197659,0.06807511737089202,+
+18,6,gold__c3,gold,Altın (3 aylık değişim),precious,Değerli metaller,0.00010955749318328483,1.587034070254437,0.0,426,0.0,,0.0,0.0,-
+18,6,india_industrial_production__c12,india_industrial_production,Hindistan sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,0.00036182043089642043,5.241939818587715,-0.0,426,0.0,,0.0,0.0,-
+18,6,india_industrial_production__c3,india_industrial_production,Hindistan sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,0.0005912509847334933,8.566839793719586,0.0,426,0.0,,0.0,0.0,-
+18,6,iron_ore__c12,iron_ore,Demir cevheri (12 aylık değişim),bulk,Hammadde,-0.0003604147627855638,-5.219689681759776,0.0,426,8.685446009389672,100.0,5.947977546832555e-05,0.08685446009389672,+
+18,6,iron_ore__c3,iron_ore,Demir cevheri (3 aylık değişim),bulk,Hammadde,3.662836629548393e-05,0.5305738920315597,0.0,426,0.0,,0.0,0.0,-
+18,6,japan_10y__c12,japan_10y,Japonya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.00382583009612036,55.52353213212114,0.0,426,0.0,,0.0,0.0,-
+18,6,japan_10y__c3,japan_10y,Japonya 10 yıllık faiz (3 aylık değişim),rates,Faizler,-0.00017431838966945517,-2.524792703968901,0.0,426,0.0,,0.0,0.0,-
+18,6,japan_industrial_production__c12,japan_industrial_production,Japonya sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-0.001116106527965362,-16.157854193652714,0.0,426,49.06103286384976,100.0,0.010165444063765463,0.49061032863849763,+
+18,6,japan_industrial_production__c3,japan_industrial_production,Japonya sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-0.0001749687672262461,-2.5342118183960136,0.0,426,0.0,,0.0,0.0,-
+18,6,japan_ppi__c12,japan_ppi,Japonya ÜFE (12 aylık değişim),asia,Asya ekonomisi,-0.0005616829978906966,-8.133728827196915,-0.0,426,3.286384976525822,0.0,-1.5117119827464435e-05,0.03286384976525822,-
+18,6,japan_ppi__c3,japan_ppi,Japonya ÜFE (3 aylık değişim),asia,Asya ekonomisi,9.507031676797627e-05,1.3771649429948274,-0.0,426,0.0,,0.0,0.0,-
+18,6,korea_10y__c12,korea_10y,Kore 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.0004890345976764175,7.085429080775759,0.0,426,0.0,,0.0,0.0,-
+18,6,korea_10y__c3,korea_10y,Kore 10 yıllık faiz (3 aylık değişim),rates,Faizler,-3.374657564246786e-05,-0.48881300941302797,-0.0,426,0.0,,0.0,0.0,-
+18,6,korea_exports__c12,korea_exports,Kore ihracatı (12 aylık değişim),asia,Asya ekonomisi,1.9101138120253366e-05,0.27668382197270336,-0.0,426,0.0,,0.0,0.0,-
+18,6,korea_exports__c3,korea_exports,Kore ihracatı (3 aylık değişim),asia,Asya ekonomisi,0.0012749351527067646,18.47929281729656,0.0,426,0.0,,0.0,0.0,-
+18,6,korea_industrial_production__c12,korea_industrial_production,Kore sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-0.0011647365658962964,-16.861460467058414,0.0,426,50.46948356807511,100.0,0.003168831724976929,0.5046948356807511,+
+18,6,korea_industrial_production__c3,korea_industrial_production,Kore sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-0.0003953875984959436,-5.7260819904373506,0.0,426,0.0,,0.0,0.0,-
+18,6,lead__c12,lead,Kurşun fiyatı (12 aylık değişim),metals,Metaller,-2.6873537728236994e-05,-0.38925964317446066,-0.0,426,0.0,,0.0,0.0,-
+18,6,lead__c3,lead,Kurşun fiyatı (3 aylık değişim),metals,Metaller,0.0011650881392651189,16.886209566351944,-0.0,426,0.0,,0.0,0.0,-
+18,6,ma36_gap,ma36_gap,Bakır 12 aylık ortalamadan sapma,copper,Bakırın kendisi,-0.0012619756678549155,-18.268266943692986,0.0,426,0.0,,0.0,0.0,-
+18,6,natural_gas__c12,natural_gas,Doğal gaz (12 aylık değişim),energy,Enerji,-0.0001943943667742108,-2.8155408808632365,0.0,426,0.0,,0.0,0.0,-
+18,6,natural_gas__c3,natural_gas,Doğal gaz (3 aylık değişim),energy,Enerji,0.0003154933116131404,4.570661305672605,0.0,426,0.0,,0.0,0.0,-
+18,6,news_attention_c9,news_attention_c9,Bakır haberlerine ilgi 3 aylık değişim,news,Haberler,0.0016804221483311193,24.36148289997577,,0,,,,0.0,-
+18,6,news_tone,news_tone,Haber tonu (GDELT),news,Haberler,0.0002576226503706647,3.7321609159851037,,0,,,,0.0,-
+18,6,news_tone_c9,news_tone_c9,Haber tonu 3 aylık değişim,news,Haberler,0.0003553330678218245,5.147936257541462,,0,,,,0.0,-
+18,6,nickel__c12,nickel,Nikel fiyatı (12 aylık değişim),metals,Metaller,0.0008526671923250345,12.356204689083988,-0.0,426,0.0,,0.0,0.0,-
+18,6,nickel__c3,nickel,Nikel fiyatı (3 aylık değişim),metals,Metaller,0.00023313625696741515,3.3773869335642774,-0.0,426,0.0,,0.0,0.0,-
+18,6,nickel_stock__c12,nickel_stock,LME nikel stoku (12 aylık değişim),inventories,Stoklar,0.0001297605015152858,1.8797109279591033,0.0,426,0.0,,0.0,0.0,-
+18,6,nickel_stock__c3,nickel_stock,LME nikel stoku (3 aylık değişim),inventories,Stoklar,0.00019554961868657194,2.83282541846516,0.0,426,0.0,,0.0,0.0,-
+18,6,peru_diesel__c12,peru_diesel,Peru dizel fiyatı (12 aylık değişim),mining_costs,Madencilik maliyeti,-0.0019958124720263954,-28.880638639575874,-0.0,158,0.0,,0.0,0.0,-
+18,6,peru_diesel__c3,peru_diesel,Peru dizel fiyatı (3 aylık değişim),mining_costs,Madencilik maliyeti,5.429605615254654e-06,0.0786483902013553,0.0,426,1.8779342723004695,100.0,2.3734480851554616e-05,0.018779342723004695,+
+18,6,peru_usd_pen__c12,peru_usd_pen,USD/PEN (Peru) (12 aylık değişim),fx,Kurlar,-0.001029618653764375,-14.906415272454126,-0.0,426,0.0,,0.0,0.0,-
+18,6,peru_usd_pen__c3,peru_usd_pen,USD/PEN (Peru) (3 aylık değişim),fx,Kurlar,0.0006218503745178834,9.010342792702549,0.0,426,0.0,,0.0,0.0,-
+18,6,platinum__c12,platinum,Platin (12 aylık değişim),precious,Değerli metaller,2.5539065592157208e-05,0.36993968522967074,0.0,426,0.0,,0.0,0.0,-
+18,6,platinum__c3,platinum,Platin (3 aylık değişim),precious,Değerli metaller,-0.00017665591914382156,-2.5586460231569284,0.0,426,0.0,,0.0,0.0,-
+18,6,policy_uncertainty__c12,policy_uncertainty,Ekonomi politikası belirsizliği (12 aylık değişim),risk,Risk,-0.003597898844988059,-52.02214830633398,0.002799930089285877,426,23.943661971830984,100.0,0.0010262245772265511,0.23943661971830985,+
+18,6,policy_uncertainty__c3,policy_uncertainty,Ekonomi politikası belirsizliği (3 aylık değişim),risk,Risk,-0.00019434273080721757,-2.8147930760167994,0.0,426,0.0,,0.0,0.0,-
+18,6,r1,r1,Bakır son 10 günlük getiri,copper,Bakırın kendisi,0.0007275373125998951,10.542257922080733,0.0,426,0.0,,0.0,0.0,-
+18,6,r18,r18,Bakır 6 aylık getiri,copper,Bakırın kendisi,-0.000756447183778386,-10.953041513986255,0.0,426,0.0,,0.0,0.0,-
+18,6,r3,r3,Bakır 1 aylık getiri,copper,Bakırın kendisi,0.0009183028725903492,13.30778385628847,-0.0,426,0.0,,0.0,0.0,-
+18,6,r36,r36,Bakır 12 aylık getiri,copper,Bakırın kendisi,-0.00035212176988067977,-5.099607950152746,0.0,426,0.0,,0.0,0.0,-
+18,6,r9,r9,Bakır 3 aylık getiri,copper,Bakırın kendisi,-0.0019488281185132423,-28.20140832407642,-0.0,426,0.0,,0.0,0.0,-
+18,6,silver__c12,silver,Gümüş (12 aylık değişim),precious,Değerli metaller,0.0003923151179518751,5.683823855341572,0.0,426,0.0,,0.0,0.0,-
+18,6,silver__c3,silver,Gümüş (3 aylık değişim),precious,Değerli metaller,-0.0015028856625168027,-21.753042489670097,0.0,426,0.0,,0.0,0.0,-
+18,6,spread_3m,spread_3m,3 ay vadeli - nakit farkı,copper,Bakırın kendisi,0.00019638003778692093,2.8448564484603933,0.0,426,0.0,,0.0,0.0,-
+18,6,stock_c36,stock_c36,LME bakır stoku 12 aylık değişim,copper,Bakırın kendisi,5.76196168027796e-06,0.08346261551676,0.0,426,0.0,,0.0,0.0,-
+18,6,stock_c9,stock_c9,LME bakır stoku 3 aylık değişim,copper,Bakırın kendisi,0.00015114134145690562,2.1894572319203385,0.0,426,0.0,,0.0,0.0,-
+18,6,stock_z72,stock_z72,LME bakır stoku seviyesi,copper,Bakırın kendisi,3.849526189262339e-05,0.5576170072068007,0.0,426,0.0,,0.0,0.0,-
+18,6,tin__c12,tin,Kalay fiyatı (12 aylık değişim),metals,Metaller,0.00023603722431932776,3.419417485622968,0.0,426,0.0,,0.0,0.0,-
+18,6,tin__c3,tin,Kalay fiyatı (3 aylık değişim),metals,Metaller,0.00032145348275244465,4.6570222564228425,-0.0,426,0.0,,0.0,0.0,-
+18,6,us_10y__c12,us_10y,ABD 10 yıllık faiz (12 aylık değişim),rates,Faizler,-0.0012021988785523104,-17.40346258558172,-0.0,426,0.0,,0.0,0.0,-
+18,6,us_10y__c3,us_10y,ABD 10 yıllık faiz (3 aylık değişim),rates,Faizler,-0.00042031324224819504,-6.086984273882846,-0.0,426,1.1737089201877933,0.0,-2.500873632808841e-05,0.011737089201877932,-
+18,6,us_2y__c12,us_2y,ABD 2 yıllık faiz (12 aylık değişim),rates,Faizler,-0.0015308794959900589,-22.157920299027804,-0.0,426,1.8779342723004695,0.0,-4.073451230939063e-05,0.018779342723004695,-
+18,6,us_2y__c3,us_2y,ABD 2 yıllık faiz (3 aylık değişim),rates,Faizler,-0.0006638335708652124,-9.612479867165474,-0.0,426,12.910798122065728,0.0,-0.000561032505279278,0.12910798122065728,-
+18,6,us_cpi__c12,us_cpi,ABD enflasyonu (TÜFE) (12 aylık değişim),us_macro,ABD ekonomisi,8.350890916749139e-05,1.2096822775196385,-0.0,426,0.0,,0.0,0.0,-
+18,6,us_cpi__c3,us_cpi,ABD enflasyonu (TÜFE) (3 aylık değişim),us_macro,ABD ekonomisi,-7.814873258872242e-05,-1.1319450452320146,0.0,426,0.0,,0.0,0.0,-
+18,6,us_curve__c12,us_curve,ABD faiz eğrisi (10Y-2Y) (12 aylık değişim),rates,Faizler,-0.0022909921740898293,-33.14718036514934,0.0,426,0.0,,0.0,0.0,-
+18,6,us_curve__c3,us_curve,ABD faiz eğrisi (10Y-2Y) (3 aylık değişim),rates,Faizler,-3.002135186463895e-05,-0.4348546305995441,0.0,426,0.0,,0.0,0.0,-
+18,6,us_housing_starts__c12,us_housing_starts,ABD konut başlangıçları (12 aylık değişim),us_macro,ABD ekonomisi,3.845507572765404e-05,0.5570348856989324,0.0,426,0.0,,0.0,0.0,-
+18,6,us_housing_starts__c3,us_housing_starts,ABD konut başlangıçları (3 aylık değişim),us_macro,ABD ekonomisi,8.176815335412434e-05,1.184465236951973,-0.0,426,0.0,,0.0,0.0,-
+18,6,us_industrial_production__c12,us_industrial_production,ABD sanayi üretimi (12 aylık değişim),us_macro,ABD ekonomisi,0.0001100115897831245,1.593612410044059,-0.0,426,0.0,,0.0,0.0,-
+18,6,us_industrial_production__c3,us_industrial_production,ABD sanayi üretimi (3 aylık değişim),us_macro,ABD ekonomisi,-0.00010867574820439918,-1.574089470750902,-0.0,426,7.276995305164319,100.0,0.0007106947760698952,0.07276995305164319,+
+18,6,us_m2__c12,us_m2,ABD para arzı (M2) (12 aylık değişim),us_macro,ABD ekonomisi,9.64388117519465e-05,1.3969895765761964,0.0,426,0.0,,0.0,0.0,-
+18,6,us_m2__c3,us_m2,ABD para arzı (M2) (3 aylık değişim),us_macro,ABD ekonomisi,-0.00016609787046867862,-2.4057382353252255,0.0,426,0.0,,0.0,0.0,-
+18,6,us_ppi__c12,us_ppi,ABD ÜFE (12 aylık değişim),us_macro,ABD ekonomisi,-0.000375925994847945,-5.444288141914093,-0.0,426,0.0,,0.0,0.0,-
+18,6,us_ppi__c3,us_ppi,ABD ÜFE (3 aylık değişim),us_macro,ABD ekonomisi,-8.466471819154572e-05,-1.2263218207212667,0.0,426,0.0,,0.0,0.0,-
+18,6,usd_cny__c12,usd_cny,USD/CNY (yuan) (12 aylık değişim),fx,Kurlar,-0.0020424256183664627,-29.554471055350046,0.0,426,11.737089201877934,100.0,0.0005021846524340039,0.11737089201877934,+
+18,6,usd_cny__c3,usd_cny,USD/CNY (yuan) (3 aylık değişim),fx,Kurlar,7.346419510801849e-05,1.0641725464641736,0.0,426,0.0,,0.0,0.0,-
+18,6,usd_inr__c12,usd_inr,USD/INR (12 aylık değişim),fx,Kurlar,0.0010314926581584804,14.948944159344602,-0.0,426,0.0,,0.0,0.0,-
+18,6,usd_inr__c3,usd_inr,USD/INR (3 aylık değişim),fx,Kurlar,-9.872431946402836e-06,-0.14300208788089858,0.0,426,0.0,,0.0,0.0,-
+18,6,usd_jpy__c12,usd_jpy,USD/JPY (12 aylık değişim),fx,Kurlar,0.000740731562871875,10.73351782086173,-0.0,426,5.868544600938967,0.0,-0.00021658936135082017,0.05868544600938967,-
+18,6,usd_jpy__c3,usd_jpy,USD/JPY (3 aylık değişim),fx,Kurlar,0.00034482277572859513,4.99564071369977,-0.0,426,1.8779342723004695,0.0,-1.9534751466107822e-05,0.018779342723004695,-
+18,6,usd_krw__c12,usd_krw,USD/KRW (12 aylık değişim),fx,Kurlar,0.00022794737707618616,3.3022083542289318,-0.0,426,0.0,,0.0,0.0,-
+18,6,usd_krw__c3,usd_krw,USD/KRW (3 aylık değişim),fx,Kurlar,-0.00028296540898588735,-4.098191783896371,0.0,426,15.96244131455399,100.0,0.0012499881820492614,0.1596244131455399,+
+18,6,vix__c12,vix,VIX korku endeksi (12 aylık değişim),risk,Risk,-0.0005888154105925123,-8.526517504595564,0.0,426,0.0,,0.0,0.0,-
+18,6,vix__c3,vix,VIX korku endeksi (3 aylık değişim),risk,Risk,-8.542596428005558e-06,-0.123739514642266,0.0,426,0.0,,0.0,0.0,-
+18,6,vol18,vol18,Bakır oynaklığı,copper,Bakırın kendisi,-0.002596933375807693,-37.5679404243593,0.0,426,0.0,,0.0,0.0,-
+18,6,zinc__c12,zinc,Çinko fiyatı (12 aylık değişim),metals,Metaller,-0.0010572524130614761,-15.306274557858305,-0.0,426,0.0,,0.0,0.0,-
+18,6,zinc__c3,zinc,Çinko fiyatı (3 aylık değişim),metals,Metaller,-4.389906389373277e-05,-0.6358667271124678,-0.0,426,1.643192488262911,0.0,-3.4137940699634124e-05,0.01643192488262911,-
+18,6,zinc_stock__c12,zinc_stock,LME çinko stoku (12 aylık değişim),inventories,Stoklar,0.000805474428635483,11.672047577806945,0.0,426,9.859154929577464,100.0,0.0006671888158060269,0.09859154929577464,+
+18,6,zinc_stock__c3,zinc_stock,LME çinko stoku (3 aylık değişim),inventories,Stoklar,0.0004391005864051111,6.361796069839058,0.0,426,0.0,,0.0,0.0,-
+36,12,aluminum__c12,aluminum,Alüminyum fiyatı (12 aylık değişim),metals,Metaller,-0.0003923926698822425,-5.682717346555396,-0.0,426,2.8169014084507045,0.0,-0.00017086606565365524,0.028169014084507046,-
+36,12,aluminum__c3,aluminum,Alüminyum fiyatı (3 aylık değişim),metals,Metaller,0.00015588052664067652,2.2581151644397583,-0.0,426,1.1737089201877933,0.0,-7.385829620079474e-06,0.011737089201877932,-
+36,12,aluminum_stock__c12,aluminum_stock,LME alüminyum stoku (12 aylık değişim),inventories,Stoklar,-0.00029800995090770063,-4.316049619710052,0.0,426,19.483568075117372,84.33734939759037,0.003926030769344659,0.1338028169014085,+
+36,12,aluminum_stock__c3,aluminum_stock,LME alüminyum stoku (3 aylık değişim),inventories,Stoklar,-0.0007445120484175085,-10.78029002746685,-0.0,426,0.0,,0.0,0.0,-
+36,12,brent__c12,brent,Brent petrol (12 aylık değişim),energy,Enerji,2.4960046214697628e-05,0.3615523415842509,-0.0,426,0.0,,0.0,0.0,-
+36,12,brent__c3,brent,Brent petrol (3 aylık değişim),energy,Enerji,-0.00064149210872746,-9.289073535941915,-0.0,426,48.59154929577465,0.0,-0.0036652692968188946,0.4859154929577465,-
+36,12,bund_10y__c12,bund_10y,Almanya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.0018495994070851002,26.81635512392428,0.0,426,4.225352112676056,100.0,0.0003812397886110056,0.04225352112676056,+
+36,12,bund_10y__c3,bund_10y,Almanya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
+36,12,china_electricity__c12,china_electricity,Çin elektrik üretimi (12 aylık değişim),china,Çin ekonomisi,0.0,0.0,0.0,426,13.380281690140844,100.0,0.00020672855006051793,0.13380281690140844,+
+36,12,china_electricity__c3,china_electricity,Çin elektrik üretimi (3 aylık değişim),china,Çin ekonomisi,-3.2183701997778165e-05,-0.46617543325375704,-0.0,426,7.511737089201878,0.0,-0.0001167085532156297,0.07511737089201878,-
+36,12,china_fai_yoy__c12,china_fai_yoy,Çin sabit sermaye yatırımı (12 aylık değişim),china,Çin ekonomisi,-3.147751908268553e-05,-0.45594665518536576,-0.0,426,42.25352112676056,51.66666666666667,-0.0005674435520435776,0.014084507042253561,+
+36,12,china_fai_yoy__c3,china_fai_yoy,Çin sabit sermaye yatırımı (3 aylık değişim),china,Çin ekonomisi,0.0010406071806831397,15.081105442555625,-0.0,426,7.981220657276995,0.0,-0.000371149877066229,0.07981220657276995,-
+36,12,china_industrial_yoy__c12,china_industrial_yoy,Çin sanayi üretimi (12 aylık değişim),china,Çin ekonomisi,0.0002266193857392698,3.2829679441846733,0.0,426,53.990610328638496,100.0,0.008887647636249425,0.539906103286385,+
+36,12,china_industrial_yoy__c3,china_industrial_yoy,Çin sanayi üretimi (3 aylık değişim),china,Çin ekonomisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
+36,12,china_ppi_yoy__c12,china_ppi_yoy,Çin ÜFE (12 aylık değişim),china,Çin ekonomisi,0.0,0.0,0.0,426,46.478873239436616,100.0,0.007488113673134404,0.4647887323943662,+
+36,12,china_ppi_yoy__c3,china_ppi_yoy,Çin ÜFE (3 aylık değişim),china,Çin ekonomisi,-4.224020941332679e-05,-0.6118391511679157,0.0,426,17.370892018779344,100.0,0.00042329589201343373,0.17370892018779344,+
+36,12,china_real_estate_yoy__c12,china_real_estate_yoy,Çin gayrimenkul yatırımı (12 aylık değişim),china,Çin ekonomisi,-0.0005181367672632008,-7.503299421837208,0.0,426,34.037558685446015,100.0,0.004516391194149976,0.3403755868544602,+
+36,12,china_real_estate_yoy__c3,china_real_estate_yoy,Çin gayrimenkul yatırımı (3 aylık değişim),china,Çin ekonomisi,-0.00026432939986363206,-3.8283218863087622,0.0,426,57.51173708920187,100.0,0.012067236085069323,0.5751173708920188,+
+36,12,china_refined_copper__c12,china_refined_copper,Çin rafine bakır üretimi (12 aylık değişim),china,Çin ekonomisi,4.977945416690602e-05,0.7210764520709378,0.0,426,10.56338028169014,0.0,-0.00010884701779586015,0.1056338028169014,-
+36,12,china_refined_copper__c3,china_refined_copper,Çin rafine bakır üretimi (3 aylık değişim),china,Çin ekonomisi,0.00022282384254669336,3.227976907533729,-0.0,426,2.3474178403755865,100.0,3.1206505237186946e-05,0.023474178403755864,+
+36,12,coal__c12,coal,Kömür (12 aylık değişim),energy,Enerji,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
+36,12,coal__c3,coal,Kömür (3 aylık değişim),energy,Enerji,0.0002642285288241932,3.827872448584218,-0.0,426,0.0,,0.0,0.0,-
+36,12,dollar_index__c12,dollar_index,Dolar endeksi (DXY) (12 aylık değişim),fx,Kurlar,0.00022576728241554265,3.2706223821147,0.0,426,0.0,,0.0,0.0,-
+36,12,dollar_index__c3,dollar_index,Dolar endeksi (DXY) (3 aylık değişim),fx,Kurlar,0.0,0.0,0.0,426,2.5821596244131455,0.0,-1.459703421594049e-05,0.025821596244131453,-
+36,12,ecb_rate__c12,ecb_rate,ECB faizi (12 aylık değişim),rates,Faizler,-3.696328550936212e-05,-0.535405605571941,-0.0,426,5.868544600938967,0.0,-0.00022984742426975665,0.05868544600938967,-
 36,12,ecb_rate__c3,ecb_rate,ECB faizi (3 aylık değişim),rates,Faizler,0.0,0.0,-0.0,426,5.868544600938967,0.0,-8.526816249289914e-05,0.05868544600938967,-
-36,12,eod_gap,eod_gap,Dönem sonu fiyatı / dönem ortalaması,copper,Bakırın kendisi,-0.0002797182389451716,-4.051169554090357,0.0,426,23.239436619718308,100.0,0.0003022852814596819,0.2323943661971831,+
-36,12,eur_usd__c12,eur_usd,EUR/USD (12 aylık değişim),fx,Kurlar,0.00031498742909009833,4.563331255345736,0.0,426,0.0,,0.0,0.0,-
-36,12,eur_usd__c3,eur_usd,EUR/USD (3 aylık değişim),fx,Kurlar,-0.00037060287536366923,-5.367211198939838,-0.0,426,18.30985915492958,0.0,-0.001633534017642324,0.1830985915492958,-
-36,12,euro_area_copper_ppi__c12,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-6.195265231019141e-05,-0.8973602435439079,-0.0,426,15.727699530516432,0.0,-0.00044628675593581324,0.1572769953051643,-
+36,12,eod_gap,eod_gap,Dönem sonu fiyatı / dönem ortalaması,copper,Bakırın kendisi,-7.918010721078772e-05,-1.14688339593144,0.0,426,23.239436619718308,100.0,0.0003022852814596819,0.2323943661971831,+
+36,12,eur_usd__c12,eur_usd,EUR/USD (12 aylık değişim),fx,Kurlar,0.00022448543082418177,3.2520505011484184,0.0,426,0.0,,0.0,0.0,-
+36,12,eur_usd__c3,eur_usd,EUR/USD (3 aylık değişim),fx,Kurlar,0.0,0.0,-0.0,426,18.30985915492958,0.0,-0.001633534017642324,0.1830985915492958,-
+36,12,euro_area_copper_ppi__c12,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,0.0,0.0,-0.0,426,15.727699530516432,0.0,-0.00044628675593581324,0.1572769953051643,-
 36,12,euro_area_copper_ppi__c3,euro_area_copper_ppi,Euro bölgesi bakır ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
-36,12,euro_area_industrial_production__c12,euro_area_industrial_production,Euro bölgesi sanayi üretimi (12 aylık değişim),europe,Avrupa ekonomisi,0.0013905659016580382,20.156445180569925,-0.0,426,0.0,,0.0,0.0,-
-36,12,euro_area_industrial_production__c3,euro_area_industrial_production,Euro bölgesi sanayi üretimi (3 aylık değişim),europe,Avrupa ekonomisi,-0.0003167100040314393,-4.586837815718038,0.0,426,7.981220657276995,100.0,0.00023505530943330105,0.07981220657276995,+
-36,12,euro_area_ppi__c12,euro_area_ppi,Euro bölgesi ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-0.0003509681024870202,-5.082902879465565,-0.0,426,7.276995305164319,0.0,-0.00040453527726317577,0.07276995305164319,-
-36,12,euro_area_ppi__c3,euro_area_ppi,Euro bölgesi ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,-0.0001097984637676244,-1.5903502994710854,-0.0,426,0.0,,0.0,0.0,-
-36,12,fed_rate__c12,fed_rate,Fed faizi (12 aylık değişim),rates,Faizler,-0.014201845339894437,-204.2607444707503,-0.0,426,33.33333333333333,17.6056338028169,-0.008704954217239354,0.215962441314554,-
-36,12,fed_rate__c3,fed_rate,Fed faizi (3 aylık değişim),rates,Faizler,0.0019561640740133925,28.362891062204557,-0.0,426,31.220657276995308,70.67669172932331,0.001322036100186595,0.12910798122065728,+
-36,12,finbert_net,finbert_net,Başlık duyarlılığı (FinBERT),news,Haberler,0.0,0.0,,0,,,,0.0,-
-36,12,finbert_net_c9,finbert_net_c9,Başlık duyarlılığı 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
-36,12,geopolitical_risk__c12,geopolitical_risk,Jeopolitik risk endeksi (12 aylık değişim),risk,Risk,-2.727782406661012e-05,-0.39511559749715264,-0.0,426,6.338028169014084,100.0,0.00020798631135966042,0.06338028169014084,+
-36,12,geopolitical_risk__c3,geopolitical_risk,Jeopolitik risk endeksi (3 aylık değişim),risk,Risk,-0.0002718662982774586,-3.937465065914268,-0.0,426,47.417840375586856,100.0,0.0022800494101085744,0.47417840375586856,+
-36,12,germany_exports__c12,germany_exports,Almanya ihracatı (12 aylık değişim),europe,Avrupa ekonomisi,6.248079693116651e-05,0.9050665229428779,-0.0,426,11.971830985915492,0.0,-0.0013110521894478422,0.11971830985915492,-
-36,12,germany_exports__c3,germany_exports,Almanya ihracatı (3 aylık değişim),europe,Avrupa ekonomisi,-0.00036801198033448857,-5.329695779793856,0.0,426,25.352112676056336,0.0,-0.0005778003017479145,0.2535211267605634,-
-36,12,germany_order_books__c12,germany_order_books,Almanya sanayi siparişleri (12 aylık değişim),europe,Avrupa ekonomisi,-0.0009263522497352586,-13.412057130676864,-0.0,426,48.59154929577465,0.0,-0.014590722333694264,0.4859154929577465,-
-36,12,germany_order_books__c3,germany_order_books,Almanya sanayi siparişleri (3 aylık değişim),europe,Avrupa ekonomisi,0.00044964812050139405,6.514645667798206,0.0,426,3.286384976525822,100.0,8.03543555953504e-05,0.03286384976525822,+
-36,12,gold__c12,gold,Altın (12 aylık değişim),precious,Değerli metaller,-0.01867859234325181,-268.049391584227,0.05277326482018442,426,46.71361502347418,100.0,0.010783111426895536,0.4671361502347418,+
-36,12,gold__c3,gold,Altın (3 aylık değişim),precious,Değerli metaller,5.3131722893223096e-05,0.7696367727243336,0.0,426,0.0,,0.0,0.0,-
-36,12,india_industrial_production__c12,india_industrial_production,Hindistan sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-2.2720317745838537e-05,-0.32910148390829863,0.0,426,0.0,,0.0,0.0,-
-36,12,india_industrial_production__c3,india_industrial_production,Hindistan sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,0.0003106821737969532,4.500949851322466,0.0,426,20.89201877934272,100.0,0.0006648154731405761,0.2089201877934272,+
-36,12,iron_ore__c12,iron_ore,Demir cevheri (12 aylık değişim),bulk,Hammadde,0.000386730247843214,5.602895145332337,0.0,426,50.23474178403756,100.0,0.004255789564791893,0.5023474178403756,+
-36,12,iron_ore__c3,iron_ore,Demir cevheri (3 aylık değişim),bulk,Hammadde,-6.92070506886789e-05,-1.0024337665233995,0.0,426,27.464788732394368,0.0,-0.00088350223266887,0.2746478873239437,-
-36,12,japan_10y__c12,japan_10y,Japonya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.00874184672610841,127.18128591649386,0.0,426,0.0,,0.0,0.0,-
-36,12,japan_10y__c3,japan_10y,Japonya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.000448244886169916,6.494310603498102,0.0,426,5.39906103286385,0.0,-0.00010435714119265497,0.0539906103286385,-
-36,12,japan_industrial_production__c12,japan_industrial_production,Japonya sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-3.2118069288356716e-05,-0.46522476992115,0.0,426,7.981220657276995,100.0,0.0006914628813375642,0.07981220657276995,+
-36,12,japan_industrial_production__c3,japan_industrial_production,Japonya sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-0.0015088701489972423,-21.839597710586606,0.0,426,59.859154929577464,100.0,0.004273296528069904,0.5985915492957746,+
-36,12,japan_ppi__c12,japan_ppi,Japonya ÜFE (12 aylık değişim),asia,Asya ekonomisi,-0.003739068337587226,-54.05950947944145,-0.0,426,90.3755868544601,0.0,-0.03685891409222771,0.903755868544601,-
-36,12,japan_ppi__c3,japan_ppi,Japonya ÜFE (3 aylık değişim),asia,Asya ekonomisi,-0.00018861874993040612,-2.7318967298415426,-0.0,426,7.042253521126761,0.0,-9.0304765822937e-05,0.07042253521126761,-
-36,12,korea_10y__c12,korea_10y,Kore 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.002052025534907352,29.754235909874488,0.0,426,52.58215962441315,100.0,0.022972929781368497,0.5258215962441315,+
-36,12,korea_10y__c3,korea_10y,Kore 10 yıllık faiz (3 aylık değişim),rates,Faizler,1.1713421989241335e-05,0.1696706433139753,0.0,426,41.31455399061033,100.0,0.0037675854432820425,0.41314553990610325,+
-36,12,korea_exports__c12,korea_exports,Kore ihracatı (12 aylık değişim),asia,Asya ekonomisi,-0.00029213800743853563,-4.231019245516132,-0.0,426,0.9389671361502347,0.0,-7.119525099621022e-06,0.009389671361502348,-
-36,12,korea_exports__c3,korea_exports,Kore ihracatı (3 aylık değişim),asia,Asya ekonomisi,0.0002791150893018837,4.04356379681363,0.0,426,29.342723004694836,100.0,0.0011209319315234792,0.2934272300469484,+
-36,12,korea_industrial_production__c12,korea_industrial_production,Kore sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-0.0008421756490257325,-12.193831517412887,0.0,426,93.1924882629108,100.0,0.017539500446617107,0.931924882629108,+
-36,12,korea_industrial_production__c3,korea_industrial_production,Kore sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-6.874281187750304e-05,-0.9957097021363125,0.0,426,8.685446009389672,0.0,-0.0002257364843935173,0.08685446009389672,-
-36,12,lead__c12,lead,Kurşun fiyatı (12 aylık değişim),metals,Metaller,-0.00018203583853749708,-2.6365605169229593,-0.0,426,0.0,,0.0,0.0,-
-36,12,lead__c3,lead,Kurşun fiyatı (3 aylık değişim),metals,Metaller,-0.0007073405448248364,-10.242249194466797,-0.0,426,14.319248826291082,0.0,-0.0004256461627417617,0.1431924882629108,-
-36,12,ma36_gap,ma36_gap,Bakır 12 aylık ortalamadan sapma,copper,Bakırın kendisi,-0.00016996358690594368,-2.4617239714124874,-0.0,426,50.70422535211267,0.0,-0.008726428646937217,0.5070422535211268,-
-36,12,natural_gas__c12,natural_gas,Doğal gaz (12 aylık değişim),energy,Enerji,-7.981167200122559e-05,-1.1560309241738804,0.0,426,19.718309859154928,100.0,0.0007622387418642634,0.19718309859154928,+
-36,12,natural_gas__c3,natural_gas,Doğal gaz (3 aylık değişim),energy,Enerji,-0.00012152848136786251,-1.760240686287993,0.0,426,6.572769953051644,100.0,0.00013234300647596675,0.06572769953051644,+
-36,12,news_attention_c9,news_attention_c9,Bakır haberlerine ilgi 3 aylık değişim,news,Haberler,6.556097488321303e-05,0.9496859495729294,,0,,,,0.0,-
-36,12,news_tone,news_tone,Haber tonu (GDELT),news,Haberler,-8.849255194537788e-05,-1.2817634316191173,,0,,,,0.0,-
+36,12,euro_area_industrial_production__c12,euro_area_industrial_production,Euro bölgesi sanayi üretimi (12 aylık değişim),europe,Avrupa ekonomisi,0.00013859008211323943,2.007625116540651,-0.0,426,0.0,,0.0,0.0,-
+36,12,euro_area_industrial_production__c3,euro_area_industrial_production,Euro bölgesi sanayi üretimi (3 aylık değişim),europe,Avrupa ekonomisi,-1.233872485897087e-05,-0.17872609812353635,0.0,426,7.981220657276995,100.0,0.00023505530943330105,0.07981220657276995,+
+36,12,euro_area_ppi__c12,euro_area_ppi,Euro bölgesi ÜFE (12 aylık değişim),europe,Avrupa ekonomisi,-0.0026401670126816896,-38.19254465583344,-0.0,426,7.276995305164319,0.0,-0.00040453527726317577,0.07276995305164319,-
+36,12,euro_area_ppi__c3,euro_area_ppi,Euro bölgesi ÜFE (3 aylık değişim),europe,Avrupa ekonomisi,0.0,0.0,-0.0,426,0.0,,0.0,0.0,-
+36,12,fed_rate__c12,fed_rate,Fed faizi (12 aylık değişim),rates,Faizler,-0.007842330365275717,-113.15237640241874,-0.0,426,33.33333333333333,17.6056338028169,-0.008704954217239354,0.215962441314554,-
+36,12,fed_rate__c3,fed_rate,Fed faizi (3 aylık değişim),rates,Faizler,0.0017015627559824715,24.66822418198313,-0.0,426,31.220657276995308,70.67669172932331,0.001322036100186595,0.12910798122065728,+
+36,12,finbert_net,finbert_net,Başlık duyarlılığı (FinBERT),news,Haberler,0.014539998776206868,212.1513939357054,,0,,,,0.0,-
+36,12,finbert_net_c9,finbert_net_c9,Başlık duyarlılığı 3 aylık değişim,news,Haberler,6.562602180377421e-05,0.9506282200870413,,0,,,,0.0,-
+36,12,finbert_supply,finbert_supply,Madencilik / Şili / Peru haber duyarlılığı,news,Haberler,0.007440233658969355,108.17417110250926,,0,,,,0.0,-
+36,12,finbert_supply_c9,finbert_supply_c9,Madencilik / Şili / Peru duyarlılığı 3 aylık değişim,news,Haberler,-0.00024111638751696487,-3.4921649169432745,,0,,,,0.0,-
+36,12,geopolitical_risk__c12,geopolitical_risk,Jeopolitik risk endeksi (12 aylık değişim),risk,Risk,-0.00024074139356196982,-3.486734414591639,-0.0,426,6.338028169014084,100.0,0.00020798631135966042,0.06338028169014084,+
+36,12,geopolitical_risk__c3,geopolitical_risk,Jeopolitik risk endeksi (3 aylık değişim),risk,Risk,0.0,0.0,-0.0,426,47.417840375586856,100.0,0.0022800494101085744,0.47417840375586856,+
+36,12,germany_exports__c12,germany_exports,Almanya ihracatı (12 aylık değişim),europe,Avrupa ekonomisi,0.0,0.0,-0.0,426,11.971830985915492,0.0,-0.0013110521894478422,0.11971830985915492,-
+36,12,germany_exports__c3,germany_exports,Almanya ihracatı (3 aylık değişim),europe,Avrupa ekonomisi,0.00017654537551100698,2.5574965488160433,0.0,426,25.352112676056336,0.0,-0.0005778003017479145,0.2535211267605634,-
+36,12,germany_order_books__c12,germany_order_books,Almanya sanayi siparişleri (12 aylık değişim),europe,Avrupa ekonomisi,-0.00021881443508326446,-3.169194022738949,-0.0,426,48.59154929577465,0.0,-0.014590722333694264,0.4859154929577465,-
+36,12,germany_order_books__c3,germany_order_books,Almanya sanayi siparişleri (3 aylık değişim),europe,Avrupa ekonomisi,0.0,0.0,0.0,426,3.286384976525822,100.0,8.03543555953504e-05,0.03286384976525822,+
+36,12,gold__c12,gold,Altın (12 aylık değişim),precious,Değerli metaller,-0.010354673469600636,-149.2142268586209,0.05277326482018442,426,46.71361502347418,100.0,0.010783111426895536,0.4671361502347418,+
+36,12,gold__c3,gold,Altın (3 aylık değişim),precious,Değerli metaller,0.0003889554538353771,5.63513989667693,0.0,426,0.0,,0.0,0.0,-
+36,12,india_industrial_production__c12,india_industrial_production,Hindistan sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
+36,12,india_industrial_production__c3,india_industrial_production,Hindistan sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,0.00018908821912753013,2.739213640429609,0.0,426,20.89201877934272,100.0,0.0006648154731405761,0.2089201877934272,+
+36,12,iron_ore__c12,iron_ore,Demir cevheri (12 aylık değişim),bulk,Hammadde,0.0005841204781293633,8.46349324245033,0.0,426,50.23474178403756,100.0,0.004255789564791893,0.5023474178403756,+
+36,12,iron_ore__c3,iron_ore,Demir cevheri (3 aylık değişim),bulk,Hammadde,-0.00035796128688618973,-5.184163692816701,0.0,426,27.464788732394368,0.0,-0.00088350223266887,0.2746478873239437,-
+36,12,japan_10y__c12,japan_10y,Japonya 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.010842446046111147,157.9080162528088,0.0,426,0.0,,0.0,0.0,-
+36,12,japan_10y__c3,japan_10y,Japonya 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0,0.0,0.0,426,5.39906103286385,0.0,-0.00010435714119265497,0.0539906103286385,-
+36,12,japan_industrial_production__c12,japan_industrial_production,Japonya sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,0.0,0.0,0.0,426,7.981220657276995,100.0,0.0006914628813375642,0.07981220657276995,+
+36,12,japan_industrial_production__c3,japan_industrial_production,Japonya sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-0.000979622173785872,-14.182940318028997,0.0,426,59.859154929577464,100.0,0.004273296528069904,0.5985915492957746,+
+36,12,japan_ppi__c12,japan_ppi,Japonya ÜFE (12 aylık değişim),asia,Asya ekonomisi,-0.0026633995915236203,-38.52817880225185,-0.0,426,90.3755868544601,0.0,-0.03685891409222771,0.903755868544601,-
+36,12,japan_ppi__c3,japan_ppi,Japonya ÜFE (3 aylık değişim),asia,Asya ekonomisi,1.3615013487236585e-05,0.19721566384610595,-0.0,426,7.042253521126761,0.0,-9.0304765822937e-05,0.07042253521126761,-
+36,12,korea_10y__c12,korea_10y,Kore 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.0010182409893335603,14.75679608287569,0.0,426,52.58215962441315,100.0,0.022972929781368497,0.5258215962441315,+
+36,12,korea_10y__c3,korea_10y,Kore 10 yıllık faiz (3 aylık değişim),rates,Faizler,0.0,0.0,0.0,426,41.31455399061033,100.0,0.0037675854432820425,0.41314553990610325,+
+36,12,korea_exports__c12,korea_exports,Kore ihracatı (12 aylık değişim),asia,Asya ekonomisi,0.00014781999045200688,2.1413400629817003,-0.0,426,0.9389671361502347,0.0,-7.119525099621022e-06,0.009389671361502348,-
+36,12,korea_exports__c3,korea_exports,Kore ihracatı (3 aylık değişim),asia,Asya ekonomisi,0.0,0.0,0.0,426,29.342723004694836,100.0,0.0011209319315234792,0.2934272300469484,+
+36,12,korea_industrial_production__c12,korea_industrial_production,Kore sanayi üretimi (12 aylık değişim),asia,Asya ekonomisi,-0.0006984869258538459,-10.114094083975115,0.0,426,93.1924882629108,100.0,0.017539500446617107,0.931924882629108,+
+36,12,korea_industrial_production__c3,korea_industrial_production,Kore sanayi üretimi (3 aylık değişim),asia,Asya ekonomisi,-0.0001363391335613902,-1.9747462501766553,0.0,426,8.685446009389672,0.0,-0.0002257364843935173,0.08685446009389672,-
+36,12,lead__c12,lead,Kurşun fiyatı (12 aylık değişim),metals,Metaller,-2.5369101894537845e-05,-0.3674683653207224,-0.0,426,0.0,,0.0,0.0,-
+36,12,lead__c3,lead,Kurşun fiyatı (3 aylık değişim),metals,Metaller,-0.0001831886647152135,-2.653256227038157,-0.0,426,14.319248826291082,0.0,-0.0004256461627417617,0.1431924882629108,-
+36,12,ma36_gap,ma36_gap,Bakır 12 aylık ortalamadan sapma,copper,Bakırın kendisi,-0.0004752728814103236,-6.882721676743924,-0.0,426,50.70422535211267,0.0,-0.008726428646937217,0.5070422535211268,-
+36,12,natural_gas__c12,natural_gas,Doğal gaz (12 aylık değişim),energy,Enerji,-5.364260885848718e-05,-0.7769957017544193,0.0,426,19.718309859154928,100.0,0.0007622387418642634,0.19718309859154928,+
+36,12,natural_gas__c3,natural_gas,Doğal gaz (3 aylık değişim),energy,Enerji,0.0,0.0,0.0,426,6.572769953051644,100.0,0.00013234300647596675,0.06572769953051644,+
+36,12,news_attention_c9,news_attention_c9,Bakır haberlerine ilgi 3 aylık değişim,news,Haberler,-4.809850571225646e-05,-0.6966931063158347,,0,,,,0.0,-
+36,12,news_tone,news_tone,Haber tonu (GDELT),news,Haberler,0.0,0.0,,0,,,,0.0,-
 36,12,news_tone_c9,news_tone_c9,Haber tonu 3 aylık değişim,news,Haberler,0.0,0.0,,0,,,,0.0,-
-36,12,nickel__c12,nickel,Nikel fiyatı (12 aylık değişim),metals,Metaller,0.001026954381359094,14.883139243139427,-0.0,426,1.1737089201877933,0.0,-1.0330760624183563e-05,0.011737089201877932,-
-36,12,nickel__c3,nickel,Nikel fiyatı (3 aylık değişim),metals,Metaller,0.0024034254204634824,34.85563711314685,-0.0,426,30.985915492957744,0.0,-0.0020728853058459514,0.30985915492957744,-
-36,12,nickel_stock__c12,nickel_stock,LME nikel stoku (12 aylık değişim),inventories,Stoklar,-0.00037154219175987907,-5.380812207749935,0.0,426,11.971830985915492,0.0,-0.000747975953313121,0.11971830985915492,-
-36,12,nickel_stock__c3,nickel_stock,LME nikel stoku (3 aylık değişim),inventories,Stoklar,4.5448383949715326e-05,0.6583376421141783,0.0,426,23.943661971830984,100.0,0.0017772764925170657,0.23943661971830985,+
-36,12,peru_diesel__c12,peru_diesel,Peru dizel fiyatı (12 aylık değişim),mining_costs,Madencilik maliyeti,9.32076346152479e-05,1.350181335504551,-0.0,158,0.0,,0.0,0.0,-
-36,12,peru_diesel__c3,peru_diesel,Peru dizel fiyatı (3 aylık değişim),mining_costs,Madencilik maliyeti,-4.7254629801047575e-06,-0.06844846488200654,0.0,426,24.88262910798122,100.0,0.004516784638033451,0.2488262910798122,+
-36,12,peru_usd_pen__c12,peru_usd_pen,USD/PEN (Peru) (12 aylık değişim),fx,Kurlar,-0.0016831434218379966,-24.359931281825038,-0.0,426,0.0,,0.0,0.0,-
-36,12,peru_usd_pen__c3,peru_usd_pen,USD/PEN (Peru) (3 aylık değişim),fx,Kurlar,-0.0015243935818975843,-22.064114838188942,0.0,426,33.80281690140845,100.0,0.002916007710843687,0.3380281690140845,+
-36,12,platinum__c12,platinum,Platin (12 aylık değişim),precious,Değerli metaller,-0.000200339817231779,-2.9016441067110312,0.0,426,10.093896713615024,100.0,0.0009598321469501507,0.10093896713615023,+
-36,12,platinum__c3,platinum,Platin (3 aylık değişim),precious,Değerli metaller,6.552169390830149e-05,0.9491169249028462,0.0,426,0.0,,0.0,0.0,-
-36,12,policy_uncertainty__c12,policy_uncertainty,Ekonomi politikası belirsizliği (12 aylık değişim),risk,Risk,-0.000799339595657373,-11.573857664214682,0.0,426,45.774647887323944,100.0,0.0027728425893441305,0.45774647887323944,+
-36,12,policy_uncertainty__c3,policy_uncertainty,Ekonomi politikası belirsizliği (3 aylık değişim),risk,Risk,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-36,12,r1,r1,Bakır son 10 günlük getiri,copper,Bakırın kendisi,-9.443863811978748e-06,-0.13679431162384897,-0.0,426,0.0,,0.0,0.0,-
-36,12,r18,r18,Bakır 6 aylık getiri,copper,Bakırın kendisi,-0.0005044909012658997,-7.305739241081885,-0.0,426,47.183098591549296,0.0,-0.005050231256098789,0.47183098591549294,-
-36,12,r3,r3,Bakır 1 aylık getiri,copper,Bakırın kendisi,0.0005908460077067856,8.560970207990593,-0.0,426,51.40845070422535,0.0,-0.004094663614689341,0.5140845070422535,-
-36,12,r36,r36,Bakır 12 aylık getiri,copper,Bakırın kendisi,-0.000346278920036392,-5.015003454058224,-0.0,426,0.0,,0.0,0.0,-
-36,12,r9,r9,Bakır 3 aylık getiri,copper,Bakırın kendisi,-0.002250599429548958,-32.563416051675716,-0.0,426,40.61032863849765,0.0,-0.0018863915723505156,0.4061032863849765,-
-36,12,silver__c12,silver,Gümüş (12 aylık değişim),precious,Değerli metaller,0.003363878255493691,48.808032888828784,0.0,426,0.0,,0.0,0.0,-
-36,12,silver__c3,silver,Gümüş (3 aylık değişim),precious,Değerli metaller,0.0,0.0,-0.0,426,7.511737089201878,0.0,-0.0001427478216007003,0.07511737089201878,-
-36,12,spread_3m,spread_3m,3 ay vadeli - nakit farkı,copper,Bakırın kendisi,-0.00876257187926245,-126.37192121356527,0.0,426,89.67136150234741,100.0,0.020192088586702517,0.8967136150234741,+
-36,12,stock_c36,stock_c36,LME bakır stoku 12 aylık değişim,copper,Bakırın kendisi,0.0011339551539396675,16.434727638013143,0.0,426,29.342723004694836,100.0,0.006146840533469933,0.2934272300469484,+
-36,12,stock_c9,stock_c9,LME bakır stoku 3 aylık değişim,copper,Bakırın kendisi,-4.281066275421493e-05,-0.6201018520801052,-0.0,426,13.849765258215962,0.0,-0.0004989712351942517,0.13849765258215962,-
-36,12,stock_z72,stock_z72,LME bakır stoku seviyesi,copper,Bakırın kendisi,-0.00010800573815065191,-1.56438538465019,0.0,426,0.0,,0.0,0.0,-
-36,12,tin__c12,tin,Kalay fiyatı (12 aylık değişim),metals,Metaller,0.00022434271319816444,3.2499827634387204,-0.0,426,0.0,,0.0,0.0,-
-36,12,tin__c3,tin,Kalay fiyatı (3 aylık değişim),metals,Metaller,0.0002380235041061435,3.4481956929761575,-0.0,426,30.046948356807512,100.0,0.0018834674506395012,0.3004694835680751,+
-36,12,us_10y__c12,us_10y,ABD 10 yıllık faiz (12 aylık değişim),rates,Faizler,0.0028458229678999516,41.28063438271386,-0.0,426,0.0,,0.0,0.0,-
-36,12,us_10y__c3,us_10y,ABD 10 yıllık faiz (3 aylık değişim),rates,Faizler,-9.895328311797688e-05,-1.4332735758112918,-0.0,426,0.0,,0.0,0.0,-
-36,12,us_2y__c12,us_2y,ABD 2 yıllık faiz (12 aylık değişim),rates,Faizler,0.00012279824772312817,1.7788495107248021,-0.0,426,24.413145539906104,0.0,-0.0022849729335881067,0.24413145539906103,-
-36,12,us_2y__c3,us_2y,ABD 2 yıllık faiz (3 aylık değişim),rates,Faizler,-0.000238438225706558,-3.45338087638259,-0.0,426,8.215962441314554,0.0,-7.35923149234743e-05,0.08215962441314555,-
-36,12,us_cpi__c12,us_cpi,ABD enflasyonu (TÜFE) (12 aylık değişim),us_macro,ABD ekonomisi,-0.00032604221904317137,-4.721972097517611,-0.0,426,3.286384976525822,100.0,5.480646201592369e-05,0.03286384976525822,+
-36,12,us_cpi__c3,us_cpi,ABD enflasyonu (TÜFE) (3 aylık değişim),us_macro,ABD ekonomisi,-0.0007489006508726901,-10.843811758525822,-0.0,426,50.70422535211267,0.0,-0.0028719393868300146,0.5070422535211268,-
-36,12,us_curve__c12,us_curve,ABD faiz eğrisi (10Y-2Y) (12 aylık değişim),rates,Faizler,0.0003133970081285434,4.540286669022723,0.0,426,0.4694835680751174,100.0,1.6943484769379972e-06,0.004694835680751174,+
-36,12,us_curve__c3,us_curve,ABD faiz eğrisi (10Y-2Y) (3 aylık değişim),rates,Faizler,0.0004969274160501609,7.199813423631475,0.0,426,5.164319248826291,100.0,8.291886321377056e-05,0.05164319248826291,+
-36,12,us_housing_starts__c12,us_housing_starts,ABD konut başlangıçları (12 aylık değişim),us_macro,ABD ekonomisi,-0.00024073285499702534,-3.486610762716402,0.0,426,33.098591549295776,100.0,0.0035358528566633825,0.33098591549295775,+
+36,12,nickel__c12,nickel,Nikel fiyatı (12 aylık değişim),metals,Metaller,0.00045147476564665973,6.541116661012972,-0.0,426,1.1737089201877933,0.0,-1.0330760624183563e-05,0.011737089201877932,-
+36,12,nickel__c3,nickel,Nikel fiyatı (3 aylık değişim),metals,Metaller,0.0006555874681885759,9.499338934476883,-0.0,426,30.985915492957744,0.0,-0.0020728853058459514,0.30985915492957744,-
+36,12,nickel_stock__c12,nickel_stock,LME nikel stoku (12 aylık değişim),inventories,Stoklar,0.0003654026542469515,5.293847418478007,0.0,426,11.971830985915492,0.0,-0.000747975953313121,0.11971830985915492,-
+36,12,nickel_stock__c3,nickel_stock,LME nikel stoku (3 aylık değişim),inventories,Stoklar,0.00011074032356396829,1.604169329569672,0.0,426,23.943661971830984,100.0,0.0017772764925170657,0.23943661971830985,+
+36,12,peru_diesel__c12,peru_diesel,Peru dizel fiyatı (12 aylık değişim),mining_costs,Madencilik maliyeti,-0.0011948557374324008,-17.29722413353366,-0.0,158,0.0,,0.0,0.0,-
+36,12,peru_diesel__c3,peru_diesel,Peru dizel fiyatı (3 aylık değişim),mining_costs,Madencilik maliyeti,0.0,0.0,0.0,426,24.88262910798122,100.0,0.004516784638033451,0.2488262910798122,+
+36,12,peru_usd_pen__c12,peru_usd_pen,USD/PEN (Peru) (12 aylık değişim),fx,Kurlar,-0.0005719327491252004,-8.282112985289341,-0.0,426,0.0,,0.0,0.0,-
+36,12,peru_usd_pen__c3,peru_usd_pen,USD/PEN (Peru) (3 aylık değişim),fx,Kurlar,-0.00023780075473510835,-3.444149268007729,0.0,426,33.80281690140845,100.0,0.002916007710843687,0.3380281690140845,+
+36,12,platinum__c12,platinum,Platin (12 aylık değişim),precious,Değerli metaller,-0.0003468024353450998,-5.022583978608722,0.0,426,10.093896713615024,100.0,0.0009598321469501507,0.10093896713615023,+
+36,12,platinum__c3,platinum,Platin (3 aylık değişim),precious,Değerli metaller,-7.389040299402136e-05,-1.0702675637804933,0.0,426,0.0,,0.0,0.0,-
+36,12,policy_uncertainty__c12,policy_uncertainty,Ekonomi politikası belirsizliği (12 aylık değişim),risk,Risk,-0.0005905446552350211,-8.551550955240385,0.0,426,45.774647887323944,100.0,0.0027728425893441305,0.45774647887323944,+
+36,12,policy_uncertainty__c3,policy_uncertainty,Ekonomi politikası belirsizliği (3 aylık değişim),risk,Risk,-0.00012493767063290193,-1.8096169207062522,0.0,426,0.0,,0.0,0.0,-
+36,12,r1,r1,Bakır son 10 günlük getiri,copper,Bakırın kendisi,-0.00015869400057295783,-2.2985101319672396,-0.0,426,0.0,,0.0,0.0,-
+36,12,r18,r18,Bakır 6 aylık getiri,copper,Bakırın kendisi,-0.0001097907348181289,-1.5902383574460073,-0.0,426,47.183098591549296,0.0,-0.005050231256098789,0.47183098591549294,-
+36,12,r3,r3,Bakır 1 aylık getiri,copper,Bakırın kendisi,0.0006366349289019904,9.224632784981855,-0.0,426,51.40845070422535,0.0,-0.004094663614689341,0.5140845070422535,-
+36,12,r36,r36,Bakır 12 aylık getiri,copper,Bakırın kendisi,-0.008256016746962842,-119.09661029030461,-0.0,426,0.0,,0.0,0.0,-
+36,12,r9,r9,Bakır 3 aylık getiri,copper,Bakırın kendisi,-0.002132972434507371,-30.863312026485588,-0.0,426,40.61032863849765,0.0,-0.0018863915723505156,0.4061032863849765,-
+36,12,silver__c12,silver,Gümüş (12 aylık değişim),precious,Değerli metaller,0.001188847567178314,17.23077166459982,0.0,426,0.0,,0.0,0.0,-
+36,12,silver__c3,silver,Gümüş (3 aylık değişim),precious,Değerli metaller,-3.864411863328875e-05,-0.559751658035602,-0.0,426,7.511737089201878,0.0,-0.0001427478216007003,0.07511737089201878,-
+36,12,spread_3m,spread_3m,3 ay vadeli - nakit farkı,copper,Bakırın kendisi,-0.005612641678668676,-81.07173936894444,0.0,426,89.67136150234741,100.0,0.020192088586702517,0.8967136150234741,+
+36,12,stock_c36,stock_c36,LME bakır stoku 12 aylık değişim,copper,Bakırın kendisi,0.00013368361945855203,1.9365450223726541,0.0,426,29.342723004694836,100.0,0.006146840533469933,0.2934272300469484,+
+36,12,stock_c9,stock_c9,LME bakır stoku 3 aylık değişim,copper,Bakırın kendisi,2.2905595053366727e-05,0.3317927758902772,-0.0,426,13.849765258215962,0.0,-0.0004989712351942517,0.13849765258215962,-
+36,12,stock_z72,stock_z72,LME bakır stoku seviyesi,copper,Bakırın kendisi,7.966562578414175e-05,1.1540075353415096,0.0,426,0.0,,0.0,0.0,-
+36,12,tin__c12,tin,Kalay fiyatı (12 aylık değişim),metals,Metaller,-0.0004110546030441752,-5.952928042950642,-0.0,426,0.0,,0.0,0.0,-
+36,12,tin__c3,tin,Kalay fiyatı (3 aylık değişim),metals,Metaller,0.00029110394376337487,4.217272621973577,-0.0,426,30.046948356807512,100.0,0.0018834674506395012,0.3004694835680751,+
+36,12,us_10y__c12,us_10y,ABD 10 yıllık faiz (12 aylık değişim),rates,Faizler,2.3246976486169983e-05,0.33673782139112945,-0.0,426,0.0,,0.0,0.0,-
+36,12,us_10y__c3,us_10y,ABD 10 yıllık faiz (3 aylık değişim),rates,Faizler,-0.0002449253826939592,-3.5473250434540087,-0.0,426,0.0,,0.0,0.0,-
+36,12,us_2y__c12,us_2y,ABD 2 yıllık faiz (12 aylık değişim),rates,Faizler,0.00021834465781317596,3.163081323352661,-0.0,426,24.413145539906104,0.0,-0.0022849729335881067,0.24413145539906103,-
+36,12,us_2y__c3,us_2y,ABD 2 yıllık faiz (3 aylık değişim),rates,Faizler,-6.0935436909235845e-06,-0.08826509228633989,-0.0,426,8.215962441314554,0.0,-7.35923149234743e-05,0.08215962441314555,-
+36,12,us_cpi__c12,us_cpi,ABD enflasyonu (TÜFE) (12 aylık değişim),us_macro,ABD ekonomisi,0.00022187111894340938,3.214173577800381,-0.0,426,3.286384976525822,100.0,5.480646201592369e-05,0.03286384976525822,+
+36,12,us_cpi__c3,us_cpi,ABD enflasyonu (TÜFE) (3 aylık değişim),us_macro,ABD ekonomisi,3.282074801569738e-05,0.4754183880543955,-0.0,426,50.70422535211267,0.0,-0.0028719393868300146,0.5070422535211268,-
+36,12,us_curve__c12,us_curve,ABD faiz eğrisi (10Y-2Y) (12 aylık değişim),rates,Faizler,0.0,0.0,0.0,426,0.4694835680751174,100.0,1.6943484769379972e-06,0.004694835680751174,+
+36,12,us_curve__c3,us_curve,ABD faiz eğrisi (10Y-2Y) (3 aylık değişim),rates,Faizler,0.00032578671113315264,4.71980965631929,0.0,426,5.164319248826291,100.0,8.291886321377056e-05,0.05164319248826291,+
+36,12,us_housing_starts__c12,us_housing_starts,ABD konut başlangıçları (12 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,0.0,426,33.098591549295776,100.0,0.0035358528566633825,0.33098591549295775,+
 36,12,us_housing_starts__c3,us_housing_starts,ABD konut başlangıçları (3 aylık değişim),us_macro,ABD ekonomisi,0.0,0.0,0.0,426,0.0,,0.0,0.0,-
-36,12,us_industrial_production__c12,us_industrial_production,ABD sanayi üretimi (12 aylık değişim),us_macro,ABD ekonomisi,-0.028317060019962974,-404.42134879301364,-0.05938617935413634,426,50.46948356807511,0.0,-0.02185441822192573,0.5046948356807511,-
-36,12,us_industrial_production__c3,us_industrial_production,ABD sanayi üretimi (3 aylık değişim),us_macro,ABD ekonomisi,0.00012786723881919547,1.8522833666560499,0.0,426,24.178403755868544,100.0,0.000853100941621075,0.24178403755868544,+
-36,12,us_m2__c12,us_m2,ABD para arzı (M2) (12 aylık değişim),us_macro,ABD ekonomisi,-0.0008790603374416053,-12.727648923829484,-0.0,426,10.56338028169014,100.0,0.0012318797373036315,0.1056338028169014,+
-36,12,us_m2__c3,us_m2,ABD para arzı (M2) (3 aylık değişim),us_macro,ABD ekonomisi,-0.0008480479757277869,-12.27882068100878,-0.0,426,0.0,,0.0,0.0,-
-36,12,us_ppi__c12,us_ppi,ABD ÜFE (12 aylık değişim),us_macro,ABD ekonomisi,-0.0001608432432627238,-2.3296370731494056,-0.0,426,0.0,,0.0,0.0,-
-36,12,us_ppi__c3,us_ppi,ABD ÜFE (3 aylık değişim),us_macro,ABD ekonomisi,-0.0005811058131801873,-8.41490881001638,-0.0,426,2.5821596244131455,0.0,-3.143950968424261e-05,0.025821596244131453,-
-36,12,usd_cny__c12,usd_cny,USD/CNY (yuan) (12 aylık değişim),fx,Kurlar,-0.014648376446740365,-210.6361431724416,0.002765705534660567,426,71.83098591549296,100.0,0.018381719738681534,0.7183098591549296,+
-36,12,usd_cny__c3,usd_cny,USD/CNY (yuan) (3 aylık değişim),fx,Kurlar,-0.0026041577785962215,-37.67231456732174,0.0,426,0.0,,0.0,0.0,-
-36,12,usd_inr__c12,usd_inr,USD/INR (12 aylık değişim),fx,Kurlar,0.0005363294234577954,7.77084890055682,0.0,426,0.0,,0.0,0.0,-
-36,12,usd_inr__c3,usd_inr,USD/INR (3 aylık değişim),fx,Kurlar,-0.000950987657967368,-13.768567755718761,0.0,426,18.544600938967136,100.0,0.0013054530845353408,0.18544600938967137,+
-36,12,usd_jpy__c12,usd_jpy,USD/JPY (12 aylık değişim),fx,Kurlar,0.00042382314129998705,6.140405821803991,-0.0,426,67.6056338028169,0.0,-0.029501292417909337,0.676056338028169,-
-36,12,usd_jpy__c3,usd_jpy,USD/JPY (3 aylık değişim),fx,Kurlar,0.00019427664103788692,2.814382663276664,-0.0,426,49.53051643192488,0.0,-0.004517512832753343,0.4953051643192488,-
-36,12,usd_krw__c12,usd_krw,USD/KRW (12 aylık değişim),fx,Kurlar,0.00011445739997496042,1.6580174765997322,0.0,426,8.450704225352112,100.0,0.0009110151144826254,0.08450704225352113,+
-36,12,usd_krw__c3,usd_krw,USD/KRW (3 aylık değişim),fx,Kurlar,-0.00016796031320647764,-2.4327113291184626,0.0,426,3.9906103286384975,35.294117647058826,-1.5581870430880353e-05,0.011737089201877932,-
-36,12,vix__c12,vix,VIX korku endeksi (12 aylık değişim),risk,Risk,-5.170482288617106e-05,-0.7489282292901385,0.0,426,11.032863849765258,100.0,0.0003672137246227642,0.11032863849765258,+
-36,12,vix__c3,vix,VIX korku endeksi (3 aylık değişim),risk,Risk,-0.0011541187499769202,-16.70783895617588,0.0,426,48.35680751173709,100.0,0.0038691253474698486,0.4835680751173709,+
-36,12,vol18,vol18,Bakır oynaklığı,copper,Bakırın kendisi,-0.005734376830107083,-82.8251046402483,0.0,426,88.02816901408451,100.0,0.008160910720359132,0.8802816901408451,+
-36,12,zinc__c12,zinc,Çinko fiyatı (12 aylık değişim),metals,Metaller,-0.0010834148528746155,-15.684833732179587,-0.0,426,19.483568075117372,0.0,-0.0008707243985396873,0.19483568075117372,-
-36,12,zinc__c3,zinc,Çinko fiyatı (3 aylık değişim),metals,Metaller,-0.0015337985807065495,-22.20013868112288,-0.0,426,15.258215962441316,0.0,-0.0016020814221943077,0.15258215962441316,-
-36,12,zinc_stock__c12,zinc_stock,LME çinko stoku (12 aylık değişim),inventories,Stoklar,0.0012063001565706512,17.48387644297653,0.0,426,35.2112676056338,100.0,0.0022449675328196864,0.352112676056338,+
-36,12,zinc_stock__c3,zinc_stock,LME çinko stoku (3 aylık değişim),inventories,Stoklar,0.0013600060243977134,19.713174243159308,0.0,426,37.08920187793427,100.0,0.001521092735908586,0.37089201877934275,+
+36,12,us_industrial_production__c12,us_industrial_production,ABD sanayi üretimi (12 aylık değişim),us_macro,ABD ekonomisi,-0.020771325932775964,-297.7707022192447,-0.05938617935413634,426,50.46948356807511,0.0,-0.02185441822192573,0.5046948356807511,-
+36,12,us_industrial_production__c3,us_industrial_production,ABD sanayi üretimi (3 aylık değişim),us_macro,ABD ekonomisi,1.897941976301365e-05,0.27492069038963,0.0,426,24.178403755868544,100.0,0.000853100941621075,0.24178403755868544,+
+36,12,us_m2__c12,us_m2,ABD para arzı (M2) (12 aylık değişim),us_macro,ABD ekonomisi,-1.3602610746142223e-05,-0.1970333267336432,-0.0,426,10.56338028169014,100.0,0.0012318797373036315,0.1056338028169014,+
+36,12,us_m2__c3,us_m2,ABD para arzı (M2) (3 aylık değişim),us_macro,ABD ekonomisi,-0.0004321352281375585,-6.258153506340189,-0.0,426,0.0,,0.0,0.0,-
+36,12,us_ppi__c12,us_ppi,ABD ÜFE (12 aylık değişim),us_macro,ABD ekonomisi,-0.0004947745883180741,-7.165068142211005,-0.0,426,0.0,,0.0,0.0,-
+36,12,us_ppi__c3,us_ppi,ABD ÜFE (3 aylık değişim),us_macro,ABD ekonomisi,3.082346345760352e-05,0.44648667574684175,-0.0,426,2.5821596244131455,0.0,-3.143950968424261e-05,0.025821596244131453,-
+36,12,usd_cny__c12,usd_cny,USD/CNY (yuan) (12 aylık değişim),fx,Kurlar,-0.005990154031736711,-86.50839754718164,0.002765705534660567,426,71.83098591549296,100.0,0.018381719738681534,0.7183098591549296,+
+36,12,usd_cny__c3,usd_cny,USD/CNY (yuan) (3 aylık değişim),fx,Kurlar,-0.002420434859440778,-35.01775402393745,0.0,426,0.0,,0.0,0.0,-
+36,12,usd_inr__c12,usd_inr,USD/INR (12 aylık değişim),fx,Kurlar,0.00040458447746969734,5.8616171223713085,0.0,426,0.0,,0.0,0.0,-
+36,12,usd_inr__c3,usd_inr,USD/INR (3 aylık değişim),fx,Kurlar,-0.0006409137414545898,-9.280701219921289,0.0,426,18.544600938967136,100.0,0.0013054530845353408,0.18544600938967137,+
+36,12,usd_jpy__c12,usd_jpy,USD/JPY (12 aylık değişim),fx,Kurlar,0.0009074953427353067,13.151093133318124,-0.0,426,67.6056338028169,0.0,-0.029501292417909337,0.676056338028169,-
+36,12,usd_jpy__c3,usd_jpy,USD/JPY (3 aylık değişim),fx,Kurlar,8.444562949407817e-06,0.1223205385783567,-0.0,426,49.53051643192488,0.0,-0.004517512832753343,0.4953051643192488,-
+36,12,usd_krw__c12,usd_krw,USD/KRW (12 aylık değişim),fx,Kurlar,-3.902360215543328e-05,-0.5652482871120523,0.0,426,8.450704225352112,100.0,0.0009110151144826254,0.08450704225352113,+
+36,12,usd_krw__c3,usd_krw,USD/KRW (3 aylık değişim),fx,Kurlar,-0.000139702248433196,-2.0234544560856293,0.0,426,3.9906103286384975,35.294117647058826,-1.5581870430880353e-05,0.011737089201877932,-
+36,12,vix__c12,vix,VIX korku endeksi (12 aylık değişim),risk,Risk,-0.00016582968786429418,-2.4018542381969192,0.0,426,11.032863849765258,100.0,0.0003672137246227642,0.11032863849765258,+
+36,12,vix__c3,vix,VIX korku endeksi (3 aylık değişim),risk,Risk,-0.0007099850204509055,-10.280527453198534,0.0,426,48.35680751173709,100.0,0.0038691253474698486,0.4835680751173709,+
+36,12,vol18,vol18,Bakır oynaklığı,copper,Bakırın kendisi,-0.00435406865457609,-62.93185236658917,0.0,426,88.02816901408451,100.0,0.008160910720359132,0.8802816901408451,+
+36,12,zinc__c12,zinc,Çinko fiyatı (12 aylık değişim),metals,Metaller,-0.00102452106097069,-14.832652121065758,-0.0,426,19.483568075117372,0.0,-0.0008707243985396873,0.19483568075117372,-
+36,12,zinc__c3,zinc,Çinko fiyatı (3 aylık değişim),metals,Metaller,-4.5828910240534994e-05,-0.6638194179648944,-0.0,426,15.258215962441316,0.0,-0.0016020814221943077,0.15258215962441316,-
+36,12,zinc_stock__c12,zinc_stock,LME çinko stoku (12 aylık değişim),inventories,Stoklar,0.0008695166493106202,12.60048037990102,0.0,426,35.2112676056338,100.0,0.0022449675328196864,0.352112676056338,+
+36,12,zinc_stock__c3,zinc_stock,LME çinko stoku (3 aylık değişim),inventories,Stoklar,6.292097157581054e-05,0.9114428799725753,0.0,426,37.08920187793427,100.0,0.001521092735908586,0.37089201877934275,+

@@ -24,10 +24,14 @@ def main(argv=None) -> int:
         import pandas as pd
         from . import news
         from . import dekad as K
-        news.fetch(pd.Period(a.run_date or date.today(), "M"))   # includes the running month's dekads
+        month = pd.Period(a.run_date or date.today(), "M")    # includes the running month's dekads
+        missing = news.fetch(month) + sum(news.fetch_google_news(month, folder=f) for f in news.GNEWS_SETS)
         news.score_headlines()
         d = news.dekad_sentiment()
-        print(f"news: sentiment through {K.label(int(d.index.max())) if len(d) else 'none'}")
+        print(f"news: sentiment through {K.label(int(d.index.max())) if len(d) else 'none'}, "
+              f"{missing} requests still missing")
+        if missing and a.command == "news":
+            return 3
     if a.command in ("run", "all"):
         from .pipeline import run
         m = run(a.run_date, allow_stale=a.allow_stale, n_jobs=a.jobs)

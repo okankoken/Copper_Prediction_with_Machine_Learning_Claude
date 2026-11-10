@@ -25,12 +25,15 @@ OWN_TR = {
     "stock_c36": "LME bakır stoku 12 aylık değişim", "stock_z72": "LME bakır stoku seviyesi",
 }
 
-SENT_FEATURES = ("news_tone", "news_tone_c9", "news_attention_c9", "finbert_net", "finbert_net_c9")
+SENT_FEATURES = ("news_tone", "news_tone_c9", "news_attention_c9", "finbert_net", "finbert_net_c9",
+                 "finbert_supply", "finbert_supply_c9")
 
 SENT_TR = {
     "news_tone": "Haber tonu (GDELT)", "news_tone_c9": "Haber tonu 3 aylık değişim",
     "news_attention_c9": "Bakır haberlerine ilgi 3 aylık değişim", "finbert_net": "Başlık duyarlılığı (FinBERT)",
     "finbert_net_c9": "Başlık duyarlılığı 3 aylık değişim",
+    "finbert_supply": "Madencilik / Şili / Peru haber duyarlılığı",
+    "finbert_supply_c9": "Madencilik / Şili / Peru duyarlılığı 3 aylık değişim",
 }
 
 
@@ -78,6 +81,7 @@ def sentiment_features(news_d: pd.DataFrame | None, index: pd.Index) -> pd.DataF
     tone = s.get("news_tone", nan)
     att = s.get("news_attention", nan)
     fb = s.get("finbert_net", nan).rolling(3, min_periods=2).mean()   # ~1 month of headlines
+    sp = s.get("finbert_supply_net", nan).rolling(6, min_periods=3).mean()   # sparser: ~2 months
     la = np.log(att.where(att > 0))
     out = pd.DataFrame(index=index)
     out["news_tone"] = tone
@@ -85,6 +89,8 @@ def sentiment_features(news_d: pd.DataFrame | None, index: pd.Index) -> pd.DataF
     out["news_attention_c9"] = la - la.shift(9)
     out["finbert_net"] = fb
     out["finbert_net_c9"] = fb - fb.shift(9)
+    out["finbert_supply"] = sp
+    out["finbert_supply_c9"] = sp - sp.shift(9)
     return out[list(SENT_FEATURES)]
 
 

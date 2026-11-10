@@ -1,10 +1,12 @@
-"""Copper news sentiment from GDELT (2017 onwards).
+"""Copper news sentiment (2017 onwards).
 
-Two independent signals per month:
-  * GDELT tone      : GDELT's own document tone for copper-market articles, and the
+Two independent signals:
+  * GDELT tone      : GDELT's own document tone for "copper price" articles, and the
                       share of global coverage those articles take (attention).
-  * FinBERT headline: up to 250 most relevant English headlines per month, scored
-                      with ProsusAI/finbert (positive - negative probability).
+  * FinBERT headline: English copper-market headlines from Google News RSS searches
+                      (several queries per month), scored with ProsusAI/finbert
+                      (positive - negative probability). GDELT's article-list API
+                      rejects our requests (HTTP 429), so headlines come from Google News.
 
 Everything fetched is cached under data/news/, so monthly updates only fetch the
 new month. News is known by the end of its month, so it has no publication lag.
@@ -31,7 +33,7 @@ PAUSE = 45.0                  # GDELT throttles hard; one request per ~45 s is r
 
 
 def _get(params: dict, log=print) -> dict:
-    for attempt in range(10):
+    for attempt in range(6):
         time.sleep(PAUSE)
         try:
             r = requests.get(API, params={**params, "query": QUERY, "format": "json"}, headers=HEADERS, timeout=120)
@@ -55,10 +57,20 @@ def _quarters(last: pd.Period) -> list[pd.Period]:
     return list(pd.period_range(START.asfreq("Q"), last.asfreq("Q"), freq="Q"))
 
 
-def fetch(last: pd.Period, log=print) -> None:
-    """Fetch what is not cached yet: daily tone/volume one calendar year per request,
-    the 250 most relevant headlines one quarter per request. The newest year/quarter is
-    always refreshed."""
+def _save(path, params, log) -> bool:
+    """Fetch one request into `path`; on repeated failure log it and leave it for the next round."""
+    try:
+        path.write_text(json.dumps(_get(params, log)), encoding="utf-8")
+        return True
+    except RuntimeError as e:
+        log(f"  skipped for now: {e}")
+        return False
+
+
+def fetch(last: pd.Period, log=print) -> int:
+    """Returns the number of requests still missing after this round."""
+    """GDELT daily tone/volume, one calendar year per request; the newest year is always refreshed."""
+    missing = 0
     for kind in ("tone", "volume", "headlines"):
         (NEWS / kind).mkdir(parents=True, exist_ok=True)
     for year in range(START.year, last.year + 1):
@@ -69,17 +81,9 @@ def fetch(last: pd.Period, log=print) -> None:
             path = NEWS / kind / f"{year}.json"
             if path.exists() and year != last.year:
                 continue
-            path.write_text(json.dumps(_get({"mode": mode, **span}, log)), encoding="utf-8")
-        log(f"timeline {year} ok")
-    for q in _quarters(last):
-        path = NEWS / "headlines" / f"{q}.json"
-        if path.exists() and q != last.asfreq("Q"):
-            continue
-        span = {"startdatetime": q.asfreq("M", "s").start_time.strftime("%Y%m%d%H%M%S"),
-                "enddatetime": (min(q.asfreq("M", "e"), last) + 1).start_time.strftime("%Y%m%d%H%M%S")}
-        path.write_text(json.dumps(_get({"mode": "artlist", "maxrecords": 250, "sort": "hybridrel", **span}, log)),
-                        encoding="utf-8")
-        log(f"headlines {q} ok")
+            missing += not _save(path, {"mode": mode, **span}, log)
+        log(f"timeline {year} done")
+    return missing
 
 
 def _timeline(kind: str) -> pd.DataFrame:
@@ -94,15 +98,70 @@ def _timeline(kind: str) -> pd.DataFrame:
     return t.drop_duplicates(["series", "date"], keep="last")
 
 
+GNEWS = "https://news.google.com/rss/search"
+# folder -> searches. "gnews": copper market in general; "gnews_supply": mining and the two
+# largest producers (Chile, Peru), English-language coverage incl. local outlets' English editions.
+GNEWS_SETS = {
+    "gnews": ('"copper price"', '"copper prices"', '"LME copper"', '"copper market"', '"copper demand"',
+              '"copper supply"'),
+    "gnews_supply": ('copper site:mining.com', 'copper Chile', 'copper Peru', 'Codelco', 'Escondida copper',
+                     '"Las Bambas" OR Antamina OR Cerrejon copper', 'copper mine strike OR outage'),
+}
+
+
+def fetch_google_news(last: pd.Period, log=print, folder: str = "gnews") -> int:
+    """Google News headlines per month and query, cached in data/news/<folder>/<YYYY-MM>.json.
+    The newest month is always refreshed. Returns the number of failed searches."""
+    import feedparser
+    queries = GNEWS_SETS[folder]
+    out = NEWS / folder
+    out.mkdir(parents=True, exist_ok=True)
+    failed = 0
+    for p in pd.period_range(START, last, freq="M"):
+        path = out / f"{p}.json"
+        if path.exists() and p != last:
+            continue
+        a, b = p.start_time.strftime("%Y-%m-%d"), (p + 1).start_time.strftime("%Y-%m-%d")
+        items = []
+        for q in queries:
+            try:
+                r = requests.get(GNEWS, params={"q": f"{q} after:{a} before:{b}", "hl": "en-US", "gl": "US",
+                                                "ceid": "US:en"}, headers=HEADERS, timeout=30)
+                r.raise_for_status()
+            except requests.RequestException as e:
+                failed += 1
+                log(f"  gnews {p} {q}: {type(e).__name__}")
+                time.sleep(10)
+                continue
+            for e in feedparser.parse(r.text).entries:
+                title = e.get("title", "")
+                src = e.get("source", {}).get("title", "") if isinstance(e.get("source"), dict) else ""
+                if src and title.endswith(f" - {src}"):
+                    title = title[: -len(src) - 3]
+                items.append({"url": e.get("link"), "title": title.strip(), "domain": src,
+                              "published": e.get("published", ""), "query": q})
+            time.sleep(1.5)
+        path.write_text(json.dumps({"articles": items}), encoding="utf-8")
+        log(f"{folder} {p}: {len(items)} headlines")
+    return failed
+
+
 def _headlines() -> pd.DataFrame:
     rows = []
+    for folder in GNEWS_SETS:
+        for f in sorted((NEWS / folder).glob("*.json")) if (NEWS / folder).exists() else []:
+            for a in json.loads(f.read_text(encoding="utf-8") or "{}").get("articles", []):
+                d = pd.to_datetime(a.get("published"), errors="coerce", utc=True)
+                if a.get("url") and pd.notna(d) and len(a.get("title", "")) > 15:
+                    rows.append({"url": a["url"], "date": d.tz_convert(None).normalize(), "title": a["title"],
+                                 "domain": a.get("domain"), "topic": "supply" if folder != "gnews" else "market"})
     for f in sorted((NEWS / "headlines").glob("*.json")) if (NEWS / "headlines").exists() else []:
         for a in json.loads(f.read_text(encoding="utf-8") or "{}").get("articles", []):
             seen = str(a.get("seendate") or "")
             if len(seen) >= 8 and a.get("url"):
                 rows.append({"url": a["url"], "date": pd.Timestamp(seen[:8]),
                              "title": (a.get("title") or "").strip(), "domain": a.get("domain")})
-    return pd.DataFrame(rows, columns=["url", "date", "title", "domain"]).drop_duplicates("url")
+    return pd.DataFrame(rows, columns=["url", "date", "title", "domain", "topic"]).drop_duplicates("url")
 
 
 def score_headlines(log=print) -> pd.DataFrame:
@@ -154,12 +213,15 @@ def dekad_sentiment(last: int | None = None) -> pd.DataFrame:
     if scores.exists():
         fb = pd.read_csv(scores)
         if {"p_positive", "p_negative"} <= set(fb.columns):
-            fb = fb.drop(columns=[c for c in ("date", "month") if c in fb.columns]).merge(
-                _headlines()[["url", "date"]], on="url", how="inner")
+            fb = fb.drop(columns=[c for c in ("date", "month", "topic") if c in fb.columns]).merge(
+                _headlines()[["url", "date", "topic"]], on="url", how="inner")
             fb["dekad"] = K.from_dates(fb["date"])
             fb["net"] = fb["p_positive"] - fb["p_negative"]
             g = fb.groupby("dekad")
+            sup = fb[fb["topic"] == "supply"].groupby("dekad")
             out = out.join(pd.DataFrame({"finbert_net": g["net"].mean(), "finbert_n": g.size()}), how="outer")
+            out = out.join(pd.DataFrame({"finbert_supply_net": sup["net"].mean(), "finbert_supply_n": sup.size()}),
+                           how="outer")
     if last is not None:
         out = out[out.index <= last]
     return out.sort_index()
@@ -177,11 +239,12 @@ def scored_headlines() -> pd.DataFrame:
     fb = fb[["url", "p_positive", "p_negative", "p_neutral"]].merge(h, on="url", how="inner")
     fb["net"] = fb["p_positive"] - fb["p_negative"]
     fb["label"] = fb[["p_positive", "p_negative", "p_neutral"]].idxmax(axis=1).str.replace("p_", "", regex=False)
-    return fb.sort_values("date", ascending=False)[["date", "title", "domain", "url", "label", "net"]]
+    return fb.sort_values("date", ascending=False)[["date", "title", "domain", "topic", "url", "label", "net"]]
 
 
 if __name__ == "__main__":
     last = pd.Period(date.today(), "M") - 1
-    fetch(last)
+    for folder in GNEWS_SETS:
+        fetch_google_news(last, folder=folder)
     score_headlines()
     print(dekad_sentiment().tail())
