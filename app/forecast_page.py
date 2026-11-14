@@ -21,10 +21,36 @@ for h, name in ((3, "1 ay sonra"), (9, "3 ay sonra"), (18, "6 ay sonra"), (36, "
     cards.append({"label": name, "value": f"{tr(r.forecast_usd_t)} $", "delta": r.change_pct, "sub": r.period_tr})
 kpi_cards(cards)
 
+# ---------------------------------------------------------------- the 10-day periods, made visible
+AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
+fc["month_tr"] = [f"{AYLAR[int(p.split('-')[1]) - 1]} {p.split('-')[0]}" for p in fc["period"]]
+fc["part_tr"] = [p.split(" ")[0] for p in fc["period_tr"]]
+
+section("Önümüzdeki 10 günlük dönemler", "Her ay üç döneme ayrılır: 1–10 · 11–20 · 21–ay sonu")
+kpi_cards([{"label": r.period_tr, "value": f"{tr(r.forecast_usd_t)} $", "delta": r.change_pct,
+            "sub": "son döneme göre"} for r in fc.head(3).itertuples()])
+
+section("12 ay boyunca 10 günlük tahmin", "Her sütun bir 10 günlük dönemin ortalama fiyat tahmini · "
+        "yeşil: son dönemin üstü, kırmızı: altı")
+fig = go.Figure(go.Bar(
+    x=[fc["month_tr"], fc["part_tr"]], y=fc["forecast_usd_t"],
+    marker_color=[UP if v >= p0 else DOWN for v in fc["forecast_usd_t"]],
+    text=[f"{v / 1000:.2f}".replace(".", ",") + "k" for v in fc["forecast_usd_t"]], textposition="outside",
+    textfont=dict(size=10), customdata=fc[["period_tr", "change_pct"]].values,
+    hovertemplate="%{customdata[0]}<br>%{y:,.0f} $ (%{customdata[1]:+.1f}%)<extra></extra>"))
+fig.add_hline(y=p0, line_dash="dot", line_color=SLATE,
+              annotation_text=f"son dönem {tr(p0)} $", annotation_position="top left")
+lo, hi = min(fc["forecast_usd_t"].min(), p0), max(fc["forecast_usd_t"].max(), p0)
+fig.update_yaxes(range=[lo - (hi - lo) * 0.6, hi + (hi - lo) * 0.45], tickformat=",.0f")
+fig.update_xaxes(tickfont=dict(size=10))
+fig.update_layout(hovermode="closest", bargap=0.15)
+with st.container(border=True):
+    st.plotly_chart(style(fig, 400), width="stretch")
+
 section("Geçmiş fiyat ve 12 aylık tahmin", "Gri: gerçekleşen 10 günlük ortalamalar · Bakır rengi: modelin tahmini")
 panel = D["panel"].copy()
 panel["date"] = [K.end(int(n)) for n in panel["dekad"]]
-years = st.radio("Geçmiş", [1, 3, 5, 10], index=1, horizontal=True, format_func=lambda y: f"{y} yıl",
+years = st.radio("Geçmiş", [1, 3, 5, 10], index=0, horizontal=True, format_func=lambda y: f"{y} yıl",
                  label_visibility="collapsed")
 hist = panel[panel["date"] >= panel["date"].max() - pd.DateOffset(years=years)]
 fig = go.Figure()
@@ -35,6 +61,8 @@ fig.add_trace(go.Scatter(x=[hist["date"].iloc[-1], *fc["date"]], y=[p0, *fc["for
                          text=["", *fc["period_tr"]], hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
 fig.add_vrect(x0=hist["date"].iloc[-1], x1=fc["date"].iloc[-1], fillcolor="rgba(200,105,58,0.06)", line_width=0)
 fig.update_yaxes(tickformat=",.0f")
+fig.update_xaxes(showgrid=True, gridcolor="rgba(100,116,139,0.12)", dtick="M1" if years <= 1 else "M3",
+                 tickformat="%b %Y")
 with st.container(border=True):
     st.plotly_chart(style(fig, 440), width="stretch")
 
