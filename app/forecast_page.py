@@ -34,6 +34,32 @@ fig.add_trace(go.Scatter(x=[hist["date"].iloc[-1], *fc["date"]], y=[p0, *fc["for
                          mode="lines+markers", marker=dict(size=5, color=COPPER), line=dict(color=COPPER, width=3),
                          text=["", *fc["period_tr"]], hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
 fig.add_vrect(x0=hist["date"].iloc[-1], x1=fc["date"].iloc[-1], fillcolor="rgba(200,105,58,0.06)", line_width=0)
+
+# monthly averages: day-weighted mean of the month's three 10-day periods, drawn as one short
+# dashed segment per month (grey = actual month, navy = month with forecast periods)
+pts = pd.concat([pd.DataFrame({"dekad": hist["dekad"].astype(int), "price": hist["price"], "fc": False}),
+                 pd.DataFrame({"dekad": [K.make(*map(int, p.split("-"))) for p in fc["period"]],
+                               "price": fc["forecast_usd_t"], "fc": True})], ignore_index=True)
+pts["days"] = [(K.end(n) - K.start(n)).days + 1 for n in pts["dekad"]]
+pts["month"] = [K.start(n).to_period("M") for n in pts["dekad"]]
+mon = pts.groupby("month").apply(lambda g: pd.Series({
+    "avg": (g["price"] * g["days"]).sum() / g["days"].sum(), "fc": bool(g["fc"].any()),
+    "mixed": bool(g["fc"].any() and not g["fc"].all()), "n": len(g)}), include_groups=False)
+mon = mon[mon["n"] == 3]  # only complete months (3 periods), so a partial month never shows a misleading level
+AYLAR_TAM = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim",
+             "Kasım", "Aralık"]
+for is_fc, color, name in ((False, SLATE, "Aylık ortalama"), (True, NAVY, "Aylık ortalama (tahmin)")):
+    m = mon[mon["fc"] == is_fc]
+    xs, ys, tx = [], [], []
+    for per, r in m.iterrows():
+        label = f"{AYLAR_TAM[per.month - 1]} {per.year} ortalaması" + (" (gerçek + tahmin)" if r["mixed"] else "")
+        xs += [per.start_time, per.end_time.normalize(), None]
+        ys += [r["avg"], r["avg"], None]
+        tx += [label, label, None]
+    fig.add_trace(go.Scatter(x=xs, y=ys, mode="lines", name=name, legendgroup="monthly",
+                             line=dict(color=color, width=2.5, dash="dash"), opacity=0.75, text=tx,
+                             hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
+
 # only the important forecast points: its highest and lowest period
 for idx, txt, color, ay in ((fc["forecast_usd_t"].idxmax(), "Tahmin zirvesi", UP, -42),
                             (fc["forecast_usd_t"].idxmin(), "Tahmin dibi", DOWN, 42)):
