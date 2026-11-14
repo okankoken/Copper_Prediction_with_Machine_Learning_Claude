@@ -73,10 +73,12 @@ fig.update_xaxes(range=[x0, x1], rangeslider=dict(visible=True, thickness=0.08, 
                  showgrid=True, gridcolor="rgba(100,116,139,0.10)")
 fig.update_yaxes(title_text="USD / ton", tickformat=",.0f", range=[view.min() - pad, view.max() + pad])
 fig = style(fig, 520)
-fig.update_layout(legend=dict(orientation="h", y=1.08, x=1, xanchor="right"), hovermode="closest",
-                  margin=dict(l=8, r=8, t=40, b=8))
+# legend top-left so it never sits under Plotly's toolbar (top-right); a new period button resets the zoom
+fig.update_layout(legend=dict(orientation="h", y=1.02, yanchor="bottom", x=0, xanchor="left"),
+                  hovermode="closest", margin=dict(l=8, r=8, t=56, b=8), uirevision=span)
 with st.container(border=True):
-    st.plotly_chart(fig, width="stretch")
+    st.plotly_chart(fig, width="stretch", config={"displaylogo": False,
+                                                  "modeBarButtonsToRemove": ["lasso2d", "select2d", "autoScale2d"]})
 
 # ---------------------------------------------------------------- the 10-day periods, made visible
 AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
