@@ -8,3 +8,5 @@ data/news/volume/
 data/news/gnews/
 data/news/gnews_supply/
 data/news/finbert_scores.csv
+.venv/
+.hf_cache/

@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-11-14T16:32:49+00:00",
-  "run_date": "2026-11-14",
+  "generated_at_utc": "2026-11-14T21:15:44+00:00",
+  "run_date": "2026-11-15",
   "forecast_origin": "2026-11-1",
   "forecast_origin_tr": "1-10 Kas 2026",
   "origin_price_usd_t": 14111.214285714286,
@@ -19,7 +19,7 @@
   ],
   "news_headlines_scored": 6379,
   "n_predictions": 82098,
-  "code_commit": "2b147e6",
+  "code_commit": "b099a05",
   "config": {
     "HORIZONS": [
       1,
@@ -588,8 +588,9 @@
     }
   ],
   "snapshot": {
-    "taken_at_utc": "2026-11-14T16:13:32+00:00",
-    "source_project": "/home/train/Copper_Prediction_with_Machine_Learning",
+    "taken_at_utc": "2026-11-14T21:10:53+00:00",
+    "source_project": "train@127.0.0.1:Copper_Prediction_with_Machine_Learning",
+    "source_kind": "ssh",
     "files": [
       {
         "file": "raw/macro/china_electricity_generation_monthly.csv",
@@ -663,6 +664,6 @@
       }
     ]
   },
-  "panel_sha256": "ea20b40e1ec5531ef26b3784f19b2835ea4984304e7d8201d4ea53411db1c966",
-  "runtime_seconds": 542.8
+  "panel_sha256": "4a61a4a7263a065c9c62e144b72027ad3fa5039fdb18d7891a05f4e51491fde3",
+  "runtime_seconds": 256.4
 }

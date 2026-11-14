@@ -26,15 +26,21 @@ yani toplam **36 dönemlik tek bir tahmin** üretiliyor.
 6. **Etkenler sayfası:** Hangi verinin bugünkü tahmini yukarı/aşağı ittiğini ve geçmişte hangi verilerin
    hep aynı yönde ilişki gösterdiğini gösteriyor.
 
-## Kullanım (VM)
+## Kullanım (Windows PC)
 
-```bash
-cd ~/Copper_Prediction_with_Machine_Learning_Claude
-./run.sh                 # veri kopyası + haberler + model + tahmin
-./run.sh run             # sadece model ve tahmin (~7 dk)
-./run.sh test            # sızıntı testleri
-./restart_dashboard.sh   # panel: http://localhost:8501
+```bat
+cd /d D:\Copper_Prediction_with_Machine_Learning_Claude
+run.cmd setup       :: ilk sefer: .venv ve tüm kütüphaneler
+run.cmd update      :: günlük iş: VM'den veri + haberler + model + testler + GitHub
+run.cmd run         :: sadece model ve tahmin (~4 dk)
+run.cmd test        :: sızıntı ve tutarlılık testleri
+run.cmd dashboard   :: panel: http://localhost:8510
 ```
+
+LME ve makro ham verileri hâlâ VM'deki `Copper_Prediction_with_Machine_Learning` projesinin Airflow
+akışından gelir; `run.cmd data` bunları SSH ile (`train@127.0.0.1`) kopyalar. Başka bir kaynak için
+`COPPER_SOURCE_PROJECT` (yerel klasör) ya da `COPPER_SOURCE_SSH` (`kullanıcı@sunucu:yol`) ayarlanabilir.
+Linux/VM'de `run.sh` aynı işleri yapar.
 
 ## Yapı
 

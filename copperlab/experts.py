@@ -18,6 +18,12 @@ import pandas as pd
 from sklearn.linear_model import ElasticNet, ElasticNetCV
 from sklearn.model_selection import RandomizedSearchCV, TimeSeriesSplit
 
+import sklearn
+
+# scikit-learn >= 1.7 takes the number of alphas as `alphas=int`; `n_alphas` was removed in 1.9
+_SKL = tuple(int(x) for x in sklearn.__version__.split(".")[:2])
+N_ALPHAS = {"alphas": 30} if _SKL >= (1, 7) else {"n_alphas": 30}
+
 from . import config as C
 from . import dekad as K
 from .features import OWN_FEATURES, SENT_FEATURES
@@ -100,7 +106,7 @@ def tune(T: int, h: int, F, B, S, Y) -> dict:
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         Xl, _ = d.z(d.linear, cand, cand)
-        e = ElasticNetCV(l1_ratio=list(ENET_L1), n_alphas=30, cv=purged_cv(len(cand), h, 4), max_iter=5000,
+        e = ElasticNetCV(l1_ratio=list(ENET_L1), **N_ALPHAS, cv=purged_cv(len(cand), h, 4), max_iter=5000,
                          random_state=C.RANDOM_STATE).fit(Xl.values, y)
         search = RandomizedSearchCV(_lgbm(), LGBM_SPACE, n_iter=C.LGBM_TUNE_ITER, cv=purged_cv(len(cand), h, 3),
                                     scoring="neg_mean_absolute_error", random_state=C.RANDOM_STATE, n_jobs=1)
