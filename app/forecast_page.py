@@ -36,7 +36,7 @@ fig.add_trace(go.Scatter(x=[hist["date"].iloc[-1], *fc["date"]], y=[p0, *fc["for
 fig.add_vrect(x0=hist["date"].iloc[-1], x1=fc["date"].iloc[-1], fillcolor="rgba(200,105,58,0.06)", line_width=0)
 
 # monthly averages: day-weighted mean of the month's three 10-day periods, drawn as one short
-# dashed segment per month (grey = actual month, navy = month with forecast periods)
+# dashed segment per forecast month (navy); past months are not shown to keep the chart clean
 pts = pd.concat([pd.DataFrame({"dekad": hist["dekad"].astype(int), "price": hist["price"], "fc": False}),
                  pd.DataFrame({"dekad": [K.make(*map(int, p.split("-"))) for p in fc["period"]],
                                "price": fc["forecast_usd_t"], "fc": True})], ignore_index=True)
@@ -48,7 +48,7 @@ mon = pts.groupby("month").apply(lambda g: pd.Series({
 mon = mon[mon["n"] == 3]  # only complete months (3 periods), so a partial month never shows a misleading level
 AYLAR_TAM = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim",
              "Kasım", "Aralık"]
-for is_fc, color, name in ((False, SLATE, "Aylık ortalama"), (True, NAVY, "Aylık ortalama (tahmin)")):
+for is_fc, color, name in ((True, NAVY, "Tahmin aylık ortalaması"),):
     m = mon[mon["fc"] == is_fc]
     xs, ys, tx = [], [], []
     for per, r in m.iterrows():
