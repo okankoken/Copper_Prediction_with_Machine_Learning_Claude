@@ -1,0 +1,89 @@
+{
+  "news": {
+    "gdelt": {
+      "provider": "GDELT Project – DOC 2.0 API",
+      "url": "https://www.gdeltproject.org/",
+      "query": "\"copper price\" (İngilizce)",
+      "measures": "günlük haber tonu ve haber hacmi",
+      "years": [
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2025",
+        "2026"
+      ]
+    },
+    "google_news": {
+      "provider": "Google News RSS",
+      "url": "https://news.google.com/",
+      "searches": {
+        "gnews": [
+          "\"copper price\"",
+          "\"copper prices\"",
+          "\"LME copper\"",
+          "\"copper market\"",
+          "\"copper demand\"",
+          "\"copper supply\""
+        ],
+        "gnews_supply": [
+          "copper site:mining.com",
+          "copper Chile",
+          "copper Peru",
+          "Codelco",
+          "Escondida copper",
+          "\"Las Bambas\" OR Antamina OR Cerrejon copper",
+          "copper mine strike OR outage"
+        ]
+      },
+      "headlines_downloaded": 10868,
+      "headlines_kept": 6379,
+      "removed": {
+        "bakırla ilgisiz": 4249,
+        "tekrar": 153,
+        "ürün / alaşım": 48,
+        "pazar raporu": 28,
+        "iş ilanı": 11
+      },
+      "first": "2017-01-03",
+      "last": "2026-11-10",
+      "top_sources": {
+        "Mining.com": 1524,
+        "Reuters": 375,
+        "Bloomberg.com": 197,
+        "International Mining": 172,
+        "Shanghai Metals Market": 146,
+        "BNamericas": 133,
+        "Mining Weekly": 130,
+        "Investing News Network": 111,
+        "Crux Investor": 93,
+        "Mining Technology": 88,
+        "Mining.com.au": 79,
+        "Yahoo Finance": 77
+      }
+    },
+    "finbert": {
+      "provider": "ProsusAI/finbert (Hugging Face)",
+      "url": "https://huggingface.co/ProsusAI/finbert"
+    },
+    "dekads_with_news": 319
+  },
+  "panel": {
+    "rows": 679,
+    "columns": 135
+  },
+  "model": {
+    "backtest_origins": 427,
+    "horizons": 36,
+    "predictions": 82098,
+    "first_origin": "2015-01-1",
+    "last_origin": "2026-11-1",
+    "training_start": "2009-12-3",
+    "inputs_macro": 110,
+    "inputs_copper": 12,
+    "inputs_news": 7
+  }
+}

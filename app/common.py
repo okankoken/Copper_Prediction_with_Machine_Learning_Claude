@@ -72,7 +72,8 @@ def load(stamp: float) -> dict:
     for k, f in {"fc": "forecast_latest.csv", "metrics": "metrics_by_horizon.csv", "news": "news_sentiment.csv",
                  "effects": "input_effects.csv", "newstest": "news_value_test.csv",
                  "headlines": "news_headlines_recent.csv", "headcounts": "news_headlines_monthly_counts.csv",
-                 "filter": "news_filter_summary.csv"}.items():
+                 "filter": "news_filter_summary.csv", "catalog": "data_catalog.csv",
+                 "catalog_cu": "data_catalog_copper.csv"}.items():
         try:
             d[k] = pd.read_csv(OUT / f)
         except (FileNotFoundError, pd.errors.EmptyDataError):
@@ -80,6 +81,8 @@ def load(stamp: float) -> dict:
     d["panel"] = pd.read_csv(ROOT / "data" / "panel" / "copper_dekad_panel.csv",
                              usecols=["dekad", "label", "price", "news_tone", "finbert_net"])
     d["manifest"] = json.loads((OUT / "run_manifest.json").read_text())
+    cat = OUT / "data_catalog.json"
+    d["catalog_json"] = json.loads(cat.read_text(encoding="utf-8")) if cat.exists() else {}
     return d
 
 

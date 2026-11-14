@@ -10,7 +10,8 @@ page_setup()
 
 nav = st.navigation([st.Page("forecast_page.py", title="Tahmin", icon="📈", default=True),
                      st.Page("drivers_page.py", title="Etkenler", icon="⚖️"),
-                     st.Page("news_page.py", title="Haberler", icon="📰")])
+                     st.Page("news_page.py", title="Haberler", icon="📰"),
+                     st.Page("data_page.py", title="Veri kaynakları", icon="🗂️")])
 
 D = data()
 man = D["manifest"]

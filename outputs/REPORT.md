@@ -1,6 +1,6 @@
 # Bakır tahmini — son veri: 1-10 Kas 2026
 
-Oluşturulma 2026-11-14T21:15:44+00:00 UTC · kod `b099a05` · 256.4 sn
+Oluşturulma 2026-11-14T21:43:52+00:00 UTC · kod `459072b` · 255.2 sn
 
 Son 10 günlük dönem ortalaması: **14.111 USD/t**
 

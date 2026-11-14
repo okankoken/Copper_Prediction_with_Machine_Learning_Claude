@@ -58,7 +58,7 @@ fig.add_trace(go.Scatter(x=panel["date"], y=panel["price"], name="LME bakır (US
 fig.update_yaxes(showticklabels=False, secondary_y=False)
 fig.update_yaxes(tickformat=",.0f", secondary_y=True, showgrid=False)
 with st.container(border=True):
-    st.plotly_chart(style(fig, 380), use_container_width=True)
+    st.plotly_chart(style(fig, 380), width="stretch")
 
 # ---------------------------------------------------------------- 2) does it lead prices / help the model?
 left, right = st.columns(2)
@@ -79,7 +79,7 @@ with left:
         fig.update_xaxes(tickvals=list(range(1, 13)), ticktext=[f"{m} ay" for m in range(1, 13)])
         fig.update_yaxes(range=[-0.5, 0.5])
         with st.container(border=True):
-            st.plotly_chart(style(fig, 280), use_container_width=True)
+            st.plotly_chart(style(fig, 280), width="stretch")
         st.caption("±0,2'nin altı zayıf ilişki demektir.")
 with right:
     section("Modele eklemek işe yaradı mı?", "Haberli ElasticNet ile habersiz ElasticNet, aynı dönemde")
@@ -112,7 +112,7 @@ if hd_all is not None and len(hd_all):
         hd = hd[hd["Konu"] == t]
     st.dataframe(hd[["date", "Etki", "reason", "title", "Konu", "domain", "FinBERT", "url"]].head(100).rename(
         columns={"date": "Tarih", "reason": "Gerekçe", "title": "Başlık", "domain": "Kaynak", "url": "Bağlantı"}),
-        hide_index=True, use_container_width=True, height=420,
+        hide_index=True, width="stretch", height=420,
         column_config={"Bağlantı": st.column_config.LinkColumn(display_text="aç"),
                        "Başlık": st.column_config.TextColumn(width="large")})
     if removed is not None and len(removed):

@@ -1,0 +1,4 @@
+series,label,family_tr,provider,url,frequency,file,first,last,observations,last_value
+cash_settlement_usd_per_ton,LME bakır nakit fiyatı (hedef),Bakırın kendisi,LME – London Metal Exchange (Westmetall üzerinden),https://www.westmetall.com/en/markdaten.php,Günlük,data/raw/market/lme_copper_daily.csv,2008-01-02,2026-11-13,4770,13610.0
+copper_3_month_usd_per_ton,LME bakır 3 ay vadeli fiyat,Bakırın kendisi,LME – London Metal Exchange (Westmetall üzerinden),https://www.westmetall.com/en/markdaten.php,Günlük,data/raw/market/lme_copper_daily.csv,2008-01-02,2026-11-13,4770,13545.0
+copper_stock_ton,LME bakır stokları,Bakırın kendisi,LME – London Metal Exchange (Westmetall üzerinden),https://www.westmetall.com/en/markdaten.php,Günlük,data/raw/market/lme_copper_daily.csv,2008-01-02,2026-11-13,4772,329100.0

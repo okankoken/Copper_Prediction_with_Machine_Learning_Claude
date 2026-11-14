@@ -154,6 +154,13 @@ def run(run_date: date | None = None, allow_stale: bool = False, n_jobs: int = C
         heads.head(300).to_csv(C.OUT / "news_headlines_recent.csv", index=False)
         heads.assign(month=pd.to_datetime(heads["date"]).dt.to_period("M").astype(str))             .groupby(["month", "direction"]).size().unstack(fill_value=0)             .to_csv(C.OUT / "news_headlines_monthly_counts.csv")
 
+    from .catalog import write as write_catalog
+    write_catalog(heads, removed, news_d, panel.shape, {
+        "model": {"backtest_origins": len(origins), "horizons": len(C.HORIZONS), "predictions": int(len(preds)),
+                  "first_origin": K.label(origins[0]), "last_origin": K.label(origin),
+                  "training_start": K.label(int(F.dropna().index[0])), "inputs_macro": len(C.SERIES) * 2,
+                  "inputs_copper": len(F.columns), "inputs_news": len(S.columns)}})
+
     snap = C.ROOT / "data" / "snapshot_manifest.json"
     manifest = {
         "generated_at_utc": generated, "run_date": run_date.isoformat(),

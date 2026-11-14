@@ -4,4 +4,4 @@ scipy>=1.13
 scikit-learn>=1.5
 lightgbm>=4.3
 plotly>=5.20
-streamlit>=1.39
+streamlit>=1.50

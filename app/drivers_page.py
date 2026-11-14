@@ -41,7 +41,7 @@ with left:
     fig.add_vline(x=0, line_color=MUTED, line_width=1)
     fig.update_xaxes(tickformat="+,.0f", ticksuffix=" $")
     with st.container(border=True):
-        st.plotly_chart(style(fig, 440), use_container_width=True)
+        st.plotly_chart(style(fig, 440), width="stretch")
 with right:
     section("Gruplara göre", "Aynı gruptaki verilerin toplam katkısı")
     f2 = fam[fam["usd"].abs() >= 0.5][::-1]
@@ -51,7 +51,7 @@ with right:
     fig.add_vline(x=0, line_color=MUTED, line_width=1)
     fig.update_xaxes(tickformat="+,.0f", ticksuffix=" $")
     with st.container(border=True):
-        st.plotly_chart(style(fig, 440), use_container_width=True)
+        st.plotly_chart(style(fig, 440), width="stretch")
 
 section("Geçmişte tutarlı ilişkiler",
         "2015'ten beri her 10 günde bir yeniden eğitilen ElasticNet modeli. Çubuk uzunsa model o veriyi sık ve hep "
@@ -68,6 +68,6 @@ fig = go.Figure(go.Bar(
 fig.add_vline(x=0, line_color=MUTED, line_width=1)
 fig.update_xaxes(range=[-100, 100], ticksuffix="%", title="Tutarlılık (−100 hep aşağı, +100 hep yukarı)")
 with st.container(border=True):
-    st.plotly_chart(style(fig, 440), use_container_width=True)
+    st.plotly_chart(style(fig, 440), width="stretch")
 note("Bunlar istatistiksel ilişkilerdir, nedensellik kanıtı değildir. Birbirine bağlı veriler (ör. faizler ve kurlar) "
      "birbirinin yerine geçebilir; bu yüzden tek bir verinin etkisi tek başına yorumlanmamalı.")

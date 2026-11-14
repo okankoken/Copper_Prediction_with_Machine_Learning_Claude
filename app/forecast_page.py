@@ -36,7 +36,7 @@ fig.add_trace(go.Scatter(x=[hist["date"].iloc[-1], *fc["date"]], y=[p0, *fc["for
 fig.add_vrect(x0=hist["date"].iloc[-1], x1=fc["date"].iloc[-1], fillcolor="rgba(200,105,58,0.06)", line_width=0)
 fig.update_yaxes(tickformat=",.0f")
 with st.container(border=True):
-    st.plotly_chart(style(fig, 440), use_container_width=True)
+    st.plotly_chart(style(fig, 440), width="stretch")
 
 ml = M[M.model == "ml"].set_index("horizon")
 spans = ((3, "1 ay"), (9, "3 ay"), (18, "6 ay"), (36, "12 ay"))
@@ -52,7 +52,7 @@ with left:
     section("36 dönemlik tahmin")
     t = fc[["period_tr", "forecast_usd_t", "change_pct", "backtest_mape_pct", "direction_hit_pct"]].copy()
     t.columns = ["Dönem", "Tahmin (USD/t)", "Değişim %", "Geçmiş hata %", "Yön isabeti %"]
-    st.dataframe(t, hide_index=True, use_container_width=True, height=360,
+    st.dataframe(t, hide_index=True, width="stretch", height=360,
                  column_config={"Tahmin (USD/t)": st.column_config.NumberColumn(format="%.0f"),
                                 "Değişim %": st.column_config.NumberColumn(format="%+.1f"),
                                 "Geçmiş hata %": st.column_config.NumberColumn(format="%.1f"),
@@ -70,7 +70,7 @@ with right:
         fig = go.Figure(go.Bar(x=nw["date"], y=dev, marker_color=[UP if v > 0 else DOWN for v in dev]))
         fig.update_yaxes(showticklabels=False)
         with st.container(border=True):
-            st.plotly_chart(style(fig, 300), use_container_width=True)
+            st.plotly_chart(style(fig, 300), width="stretch")
         st.caption(("FinBERT başlık duyarlılığı" if col == "finbert_net" else "GDELT haber tonu") +
                    " · yeşil olumlu, kırmızı olumsuz")
     else:
