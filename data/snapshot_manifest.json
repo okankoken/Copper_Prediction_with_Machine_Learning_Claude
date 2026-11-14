@@ -1,5 +1,5 @@
 {
-  "taken_at_utc": "2026-11-09T20:11:17+00:00",
+  "taken_at_utc": "2026-11-14T16:13:32+00:00",
   "source_project": "/home/train/Copper_Prediction_with_Machine_Learning",
   "files": [
     {
@@ -44,8 +44,8 @@
     },
     {
       "file": "raw/market/lme_copper_daily.csv",
-      "bytes": 162508,
-      "sha256": "085c665240d206e5a1c5a77ad8ab62f9394bbe5b8c16a75efe8e4ae2bbf8bbc2"
+      "bytes": 162688,
+      "sha256": "4630ff2365b26b177c06433c099ff7775450f2bc274dbc71fc7e99546a168fc1"
     },
     {
       "file": "raw/market/lme_other_metals_daily.csv",
@@ -71,11 +71,6 @@
       "file": "raw/risk/geopolitical_risk_monthly.csv",
       "bytes": 32947,
       "sha256": "fb19502a86c328769e552c77a90cbdbd171d4e07276d9b6522cbce64a04976b7"
-    },
-    {
-      "file": "reference/copper_production_forecast_latest.csv",
-      "bytes": 8847,
-      "sha256": "c03c10281a498aff717bf2f07ade087a11161a9f847acafad1b21e9f5c992a8b"
     }
   ]
 }

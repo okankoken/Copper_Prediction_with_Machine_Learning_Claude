@@ -147,11 +147,12 @@ def run(run_date: date | None = None, allow_stale: bool = False, n_jobs: int = C
     nd.insert(0, "label", [K.label(int(n)) for n in nd.index])
     nd["date"] = [K.end(int(n)).date().isoformat() for n in nd.index]
     nd.to_csv(C.OUT / "news_sentiment.csv", index_label="dekad")
-    heads = scored_headlines()
+    heads, removed = scored_headlines(with_removed=True)
+    removed.rename_axis("reason").rename("count").to_csv(C.OUT / "news_filter_summary.csv")
     if len(heads):
         heads = heads[pd.to_datetime(heads["date"]) <= K.end(origin)]
         heads.head(300).to_csv(C.OUT / "news_headlines_recent.csv", index=False)
-        heads.assign(month=pd.to_datetime(heads["date"]).dt.to_period("M").astype(str))             .groupby(["month", "label"]).size().unstack(fill_value=0)             .to_csv(C.OUT / "news_headlines_monthly_counts.csv")
+        heads.assign(month=pd.to_datetime(heads["date"]).dt.to_period("M").astype(str))             .groupby(["month", "direction"]).size().unstack(fill_value=0)             .to_csv(C.OUT / "news_headlines_monthly_counts.csv")
 
     snap = C.ROOT / "data" / "snapshot_manifest.json"
     manifest = {

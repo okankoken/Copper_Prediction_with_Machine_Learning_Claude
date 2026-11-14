@@ -3,7 +3,7 @@
 Two independent signals:
   * GDELT tone      : GDELT's own document tone for "copper price" articles, and the
                       share of global coverage those articles take (attention).
-  * FinBERT headline: English copper-market headlines from Google News RSS searches
+  * Headlines       : English copper-market headlines from Google News RSS searches
                       (several queries per month), scored with ProsusAI/finbert
                       (positive - negative probability). GDELT's article-list API
                       rejects our requests (HTTP 429), so headlines come from Google News.
@@ -14,8 +14,13 @@ new month. News is known by the end of its month, so it has no publication lag.
 from __future__ import annotations
 
 import json
+import os
 import time
 from datetime import date
+
+# FinBERT weights (~0.5 GB) live outside /home, which is small on the VM
+if os.path.isdir("/var/tmp/train_hf"):
+    os.environ.setdefault("HF_HOME", "/var/tmp/train_hf")
 
 import numpy as np
 import pandas as pd
@@ -209,37 +214,35 @@ def dekad_sentiment(last: int | None = None) -> pd.DataFrame:
         out = out.join(pd.DataFrame({"news_articles": g["value"].sum(),
                                      "news_attention": g["value"].sum() / g["norm"].sum().clip(lower=1) * 1e4}),
                        how="outer")
-    scores = NEWS / "finbert_scores.csv"
-    if scores.exists():
-        fb = pd.read_csv(scores)
-        if {"p_positive", "p_negative"} <= set(fb.columns):
-            fb = fb.drop(columns=[c for c in ("date", "month", "topic") if c in fb.columns]).merge(
-                _headlines()[["url", "date", "topic"]], on="url", how="inner")
-            fb["dekad"] = K.from_dates(fb["date"])
-            fb["net"] = fb["p_positive"] - fb["p_negative"]
-            g = fb.groupby("dekad")
-            sup = fb[fb["topic"] == "supply"].groupby("dekad")
-            out = out.join(pd.DataFrame({"finbert_net": g["net"].mean(), "finbert_n": g.size()}), how="outer")
-            out = out.join(pd.DataFrame({"finbert_supply_net": sup["net"].mean(), "finbert_supply_n": sup.size()}),
-                           how="outer")
+    fb = scored_headlines()          # relevant, de-duplicated, with copper price-impact scores
+    if len(fb):
+        fb["dekad"] = K.from_dates(pd.to_datetime(fb["date"]))
+        g = fb.groupby("dekad")
+        out = out.join(pd.DataFrame({"finbert_net": g["net"].mean(), "finbert_n": g.size(),
+                                     "impact_net": g["impact"].mean(),
+                                     "impact_n": g["impact"].apply(lambda x: int((x.abs() > 0.15).sum()))}),
+                       how="outer")
     if last is not None:
         out = out[out.index <= last]
     return out.sort_index()
 
 
-def scored_headlines() -> pd.DataFrame:
-    """Every scored headline with its date, source and FinBERT label."""
+def scored_headlines(with_removed: bool = False):
+    """Relevant, de-duplicated headlines with FinBERT tone and copper price impact
+    (see copperlab.headlines). With with_removed=True also returns the removal counts."""
+    from .headlines import clean, score_frame
+    cols = ["date", "title", "domain", "topic", "url", "label", "net", "impact", "direction", "reason"]
+    empty = pd.DataFrame(columns=cols)
     scores = NEWS / "finbert_scores.csv"
-    if not scores.exists():
-        return pd.DataFrame(columns=["date", "title", "domain", "url", "label", "net"])
-    fb = pd.read_csv(scores)
+    fb = pd.read_csv(scores) if scores.exists() else pd.DataFrame()
     if not {"p_positive", "p_negative", "p_neutral"} <= set(fb.columns):
-        return pd.DataFrame(columns=["date", "title", "domain", "url", "label", "net"])
-    h = _headlines()
-    fb = fb[["url", "p_positive", "p_negative", "p_neutral"]].merge(h, on="url", how="inner")
+        return (empty, pd.Series(dtype=int)) if with_removed else empty
+    fb = fb[["url", "p_positive", "p_negative", "p_neutral"]].merge(_headlines(), on="url", how="inner")
     fb["net"] = fb["p_positive"] - fb["p_negative"]
     fb["label"] = fb[["p_positive", "p_negative", "p_neutral"]].idxmax(axis=1).str.replace("p_", "", regex=False)
-    return fb.sort_values("date", ascending=False)[["date", "title", "domain", "topic", "url", "label", "net"]]
+    kept, removed = clean(fb)
+    out = score_frame(kept).sort_values("date", ascending=False)[cols]
+    return (out, removed) if with_removed else out
 
 
 if __name__ == "__main__":

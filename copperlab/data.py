@@ -48,8 +48,11 @@ def copper_dekads(run_date: date | None = None) -> pd.DataFrame:
         "last_day": g["date"].max(),
     })
     cu = cu[cu.index <= K.last_complete(run_date)]
+    # complete = at most one business day (a holiday) missing at the end of the dekad
     last = int(cu.index[-1])
-    if cu.loc[last, "last_day"] < K.end(last) - pd.Timedelta(days=4):
+    missing = np.busday_count((cu.loc[last, "last_day"] + pd.Timedelta(days=1)).date(),
+                              (K.end(last) + pd.Timedelta(days=1)).date())
+    if missing > 1:
         cu = cu.iloc[:-1]
     full = pd.RangeIndex(int(cu.index[0]), int(cu.index[-1]) + 1)
     cu = cu.reindex(full)

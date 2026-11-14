@@ -71,7 +71,8 @@ def load(stamp: float) -> dict:
     d = {}
     for k, f in {"fc": "forecast_latest.csv", "metrics": "metrics_by_horizon.csv", "news": "news_sentiment.csv",
                  "effects": "input_effects.csv", "newstest": "news_value_test.csv",
-                 "headlines": "news_headlines_recent.csv", "headcounts": "news_headlines_monthly_counts.csv"}.items():
+                 "headlines": "news_headlines_recent.csv", "headcounts": "news_headlines_monthly_counts.csv",
+                 "filter": "news_filter_summary.csv"}.items():
         try:
             d[k] = pd.read_csv(OUT / f)
         except (FileNotFoundError, pd.errors.EmptyDataError):
