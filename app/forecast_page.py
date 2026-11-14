@@ -21,122 +21,30 @@ for h, name in ((3, "1 ay sonra"), (9, "3 ay sonra"), (18, "6 ay sonra"), (36, "
     cards.append({"label": name, "value": f"{tr(r.forecast_usd_t)} $", "delta": r.change_pct, "sub": r.period_tr})
 kpi_cards(cards)
 
-def zigzag(values: list[float], threshold: float = 0.012) -> list[int]:
-    """Indices of turning points: a new peak/trough is confirmed once the price has moved
-    `threshold` (1.2%) the other way. Always includes the first and last point."""
-    v, n = values, len(values)
-    piv, trend, ext = [0], 0, 0
-    for i in range(1, n):
-        if trend == 0:
-            if v[i] >= v[0] * (1 + threshold):
-                trend, ext = 1, i
-            elif v[i] <= v[0] * (1 - threshold):
-                trend, ext = -1, i
-        elif trend == 1:
-            if v[i] > v[ext]:
-                ext = i
-            elif v[i] <= v[ext] * (1 - threshold):
-                piv.append(ext)
-                trend, ext = -1, i
-        else:
-            if v[i] < v[ext]:
-                ext = i
-            elif v[i] >= v[ext] * (1 + threshold):
-                piv.append(ext)
-                trend, ext = 1, i
-    if trend != 0 and piv[-1] != ext:
-        piv.append(ext)
-    if piv[-1] != n - 1:
-        piv.append(n - 1)
-    return piv
-
-
-def money(v):
-    return f"{tr(v)} $"
-
-
-section("Geçmiş fiyat ve 12 aylık tahmin",
-        "▲ yeşil: bir önceki 10 günlük döneme göre yükseliş · ▼ kırmızı: düşüş · gölgeli alanlar: tahmindeki "
-        "yükseliş/düşüş evreleri ve toplam değişimleri · etiketler: önemli zirve ve dipler")
+section("Geçmiş fiyat ve 12 aylık tahmin", "Gri: gerçekleşen 10 günlük ortalamalar · Bakır rengi: modelin tahmini")
 panel = D["panel"].copy()
 panel["date"] = [K.end(int(n)) for n in panel["dekad"]]
-c1, c2 = st.columns([3, 1])
-years = c1.radio("Geçmiş", [1, 3, 5, 10], index=0, horizontal=True, format_func=lambda y: f"{y} yıl",
+years = st.radio("Geçmiş", [1, 3, 5, 10], index=0, horizontal=True, format_func=lambda y: f"{y} yıl",
                  label_visibility="collapsed")
-view = c2.radio("Görünüm", ["Çizgi", "Sütun"], horizontal=True, label_visibility="collapsed")
 hist = panel[panel["date"] >= panel["date"].max() - pd.DateOffset(years=years)]
-
-s = pd.concat([pd.DataFrame({"date": hist["date"], "price": hist["price"], "kind": "real",
-                             "label": [K.label_tr(int(n)) for n in hist["dekad"]]}),
-               pd.DataFrame({"date": fc["date"], "price": fc["forecast_usd_t"], "kind": "fc", "label": fc["period_tr"]})],
-              ignore_index=True)
-s["chg"] = s["price"].pct_change() * 100
-s["up"] = s["chg"].fillna(0) >= 0
-real, fut = s[s["kind"] == "real"], s[s["kind"] == "fc"]
-
 fig = go.Figure()
-if view == "Sütun":
-    for part, name, op in ((real, "Gerçekleşen", 0.45), (fut, "Tahmin", 0.95)):
-        fig.add_trace(go.Bar(x=part["date"], y=part["price"], name=name, opacity=op, showlegend=False,
-                             marker=dict(color=[UP if u else DOWN for u in part["up"]],
-                                         line=dict(color=COPPER if name == "Tahmin" else "rgba(0,0,0,0)", width=1)),
-                             customdata=part[["label", "chg"]].values,
-                             hovertemplate="%{customdata[0]}<br>%{y:,.0f} $ (%{customdata[1]:+.1f}%)<extra>"
-                                           + name + "</extra>"))
-    fig.update_layout(bargap=0.12)
-else:
-    fig.add_trace(go.Scatter(x=real["date"], y=real["price"], name="Gerçekleşen", line=dict(color=SLATE, width=2),
-                             customdata=real[["label", "chg"]].values,
-                             hovertemplate="%{customdata[0]}<br>%{y:,.0f} $ (%{customdata[1]:+.1f}%)<extra></extra>"))
-    fig.add_trace(go.Scatter(x=[real["date"].iloc[-1], *fut["date"]], y=[p0, *fut["price"]], name="Tahmin",
-                             line=dict(color=COPPER, width=3), mode="lines"))
-    fig.add_trace(go.Scatter(x=s["date"], y=s["price"], mode="markers", showlegend=False,
-                             marker=dict(symbol=["triangle-up" if u else "triangle-down" for u in s["up"]], size=8,
-                                         color=[UP if u else DOWN for u in s["up"]]),
-                             customdata=s[["label", "chg"]].values,
-                             hovertemplate="%{customdata[0]}<br>%{y:,.0f} $ (%{customdata[1]:+.1f}%)<extra></extra>"))
-
-# rising / falling phases of the forecast, with their total change
-fvals = [p0, *fut["price"]]
-fdates = [real["date"].iloc[-1], *fut["date"]]
-piv = zigzag(fvals)
-for a, b in zip(piv[:-1], piv[1:]):
-    ch = (fvals[b] / fvals[a] - 1) * 100
-    if abs(ch) < 0.3:
-        continue
-    short = b - a < 4
-    fig.add_vrect(x0=fdates[a], x1=fdates[b], line_width=0,
-                  fillcolor="rgba(26,158,110,0.08)" if ch > 0 else "rgba(214,69,69,0.08)")
-    if short:
-        continue
-    fig.add_annotation(x=fdates[a] + (fdates[b] - fdates[a]) / 2, y=0.02, yref="paper", yanchor="bottom", showarrow=False,
-                       text=f"{'↗' if ch > 0 else '↘'} {ch:+.1f}%".replace(".", ","),
-                       font=dict(color=UP if ch > 0 else DOWN, size=12))
-
-# important highs and lows: history and forecast extremes + forecast turning points
-marks = {}
-for part, tag in ((real, "geçmiş"), (fut, "tahmin")):
-    hi, lo = part["price"].idxmax(), part["price"].idxmin()
-    marks[hi] = (f"▲ {tag} zirvesi", True)
-    marks[lo] = (f"▼ {tag} dibi", False)
-for i in piv[1:-1]:
-    j = fut.index[i - 1]
-    marks.setdefault(j, ("▲ tepe" if fvals[i] >= fvals[i - 1] else "▼ dip", fvals[i] >= fvals[i - 1]))
-for j, (txt, top) in marks.items():
-    r = s.loc[j]
-    fig.add_annotation(x=r["date"], y=r["price"], text=f"{txt}<br><b>{money(r['price'])}</b><br>{r['label']}",
-                       showarrow=True, arrowhead=2, arrowsize=0.8, ax=0, ay=-48 if top else 48,
-                       font=dict(size=10, color=UP if top else DOWN), bgcolor="rgba(255,255,255,0.85)",
-                       bordercolor=UP if top else DOWN, borderwidth=1)
-
-fig.add_vline(x=real["date"].iloc[-1], line_dash="dot", line_color=SLATE)
-lo_y, hi_y = s["price"].min(), s["price"].max()
-fig.update_yaxes(tickformat=",.0f", range=[lo_y - (hi_y - lo_y) * 0.25, hi_y + (hi_y - lo_y) * 0.25])
-fig.update_xaxes(showgrid=True, gridcolor="rgba(100,116,139,0.12)", dtick="M1" if years <= 1 else "M3",
-                 tickformat="%b %Y")
-fig.update_layout(hovermode="closest")
+fig.add_trace(go.Scatter(x=hist["date"], y=hist["price"], name="Gerçekleşen", line=dict(color=SLATE, width=2),
+                         hovertemplate="%{y:,.0f} $<extra></extra>"))
+fig.add_trace(go.Scatter(x=[hist["date"].iloc[-1], *fc["date"]], y=[p0, *fc["forecast_usd_t"]], name="Tahmin",
+                         mode="lines+markers", marker=dict(size=5, color=COPPER), line=dict(color=COPPER, width=3),
+                         text=["", *fc["period_tr"]], hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
+fig.add_vrect(x0=hist["date"].iloc[-1], x1=fc["date"].iloc[-1], fillcolor="rgba(200,105,58,0.06)", line_width=0)
+# only the important forecast points: its highest and lowest period
+for idx, txt, color, ay in ((fc["forecast_usd_t"].idxmax(), "Tahmin zirvesi", UP, -42),
+                            (fc["forecast_usd_t"].idxmin(), "Tahmin dibi", DOWN, 42)):
+    r = fc.loc[idx]
+    fig.add_annotation(x=r["date"], y=r["forecast_usd_t"], showarrow=True, arrowhead=2, ax=0, ay=ay,
+                       text=f"{txt}<br><b>{tr(r['forecast_usd_t'])} $</b> · {r['period_tr']}",
+                       font=dict(size=11, color=color), bgcolor="rgba(255,255,255,0.9)", bordercolor=color,
+                       borderwidth=1)
+fig.update_yaxes(tickformat=",.0f")
 with st.container(border=True):
-    st.plotly_chart(style(fig, 500), width="stretch")
+    st.plotly_chart(style(fig, 440), width="stretch")
 
 # ---------------------------------------------------------------- the 10-day periods, made visible
 AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
