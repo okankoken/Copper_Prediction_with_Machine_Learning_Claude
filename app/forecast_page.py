@@ -44,17 +44,17 @@ AYLAR_TAM = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "
 
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=panel["date"], y=panel["price"], name="Gerçekleşen LME bakır", mode="lines",
-                         line=dict(color=TEAL, width=2.2), hovertemplate="%{x|%d %b %Y}: %{y:,.0f} $<extra></extra>"))
+                         line=dict(color=TEAL, width=2.2), hovertemplate="Gerçekleşen: <b>%{y:,.0f} $</b><extra></extra>"))
 fig.add_trace(go.Scatter(x=[last_real, *fc["date"]], y=[p0, *fc["forecast_usd_t"]], name="10 günlük tahmin",
                          mode="lines+markers", line=dict(color=COPPER, width=2.5, dash="dash"),
                          marker=dict(size=5, color=COPPER), text=["son gerçekleşen", *fc["period_tr"]],
-                         hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
+                         hovertemplate="Tahmin (%{text}): <b>%{y:,.0f} $</b><extra></extra>"))
 fig.add_trace(go.Scatter(x=[per.start_time + pd.Timedelta(days=14) for per in mon.index], y=mon["avg"],
                          name="Aylık tahmin ortalaması", mode="markers",
                          marker=dict(symbol="diamond", size=10, color=NAVY, line=dict(color="white", width=1)),
                          text=[f"{AYLAR_TAM[per.month - 1]} {per.year} ortalaması" + (" (gerçek + tahmin)" if r.mixed else "")
                                for per, r in mon.iterrows()],
-                         hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
+                         hovertemplate="%{text}: <b>%{y:,.0f} $</b><extra></extra>"))
 fig.add_vline(x=last_real, line_dash="dot", line_color=COPPER, line_width=1.5)
 for idx, txt, color, ay in ((fc["forecast_usd_t"].idxmax(), "Tahmin zirvesi", UP, -38),
                             (fc["forecast_usd_t"].idxmin(), "Tahmin dibi", DOWN, 38)):
@@ -75,7 +75,11 @@ fig.update_yaxes(title_text="USD / ton", tickformat=",.0f", range=[view.min() - 
 fig = style(fig, 520)
 # legend top-left so it never sits under Plotly's toolbar (top-right); a new period button resets the zoom
 fig.update_layout(legend=dict(orientation="h", y=1.02, yanchor="bottom", x=0, xanchor="left"),
-                  hovermode="closest", margin=dict(l=8, r=8, t=56, b=8), uirevision=span)
+                  hovermode="x unified", hoverdistance=60, spikedistance=-1, dragmode=False,
+                  hoverlabel=dict(bgcolor="white", font_size=12, bordercolor="#dfe7f1"),
+                  margin=dict(l=8, r=8, t=56, b=8), uirevision=span)
+fig.update_xaxes(showspikes=True, spikemode="across", spikesnap="cursor", spikethickness=1,
+                 spikedash="dot", spikecolor="#94a3b8", hoverformat="%d %b %Y")
 with st.container(border=True):
     st.plotly_chart(fig, width="stretch", config={"displaylogo": False,
                                                   "modeBarButtonsToRemove": ["lasso2d", "select2d", "autoScale2d"]})
