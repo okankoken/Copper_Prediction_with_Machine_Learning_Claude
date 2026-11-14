@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from common import COPPER, DOWN, NAVY, SLATE, UP, data, hero, kpi_cards, note, section, style, tr
+from common import COPPER, DOWN, NAVY, SLATE, TEAL, UP, data, hero, kpi_cards, note, section, style, tr
 from copperlab import dekad as K
 
 D = data()
@@ -21,23 +21,16 @@ for h, name in ((3, "1 ay sonra"), (9, "3 ay sonra"), (18, "6 ay sonra"), (36, "
     cards.append({"label": name, "value": f"{tr(r.forecast_usd_t)} $", "delta": r.change_pct, "sub": r.period_tr})
 kpi_cards(cards)
 
-section("Geçmiş fiyat ve 12 aylık tahmin", "Gri: gerçekleşen 10 günlük ortalamalar · Bakır rengi: modelin tahmini")
+section("Geçmiş bakır fiyatı + 12 aylık tahmin",
+        "10 günlük dönem ortalamaları · ◆ tahminin aylık ortalaması · alttaki kaydırıcıyla dönemi seçebilirsiniz")
 panel = D["panel"].copy()
 panel["date"] = [K.end(int(n)) for n in panel["dekad"]]
-years = st.radio("Geçmiş", [1, 3, 5, 10], index=0, horizontal=True, format_func=lambda y: f"{y} yıl",
-                 label_visibility="collapsed")
-hist = panel[panel["date"] >= panel["date"].max() - pd.DateOffset(years=years)]
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=hist["date"], y=hist["price"], name="Gerçekleşen", line=dict(color=SLATE, width=2),
-                         hovertemplate="%{y:,.0f} $<extra></extra>"))
-fig.add_trace(go.Scatter(x=[hist["date"].iloc[-1], *fc["date"]], y=[p0, *fc["forecast_usd_t"]], name="Tahmin",
-                         mode="lines+markers", marker=dict(size=5, color=COPPER), line=dict(color=COPPER, width=3),
-                         text=["", *fc["period_tr"]], hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
-fig.add_vrect(x0=hist["date"].iloc[-1], x1=fc["date"].iloc[-1], fillcolor="rgba(200,105,58,0.06)", line_width=0)
+span = st.radio("Dönem", ["1Y", "3Y", "5Y", "10Y", "Tümü"], index=0, horizontal=True, label_visibility="collapsed")
+last_real = panel["date"].max()
 
-# monthly averages: day-weighted mean of the month's three 10-day periods, drawn as one short
-# dashed segment per forecast month (navy); past months are not shown to keep the chart clean
-pts = pd.concat([pd.DataFrame({"dekad": hist["dekad"].astype(int), "price": hist["price"], "fc": False}),
+# forecast monthly averages: day-weighted mean of each month's three 10-day periods (the current month
+# combines its actual first period with the forecast ones), shown as one diamond in mid-month
+pts = pd.concat([pd.DataFrame({"dekad": panel["dekad"].astype(int), "price": panel["price"], "fc": False}),
                  pd.DataFrame({"dekad": [K.make(*map(int, p.split("-"))) for p in fc["period"]],
                                "price": fc["forecast_usd_t"], "fc": True})], ignore_index=True)
 pts["days"] = [(K.end(n) - K.start(n)).days + 1 for n in pts["dekad"]]
@@ -45,32 +38,45 @@ pts["month"] = [K.start(n).to_period("M") for n in pts["dekad"]]
 mon = pts.groupby("month").apply(lambda g: pd.Series({
     "avg": (g["price"] * g["days"]).sum() / g["days"].sum(), "fc": bool(g["fc"].any()),
     "mixed": bool(g["fc"].any() and not g["fc"].all()), "n": len(g)}), include_groups=False)
-mon = mon[mon["n"] == 3]  # only complete months (3 periods), so a partial month never shows a misleading level
+mon = mon[(mon["n"] == 3) & mon["fc"]]
 AYLAR_TAM = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim",
              "Kasım", "Aralık"]
-for is_fc, color, name in ((True, NAVY, "Tahmin aylık ortalaması"),):
-    m = mon[mon["fc"] == is_fc]
-    xs, ys, tx = [], [], []
-    for per, r in m.iterrows():
-        label = f"{AYLAR_TAM[per.month - 1]} {per.year} ortalaması" + (" (gerçek + tahmin)" if r["mixed"] else "")
-        xs += [per.start_time, per.end_time.normalize(), None]
-        ys += [r["avg"], r["avg"], None]
-        tx += [label, label, None]
-    fig.add_trace(go.Scatter(x=xs, y=ys, mode="lines", name=name, legendgroup="monthly",
-                             line=dict(color=color, width=2.5, dash="dash"), opacity=0.75, text=tx,
-                             hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
 
-# only the important forecast points: its highest and lowest period
-for idx, txt, color, ay in ((fc["forecast_usd_t"].idxmax(), "Tahmin zirvesi", UP, -42),
-                            (fc["forecast_usd_t"].idxmin(), "Tahmin dibi", DOWN, 42)):
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=panel["date"], y=panel["price"], name="Gerçekleşen LME bakır", mode="lines",
+                         line=dict(color=TEAL, width=2.2), hovertemplate="%{x|%d %b %Y}: %{y:,.0f} $<extra></extra>"))
+fig.add_trace(go.Scatter(x=[last_real, *fc["date"]], y=[p0, *fc["forecast_usd_t"]], name="10 günlük tahmin",
+                         mode="lines+markers", line=dict(color=COPPER, width=2.5, dash="dash"),
+                         marker=dict(size=5, color=COPPER), text=["son gerçekleşen", *fc["period_tr"]],
+                         hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
+fig.add_trace(go.Scatter(x=[per.start_time + pd.Timedelta(days=14) for per in mon.index], y=mon["avg"],
+                         name="Aylık tahmin ortalaması", mode="markers",
+                         marker=dict(symbol="diamond", size=10, color=NAVY, line=dict(color="white", width=1)),
+                         text=[f"{AYLAR_TAM[per.month - 1]} {per.year} ortalaması" + (" (gerçek + tahmin)" if r.mixed else "")
+                               for per, r in mon.iterrows()],
+                         hovertemplate="%{text}: %{y:,.0f} $<extra></extra>"))
+fig.add_vline(x=last_real, line_dash="dot", line_color=COPPER, line_width=1.5)
+for idx, txt, color, ay in ((fc["forecast_usd_t"].idxmax(), "Tahmin zirvesi", UP, -38),
+                            (fc["forecast_usd_t"].idxmin(), "Tahmin dibi", DOWN, 38)):
     r = fc.loc[idx]
-    fig.add_annotation(x=r["date"], y=r["forecast_usd_t"], showarrow=True, arrowhead=2, ax=0, ay=ay,
-                       text=f"{txt}<br><b>{tr(r['forecast_usd_t'])} $</b> · {r['period_tr']}",
-                       font=dict(size=11, color=color), bgcolor="rgba(255,255,255,0.9)", bordercolor=color,
-                       borderwidth=1)
-fig.update_yaxes(tickformat=",.0f")
+    ax = -70 if idx >= len(fc) - 6 else 0      # keep labels near the right edge inside the plot
+    fig.add_annotation(x=r["date"], y=r["forecast_usd_t"], showarrow=True, arrowhead=2, ax=ax, ay=ay,
+                       text=f"{txt}: <b>{tr(r['forecast_usd_t'])} $</b>", font=dict(size=10, color=color),
+                       bgcolor="rgba(255,255,255,0.9)", bordercolor=color, borderwidth=1)
+
+years = {"1Y": 1, "3Y": 3, "5Y": 5, "10Y": 10}.get(span)
+x0 = last_real - pd.DateOffset(years=years) if years else panel["date"].min()
+x1 = fc["date"].max() + pd.Timedelta(days=20)
+view = pd.concat([panel.loc[panel["date"] >= x0, "price"], fc["forecast_usd_t"]])
+pad = (view.max() - view.min()) * 0.12
+fig.update_xaxes(range=[x0, x1], rangeslider=dict(visible=True, thickness=0.08, bgcolor="#eef3f8"),
+                 showgrid=True, gridcolor="rgba(100,116,139,0.10)")
+fig.update_yaxes(title_text="USD / ton", tickformat=",.0f", range=[view.min() - pad, view.max() + pad])
+fig = style(fig, 520)
+fig.update_layout(legend=dict(orientation="h", y=1.08, x=1, xanchor="right"), hovermode="closest",
+                  margin=dict(l=8, r=8, t=40, b=8))
 with st.container(border=True):
-    st.plotly_chart(style(fig, 440), width="stretch")
+    st.plotly_chart(fig, width="stretch")
 
 # ---------------------------------------------------------------- the 10-day periods, made visible
 AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
