@@ -23,6 +23,7 @@ PROVIDERS = {
     "bcrp": ("Peru Merkez Bankası (BCRP)", "https://estadisticas.bcrp.gob.pe/"),
     "epu": ("Economic Policy Uncertainty (Baker, Bloom, Davis)", "https://www.policyuncertainty.com/"),
     "gpr": ("Jeopolitik Risk Endeksi (Caldara, Iacoviello)", "https://www.matteoiacoviello.com/gpr.htm"),
+    "yahoo": ("Yahoo Finance (hisse senetleri)", "https://finance.yahoo.com/"),
 }
 FILE_PROVIDER = {
     "market/lme_copper_daily.csv": "lme", "market/lme_other_metals_daily.csv": "lme",
@@ -34,6 +35,8 @@ SERIES_PROVIDER = {"ecb_rate": "ecb", "japan_ppi": "boj", "japan_industrial_prod
 
 
 def provider_of(s) -> str:
+    if s.file == C.STOCKS_FILE:
+        return "yahoo"
     if s.name in SERIES_PROVIDER:
         return SERIES_PROVIDER[s.name]
     if s.file in FILE_PROVIDER:
@@ -62,7 +65,7 @@ def series_table(start: str = "2008-01") -> pd.DataFrame:
             "series": s.name, "label": C.SERIES_TR.get(s.name, s.name), "family": s.family,
             "family_tr": C.FAMILY_TR.get(s.family, s.family), "provider": PROVIDERS[p][0], "url": PROVIDERS[p][1],
             "frequency": "Günlük → aylık ort." if s.daily else "Aylık", "file": f"data/raw/{s.file}",
-            "column": s.column, "transform": "log değişim" if s.kind == "log" else "fark",
+            "column": C.STOCKS[s.name][0] if s.file == C.STOCKS_FILE else s.column, "transform": "log değişim" if s.kind == "log" else "fark",
             "publication": lag_tr(s.lag),
             "first": str(x.index.min()) if len(x) else None, "last": str(x.index.max()) if len(x) else None,
             "observations": int(len(x)),

@@ -132,10 +132,34 @@ SERIES: tuple[Series, ...] = (
        "peru_diesel_price_index"),
 )
 
+# Equities with information about copper demand/supply (Yahoo Finance, fetched by copperlab.stocks).
+# name -> (Yahoo ticker, Turkish label, family)
+STOCKS_FILE = "equities_extra/stocks_daily.csv"
+STOCKS = {
+    "nvidia": ("NVDA", "NVIDIA", "ai_datacenter"),
+    "vertiv": ("VRT", "Vertiv (veri merkezi güç/soğutma)", "ai_datacenter"),
+    "eaton": ("ETN", "Eaton (elektrik ekipmanı)", "ai_datacenter"),
+    "quanta": ("PWR", "Quanta Services (şebeke altyapısı)", "ai_datacenter"),
+    "tesla": ("TSLA", "Tesla", "ev"),
+    "byd": ("1211.HK", "BYD", "ev"),
+    "prysmian": ("PRY.MI", "Prysmian (kablo)", "grid_cables"),
+    "nexans": ("NEX.PA", "Nexans (kablo)", "grid_cables"),
+    "freeport": ("FCX", "Freeport-McMoRan", "copper_miners"),
+    "southern_copper": ("SCCO", "Southern Copper", "copper_miners"),
+    "bhp": ("BHP", "BHP", "copper_miners"),
+    "rio_tinto": ("RIO", "Rio Tinto", "copper_miners"),
+    "glencore": ("GLEN.L", "Glencore", "copper_miners"),
+    "antofagasta": ("ANTO.L", "Antofagasta", "copper_miners"),
+    "teck": ("TECK", "Teck Resources", "copper_miners"),
+    "kghm": ("KGH.WA", "KGHM", "copper_miners"),
+    "copx": ("COPX", "Bakır madencileri ETF (COPX)", "copper_miners"),
+}
+SERIES = SERIES + tuple(_s(name, STOCKS_FILE, "log", 0, fam, name, True) for name, (_, _, fam) in STOCKS.items())
+
 COPPER_FILE = "market/lme_copper_daily.csv"
 
-# Files copied into data/raw (snapshot) from the source project.
-RAW_FILES = tuple(sorted({COPPER_FILE, *(s.file for s in SERIES)}))
+# Files copied into data/raw (snapshot) from the source project (our own stock file is fetched separately).
+RAW_FILES = tuple(sorted({COPPER_FILE, *(s.file for s in SERIES if s.file != STOCKS_FILE)}))
 REFERENCE_FILES: tuple[str, ...] = ()
 
 SERIES_TR = {
@@ -160,9 +184,12 @@ SERIES_TR = {
     "china_real_estate_yoy": "Çin gayrimenkul yatırımı", "china_electricity": "Çin elektrik üretimi",
     "china_refined_copper": "Çin rafine bakır üretimi", "peru_diesel": "Peru dizel fiyatı",
 }
+SERIES_TR.update({name: label for name, (_, label, _) in STOCKS.items()})
 FAMILY_TR = {
     "metals": "Metaller", "inventories": "Stoklar", "precious": "Değerli metaller", "bulk": "Hammadde",
     "energy": "Enerji", "fx": "Kurlar", "risk": "Risk", "rates": "Faizler", "us_macro": "ABD ekonomisi",
     "europe": "Avrupa ekonomisi", "asia": "Asya ekonomisi", "china": "Çin ekonomisi",
     "mining_costs": "Madencilik maliyeti", "copper": "Bakırın kendisi", "news": "Haberler",
+    "ai_datacenter": "Yapay zekâ / veri merkezi hisseleri", "ev": "Elektrikli araç hisseleri",
+    "grid_cables": "Kablo / şebeke hisseleri", "copper_miners": "Bakır madencisi hisseleri",
 }

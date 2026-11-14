@@ -73,7 +73,7 @@
   },
   "panel": {
     "rows": 679,
-    "columns": 135
+    "columns": 169
   },
   "model": {
     "backtest_origins": 427,
@@ -82,7 +82,7 @@
     "first_origin": "2015-01-1",
     "last_origin": "2026-11-1",
     "training_start": "2009-12-3",
-    "inputs_macro": 110,
+    "inputs_macro": 144,
     "inputs_copper": 12,
     "inputs_news": 7
   }

@@ -10,7 +10,7 @@ from . import config as C
 
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="copperlab", description="LME copper forecaster, 10-day periods, 12 months ahead")
-    p.add_argument("command", choices=["snapshot", "news", "run", "all"])
+    p.add_argument("command", choices=["snapshot", "stocks", "news", "run", "all"])
     p.add_argument("--allow-stale", action="store_true", help="skip the forecast-origin guardrail")
     p.add_argument("--run-date", type=date.fromisoformat, default=None)
     p.add_argument("--jobs", type=int, default=C.N_JOBS)
@@ -20,6 +20,9 @@ def main(argv=None) -> int:
         from .snapshot import take_snapshot
         m = take_snapshot()
         print(f"snapshot: {len(m['files'])} files copied from {m['source_project']}")
+    if a.command in ("stocks", "all"):
+        from .stocks import fetch as fetch_stocks
+        fetch_stocks()
     if a.command in ("news", "all"):
         import pandas as pd
         from . import news
